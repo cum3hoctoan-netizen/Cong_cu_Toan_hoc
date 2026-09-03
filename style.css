@@ -1,0 +1,419 @@
+/* Reset & Biến hệ thống */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  
+  /* Gam màu xanh dương đậm theo yêu cầu */
+  --primary-dark-blue: #1e3a8a;       /* Blue 900 */
+  --primary-dark-blue-hover: #172554; /* Blue 950 */
+  --primary-dark-blue-active: #0f172a;
+  
+  --secondary-bg: #f8fafc;
+  --secondary-border: #cbd5e1;
+  --secondary-text: #1e293b;
+
+  --accent-badge-bg: #e0e7ff;
+  --accent-badge-text: #3730a3;
+
+  /* Màu trạng thái nghiệm */
+  --status-no-root-bg: #fee2e2;
+  --status-no-root-text: #991b1b;
+  --status-double-root-bg: #dcfce7;
+  --status-double-root-text: #166534;
+  --status-two-roots-bg: #dbeafe;
+  --status-two-roots-text: #1e40af;
+
+  --shadow-card: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-button: 0 4px 6px -1px rgba(30, 58, 138, 0.2), 0 2px 4px -2px rgba(30, 58, 138, 0.1);
+  --radius-card: 20px;
+  --radius-btn: 12px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  line-height: 1.6;
+}
+
+/* Container chính căn giữa */
+.container {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Thẻ Card trắng trung tâm */
+.card {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 40px 36px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Header */
+.card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.badge-tag {
+  display: inline-block;
+  background-color: var(--accent-badge-bg);
+  color: var(--accent-badge-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.card-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.card-subtitle em {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--primary-dark-blue);
+}
+
+/* Nút bấm chung */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  text-align: center;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+/* Nút chính: Xanh dương đậm */
+.btn-primary {
+  width: 100%;
+  background-color: var(--primary-dark-blue);
+  color: #ffffff;
+  box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark-blue-hover);
+  box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.3), 0 4px 6px -4px rgba(30, 58, 138, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-primary:hover .btn-icon {
+  transform: rotate(45deg);
+}
+
+/* Nút phụ: Xem đáp án */
+.btn-secondary {
+  width: 100%;
+  background-color: #ffffff;
+  color: var(--primary-dark-blue);
+  border: 1.5px solid var(--primary-dark-blue);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #eff6ff;
+  color: var(--primary-dark-blue-hover);
+  border-color: var(--primary-dark-blue-hover);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: var(--secondary-border);
+  color: var(--text-muted);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Vùng hiển thị phương trình */
+.action-section {
+  margin-bottom: 24px;
+}
+
+.equation-container {
+  background: var(--secondary-bg);
+  border: 1.5px dashed var(--secondary-border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.equation-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.equation-text {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+}
+
+/* Tinh chỉnh KaTeX */
+.equation-text .katex-display {
+  margin: 0;
+}
+
+.equation-text .katex {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.math-expr .katex-display {
+  margin: 6px 0;
+  text-align: left;
+}
+
+.math-expr .katex {
+  font-size: 1.08rem;
+}
+
+.roots-highlight .katex-display {
+  margin: 4px 0;
+}
+
+.placeholder-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.solution-actions {
+  margin-bottom: 24px;
+}
+
+/* Khung lời giải chi tiết */
+.solution-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 22px;
+  margin-bottom: 24px;
+  animation: slideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.solution-card.hidden {
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.solution-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.solution-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Badge trạng thái */
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+.badge-no-root {
+  background-color: var(--status-no-root-bg);
+  color: var(--status-no-root-text);
+}
+
+.badge-double-root {
+  background-color: var(--status-double-root-bg);
+  color: var(--status-double-root-text);
+}
+
+.badge-two-roots {
+  background-color: var(--status-two-roots-bg);
+  color: var(--status-two-roots-text);
+}
+
+/* Các bước giải */
+.solution-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background-color: #eff6ff;
+  color: var(--primary-dark-blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bfdbfe;
+}
+
+.step-body {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.math-expr {
+  font-family: 'Lora', 'Cambria Math', 'Times New Roman', serif;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.roots-highlight {
+  background-color: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-dark-blue);
+  font-weight: 600;
+}
+
+.math-var {
+  font-style: italic;
+  padding: 0 1px;
+}
+
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 4px;
+  font-size: 0.92em;
+}
+
+.fraction .numerator {
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}
+
+.fraction .denominator {
+  padding-top: 1px;
+}
+
+/* Footer */
+.card-footer {
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 18px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .card-title {
+    font-size: 1.45rem;
+  }
+
+  .equation-text {
+    font-size: 1.65rem;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+}
