@@ -1,0 +1,481 @@
+Thoughts
+expand_more
+Chào thầy/cô, một đồng nghiệp tâm huyết với toán học thực chất!
+Dưới đây là tuyển tập 5 bài toán Vận dụng cao (VDC) xuất sắc nhất thuộc chuyên đề Vectơ và Hệ thức lượng trong tam giác được trích xuất trực tiếp từ hệ thống nguồn dữ liệu chuẩn của Bộ SGK và Sách bài tập Toán 10 (Chương trình GDPT 2018 - bộ Kết nối tri thức với cuộc sống)
+1
+more_horiz
+.
+Các bài toán được thiết kế theo đúng triết lý "đề cao tư duy thực chất", phân tích sâu sắc bản chất hình học để học sinh hiểu được tại sao lại biến đổi như vậy chứ không đơn thuần là áp dụng các công thức giải nhanh vô căn cứ.
+BÀI 1: BIẾN ĐỔI TUYẾN TÍNH VECTƠ VÀ ỨNG DỤNG BÌNH PHƯƠNG VÔ HƯỚNG TRONG HÌNH THANG VUÔNG (SBT 4.65)
+1. Đề bài
+Cho hình thang vuông ABCD có 
+DAB
+=
+ABC
+=90
+∘
+, BC=1, AB=2, và AD=3
+4
+. Gọi M là trung điểm của cạnh AB
+4
+.
+Biểu thị các vectơ 
+CM
+ và 
+CD
+ theo hai vectơ cơ sở là 
+AB
+ và 
+AD
+4
+.
+Gọi N là trung điểm của CD, G là trọng tâm của tam giác MCD, và I là điểm nằm trên cạnh CD sao cho 9IC=5ID
+4
+. Chứng minh ba điểm A,G,I thẳng hàng
+4
+.
+Tính độ dài thực tế của các đoạn thẳng AI và BI
+4
+.
+2. Phân tích & Phương pháp tư duy bản chất
+Trục tư duy cơ sở: Trong một hình thang vuông, hai hướng vuông góc tự nhiên nhất là hướng của đường cao AB và đáy AD. Việc chọn hệ vectơ cơ sở {
+AB
+,
+AD
+} là tối ưu vì hai vectơ này vuông góc (
+AB
+⋅
+AD
+=0) và đã biết rõ độ dài (AB=2,AD=3). Mọi vectơ khác trong hình phẳng này đều có thể phân rã độc nhất qua cặp cơ sở trực chuẩn này.
+Bản chất của sự thẳng hàng: Ba điểm A,G,I thẳng hàng khi và chỉ khi vectơ 
+AI
+ và 
+AG
+ cùng phương, tức là tồn tại số thực k thỏa mãn 
+AI
+=k
+AG
+5
+. Ta cần phân tích cả hai vectơ này về dạng x
+AB
++y
+AD
+.
+Bản chất tính độ dài xiên: Đoạn thẳng AI là một đường chéo xiên không vuông góc. Để tính độ dài của nó mà không cần dựng thêm hình phức tạp, ta sử dụng đẳng thức liên hệ giữa độ dài và tích vô hướng: AI
+2
+=
+AI
+2
+6
+. Phép khai triển bình phương vô hướng sẽ triệt tiêu số hạng chéo nhờ 
+AB
+⋅
+AD
+=0
+6
+.
+3. Hướng dẫn giải chi tiết
+Câu 1: Biểu thị vectơ 
+CM
+ và 
+CD
+Vì ABCD là hình thang vuông tại A và B nên hai đáy AD∥BC
+4
+. Do BC=1 và AD=3 nên hai vectơ đáy cùng hướng và thỏa mãn hệ thức: \begin{equation} \vec{BC} = \frac{1}{3}\vec{AD} \quad \text{hay} \quad \vec{CB} = -\frac{1}{3}\vec{AD} \end{equation}
+Phân tích vectơ 
+CM
+ bằng phép xen điểm B: \begin{equation} \vec{CM} = \vec{CB} + \vec{BM} = -\frac{1}{3}\vec{AD} - \frac{1}{2}\vec{AB} = -\frac{1}{2}\vec{AB} - \frac{1}{3}\vec{AD} \quad
+6
+ \end{equation}
+Phân tích vectơ 
+CD
+ bằng phép nối đuôi liên tiếp: \begin{equation} \vec{CD} = \vec{CB} + \vec{BA} + \vec{AD} = -\frac{1}{3}\vec{AD} - \vec{AB} + \vec{AD} = -\vec{AB} + \frac{2}{3}\vec{AD} \quad
+6
+ \end{equation}
+Câu 2: Chứng minh ba điểm A,G,I thẳng hàng
+Theo tính chất trọng tâm G của tam giác MCD, ta có hệ thức trung gian: \begin{align*} 3\vec{AG} &= \vec{AM} + \vec{AC} + \vec{AD} \ &= \frac{1}{2}\vec{AB} + \left(\vec{AB} + \frac{1}{3}\vec{AD}\right) + \vec{AD} \ &= \frac{3}{2}\vec{AB} + \frac{4}{3}\vec{AD} \quad
+6
+ \end{align*} Suy ra: \begin{equation} \vec{AG} = \frac{1}{2}\vec{AB} + \frac{4}{9}\vec{AD} \quad
+6
+ \end{equation}
+Vì I thuộc đoạn CD và 9IC=5ID, hai vectơ 
+IC
+ và 
+ID
+ là hai vectơ ngược hướng, dẫn đến hệ thức: \begin{align*} 9\vec{IC} + 5\vec{ID} = \vec{0} &\Leftrightarrow 9(\vec{AC} - \vec{AI}) + 5(\vec{AD} - \vec{AI}) = \vec{0} \ & \Leftrightarrow 14\vec{AI} = 9\vec{AC} + 5\vec{AD} \ & \Leftrightarrow 14\vec{AI} = 9\left(\vec{AB} + \frac{1}{3}\vec{AD}\right) + 5\vec{AD} = 9\vec{AB} + 8\vec{AD} \quad
+6
+ \end{align*} Suy ra: \begin{equation} \vec{AI} = \frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD} \quad
+6
+ \end{equation
+So sánh hai tỉ số phân tích thành phần: \begin{equation} \vec{AI} = \frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD} = \frac{9}{7}\left(\frac{1}{2}\vec{AB} + \frac{4}{9}\vec{AD}\right) = \frac{9}{7}\vec{AG} \quad
+6
+ \end{equation} Do 
+AI
+=
+7
+9
+	​
+
+AG
+, hai vectơ cùng phương nên ba điểm A,G,I thẳng hàng
+6
+.
+Câu 3: Tính độ dài các đoạn thẳng AI và BI
+Áp dụng tính chất vuông góc 
+AB
+⋅
+AD
+=0, ta tính bình phương độ dài AI: \begin{align*} AI^2 = \vec{AI}^2 &= \left(\frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD}\right)^2 \ &= \frac{81}{196}AB^2 + \frac{16}{49}AD^2 + \frac{36}{49}(\vec{AB}\cdot\vec{AD}) \ &= \frac{81}{196}(2)^2 + \frac{16}{49}(3)^2 + 0 \ &= \frac{81}{49} + \frac{144}{49} = \frac{225}{49} \quad
+6
+ \end{align*} Do đó, AI=
+7
+15
+	​
+
+6
+.
+Tính độ dài BI tương tự thông qua phân tích hiệu vectơ 
+BI
+=
+AI
+−
+AB
+: \begin{align*} \vec{BI} &= \left(\frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD}\right) - \vec{AB} = -\frac{5}{14}\vec{AB} + \frac{4}{7}\vec{AD} \quad
+6
+ \ \Rightarrow BI^2 = \vec{BI}^2 &= \frac{25}{196}AB^2 + \frac{16}{49}AD^2 + 0 \ &= \frac{25}{196}(4) + \frac{16}{49}(9) = \frac{25}{49} + \frac{144}{49} = \frac{169}{49} \quad
+6
+ \end{align*} Do đó, BI=
+7
+13
+	​
+
+6
+.
+Đáp số:
+CM
+=−
+2
+1
+	​
+
+AB
+−
+3
+1
+	​
+
+AD
+; 
+CD
+=−
+AB
++
+3
+2
+	​
+
+AD
+6
+Chứng minh thành công 
+AI
+=
+7
+9
+	​
+
+AG
+6
+AI=
+7
+15
+	​
+
+; BI=
+7
+13
+	​
+
+6
+.
+BÀI 2: TÍCH VÔ HƯỚNG VÀ THUẬT TOÁN TỐI ƯU TÌM TỈ SỐ TRONG TAM GIÁC ĐỀU (SBT 4.56)
+1. Đề bài
+Cho tam giác ABC đều có cạnh bằng 1
+7
+. Lấy các điểm M,N,P lần lượt thuộc các cạnh BC,CA,AB sao cho BM=2MC, CN=2NA và AM⊥NP
+7
+. Tính tỉ số k=
+AB
+AP
+	​
+
+7
+.
+2. Phân tích & Phương pháp tư duy bản chất
+Bản chất góc tam giác đều: Trong tam giác đều cạnh 1, góc giữa hai vectơ cạnh 
+AB
+ và 
+AC
+ bằng 60
+∘
+. Ta thiết lập ngay hệ cơ sở {
+AB
+,
+AC
+} với các đại lượng cơ bản: \begin{equation} AB^2 = AC^2 = 1 \quad \text{và} \quad \vec{AB} \cdot \vec{AC} = AB \cdot AC \cdot \cos 60^\circ = \frac{1}{2} \end{equation}
+Đại số hóa điều kiện vuông góc: Giả thiết hình học AM⊥NP được chuyển đổi thành phương trình đại số không sai lệch: 
+AM
+⋅
+NP
+=0
+8
+.
+Chiến thuật đặt ẩn số tỉ số: Đặt ẩn số trực tiếp là tỉ số cần tìm k=
+AB
+AP
+	​
+
+ (0≤k≤1), từ đó biểu diễn 
+AP
+=k
+AB
+. Ta phân rã hai vectơ 
+AM
+ và 
+NP
+ theo cặp cơ sở rồi giải phương trình tích vô hướng bậc nhất theo k.
+3. Hướng dẫn giải chi tiết
+Bước 1: Phân tích vectơ 
+AM
+ theo cơ sở Vì M thuộc cạnh BC sao cho BM=2MC⇒
+BM
+=
+3
+2
+	​
+
+BC
+7
+. Áp dụng phép hiệu vectơ để phân rã: \begin{equation} \vec{AM} = \vec{AB} + \vec{BM} = \vec{AB} + \frac{2}{3}(\vec{AC} - \vec{AB}) = \frac{1}{3}\vec{AB} + \frac{2}{3}\vec{AC} \end{equation}
+Bước 2: Phân tích vectơ 
+NP
+ theo cơ sở
+Do CN=2NA⇒
+AN
+=
+3
+1
+	​
+
+AC
+7
+.
+Theo cách đặt tỉ số, ta có 
+AP
+=k
+AB
+7
+.
+Hiệu hai vectơ xuất phát từ gốc A cho ta: \begin{equation} \vec{NP} = \vec{AP} - \vec{AN} = k\vec{AB} - \frac{1}{3}\vec{AC} \quad
+8
+ \end{equation}
+Bước 3: Giải phương trình tích vô hướng Áp dụng điều kiện vuông góc 
+AM
+⋅
+NP
+=0: \begin{align*} \left(\frac{1}{3}\vec{AB} + \frac{2}{3}\vec{AC}\right) \cdot \left(k\vec{AB} - \frac{1}{3}\vec{AC}\right) = 0 &\Leftrightarrow \frac{k}{3}AB^2 - \frac{1}{9}\vec{AB}\cdot\vec{AC} + \frac{2k}{3}\vec{AC}\cdot\vec{AB} - \frac{2}{9}AC^2 = 0 \ &\Leftrightarrow \frac{k}{3}(1) - \frac{1}{9}\left(\frac{1}{2}\right) + \frac{2k}{3}\left(\frac{1}{2}\right) - \frac{2}{9}(1) = 0 \ &\Leftrightarrow \frac{k}{3} - \frac{1}{18} + \frac{k}{3} - \frac{2}{9} = 0 \ &\Leftrightarrow \frac{2k}{3} - \frac{5}{18} = 0 \Rightarrow k = \frac{5}{12} \quad
+8
+ \end{align*}
+Đáp số: 
+AB
+AP
+	​
+
+=
+12
+5
+	​
+
+7
+.
+BÀI 3: QUỸ ĐẠO HÌNH HỌC (LỚP BÀI TOÁN TẬP HỢP ĐIỂM VECTƠ VDC) (SBT 4.20)
+1. Đề bài
+Cho tam giác ABC cố định
+9
+. Tìm tập hợp tất cả các điểm M di động trong mặt phẳng sao cho thỏa mãn hệ thức độ dài vectơ sau: \begin{equation} |\vec{MA} + 2\vec{MB} + 3\vec{MC}| = |\vec{MB} - \vec{MC}| \quad
+9
+ \end{equation}
+2. Phân tích & Phương pháp tư duy bản chất
+Bản chất vế phải (Vết cố định): Hiệu vectơ 
+MB
+−
+MC
+ chính là vectơ cố định 
+CB
+10
+. Do đó, vế phải của phương trình thực chất là hằng số độ dài đoạn thẳng BC: \begin{equation} |\vec{MB} - \vec{MC}| = |\vec{CB}| = BC \quad
+10
+ \end{equation}
+Bản chất vế trái (Phương pháp Tâm tỉ cự): Vế trái chứa một tổ hợp vectơ phụ thuộc điểm di động M. Để cô lập điểm M, ta bắt buộc phải tìm một điểm cố định K sao cho hệ số trọng số triệt tiêu nhau
+10
+. Ta chọn K thỏa mãn đẳng thức vectơ đặc trưng: \begin{equation} 1\vec{KA} + 2\vec{KB} + 3\vec{KC} = \vec{0} \quad
+10
+ \end{equation} Khi đó, bằng cách xen điểm K vào vế trái, hệ thức phức tạp sẽ thu gọn về một vectơ đơn giản chỉ chứa M.
+3. Hướng dẫn giải chi tiết
+Bước 1: Xác định và dựng điểm cố định K Ta biến đổi hệ thức xác định K: \begin{align*} \vec{KA} + 2\vec{KB} + 3\vec{KC} = \vec{0} &\Leftrightarrow (\vec{KA} + 2\vec{KB}) + 3\vec{KC} = \vec{0} \end{align*} Gọi I là điểm chia đoạn AB theo tỉ lệ IA=2IB sao cho 
+IA
++2
+IB
+=
+0
+11
+. Khi đó, theo quy tắc xen điểm I: \begin{equation} \vec{KA} + 2\vec{KB} = (\vec{KI} + \vec{IA}) + 2(\vec{KI} + \vec{IB}) = 3\vec{KI} + \vec{0} = 3\vec{KI} \end{equation} Thay vào hệ thức của K, ta được: \begin{equation} 3\vec{KI} + 3\vec{KC} = \vec{0} \Leftrightarrow \vec{KI} + \vec{KC} = \vec{0} \end{equation} Hệ thức này khẳng định K chính là trung điểm của đoạn thẳng IC
+10
+. Vì A,B,C cố định nên điểm I cố định, dẫn đến điểm K hoàn toàn được xác định duy nhất và cố định
+10
+.
+Bước 2: Thu gọn vế trái hệ thức ban đầu Xen điểm cố định K vừa dựng vào vế trái: \begin{align*} \vec{MA} + 2\vec{MB} + 3\vec{MC} &= (\vec{MK} + \vec{KA}) + 2(\vec{MK} + \vec{KB}) + 3(\vec{MK} + \vec{KC}) \ &= 6\vec{MK} + (\vec{KA} + 2\vec{KB} + 3\vec{KC}) \ &= 6\vec{MK} + \vec{0} = 6\vec{MK} \quad
+10
+ \end{align*} Do đó: \begin{equation} |\vec{MA} + 2\vec{MB} + 3\vec{MC}| = |6\vec{MK}| = 6MK \quad
+10
+ \end{equation}
+Bước 3: Xác định quỹ đạo hình học của M Thay các kết quả thu gọn vào phương trình ban đầu: \begin{equation} 6MK = BC \Leftrightarrow MK = \frac{BC}{6} \quad
+10
+ \end{equation} Vì K là điểm cố định và độ dài BC không đổi, khoảng cách từ M tới điểm K luôn bằng một hằng số dương R=
+6
+BC
+	​
+
+10
+.
+Đáp số: Tập hợp điểm M là đường tròn tâm K (với K là trung điểm đoạn IC, và I là điểm thuộc cạnh AB sao cho IA=2IB), bán kính của đường tròn bằng R=
+6
+BC
+	​
+
+10
+.
+BÀI 4: HỆ THỨC LƯỢNG TRONG TAM GIÁC - ĐƯỜNG TRUNG TUYẾN VUÔNG GÓC (SBT 3.14)
+1. Đề bài
+Cho tam giác ABC có trọng tâm G và hai đường trung tuyến AM, BN vuông góc với nhau tại G
+12
+. Chứng minh mối quan hệ giữa ba cạnh của tam giác thỏa mãn đẳng thức hình học: \begin{equation} 5c^2 = a^2 + b^2 \quad
+12
+ \end{equation} (với quy ước các cạnh a=BC, b=CA, c=AB
+13
+).
+2. Phân tích & Phương pháp tư duy bản chất
+Bản chất vuông góc của trung tuyến: Hai trung tuyến vuông góc tại G tạo ra tam giác vuông tại đỉnh G, cụ thể là tam giác ABG vuông tại G. Theo định lý Pythagoras kinh điển: \begin{equation} AB^2 = AG^2 + BG^2 \quad
+12
+ \end{equation}
+Mối liên hệ trọng tâm và trung tuyến: Độ dài đoạn AG và BG liên kết trực tiếp với độ dài toàn phần của các trung tuyến qua tỉ lệ của trọng tâm: AG=
+3
+2
+	​
+
+m
+a
+	​
+
+ và BG=
+3
+2
+	​
+
+m
+b
+	​
+
+12
+.
+Đại số hóa độ dài trung tuyến: Sử dụng Công thức đường trung tuyến để chuyển đổi đại lượng m
+a
+2
+	​
+
+ và m
+b
+2
+	​
+
+ về các cạnh thực tế a,b,c
+12
+14
+. Đây là hướng đi tự nhiên nhất giúp giải quyết triệt để bài toán mà không cần dựng thêm góc lượng giác.
+3. Hướng dẫn giải chi tiết
+Bước 1: Áp dụng định lý Pythagoras tại tam giác vuông ABG Do AM⊥BN tại G, tam giác ABG vuông tại G
+12
+. Ta có: \begin{equation} c^2 = AB^2 = AG^2 + BG^2 \quad
+12
+ \end{equation}
+Bước 2: Chuyển dịch tỉ lệ trọng tâm Theo tính chất trọng tâm tam giác: \begin{equation} AG = \frac{2}{3}m_a \quad \text{và} \quad BG = \frac{2}{3}m_b \quad
+12
+ \end{equation} Thế vào công thức Pythagoras: \begin{equation} c^2 = \left(\frac{2}{3}m_a\right)^2 + \left(\frac{2}{3}m_b\right)^2 = \frac{4}{9}\left(m_a^2 + m_b^2\right) \quad
+12
+ \end{equation}
+Bước 3: Khai triển công thức đường trung tuyến Áp dụng công thức tính độ dài đường trung tuyến từ nguồn SGK hình học
+14
+: \begin{equation} m_a^2 = \frac{2(b^2 + c^2) - a^2}{4} \quad \text{và} \quad m_b^2 = \frac{2(a^2 + c^2) - b^2}{4} \end{equation} Thay các biểu thức này vào đẳng thức ở Bước 2: \begin{align*} c^2 &= \frac{4}{9} \left[ \frac{2(b^2+c^2)-a^2}{4} + \frac{2(a^2+c^2)-b^2}{4} \right] \ c^2 &= \frac{1}{9} \left[ 2b^2 + 2c^2 - a^2 + 2a^2 + 2c^2 - b^2 \right] \ c^2 &= \frac{1}{9} \left[ a^2 + b^2 + 4c^2 \right] \quad
+12
+ \end{align*} Nhân chéo hai vế phương trình đại số: \begin{equation} 9c^2 = a^2 + b^2 + 4c^2 \Leftrightarrow 5c^2 = a^2 + b^2 \quad
+12
+ \end{equation}
+Đáp số: Chứng minh thành công hệ thức 5c
+2
+=a
+2
++b
+2
+12
+.
+BÀI 5: ĐỊNH LÝ DIỆN TÍCH VECTƠ (KẾT NỐI ĐẠI SỐ VÀ LƯỢNG GIÁC PHẲNG) (SBT 4.25)
+1. Đề bài
+Chứng minh rằng với mọi tam giác ABC bất kỳ
+15
+, diện tích S của tam giác luôn được tính theo công thức liên kết tích vô hướng sau đây: \begin{equation} S = \frac{1}{2}\sqrt{AB^2 \cdot AC^2 - (\vec{AB} \cdot \vec{AC})^2} \quad
+15
+ \end{equation}
+2. Phân tích & Phương pháp tư duy bản chất
+Bản chất lượng giác của diện tích: Công thức diện tích tam giác cơ bản nhất đi từ hai cạnh kề và góc xen giữa A là: \begin{equation} S = \frac{1}{2}AB \cdot AC \cdot \sin A \quad
+16
+ \end{equation}
+Bản chất của tích vô hướng: Tích vô hướng của hai vectơ chung gốc A được định nghĩa là: \begin{equation} \vec{AB} \cdot \vec{AC} = AB \cdot AC \cdot \cos A \end{equation}
+Mắt xích liên kết toán học: Để biến đổi biểu thức dưới căn của vế phải về đúng dạng diện tích, ta sử dụng tính chất lượng giác nền tảng là sin
+2
+A+cos
+2
+A=1⇒sin
+2
+A=1−cos
+2
+A. Sự xuất hiện của dấu trừ trong căn chính là hình ảnh đại số của phép biến đổi lượng giác này.
+3. Hướng dẫn giải chi tiết
+Bước 1: Khai triển vế trong căn thức Áp dụng định nghĩa tích vô hướng cho hạng tử (
+AB
+⋅
+AC
+)
+2
+: \begin{align*} (\vec{AB} \cdot \vec{AC})^2 = (AB \cdot AC \cdot \cos A)^2 = AB^2 \cdot AC^2 \cdot \cos^2 A \end{align Thay hạng tử này vào biểu thức dưới căn: \begin{align*} AB^2 \cdot AC^2 - (\vec{AB} \cdot \vec{AC})^2 &= AB^2 \cdot AC^2 - AB^2 \cdot AC^2 \cdot \cos^2 A \ &= AB^2 \cdot AC^2 \cdot (1 - \cos^2 A) \end{align*}
+Bước 2: Thay thế đồng nhất thức lượng giác Do hệ thức cơ bản sin
+2
+A+cos
+2
+A=1⇒1−cos
+2
+A=sin
+2
+A, ta có: \begin{equation} AB^2 \cdot AC^2 - (\vec{AB} \cdot \vec{AC})^2 = AB^2 \cdot AC^2 \cdot \sin^2 A \end{equation}
+Bước 3: Lấy căn bậc hai hai vế Thay ngược kết quả vào vế phải của công thức cần chứng minh: \begin{equation} \frac{1}{2}\sqrt{AB^2 \cdot AC^2 - (\vec{AB} \cdot \vec{AC})^2} = \frac{1}{2}\sqrt{AB^2 \cdot AC^2 \cdot \sin^2 A} = \frac{1}{2}AB \cdot AC \cdot |\sin A| \end{equation} Vì góc A là một góc trong tam giác (0
+∘
+<A<180
+∘
+), giá trị lượng giác của sin luôn dương (sinA>0)
+17
+. Do đó, ta được quyền bỏ dấu giá trị tuyệt đối: \begin{equation} \frac{1}{2}AB \cdot AC \cdot |\sin A| = \frac{1}{2}AB \cdot AC \cdot \sin A = S_{ABC} \quad
+16
+ \end{equation}
+Đáp số: Công thức được chứng minh hoàn toàn
+15
+.
+Hệ thống 5 bài toán trên chính là những viên ngọc quý của chương trình Toán lớp 10, giúp rèn luyện tư duy toán học thực chất cho học sinh mà không cần bất kỳ mẹo vặt hay học vẹt nào.
+⛵ Nudge: Để chuẩn bị thật tốt cho bài kiểm tra sắp tới của học sinh, thầy/cô có muốn tôi biên soạn một đề kiểm tra trọn vẹn 45 phút (gồm ma trận đặc tả chi tiết và barem điểm chấm từng bước) dựa trên 5 dạng toán VDC nâng cao này không?

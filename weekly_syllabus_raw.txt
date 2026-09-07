@@ -1,0 +1,478 @@
+Thoughts
+expand_more
+ĐỀ CƯƠNG ÔN TẬP TUẦN: HỆ THỨC LƯỢNG TRONG TAM GIÁC & VECTƠ 10
+(Chương trình GDPT 2018 — Bộ sách Kết nối tri thức với cuộc sống) [1a, 1c]
+I. TÓM TẮT NỘI DUNG LÝ THUYẾT CỐT LÕI
+1. Hệ thức lượng trong tam giác (Chương III)
+1
+2
+Cho tam giác ABC có các cạnh BC=a, CA=b, AB=c; h
+a
+	​
+
+,h
+b
+	​
+
+,h
+c
+	​
+
+ là độ dài các đường cao; m
+a
+	​
+
+,m
+b
+	​
+
+,m
+c
+	​
+
+ là độ dài các đường trung tuyến
+1
+. Gọi R,r lần lượt là bán kính đường tròn ngoại tiếp, nội tiếp tam giác và p=
+2
+a+b+c
+	​
+
+ là nửa chu vi
+1
+.
+Định lý côsin:
+1
+2
+ \begin{align*} a^2 &= b^2 + c^2 - 2bc \cos A \ b^2 &= a^2 + c^2 - 2ac \cos B \ c^2 &= a^2 + b^2 - 2ab \cos C \end{align*}
+Định lý sin:
+1
+2
+ \begin{equation} \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \end{equation}
+Các công thức tính diện tích tam giác S:
+1
+ \begin{equation} S = \frac{1}{2} a h_a = \frac{1}{2} ab \sin C = \frac{abc}{4R} = p r = \sqrt{p(p-a)(p-b)(p-c)} \end{equation}
+2. Phương pháp Vectơ và Tích vô hướng (Chương IV)
+3
+4
+Quy tắc cộng và hiệu vectơ:
+3
+Quy tắc ba điểm (Tam giác): Với ba điểm A,B,C bất kỳ, ta luôn có: 
+AB
++
+BC
+=
+AC
+.
+Quy tắc hình bình hành: Nếu ABCD là hình bình hành thì: 
+AB
++
+AD
+=
+AC
+.
+Quy tắc hiệu chung gốc: Với ba điểm O,A,B bất kỳ, ta luôn có: 
+OB
+−
+OA
+=
+AB
+.
+Hệ thức điểm đặc biệt:
+3
+5
+I là trung điểm của đoạn thẳng AB⇔
+IA
++
+IB
+=
+0
+ (với điểm O bất kỳ: 
+OA
++
+OB
+=2
+OM
+)
+5
+.
+G là trọng tâm của tam giác ABC⇔
+GA
++
+GB
++
+GC
+=
+0
+ (với điểm O bất kỳ: 
+OA
++
+OB
++
+OC
+=3
+OG
+)
+5
+.
+Tích vô hướng của hai vectơ:
+6
+Định nghĩa: Tích vô hướng của hai vectơ 
+u
+ và 
+v
+ là một số thực, ký hiệu là 
+u
+⋅
+v
+, được xác định bởi công thức: \begin{equation} \vec{u} \cdot \vec{v} = |\vec{u}| \cdot |\vec{v}| \cdot \cos(\vec{u}, \vec{v}) \end{equation}
+Biểu thức tọa độ (trong hệ trục Oxy): Với 
+u
+=(x;y) và 
+v
+=(x
+′
+;y
+′
+), ta có: 
+u
+⋅
+v
+=xx
+′
++yy
+′
+6
+.
+Điều kiện vuông góc: 
+u
+⊥
+v
+⇔
+u
+⋅
+v
+=0⇔xx
+′
++yy
+′
+=0
+6
+.
+II. TUYỂN CHỌN 3 BÀI TOÁN VẬN DỤNG CAO (VDC) ĐẶC SẮC
+BÀI 1: BIẾN ĐỔI TUYẾN TÍNH VECTƠ VÀ TÍNH ĐỘ DÀI TRONG HÌNH THANG VUÔNG (SBT 4.65)
+7
+8
+1. Đề bài
+Cho hình thang vuông ABCD có 
+DAB
+=
+ABC
+=90
+∘
+, BC=1, AB=2, và AD=3
+7
+. Gọi M là trung điểm của cạnh AB
+7
+.
+Biểu thị các vectơ 
+CM
+ và 
+CD
+ theo hai vectơ cơ sở là 
+AB
+ và 
+AD
+7
+.
+Gọi I là điểm nằm trên cạnh CD sao cho 9IC=5ID, và G là trọng tâm của tam giác MCD
+7
+. Chứng minh ba điểm A,G,I thẳng hàng
+8
+.
+Tính độ dài thực tế của các đoạn thẳng AI và BI
+7
+.
+2. Phương pháp tư duy bản chất
+Hệ cơ sở vuông góc: Với hình thang vuông tại A và B, hai hướng tự nhiên vuông góc nhau là hướng của đường cao AB và đáy AD. Ta chọn hệ vectơ cơ sở là {
+AB
+,
+AD
+} do chúng có đặc tính vuông góc lý tưởng: 
+AB
+⋅
+AD
+=0
+8
+.
+Bản chất của sự thẳng hàng: Ta biểu diễn hai vectơ 
+AI
+ và 
+AG
+ dưới dạng tổ hợp tuyến tính của cặp cơ sở {
+AB
+,
+AD
+}. Nếu tồn tại hằng số k sao cho 
+AI
+=k
+AG
+ thì ba điểm A,G,I thẳng hàng
+8
+.
+Bản chất tính độ dài xiên bằng bình phương vô hướng: Đoạn thẳng AI và BI nằm chéo trên hình. Sử dụng công cụ bình phương vô hướng AI
+2
+=(
+AI
+)
+2
+ giúp ta khai triển tổng bình phương vô hướng và triệt tiêu số hạng chéo nhờ điều kiện vuông góc 
+AB
+⋅
+AD
+=0
+8
+.
+3. Lời giải chi tiết
+a) Biểu thị các vectơ 
+CM
+ và 
+CD
+Vì ABCD là hình thang vuông tại A và B nên hai đáy AD∥BC
+7
+. Do BC=1,AD=3⇒
+BC
+=
+3
+1
+	​
+
+AD
+⇔
+CB
+=−
+3
+1
+	​
+
+AD
+7
+.
+Vì M là trung điểm của AB⇒
+BM
+=−
+2
+1
+	​
+
+AB
+7
+.
+Áp dụng quy tắc cộng ba điểm để biểu diễn 
+CM
+: \begin{equation} \vec{CM} = \vec{CB} + \vec{BM} = -\frac{1}{2}\vec{AB} - \frac{1}{3}\vec{AD} \end{equation}
+Biểu diễn 
+CD
+ tương tự: \begin{equation} \vec{CD} = \vec{CB} + \vec{BA} + \vec{AD} = -\vec{AB} + \left(\vec{AD} - \frac{1}{3}\vec{AD}\right) = -\vec{AB} + \frac{2}{3}\vec{AD} \end{equation}
+b) Chứng minh ba điểm A,G,I thẳng hàng
+Do G là trọng tâm tam giác MCD nên: \begin{align*} 3\vec{AG} &= \vec{AM} + \vec{AC} + \vec{AD} \ &= \frac{1}{2}\vec{AB} + \left(\vec{AB} + \frac{1}{3}\vec{AD}\right) + \vec{AD} \ &= \frac{3}{2}\vec{AB} + \frac{4}{3}\vec{AD} \Rightarrow \vec{AG} = \frac{1}{2}\vec{AB} + \frac{4}{9}\vec{AD} \end{align*}
+Do I thuộc cạnh CD và 9IC=5ID, hai vectơ 
+IC
+ và 
+ID
+ ngược hướng nhau
+8
+: \begin{align*} 9\vec{IC} + 5\vec{ID} = \vec{0} &\Leftrightarrow 9(\vec{AC} - \vec{AI}) + 5(\vec{AD} - \vec{AI}) = \vec{0} \ &\Leftrightarrow 14\vec{AI} = 9\vec{AC} + 5\vec{AD} \ &\Leftrightarrow 14\vec{AI} = 9\left(\vec{AB} + \frac{1}{3}\vec{AD}\right) + 5\vec{AD} = 9\vec{AB} + 8\vec{AD} \ &\Leftrightarrow \vec{AI} = \frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD} \end{align*}
+So sánh tỉ số thành phần: \begin{equation} \vec{AI} = \frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD} = \frac{9}{7}\left(\frac{1}{2}\vec{AB} + \frac{4}{9}\vec{AD}\right) = \frac{9}{7}\vec{AG} \end{equation} Do 
+AI
+=
+7
+9
+	​
+
+AG
+, hai vectơ cùng phương nên ba điểm A,G,I thẳng hàng
+8
+.
+c) Tính độ dài thực tế của các đoạn thẳng AI và BI
+Vì AD⊥AB⇒
+AB
+⋅
+AD
+=0
+8
+.
+Tính độ dài AI: \begin{align*} 196 AI^2 = (14\vec{AI})^2 &= (9\vec{AB} + 8\vec{AD})^2 \ &= 81AB^2 + 64AD^2 + 144(\vec{AB} \cdot \vec{AD}) \ &= 81(2^2) + 64(3^2) + 0 = 324 + 576 = 900 \ \Rightarrow 14AI = 30 &\Rightarrow AI = \frac{15}{7} \end{align*}
+Tính độ dài BI qua vectơ hiệu 
+BI
+=
+AI
+−
+AB
+: \begin{align*} \vec{BI} &= \left(\frac{9}{14}\vec{AB} + \frac{4}{7}\vec{AD}\right) - \vec{AB} = -\frac{5}{14}\vec{AB} + \frac{8}{14}\vec{AD} \ \Rightarrow BI^2 = \vec{BI}^2 &= \left(-\frac{5}{14}\vec{AB} + \frac{8}{14}\vec{AD}\right)^2 \ &= \frac{25}{196}AB^2 + \frac{64}{196}AD^2 + 0 \ &= \frac{25}{196}(4) + \frac{64}{196}(9) = \frac{100 + 576}{196} = \frac{676}{196} = \frac{169}{49} \ \Rightarrow BI &= \frac{13}{7} \end{align*}
+BÀI 2: XÁC ĐỊNH THAM SỐ ĐỂ HAI ĐƯỜNG THẲNG VUÔNG GÓC BẰNG TÍCH VÔ HƯỚNG (SBT 4.61)
+9
+1. Đề bài
+Cho tam giác ABC có AB=4, AC=5, và góc 
+CAB
+=60
+∘
+9
+.
+Tính tích vô hướng 
+AB
+⋅
+AC
+ và 
+AB
+⋅
+BC
+9
+.
+Lấy các điểm M,N thỏa mãn hệ thức: 2
+AM
++3
+MC
+=
+0
+ và 
+NB
++x
+NC
+=
+0
+ (với x
+
+=−1)
+9
+. Xác định số thực x sao cho AN⊥BM
+9
+.
+2. Phương pháp tư duy bản chất
+Xây dựng bộ cơ sở góc 60
+∘
+: Do tam giác ABC cố định có độ dài hai cạnh AB,AC và góc ở đỉnh A, ta chọn cặp vectơ {
+AB
+,
+AC
+} làm cơ sở hình học phẳng
+9
+.
+Phân tích điều kiện vuông góc: Để chứng minh AN⊥BM, ta cần tính toán tích vô hướng giữa chúng và ép bằng 0: 
+AN
+⋅
+BM
+=0
+9
+. Bản chất của việc tìm tham số x là giải phương trình đại số bậc nhất sinh ra từ tích vô hướng này.
+3. Lời giải chi tiết
+a) Tính tích vô hướng cơ sở
+Tính trực tiếp: 
+AB
+⋅
+AC
+=AB⋅AC⋅cos
+BAC
+=4⋅5⋅cos60
+∘
+=10
+9
+.
+Tính 
+AB
+⋅
+BC
+ bằng phương pháp xen điểm A: \begin{equation} \vec{AB} \cdot \vec{BC} = \vec{AB} \cdot (\vec{AC} - \vec{AB}) = \vec{AB} \cdot \vec{AC} - AB^2 = 10 - 4^2 = -6 \end{equation}
+b) Tìm tham số x để AN⊥BM
+Từ giả thiết điểm M: \begin{align*} 2\vec{AM} + 3\vec{MC} = \vec{0} &\Leftrightarrow 2(\vec{BM} - \vec{BA}) + 3(\vec{BC} - \vec{BM}) = \vec{0} \ &\Leftrightarrow -\vec{BM} - 2\vec{BA} + 3\vec{BC} = \vec{0} \ &\Leftrightarrow \vec{BM} = 2\vec{AB} + 3(\vec{AC} - \vec{AB}) = -\vec{AB} + 3\vec{AC} \quad (1) \end{align*}
+Từ giả thiết điểm N (với x
+
+=−1): \begin{align*} \vec{NB} + x\vec{NC} = \vec{0} &\Leftrightarrow (\vec{AB} - \vec{AN}) + x(\vec{AC} - \vec{AN}) = \vec{0} \ &\Leftrightarrow (1+x)\vec{AN} = \vec{AB} + x\vec{AC} \quad (2) \end{align*}
+Từ (1) và (2), hai đường thẳng vuông góc khi và chỉ khi tích vô hướng bằng 0: \begin{align*} \vec{AN} \cdot \vec{BM} = 0 &\Leftrightarrow (1+x)\vec{AN} \cdot \vec{BM} = 0 \ &\Leftrightarrow (\vec{AB} + x\vec{AC}) \cdot (-\vec{AB} + 3\vec{AC}) = 0 \ &\Leftrightarrow -\vec{AB}^2 + 3x\vec{AC}^2 + (3-x)\vec{AB}\cdot\vec{AC} = 0 \end{align*}
+Thay độ dài thực tế AB
+2
+=16, AC
+2
+=25, và 
+AB
+⋅
+AC
+=10 vào hệ thức: \begin{align*} -16 + 3x(25) + 10(3-x) = 0 &\Leftrightarrow -16 + 75x + 30 - 10x = 0 \ &\Leftrightarrow 65x + 14 = 0 \Leftrightarrow x = -\frac{14}{65} \end{align*}
+BÀI 3: QUỸ ĐẠO HÌNH HỌC VÀ PHƯƠNG PHÁP TÂM TỈ CỰ (SBT 4.20)
+10
+11
+1. Đề bài
+Cho tam giác ABC cố định
+10
+.
+Tìm điểm K thỏa mãn hệ thức vectơ: 
+KA
++2
+KB
++3
+KC
+=
+0
+10
+11
+.
+Tìm tập hợp tất cả các điểm M di động trong mặt phẳng sao cho thỏa mãn hệ thức độ dài: \begin{equation} |\vec{MA} + 2\vec{MB} + 3\vec{MC}| = |\vec{MB} - \vec{MC}| \end{equation}
+2. Phương pháp tư duy bản chất
+Tâm tỉ cự cô lập điểm di động: Vế trái của biểu thức là tổ hợp tuyến tính các vectơ biến thiên theo vị trí của M. Bằng việc xác định điểm cố định K (đóng vai trò là tâm tỉ cự với các trọng số tương ứng 1,2,3), ta có thể "thu gọn" toàn bộ biểu thức vế trái thành một vectơ duy nhất xuất phát từ M có độ dài cố định nhân thêm hệ số
+11
+.
+Bản chất hình học vế phải: Hiệu hai vectơ chung gốc 
+MB
+−
+MC
+ thực chất là vectơ cố định 
+CB
+ có độ dài không đổi BC
+11
+.
+3. Lời giải chi tiết
+a) Xác định và dựng điểm cố định K
+Ta cần biến đổi đẳng thức 
+KA
++2
+KB
++3
+KC
+=
+0
+ để tìm vị trí của K đối với các đỉnh cố định
+11
+.
+Biến đổi hệ thức: \begin{align*} \vec{KA} + 2\vec{KB} + 3\vec{KC} = \vec{0} \Leftrightarrow \vec{KA} + 2\vec{KB} = -3\vec{KC} \quad (1) \end{align*}
+Dựng điểm trung gian L trên đoạn BC thỏa mãn tỉ số lực: 2
+KB
++3
+KC
+=5
+KL
+11
+. Theo tính chất chia đoạn thẳng, điểm L thuộc đoạn BC sao cho 2LB=3LC
+11
+.
+Thay thế vào phương trình (1): \begin{align*} \vec{KA} + 5\vec{KL} = \vec{0} \Leftrightarrow \vec{KA} = -5\vec{KL} \end{align*} Đẳng thức này chỉ ra rằng ba điểm A,K,L thẳng hàng, trong đó K nằm trong đoạn AL và thỏa mãn tỉ lệ độ dài hình học: KA=5KL
+11
+. Do A,B,C cố định nên điểm L cố định, dẫn đến điểm K hoàn toàn cố định
+11
+.
+b) Tìm tập hợp điểm M
+Thu gọn vế trái bằng cách xen điểm cố định K đã dựng ở câu a: \begin{align*} \vec{MA} + 2\vec{MB} + 3\vec{MC} &= (\vec{MK} + \vec{KA}) + 2(\vec{MK} + \vec{KB}) + 3(\vec{MK} + \vec{KC}) \ &= 6\vec{MK} + (\vec{KA} + 2\vec{KB} + 3\vec{KC}) \ &= 6\vec{MK} + \vec{0} = 6\vec{MK} \quad (2) \end{align*}
+Thu gọn vế phải bằng quy tắc hiệu chung gốc: \begin{equation} \vec{MB} - \vec{MC} = \vec{CB} \quad (3) \end{equation}
+Thế hai kết quả thu gọn (2) và (3) vào phương trình độ dài ban đầu: \begin{align*} |6\vec{MK}| = |\vec{CB}| &\Leftrightarrow 6MK = BC \ &\Leftrightarrow MK = \frac{BC}{6} \end{align*} Vì K là điểm cố định và độ dài đoạn thẳng BC là một hằng số không đổi, khoảng cách từ điểm di động M tới điểm cố định K luôn luôn bằng một hằng số dương R=
+6
+BC
+	​
+
+11
+.
+Kết luận: Tập hợp các điểm M thỏa mãn đề bài là đường tròn tâm K, bán kính bằng R=
+6
+BC
+	​
+
+11
+.
+⛵ Nudge: Để củng cố kỹ năng vận dụng cao cho học sinh, bạn có muốn tôi thiết kế một Phiếu bài tập tự luyện (Homework Sheet) gồm 3 bài toán VDC tương tự (kèm ma trận hướng dẫn giải nhanh) để học sinh tự làm tại nhà không?

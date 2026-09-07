@@ -1,0 +1,27 @@
+{
+  "title": "Đề cương Ôn tập Tuần: Hệ thức lượng trong tam giác & Vectơ 10 (GDPT 2018)",
+  "content": "1. Hệ thức lượng trong tam giác:\n- Định lý côsin: $a^2 = b^2 + c^2 - 2bc \\cos A$, $b^2 = a^2 + c^2 - 2ac \\cos B$, $c^2 = a^2 + b^2 - 2ab \\cos C$.\n- Định lý sin: $\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$.\n- Diện tích tam giác: $S = \\frac{1}{2}ah_a = \\frac{1}{2}ab\\sin C = \\frac{abc}{4R} = pr = \\sqrt{p(p-a)(p-b)(p-c)}$.\n\n2. Phương pháp Vectơ và Tích vô hướng:\n- Quy tắc ba điểm và hình bình hành: $\\vec{AB} + \\vec{BC} = \\vec{AC}$, $\\vec{AB} + \\vec{AD} = \\vec{AC}$ (với $ABCD$ là hình bình hành).\n- Hệ thức trung điểm và trọng tâm: $\\vec{OA} + \\vec{OB} = 2\\vec{OM}$, $\\vec{OA} + \\vec{OB} + \\vec{OC} = 3\\vec{OG}$.\n- Tích vô hướng: $\\vec{u} \\cdot \\vec{v} = |\\vec{u}| \\cdot |\\vec{v}| \\cdot \\cos(\\vec{u}, \\vec{v}) = xx' + yy'$. Điều kiện vuông góc: $\\vec{u} \\perp \\vec{v} \\Leftrightarrow \\vec{u} \\cdot \\vec{v} = 0$.",
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Biến đổi tuyến tính vectơ và tính độ dài trong hình thang vuông (SBT 4.65)",
+      "problem": "Cho hình thang vuông $ABCD$ có $\\widehat{DAB} = \\widehat{ABC} = 90^\\circ$, $BC = 1$, $AB = 2$, và $AD = 3$. Gọi $M$ là trung điểm của cạnh $AB$.\n1. Biểu thị các vectơ $\\vec{CM}$ và $\\vec{CD}$ theo hai vectơ cơ sở $\\vec{AB}$ và $\\vec{AD}$.\n2. Gọi $I$ là điểm nằm trên cạnh $CD$ sao cho $9IC = 5ID$, và $G$ là trọng tâm của tam giác $MCD$. Chứng minh ba điểm $A, G, I$ thẳng hàng.\n3. Tính độ dài thực tế của các đoạn thẳng $AI$ và $BI$.",
+      "method": "Hệ cơ sở trực giao ${\\vec{AB}, \\vec{AD}}$ do $\\vec{AB} \\cdot \\vec{AD} = 0$. Để chứng minh ba điểm $A, G, I$ thẳng hàng, ta biểu diễn $\\vec{AI}$ và $\\vec{AG}$ theo cơ sở rồi chỉ ra $\\vec{AI} = k\\vec{AG}$. Tính độ dài xiên bằng bình phương vô hướng $AI^2 = \\vec{AI}^2$ để triệt tiêu số hạng chéo.",
+      "solution": "1. $\\vec{CM} = -\\frac{1}{2}\\vec{AB} - \\frac{1}{3}\\vec{AD}$; $\\vec{CD} = -\\vec{AB} + \\frac{2}{3}\\vec{AD}$.\n2. Trọng tâm $G$: $\\vec{AG} = \\frac{1}{2}\\vec{AB} + \\frac{4}{9}\\vec{AD}$. Điểm $I$: $\\vec{AI} = \\frac{9}{14}\\vec{AB} + \\frac{4}{7}\\vec{AD} = \\frac{9}{7}\\vec{AG} \\Rightarrow A, G, I$ thẳng hàng.\n3. Bình phương vô hướng: $AI^2 = \\frac{225}{49} \\Rightarrow AI = \\frac{15}{7}$; $BI^2 = \\frac{169}{49} \\Rightarrow BI = \\frac{13}{7}$."
+    },
+    {
+      "id": 2,
+      "name": "Xác định tham số để hai đường thẳng vuông góc bằng tích vô hướng (SBT 4.61)",
+      "problem": "Cho tam giác $ABC$ có $AB = 4$, $AC = 5$, và $\\widehat{BAC} = 60^\\circ$.\n1. Tính tích vô hướng cơ sở $\\vec{AB} \\cdot \\vec{AC}$ và $\\vec{AB} \\cdot \\vec{BC}$.\n2. Lấy các điểm $M, N$ thỏa mãn hệ thức: $2\\vec{AM} + 3\\vec{MC} = \\vec{0}$ và $\\vec{NB} + x\\vec{NC} = \\vec{0}$ (với $x \\neq -1$). Xác định số thực $x$ sao cho $AN \\perp BM$.",
+      "method": "Xây dựng hệ cơ sở ${\\vec{AB}, \\vec{AC}}$ với $\\vec{AB} \\cdot \\vec{AC} = 4 \\cdot 5 \\cdot \\cos 60^\\circ = 10$. Phân rã hai vectơ $\\vec{BM}$ và $\\vec{AN}$ theo cơ sở rồi giải phương trình tích vô hướng $\\vec{AN} \\cdot \\vec{BM} = 0$ để tìm $x$.",
+      "solution": "1. $\\vec{AB} \\cdot \\vec{AC} = 10$; $\\vec{AB} \\cdot \\vec{BC} = \\vec{AB} \\cdot (\\vec{AC} - \\vec{AB}) = 10 - 16 = -6$.\n2. Ta có $\\vec{BM} = -\\vec{AB} + 3\\vec{AC}$ và $(1+x)\\vec{AN} = \\vec{AB} + x\\vec{AC}$. Điều kiện vuông góc: $(1+x)\\vec{AN} \\cdot \\vec{BM} = 0 \\Leftrightarrow (\\vec{AB} + x\\vec{AC}) \\cdot (-\\vec{AB} + 3\\vec{AC}) = 0 \\Leftrightarrow -16 + 75x + 30 - 10x = 0 \\Leftrightarrow 65x + 14 = 0 \\Leftrightarrow x = -\\frac{14}{65}$."
+    },
+    {
+      "id": 3,
+      "name": "Quỹ đạo hình học và phương pháp Tâm tỉ cự (SBT 4.20)",
+      "problem": "Cho tam giác $ABC$ cố định.\n1. Tìm điểm $K$ thỏa mãn hệ thức vectơ: $\\vec{KA} + 2\\vec{KB} + 3\\vec{KC} = \\vec{0}$.\n2. Tìm tập hợp tất cả các điểm $M$ di động trong mặt phẳng sao cho thỏa mãn hệ thức độ dài: $|\\vec{MA} + 2\\vec{MB} + 3\\vec{MC}| = |\\vec{MB} - \\vec{MC}|$.",
+      "method": "Phương pháp Tâm tỉ cự: Dựng điểm cố định $K$ để thu gọn tổ hợp vectơ vế trái thành $|6\\vec{MK}| = 6MK$. Vế phải rút gọn bằng hiệu vectơ chung gốc thành $|\\vec{CB}| = BC$. Từ đó suy ra phương trình quỹ đạo hình học $MK = \\frac{BC}{6}$.",
+      "solution": "1. Biến đổi: $\\vec{KA} + 5\\vec{KL} = \\vec{0}$ (với $L \\in BC$ thỏa mãn $2LB = 3LC$). Suy ra $K$ thuộc đoạn $AL$ với $KA = 5KL$ (điểm $K$ cố định duy nhất).\n2. Thu gọn: vế trái bằng $|6\\vec{MK}| = 6MK$, vế phải bằng $|\\vec{CB}| = BC$. Do đó $6MK = BC \\Leftrightarrow MK = \\frac{BC}{6}$. Kết luận: Quỹ tích điểm $M$ là đường tròn tâm $K$, bán kính $R = \\frac{BC}{6}$."
+    }
+  ]
+}
