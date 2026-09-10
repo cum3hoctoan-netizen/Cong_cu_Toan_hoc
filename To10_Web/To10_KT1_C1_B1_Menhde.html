@@ -244,10 +244,8 @@
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      flex-direction: column;
+      gap: 16px;
       border-left: 6px solid var(--primary);
     }
 
@@ -268,7 +266,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
     .meta-tag {
@@ -291,6 +289,46 @@
     .meta-tag.green {
       background: var(--success-light);
       color: var(--success);
+    }
+
+    .student-input-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card-alt);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+
+    .student-input-container label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .student-input-container input {
+      flex: 1;
+      min-width: 240px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--primary-border);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition);
+      background: #fff;
+    }
+
+    .student-input-container input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
     }
 
     /* Section Divider Card */
@@ -334,6 +372,13 @@
       border-color: var(--primary-border);
     }
 
+    .q-header-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
     .q-badge {
       display: inline-flex;
       align-items: center;
@@ -343,7 +388,15 @@
       font-weight: 800;
       background: var(--primary-light);
       color: var(--primary);
-      margin-bottom: 10px;
+    }
+
+    .q-skill-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      background: #F1F5F9;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
     }
 
     .q-title {
@@ -809,7 +862,7 @@
 
     /* Print Styles */
     @media print {
-      .topbar, .sidebar, .btn, .tf-actions, .sa-box button {
+      .topbar, .sidebar, .btn, .tf-actions, .sa-box button, .student-input-container {
         display: none !important;
       }
       .main-container {
@@ -867,6 +920,12 @@
             <span class="meta-tag green">💯 Thang điểm 10</span>
           </div>
         </div>
+
+        <!-- Ô nhập họ tên học sinh -->
+        <div class="student-input-container">
+          <label for="input-ten">👤 Họ và tên học sinh:</label>
+          <input type="text" id="input-ten" placeholder="Nhập họ và tên của em trước khi nộp bài...">
+        </div>
       </div>
 
       <!-- PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN -->
@@ -916,7 +975,7 @@
         <div class="palette-grid" id="palPart3"></div>
 
         <div class="palette-actions">
-          <button class="btn btn-accent" id="btnSubmitSide" style="width: 100%;">📝 Nộp bài & Chấm điểm</button>
+          <button class="btn btn-accent" id="btn-nop-bai" style="width: 100%;">📝 Nộp bài & Chấm điểm</button>
           <button class="btn btn-outline" id="btnResetQuiz" style="width: 100%;">🔄 Làm lại đề</button>
           <button class="btn btn-outline" onclick="window.print()" style="width: 100%;">🖨️ In đề thi / PDF</button>
         </div>
@@ -957,11 +1016,12 @@
   </div>
 
   <script>
-    // DỮ LIỆU CÂU HỎI TOÁN 10 - MỆNH ĐỀ
+    // DỮ LIỆU CÂU HỎI TOÁN 10 - MỆNH ĐỀ (Đầy đủ skill)
     const quizData = {
       part1: [
         {
           id: 1,
+          skill: "Nhận biết mệnh đề toán học",
           question: "Trong các câu sau, câu nào là một mệnh đề toán học?",
           options: [
             "Bạn có thích học môn Toán không?",
@@ -974,6 +1034,7 @@
         },
         {
           id: 2,
+          skill: "Mệnh đề chứa biến và tìm nghiệm",
           question: "Cho mệnh đề chứa biến $P(x): \"x^2 - 5x + 6 = 0\"$. Trong các giá trị sau của $x$, giá trị nào làm cho $P(x)$ nhận giá trị ĐÚNG?",
           options: [
             "$x = 1$",
@@ -986,6 +1047,7 @@
         },
         {
           id: 3,
+          skill: "Phủ định mệnh đề đơn giản",
           question: "Mệnh đề phủ định của mệnh đề $P: \"\\sqrt{2} \\text{ là một số vô tỉ}\"$ là:",
           options: [
             "$\\overline{P}: \"\\sqrt{2} \\text{ là một số hữu tỉ}\"$",
@@ -998,6 +1060,7 @@
         },
         {
           id: 4,
+          skill: "Phủ định mệnh đề chứa lượng từ với mọi (∀)",
           question: "Cho mệnh đề $P: \"\\forall x \\in \\mathbb{R}, x^2 + 2x + 3 > 0\"$. Mệnh đề phủ định $\\overline{P}$ của $P$ là:",
           options: [
             "$\\exists x \\in \\mathbb{R}, x^2 + 2x + 3 \\le 0$",
@@ -1010,6 +1073,7 @@
         },
         {
           id: 5,
+          skill: "Phủ định mệnh đề chứa lượng từ tồn tại (∃)",
           question: "Cho mệnh đề $Q: \"\\exists n \\in \\mathbb{N}, n^2 + 1 \\text{ chia hết cho } 4\"$. Phủ định $\\overline{Q}$ của mệnh đề $Q$ là:",
           options: [
             "$\\forall n \\in \\mathbb{N}, n^2 + 1 \\text{ không chia hết cho } 4$",
@@ -1022,6 +1086,7 @@
         },
         {
           id: 6,
+          skill: "Tính đúng sai của mệnh đề kéo theo (P => Q)",
           question: "Mệnh đề kéo theo $P \\Rightarrow Q$ chỉ nhận giá trị SAI trong trường hợp nào sau đây?",
           options: [
             "$P$ đúng và $Q$ đúng",
@@ -1034,6 +1099,7 @@
         },
         {
           id: 7,
+          skill: "Mệnh đề đảo",
           question: "Cho định lý: \"Nếu hai tam giác bằng nhau thì diện tích của chúng bằng nhau\". Mệnh đề đảo của định lý trên là:",
           options: [
             "Nếu hai tam giác có diện tích bằng nhau thì hai tam giác đó bằng nhau.",
@@ -1046,6 +1112,7 @@
         },
         {
           id: 8,
+          skill: "Điều kiện cần và điều kiện đủ",
           question: "Cho hai mệnh đề $P: \"a \\text{ và } b \\text{ là hai số chẵn}\"$ và $Q: \"a + b \\text{ là một số chẵn}\"$ ($a, b \\in \\mathbb{Z}$). Khẳng định nào sau đây là ĐÚNG?",
           options: [
             "$P$ là điều kiện đủ để có $Q$.",
@@ -1058,6 +1125,7 @@
         },
         {
           id: 9,
+          skill: "Mệnh đề tương đương",
           question: "Trong các mệnh đề tương đương sau, mệnh đề nào nhận giá trị ĐÚNG?",
           options: [
             "Tứ giác $ABCD$ là hình thoi $\\Leftrightarrow$ Tứ giác $ABCD$ có hai đường chéo vuông góc với nhau.",
@@ -1070,6 +1138,7 @@
         },
         {
           id: 10,
+          skill: "Xét tính đúng sai mệnh đề chứa lượng từ",
           question: "Trong các mệnh đề sau, mệnh đề nào nhận giá trị ĐÚNG?",
           options: [
             "$\\forall x \\in \\mathbb{R}, x^2 > 0$",
@@ -1082,6 +1151,7 @@
         },
         {
           id: 11,
+          skill: "Mệnh đề chứa tham số m (tam thức bậc hai)",
           question: "Tìm tất cả các giá trị thực của tham số $m$ để mệnh đề $P: \"\\forall x \\in \\mathbb{R}, x^2 - 2mx + m + 6 > 0\"$ là một mệnh đề ĐÚNG.",
           options: [
             "$-2 < m < 3$",
@@ -1094,6 +1164,7 @@
         },
         {
           id: 12,
+          skill: "Mệnh đề đảo và phản ví dụ thực tế",
           question: "Cho mệnh đề: \"Nếu một năm dương lịch chia hết cho 400 thì năm đó là năm nhuận\". Xét mệnh đề đảo $Q$ của mệnh đề trên và tính đúng sai của $Q$:",
           options: [
             "$Q$: \"Nếu một năm dương lịch là năm nhuận thì năm đó chia hết cho 400\" - Mệnh đề SAI.",
@@ -1108,6 +1179,7 @@
       part2: [
         {
           id: 1,
+          skill: "Tính đúng sai mệnh đề số học & lượng từ",
           context: "Xét tính đúng sai của các mệnh đề số học và lý thuyết tập hợp sau:",
           statements: [
             { label: "a", text: "Mệnh đề $P: \"\\exists n \\in \\mathbb{N}, n^2 + 1 \\text{ là số nguyên tố}\"$ nhận giá trị đúng.", answer: true, exp: "Chọn $n=2 \\in \\mathbb{N}$, khi đó $n^2+1 = 5$ là số nguyên tố. Do đó $P$ đúng." },
@@ -1118,6 +1190,7 @@
         },
         {
           id: 2,
+          skill: "Mệnh đề hình học và điều kiện cần, đủ",
           context: "Cho tam giác $ABC$. Xét tính đúng sai của các mệnh đề hình học sau:",
           statements: [
             { label: "a", text: "\"Tam giác $ABC$ có ba góc bằng nhau là điều kiện cần và đủ để tam giác $ABC$ là tam giác đều\".", answer: true, exp: "Tam giác đều $\\Leftrightarrow$ ba góc bằng nhau ($60^\\circ$). Đây là điều kiện cần và đủ đúng." },
@@ -1128,6 +1201,7 @@
         },
         {
           id: 3,
+          skill: "Mệnh đề kéo theo và mệnh đề đảo số học",
           context: "Cho hai mệnh đề chứa biến $P(n): \"n \\text{ là số tự nhiên chia hết cho } 6\"$ và $Q(n): \"n \\text{ là số tự nhiên chia hết cho } 3\"$ ($n \\in \\mathbb{N}$):",
           statements: [
             { label: "a", text: "Mệnh đề kéo theo $P(n) \\Rightarrow Q(n)$ là mệnh đề đúng với mọi số tự nhiên $n$.", answer: true, exp: "Một số chia hết cho 6 thì luôn chia hết cho 3 vì $6 = 2 \\times 3$. Mệnh đề kéo theo đúng." },
@@ -1138,6 +1212,7 @@
         },
         {
           id: 4,
+          skill: "Mệnh đề tam thức bậc hai chứa tham số m",
           context: "Cho tam thức bậc hai $f(x) = x^2 - 2(m-1)x + m + 5$ với $m$ là tham số thực. Xét mệnh đề $A: \"\\forall x \\in \\mathbb{R}, f(x) > 0\":",
           statements: [
             { label: "a", text: "Biệt thức thu gọn của tam thức là $\\Delta' = m^2 - 3m - 4$.", answer: true, exp: "$\\Delta' = [-(m-1)]^2 - 1(m+5) = m^2 - 2m + 1 - m - 5 = m^2 - 3m - 4$. Nhận định đúng." },
@@ -1150,36 +1225,42 @@
       part3: [
         {
           id: 1,
+          skill: "Phân biệt câu là mệnh đề toán học",
           question: "Trong các câu sau: (1) 2025 là hợp số; (2) Hình thoi có hai đường chéo bằng nhau; (3) Phương trình $x^2 + 1 = 0$ vô nghiệm trên $\\mathbb{R}$; (4) Học toán 10 thật thú vị!; (5) Hãy giải phương trình $2x - 4 = 0$; (6) Tổng ba góc trong tam giác bằng $180^\\circ$. Có bao nhiêu câu là mệnh đề toán học?",
           accepted: ["4"],
           explanation: "Có 4 câu là mệnh đề toán học gồm: (1) [mệnh đề đúng], (2) [mệnh đề sai], (3) [mệnh đề đúng], (6) [mệnh đề đúng]. Câu (4) là câu cảm thán, câu (5) là câu cầu khiến nên không phải mệnh đề."
         },
         {
           id: 2,
+          skill: "Xác định số mệnh đề đúng",
           question: "Cho 5 mệnh đề sau: $P_1: \"\\pi < 3{,}14\"$; $P_2: \"\\exists x \\in \\mathbb{R}, x^2 = 3\"$; $P_3: \"\\forall n \\in \\mathbb{N}, 2^n \\ge n + 1\"$; $P_4: \"\\exists x \\in \\mathbb{Z}, 2x^2 - 5x + 2 = 0\"$; $P_5: \"\\forall x \\in \\mathbb{R}, |x| > 0\"$. Hỏi có bao nhiêu mệnh đề nhận giá trị ĐÚNG?",
           accepted: ["3"],
           explanation: "Có 3 mệnh đề đúng là $P_2$ ($x = \\pm \\sqrt{3}$), $P_3$ (đúng $\\forall n \\in \\mathbb{N}$), $P_4$ (có nghiệm nguyên $x = 2$). $P_1$ sai vì $\\pi \\approx 3{,}14159... > 3{,}14$. $P_5$ sai tại $x=0$ vì $|0| = 0 \\ngtr 0$."
         },
         {
           id: 3,
+          skill: "Đếm số nghiệm nguyên thỏa mãn mệnh đề chứa biến",
           question: "Cho mệnh đề chứa biến $P(x): \"x^2 - 3x - 10 \\le 0\"$. Hỏi có bao nhiêu giá trị nguyên của $x \\in [-10; 10]$ làm cho $P(x)$ nhận giá trị ĐÚNG?",
           accepted: ["8"],
           explanation: "Bất phương trình $x^2 - 3x - 10 \\le 0 \\Leftrightarrow (x+2)(x-5) \\le 0 \\Leftrightarrow -2 \\le x \\le 5$. Các giá trị nguyên thỏa mãn: $\\{-2; -1; 0; 1; 2; 3; 4; 5\\}$. Có tất cả $5 - (-2) + 1 = 8$ giá trị."
         },
         {
           id: 4,
+          skill: "Tìm số giá trị nguyên của m để mệnh đề đúng",
           question: "Tìm số giá trị nguyên của tham số $m \\in [-5; 5]$ để mệnh đề: \"$\\forall x \\in \\mathbb{R}, x^2 + 2(m+1)x + 4 > 0$\" là một mệnh đề ĐÚNG.",
           accepted: ["3"],
           explanation: "Yêu cầu bài toán $\\Leftrightarrow \\Delta' = (m+1)^2 - 4 < 0 \\Leftrightarrow m^2 + 2m - 3 < 0 \\Leftrightarrow -3 < m < 1$. Do $m \\in \\mathbb{Z}$ nên $m \\in \\{-2, -1, 0\\}$. Có 3 giá trị nguyên."
         },
         {
           id: 5,
+          skill: "Tìm cực trị tham số để mệnh đề tồn tại nghiệm đúng",
           question: "Cho mệnh đề $P(n): \"\\exists x \\in \\mathbb{R}, nx^2 - 4x + 1 = 0\"$ với $n$ là số tự nhiên ($n \\ge 1$). Tìm giá trị lớn nhất của $n$ để mệnh đề $P(n)$ nhận giá trị ĐÚNG.",
           accepted: ["4"],
           explanation: "Phương trình bậc hai ($n \\ge 1$) có nghiệm khi và chỉ khi $\\Delta' = (-2)^2 - n\\cdot 1 = 4 - n \\ge 0 \\Leftrightarrow n \\le 4$. Vì $n \\in \\mathbb{N}^*$ nên giá trị lớn nhất của $n$ là 4."
         },
         {
           id: 6,
+          skill: "Tư duy suy luận logic thực tế",
           question: "Trong cuộc thi Toán học, 4 bạn An, Bình, Cúc, Dũng dự đoán người đạt giải nhất: An nói: \"Cúc đạt giải nhất\"; Bình nói: \"Tôi không đạt giải nhất\"; Cúc nói: \"Dũng đạt giải nhất\"; Dũng nói: \"Cúc nói sai rồi\". Biết chỉ có DUY NHẤT MỘT bạn nói thật và chỉ có một người đạt giải nhất. Hỏi ai là người đạt giải nhất?",
           accepted: ["Bình", "Binh", "binh", "bình"],
           explanation: "Hai bạn Cúc và Dũng có phát biểu mâu thuẫn trực tiếp (\"Dũng đạt giải\" và \"Cúc nói sai\"), nên trong hai bạn chắc chắn có 1 người nói thật và 1 người nói dối. Vì chỉ có 1 người nói thật trong cả 4 bạn, nên người nói thật duy nhất nằm trong nhóm {Cúc, Dũng}. Do đó cả An và Bình đều nói dối! Bình nói: \"Tôi không đạt giải nhất\" là lời nói DỐI $\\Rightarrow$ Bình chính là người đạt giải nhất!"
@@ -1200,13 +1281,20 @@
     let timerInterval = null;
     let isTimerPaused = false;
 
+    // Biến lưu điểm số và mảng kỹ năng sai cho n8n webhook
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
     // RENDER GIAO DIỆN
     function renderQuiz() {
       // 1. Render Part 1
       const p1Container = document.getElementById('part1Container');
       p1Container.innerHTML = quizData.part1.map((q, idx) => `
         <div class="question-card" id="card-p1-${q.id}">
-          <div class="q-badge">Câu ${idx + 1} (Phần I)</div>
+          <div class="q-header-meta">
+            <span class="q-badge">Câu ${idx + 1} (Phần I)</span>
+            <span class="q-skill-badge">${q.skill}</span>
+          </div>
           <div class="q-title">${q.question}</div>
           <div class="options-grid">
             ${q.options.map((opt, oIdx) => `
@@ -1227,7 +1315,10 @@
       const p2Container = document.getElementById('part2Container');
       p2Container.innerHTML = quizData.part2.map((q, idx) => `
         <div class="question-card" id="card-p2-${q.id}">
-          <div class="q-badge">Câu ${idx + 1} (Phần II)</div>
+          <div class="q-header-meta">
+            <span class="q-badge">Câu ${idx + 1} (Phần II)</span>
+            <span class="q-skill-badge">${q.skill}</span>
+          </div>
           <div class="q-title"><strong>Câu ${idx + 1}:</strong> ${q.context}</div>
           <div class="tf-table">
             ${q.statements.map((st) => `
@@ -1254,7 +1345,10 @@
       const p3Container = document.getElementById('part3Container');
       p3Container.innerHTML = quizData.part3.map((q, idx) => `
         <div class="question-card" id="card-p3-${q.id}">
-          <div class="q-badge">Câu ${idx + 1} (Phần III)</div>
+          <div class="q-header-meta">
+            <span class="q-badge">Câu ${idx + 1} (Phần III)</span>
+            <span class="q-skill-badge">${q.skill}</span>
+          </div>
           <div class="q-title">${q.question}</div>
           <div class="sa-box">
             <div class="sa-label">Nhập đáp số của bạn:</div>
@@ -1391,7 +1485,7 @@
           if (timerSeconds <= 0) {
             clearInterval(timerInterval);
             alert('Hết giờ làm bài! Hệ thống sẽ tự động nộp bài.');
-            submitQuiz();
+            document.getElementById('btn-nop-bai').click();
           }
         }
       }, 1000);
@@ -1409,25 +1503,25 @@
       document.getElementById('btnPauseTimer').textContent = isTimerPaused ? '▶️' : '⏸️';
     });
 
-    // CHẤM ĐIỂM
-    function submitQuiz() {
-      if (isSubmitted) {
-        document.getElementById('scoreModal').classList.add('open');
-        return;
-      }
-
+    // CHẤM ĐIỂM BÀI THI
+    function chamDiemBaiThi() {
       isSubmitted = true;
       clearInterval(timerInterval);
 
       let score1 = 0;
       let score2 = 0;
       let score3 = 0;
+      mang_cau_sai = [];
 
       // 1. Chấm Phần I (12 câu * 0.25đ = 3.0đ)
       quizData.part1.forEach(q => {
         const uAns = userAnswers.part1[q.id];
         const isCorrect = uAns === q.correct;
-        if (isCorrect) score1 += 0.25;
+        if (isCorrect) {
+          score1 += 0.25;
+        } else {
+          mang_cau_sai.push(`Phần I - Câu ${q.id}: ${q.skill}`);
+        }
 
         // Visual feedback
         const pal = document.getElementById(`pal-p1-${q.id}`);
@@ -1447,11 +1541,16 @@
       quizData.part2.forEach(q => {
         let correctSub = 0;
         const uGroup = userAnswers.part2[q.id] || {};
+        let subSai = [];
 
         q.statements.forEach(st => {
           const uVal = uGroup[st.label];
           const isRight = uVal === st.answer;
-          if (isRight) correctSub++;
+          if (isRight) {
+            correctSub++;
+          } else {
+            subSai.push(st.label);
+          }
 
           const btnT = document.getElementById(`tf-btn-${q.id}-${st.label}-true`);
           const btnF = document.getElementById(`tf-btn-${q.id}-${st.label}-false`);
@@ -1465,6 +1564,10 @@
           }
         });
 
+        if (subSai.length > 0) {
+          mang_cau_sai.push(`Phần II - Câu ${q.id} (Ý ${subSai.join(', ')}): ${q.skill}`);
+        }
+
         score2 += tfPointsMap[correctSub];
 
         const pal = document.getElementById(`pal-p2-${q.id}`);
@@ -1475,7 +1578,11 @@
       quizData.part3.forEach(q => {
         const uVal = (userAnswers.part3[q.id] || '').trim().toLowerCase();
         const isCorrect = q.accepted.some(acc => acc.trim().toLowerCase() === uVal);
-        if (isCorrect) score3 += 0.5;
+        if (isCorrect) {
+          score3 += 0.5;
+        } else {
+          mang_cau_sai.push(`Phần III - Câu ${q.id}: ${q.skill}`);
+        }
 
         const fb = document.getElementById(`sa-fb-${q.id}`);
         if (fb) {
@@ -1493,19 +1600,19 @@
         if (pal) pal.classList.add(isCorrect ? 'correct' : 'incorrect');
       });
 
-      const totalScore = Math.min(10, Math.round((score1 + score2 + score3) * 100) / 100);
+      diem_so = Math.min(10, Math.round((score1 + score2 + score3) * 100) / 100);
 
       // Hiển thị modal
-      document.getElementById('modalScore').textContent = totalScore.toFixed(2);
+      document.getElementById('modalScore').textContent = diem_so.toFixed(2);
       document.getElementById('scoreP1').textContent = `${score1.toFixed(2)} / 3.0`;
       document.getElementById('scoreP2').textContent = `${score2.toFixed(2)} / 4.0`;
       document.getElementById('scoreP3').textContent = `${score3.toFixed(2)} / 3.0`;
 
       let gradeTitle = 'XUẤT SẮC! 🎉';
       let gradeSub = 'Bạn nắm rất vững toàn bộ chuyên đề Mệnh đề toán học!';
-      if (totalScore < 9) { gradeTitle = 'GIỎI! 👏'; gradeSub = 'Kết quả rất tốt, hãy xem lại các lỗi nhỏ nhé!'; }
-      if (totalScore < 7) { gradeTitle = 'KHÁ! 💪'; gradeSub = 'Cần rèn luyện thêm ở dạng toán kéo theo & lượng từ!'; }
-      if (totalScore < 5) { gradeTitle = 'CẦN CỐ GẮNG! 📚'; gradeSub = 'Hãy đọc kỹ lại lý thuyết và làm lại bài kiểm tra nhé!'; }
+      if (diem_so < 9) { gradeTitle = 'GIỎI! 👏'; gradeSub = 'Kết quả rất tốt, hãy xem lại các lỗi nhỏ nhé!'; }
+      if (diem_so < 7) { gradeTitle = 'KHÁ! 💪'; gradeSub = 'Cần rèn luyện thêm ở dạng toán kéo theo & lượng từ!'; }
+      if (diem_so < 5) { gradeTitle = 'CẦN CỐ GẮNG! 📚'; gradeSub = 'Hãy đọc kỹ lại lý thuyết và làm lại bài kiểm tra nhé!'; }
 
       document.getElementById('modalGradeText').textContent = gradeTitle;
       document.getElementById('modalSubText').textContent = gradeSub;
@@ -1514,6 +1621,56 @@
       // Tự động bật lời giải sau khi nộp bài
       toggleSolutions(true);
     }
+
+    // TÍCH HỢP HỆ THỐNG CHẤM ĐIỂM TỰ ĐỘNG - N8N
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            chamDiemBaiThi();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value.trim() || "Học sinh ẩn danh" : "Học sinh ẩn danh";
+        const tenBaiThi = document.title || "Bài kiểm tra Toán"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const n8n_data = await response.json();
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\n\nNhận xét từ Integra Academy:\n${n8n_data.nhan_xet}`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ AI nhận xét).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    // Nút nộp bài trên Topbar chuyển hướng sang click btn-nop-bai
+    document.getElementById('btnSubmitTop').addEventListener('click', () => {
+      document.getElementById('btn-nop-bai').click();
+    });
 
     function toggleSolutions(forceShow = null) {
       if (forceShow !== null) {
@@ -1545,9 +1702,7 @@
       location.reload();
     }
 
-    // EVENT LISTENERS
-    document.getElementById('btnSubmitTop').addEventListener('click', submitQuiz);
-    document.getElementById('btnSubmitSide').addEventListener('click', submitQuiz);
+    // EVENT LISTENERS KHÁC
     document.getElementById('btnToggleSol').addEventListener('click', () => toggleSolutions());
     document.getElementById('btnResetQuiz').addEventListener('click', resetQuiz);
     document.getElementById('btnCloseModal').addEventListener('click', () => {
