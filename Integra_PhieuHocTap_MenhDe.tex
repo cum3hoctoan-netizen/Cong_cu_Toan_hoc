@@ -1,0 +1,312 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% Thiết lập khổ giấy A4 và căn lề tối ưu
+\geometry{
+	a4paper,
+	left=15mm,
+	right=15mm,
+	top=15mm,
+	bottom=18mm
+}
+
+% Cấu hình header & footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\rfoot{\footnotesize\color{subgray}Trang \thepage}
+\lfoot{\footnotesize\color{subgray}Chuyên đề Toán 10 -- Mệnh đề \& Tập hợp (GDPT 2018)}
+
+% Định nghĩa bảng màu Infographic học thuật
+\definecolor{primaryred}{HTML}{C62828}   % Đỏ son cho tiêu đề
+\definecolor{inkblue}{HTML}{182A78}      % Xanh mực cho đường nét & khung
+\definecolor{subgray}{HTML}{424242}      % Xám cho thông tin phụ
+
+% ------------------------------------------------------------------------------
+% ĐỊNH NGHĨA CÁC MÔI TRƯỜNG & LỆNH TƯƠNG THÍCH CHUẨN GÓI ex_test
+% ------------------------------------------------------------------------------
+\newcounter{ex}
+\newenvironment{ex}[1][]{%
+	\refstepcounter{ex}%
+	\par\smallskip\noindent\textbf{\color{inkblue}Câu \theex.} #1\ignorespaces
+}{\par}
+
+% \True là cờ đánh dấu phương án đúng (chuẩn ex_test)
+\providecommand{\True}{}
+
+% Lệnh \choice tự động điều chỉnh 1 dòng, 2 dòng hoặc 4 dòng tuỳ độ dài phương án
+\newlength{\widthcha}
+\newlength{\widthchb}
+\newlength{\widthchc}
+\newlength{\widthchd}
+
+\newcommand{\choiceFour}[4]{%
+	\par\smallskip
+	\noindent\textbf{A.} #1\par
+	\noindent\textbf{B.} #2\par
+	\noindent\textbf{C.} #3\par
+	\noindent\textbf{D.} #4\par\smallskip
+}
+
+\newcommand{\choiceTwo}[4]{%
+	\ifdim\widthcha<0.46\linewidth
+	\ifdim\widthchb<0.46\linewidth
+	\ifdim\widthchc<0.46\linewidth
+	\ifdim\widthchd<0.46\linewidth
+	\par\smallskip\noindent
+	\begin{minipage}[t]{0.48\linewidth}\textbf{A.} #1\end{minipage}\hfill
+	\begin{minipage}[t]{0.48\linewidth}\textbf{B.} #2\end{minipage}\par\smallskip\noindent
+	\begin{minipage}[t]{0.48\linewidth}\textbf{C.} #3\end{minipage}\hfill
+	\begin{minipage}[t]{0.48\linewidth}\textbf{D.} #4\end{minipage}\par\smallskip
+	\else\choiceFour{#1}{#2}{#3}{#4}\fi
+	\else\choiceFour{#1}{#2}{#3}{#4}\fi
+	\else\choiceFour{#1}{#2}{#3}{#4}\fi
+	\else\choiceFour{#1}{#2}{#3}{#4}\fi
+}
+
+\newcommand{\choice}[4]{%
+	\settowidth{\widthcha}{\textbf{A.} #1}%
+	\settowidth{\widthchb}{\textbf{B.} #2}%
+	\settowidth{\widthchc}{\textbf{C.} #3}%
+	\settowidth{\widthchd}{\textbf{D.} #4}%
+	\ifdim\widthcha<0.22\linewidth
+	\ifdim\widthchb<0.22\linewidth
+	\ifdim\widthchc<0.22\linewidth
+	\ifdim\widthchd<0.22\linewidth
+	\par\smallskip\noindent
+	\begin{minipage}[t]{0.24\linewidth}\textbf{A.} #1\end{minipage}\hfill
+	\begin{minipage}[t]{0.24\linewidth}\textbf{B.} #2\end{minipage}\hfill
+	\begin{minipage}[t]{0.24\linewidth}\textbf{C.} #3\end{minipage}\hfill
+	\begin{minipage}[t]{0.24\linewidth}\textbf{D.} #4\end{minipage}\par\smallskip
+	\else\choiceTwo{#1}{#2}{#3}{#4}\fi
+	\else\choiceTwo{#1}{#2}{#3}{#4}\fi
+	\else\choiceTwo{#1}{#2}{#3}{#4}\fi
+	\else\choiceTwo{#1}{#2}{#3}{#4}\fi
+}
+
+% Môi trường \choiceTF cho câu hỏi trắc nghiệm Đúng/Sai
+\newcommand{\choiceTF}[4]{%
+	\par\smallskip
+	\noindent\begin{minipage}[t]{0.82\linewidth}\textbf{a)} #1\end{minipage}\hfill\fbox{\small\strut\ \textbf{Đ}\ \ \textbar\ \ \textbf{S}\ }\par\smallskip
+	\noindent\begin{minipage}[t]{0.82\linewidth}\textbf{b)} #2\end{minipage}\hfill\fbox{\small\strut\ \textbf{Đ}\ \ \textbar\ \ \textbf{S}\ }\par\smallskip
+	\noindent\begin{minipage}[t]{0.82\linewidth}\textbf{c)} #3\end{minipage}\hfill\fbox{\small\strut\ \textbf{Đ}\ \ \textbar\ \ \textbf{S}\ }\par\smallskip
+	\noindent\begin{minipage}[t]{0.82\linewidth}\textbf{d)} #4\end{minipage}\hfill\fbox{\small\strut\ \textbf{Đ}\ \ \textbar\ \ \textbf{S}\ }\par\smallskip
+}
+
+% Lệnh điền đáp số cho phần trả lời ngắn
+\newcommand{\shortans}[2][]{%
+	\par\smallskip\noindent\textbf{Đáp số:} \dotfill\ \framebox[2.4cm]{\rule{0pt}{1.1em}#2}\par
+}
+
+% Định dạng tiêu đề các phân phần
+\newcommand{\sectionheader}[2]{%
+	\vspace{0.35cm}
+	\noindent
+	\begin{tikzpicture}
+		\node[fill=primaryred!10, draw=primaryred, rounded corners=3pt, inner sep=4pt, text width=\linewidth-8pt] {
+			\textbf{\color{primaryred}#1}\\[1pt]
+			\footnotesize\textit{\color{subgray}#2}
+		};
+	\end{tikzpicture}
+	\par\vspace{0.15cm}
+}
+
+\begin{document}
+	
+	% ------------------------------------------------------------------------------
+	% TIÊU ĐỀ BÀI HỌC VÀ THÔNG TIN HỌC SINH
+	% ------------------------------------------------------------------------------
+	\begin{center}
+		{\large \textbf{\color{primaryred}PHIẾU HỌC TẬP INFOGRAPHIC: MỆNH ĐỀ TOÁN HỌC}}\\[1.5mm]
+		{\small \textbf{\color{inkblue}Chuyên đề Toán 10 -- Chương I: Mệnh đề và Tập hợp (GDPT 2018)}}\\[2mm]
+		\noindent
+		\begin{tikzpicture}
+			\draw[color=inkblue!40, line width=0.8pt] (0,0) -- (\linewidth,0);
+		\end{tikzpicture}\\[1mm]
+		{\footnotesize \textbf{Họ và tên:} \dots\dots\dots\dots\dots\dots\dots\dots\dots\dots\dots\dots\dots\dots \quad 
+			\textbf{Lớp:} \dots\dots\dots\dots\dots \quad 
+			\textbf{Ngày:} \dots\dots/\dots\dots/20\dots\dots}
+	\end{center}
+	
+	% ==============================================================================
+	% PHẦN I: TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU - CHIA 2 CỘT)
+	% ==============================================================================
+	\sectionheader{PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU -- MỨC ĐỘ VẬN DỤNG \& VẬN DỤNG CAO)}{Khoanh tròn vào chữ cái A, B, C hoặc D trước phương án trả lời đúng nhất.}
+	
+	\setlength{\columnsep}{18pt}
+	\begin{multicols}{2}
+		
+		\begin{ex}
+			Cho mệnh đề $P: ``\forall x \in \mathbb{R}, x^2 - x + 1 > 0''$. Mệnh đề phủ định $\overline{P}$ của $P$ là:
+			\choice
+			{\True $\exists x \in \mathbb{R}, x^2 - x + 1 \le 0$}
+			{$\exists x \in \mathbb{R}, x^2 - x + 1 < 0$}
+			{$\forall x \in \mathbb{R}, x^2 - x + 1 \le 0$}
+			{$\exists x \notin \mathbb{R}, x^2 - x + 1 \le 0$}
+		\end{ex}
+		
+		\begin{ex}
+			Xét các phát biểu tương đương về tam giác $ABC$. Phát biểu nào sau đây là MỆNH ĐỀ SAI?
+			\choice
+			{Tam giác $ABC$ đều $\Leftrightarrow$ Tam giác $ABC$ cân và có một góc bằng $60^\circ$.}
+			{Tam giác $ABC$ vuông tại $A \Leftrightarrow AB^2 + AC^2 = BC^2$.}
+			{Tam giác $ABC$ có hai góc bằng $60^\circ \Leftrightarrow$ Tam giác $ABC$ là tam giác đều.}
+			{\True Tam giác $ABC$ cân tại $A \Leftrightarrow AB = AC$ và $\widehat{A} = 60^\circ$.}
+		\end{ex}
+		
+		\begin{ex}
+			Cho hai mệnh đề chứa biến $P(x): ``x^2 - 5x + 4 = 0''$ và $Q(x): ``x^2 - 1 = 0''$. Tìm $x \in \mathbb{R}$ để mệnh đề kéo theo $P(x) \Rightarrow Q(x)$ nhận giá trị SAI.
+			\choice
+			{$x = 1$}
+			{\True $x = 4$}
+			{$x = -1$}
+			{$x = 2$}
+		\end{ex}
+		
+		\begin{ex}
+			Cho mệnh đề $P: ``\forall x \in \mathbb{R}, x^2 + (m+1)x + 1 > 0''$. Tìm tất cả các giá trị thực của tham số $m$ để $P$ là mệnh đề ĐÚNG.
+			\choice
+			{\True $-3 < m < 1$}
+			{$m < -3$ hoặc $m > 1$}
+			{$-1 < m < 3$}
+			{$-3 \le m \le 1$}
+		\end{ex}
+		
+		\begin{ex}
+			Cho phát biểu: ``Tồn tại số nguyên $n$ sao cho $n^2 + 3n + 1$ là số chẵn''. Mệnh đề phủ định của phát biểu này và tính đúng sai của nó là:
+			\choice
+			{\True ``$\forall n \in \mathbb{Z}, n^2 + 3n + 1$ là số lẻ'' -- Mệnh đề ĐÚNG.}
+			{``$\forall n \in \mathbb{Z}, n^2 + 3n + 1$ là số lẻ'' -- Mệnh đề SAI.}
+			{``$\forall n \in \mathbb{Z}, n^2 + 3n + 1$ là số chẵn'' -- Mệnh đề ĐÚNG.}
+			{``$\exists n \in \mathbb{Z}, n^2 + 3n + 1$ là số lẻ'' -- Mệnh đề SAI.}
+		\end{ex}
+		
+		\begin{ex}
+			Cho hai mệnh đề $P: ``x \text{ chia hết cho } 6''$ và $Q: ``x \text{ chia hết cho } 2 \text{ và chia hết cho } 3''$ ($x \in \mathbb{N}$). Khẳng định nào sau đây đúng?
+			\choice
+			{$P$ là điều kiện đủ để có $Q$, nhưng không phải là điều kiện cần.}
+			{$P$ là điều kiện cần để có $Q$, nhưng không phải là điều kiện đủ.}
+			{\True $P$ là điều kiện cần và đủ để có $Q$.}
+			{$P$ và $Q$ không có quan hệ kéo theo.}
+		\end{ex}
+		
+		\begin{ex}
+			Cho mệnh đề $P(n): ``n^2 + 1 \text{ chia hết cho } 5''$ với $n \in \mathbb{N}$. Với giá trị $n$ nào dưới đây thì $P(n)$ là mệnh đề ĐÚNG?
+			\choice
+			{$n = 5$}
+			{\True $n = 7$}
+			{$n = 8$}
+			{$n = 10$}
+		\end{ex}
+		
+		\begin{ex}
+			Cho mệnh đề $A: ``\exists x \in \mathbb{R}, x^2 - mx + 4 = 0''$. Tìm tất cả các giá trị của $m$ để mệnh đề $A$ ĐÚNG.
+			\choice
+			{$-4 \le m \le 4$}
+			{\True $m \le -4$ hoặc $m \ge 4$}
+			{$m < -4$ hoặc $m > 4$}
+			{$-4 < m < 4$}
+		\end{ex}
+		
+		\begin{ex}
+			Phát biểu nào sau đây nêu ĐÚNG điều kiện cần và đủ để phương trình $ax^2 + bx + c = 0 \;(a \neq 0)$ có hai nghiệm trái dấu?
+			\choice
+			{\True $a$ và $c$ trái dấu ($ac < 0$).}
+			{$\Delta > 0$ và $ac > 0$.}
+			{$b^2 - 4ac > 0$.}
+			{$a$ và $b$ trái dấu.}
+		\end{ex}
+		
+		\begin{ex}
+			Cho mệnh đề $P: ``\text{Nếu một số tự nhiên chia hết cho } 9 \text{ thì nó chia hết cho } 3''$. Mệnh đề đảo $Q$ của $P$ và tính đúng sai của $Q$ là:
+			\choice
+			{\True ``Nếu một số tự nhiên chia hết cho $3$ thì nó chia hết cho $9$'' -- Mệnh đề SAI.}
+			{``Nếu một số tự nhiên không chia hết cho $9$ thì không chia hết cho $3$'' -- Mệnh đề ĐÚNG.}
+			{``Một số tự nhiên chia hết cho $9$ khi và chỉ khi chia hết cho $3$'' -- Mệnh đề ĐÚNG.}
+			{``Nếu một số tự nhiên chia hết cho $3$ thì nó chia hết cho $9$'' -- Mệnh đề ĐÚNG.}
+		\end{ex}
+		
+	\end{multicols}
+	
+	% ==============================================================================
+	% PHẦN II: TRẮC NGHIỆM ĐÚNG - SAI (4 CÂU)
+	% ==============================================================================
+	\sectionheader{PHẦN II. TRẮC NGHIỆM ĐÚNG -- SAI (4 CÂU -- MỖI CÂU GỒM 4 NHẬN ĐỊNH a, b, c, d)}{Học sinh ghi chữ Đ (Đúng) hoặc S (Sai) vào ô trống tương ứng trước mỗi nhận định.}
+	
+	\begin{ex}
+		Xét các mệnh đề chứa lượng tử và phủ định của chúng trên tập số thực $\mathbb{R}$:
+		\choiceTF
+		{\True Mệnh đề $P: ``\forall x \in \mathbb{R}, x^2 + 1 > 0''$ nhận giá trị đúng.}
+		{\True Phủ định của $P$ là $\overline{P}: ``\exists x \in \mathbb{R}, x^2 + 1 \le 0''$.}
+		{Mệnh đề $Q: ``\exists x \in \mathbb{R}, x^2 - 3x + 2 = 0''$ nhận giá trị sai.}
+		{\True Phủ định của $Q$ là $\overline{Q}: ``\forall x \in \mathbb{R}, x^2 - 3x + 2 \neq 0''$.}
+	\end{ex}
+	
+	\begin{ex}
+		Cho tam giác $ABC$ và ba mệnh đề $P: ``\text{Tam giác } ABC \text{ cân tại } A''$, $Q: ``\text{Tam giác } ABC \text{ có hai đường cao } AB \text{ và } AC \text{ bằng nhau}''$, $R: ``\text{Tam giác } ABC \text{ có } \widehat{B} = \widehat{C}''$:
+		\choiceTF
+		{\True Mệnh đề kéo theo $P \Rightarrow R$ là một mệnh đề đúng.}
+		{\True Mệnh đề $R$ là điều kiện đủ để có $P$.}
+		{\True Mệnh đề tương đương $P \Leftrightarrow R$ phát biểu là: ``Tam giác $ABC$ cân tại $A$ là điều kiện cần và đủ để $\widehat{B} = \widehat{C}$''.}
+		{Phủ định của mệnh đề $P$ là: ``Tam giác $ABC$ là tam giác đều''.}
+	\end{ex}
+	
+	\begin{ex}
+		Xét mệnh đề chứa biến $P(n): ``n^2 - 1 \text{ chia hết cho } 8''$ với $n$ là số tự nhiên lẻ:
+		\choiceTF
+		{\True Mệnh đề $P(3)$ nhận giá trị đúng.}
+		{Mệnh đề $P(5)$ nhận giá trị sai.}
+		{\True Với mọi số tự nhiên lẻ $n = 2k + 1 \;(k \in \mathbb{N})$, mệnh đề $P(n)$ luôn luôn đúng.}
+		{\True Mệnh đề ``$\forall n \in \mathbb{N}, n \text{ lẻ} \Rightarrow n^2 - 1 \vdots 8$'' có mệnh đề đảo là mệnh đề đúng.}
+	\end{ex}
+	
+	\begin{ex}
+		Cho tam thức bậc hai $f(x) = x^2 - 2mx + m + 2$. Xét mệnh đề $A: ``\forall x \in \mathbb{R}, f(x) > 0''$:
+		\choiceTF
+		{\True Mệnh đề $A$ đúng khi và chỉ khi $\Delta' = m^2 - m - 2 < 0$.}
+		{\True Tập hợp các giá trị thực của $m$ để $A$ đúng là khoảng $(-1; 2)$.}
+		{\True Khi $m = 3$, phủ định của mệnh đề $A$ là mệnh đề đúng.}
+		{Khi $m = -1$, mệnh đề $A$ nhận giá trị đúng.}
+	\end{ex}
+	
+	% ==============================================================================
+	% PHẦN III: CÂU HỎI TRẢ LỜI NGẮN (5 CÂU)
+	% ==============================================================================
+	\sectionheader{PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU -- BAO GỒM VẬN DỤNG THỰC TẾ)}{Học sinh viết đáp số hoặc câu trả lời ngắn gọn vào khoảng trống bên dưới mỗi câu hỏi.}
+	
+	\begin{ex}
+		Tìm điều kiện của tham số $m$ để mệnh đề ``$x^2 - 2x + m > 0, \forall x \in \mathbb{R}$'' là mệnh đề đúng.
+		\shortans{$m > 1$}
+	\end{ex}
+	
+	\begin{ex}
+		Cho mệnh đề $P: ``\exists x \in \mathbb{R}, x^2 - 4x + 4 \le 0''$. Tìm giá trị $x$ duy nhất làm cho khẳng định trong $P$ nhận giá trị đúng.
+		\shortans{$x = 2$}
+	\end{ex}
+	
+	\begin{ex}
+		Có bao nhiêu giá trị nguyên $m \in [-5; 5]$ để mệnh đề kéo theo $P \Rightarrow Q$ đúng, biết $P: ``x = 2''$ và $Q: ``x^2 - mx + 4 = 0''$?
+		\shortans{$1$}
+	\end{ex}
+	
+	\begin{ex}
+		Lớp 10A có 40 học sinh. Gọi $P$ là mệnh đề: ``Mọi học sinh lớp 10A đều tham gia câu lạc bộ Toán học''. Biết rằng thực tế có 35 học sinh tham gia và 5 học sinh không tham gia. Xác định số lượng phản ví dụ làm mệnh đề $P$ sai.
+		\shortans{$5$}
+	\end{ex}
+	
+	\begin{ex}
+		\textbf{(Vận dụng thực tế)} Một công ty ra thông báo: ``Nếu doanh thu tháng 10 đạt trên 500 triệu đồng ($P$) thì toàn bộ nhân viên được thưởng 10\% lương ($Q$)''. Thực tế tháng 10 doanh thu đạt 520 triệu đồng nhưng nhân viên không được thưởng. Hỏi mệnh đề kéo theo $P \Rightarrow Q$ nhận giá trị ĐÚNG hay SAI?
+		\shortans{SAI}
+	\end{ex}
+	
+\end{document}

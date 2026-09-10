@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phiếu Học Tập & Luyện Thi Toán 10: Mệnh Đề (GDPT 2018)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #182A78;
+      --primary-hover: #111e56;
+      --primary-light: #eef2fb;
+      --primary-border: #ccd8f5;
+      
+      --accent: #C62828;
+      --accent-hover: #a31d1d;
+      --accent-light: #fef2f2;
+      --accent-border: #fecaca;
+      
+      --bg-page: #FAFAFA;
+      --bg-card: #FFFFFF;
+      --bg-card-alt: #F8FAFC;
+      
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-focus: #182A78;
+      
+      --success: #15803D;
+      --success-light: #F0FDF4;
+      --success-border: #BBF7D0;
+      
+      --warning: #D97706;
+      --warning-light: #FFFBEB;
+      --warning-border: #FDE68A;
+      
+      --shadow-sm: 0 1px 3px rgba(24, 42, 120, 0.05);
+      --shadow-md: 0 4px 12px rgba(24, 42, 120, 0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(24, 42, 120, 0.12);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
+    }
+
+    .topbar {
+      background: var(--bg-card);
+      border-bottom: 2px solid var(--primary-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .topbar-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--primary) 0%, #2A44B0 100%);
+      color: #fff;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 10px rgba(24, 42, 120, 0.25);
+    }
+
+    .brand-text h1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-variant-numeric: tabular-nums;
+      transition: var(--transition);
+    }
+
+    .timer-badge.warning {
+      background: var(--accent-light);
+      border-color: var(--accent-border);
+      color: var(--accent);
+      animation: pulseAlert 1.5s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.02); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 4px 12px rgba(24, 42, 120, 0.2);
+    }
+
+    .btn-accent {
+      background-color: var(--accent);
+      color: #fff;
+    }
+    .btn-accent:hover {
+      background-color: var(--accent-hover);
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.25);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border-color: var(--border-color);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover {
+      background-color: #F1F5F9;
+      color: var(--text-main);
+      border-color: #CBD5E1;
+    }
+
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 0.8rem;
+    }
+
+    .app-container {
+      max-width: 1400px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .exam-header-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exam-header-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+    }
+
+    .exam-title-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 10px;
+    }
+
+    .exam-main-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .exam-subtitle {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .student-info-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .student-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .student-input {
+      background: #fff;
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-sm);
+      padding: 3px 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      font-family: inherit;
+    }
+    .student-input:focus {
+      outline: 2px solid var(--primary);
+    }
+
+    .section-banner {
+      background: var(--bg-card);
+      border-left: 5px solid var(--primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      box-shadow: var(--shadow-sm);
+      padding: 18px 24px;
+      margin: 32px 0 20px;
+    }
+
+    .section-banner.part-1 { border-left-color: var(--primary); }
+    .section-banner.part-2 { border-left-color: #5B21B6; }
+    .section-banner.part-3 { border-left-color: var(--accent); }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .part-1 .section-tag { color: var(--primary); }
+    .part-2 .section-tag { color: #5B21B6; }
+    .part-3 .section-tag { color: var(--accent); }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .section-instruction {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .question-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 22px 26px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .question-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: var(--shadow-md);
+    }
+
+    .question-card.active-target {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.12);
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .q-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .part-2 .q-number-badge {
+      background: #F3E8FF;
+      color: #5B21B6;
+      border-color: #DDD6FE;
+    }
+    .part-3 .q-number-badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: var(--accent-border);
+    }
+
+    .flag-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .flag-btn:hover {
+      background: #F1F5F9;
+      color: var(--warning);
+    }
+    .flag-btn.flagged {
+      color: var(--warning);
+      background: var(--warning-light);
+    }
+
+    .question-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .katex {
+      font-size: 1.06em;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+      text-align: left;
+    }
+
+    .option-item:hover {
+      border-color: var(--primary-border);
+      background: var(--primary-light);
+    }
+
+    .option-item.selected {
+      border-color: var(--primary);
+      background: #EEF2FB;
+      box-shadow: 0 2px 6px rgba(24, 42, 120, 0.08);
+    }
+
+    .option-key {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: #F1F5F9;
+      color: var(--text-secondary);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .option-item.selected .option-key {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .option-content {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      flex: 1;
+    }
+
+    .tf-table-container {
+      margin-top: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .tf-statement-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .tf-statement-row:last-child {
+      border-bottom: none;
+    }
+
+    .tf-statement-row:hover {
+      background: #F8FAFC;
+    }
+
+    .tf-label {
+      font-weight: 800;
+      color: #5B21B6;
+      font-size: 0.95rem;
+      width: 28px;
+    }
+
+    .tf-text {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.55;
+    }
+
+    .tf-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tf-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1.5px solid var(--border-color);
+      background: #fff;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tf-btn:hover {
+      background: #F1F5F9;
+    }
+
+    .tf-btn.active-true {
+      background: #E0F2FE;
+      border-color: #0284C7;
+      color: #0369A1;
+    }
+
+    .tf-btn.active-false {
+      background: #FEF2F2;
+      border-color: #DC2626;
+      color: #B91C1C;
+    }
+
+    .short-answer-box {
+      margin-top: 14px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .short-input-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .short-input {
+      flex: 1;
+      padding: 12px 16px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      outline: none;
+      transition: var(--transition);
+      font-family: 'JetBrains Mono', monospace;
+      background: #fff;
+    }
+
+    .short-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.12);
+    }
+
+    .quick-symbol-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .symbol-btn {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .symbol-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .solution-box {
+      margin-top: 18px;
+      padding: 16px 20px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      display: none;
+    }
+
+    .review-mode .solution-box {
+      display: block;
+    }
+
+    .solution-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .solution-body {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .eval-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-left: 8px;
+    }
+    .eval-badge.correct {
+      background: var(--success-light);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+    }
+    .eval-badge.incorrect {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+    }
+
+    .review-mode .option-item.is-correct-target {
+      border-color: var(--success) !important;
+      background: #F0FDF4 !important;
+    }
+    .review-mode .option-item.is-correct-target .option-key {
+      background: var(--success) !important;
+      color: #fff !important;
+    }
+    .review-mode .option-item.is-wrong-selected {
+      border-color: var(--accent) !important;
+      background: #FEF2F2 !important;
+    }
+    .review-mode .option-item.is-wrong-selected .option-key {
+      background: var(--accent) !important;
+      color: #fff !important;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .palette-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .palette-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .palette-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .palette-progress-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary) 0%, #2A44B0 100%);
+      transition: width 0.3s ease;
+    }
+
+    .palette-section-group {
+      margin-bottom: 16px;
+    }
+
+    .palette-section-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .q-matrix-btn {
+      aspect-ratio: 1;
+      border: 1.5px solid var(--border-color);
+      background: #fff;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .q-matrix-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .q-matrix-btn.answered {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .q-matrix-btn.flagged::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 6px;
+      height: 6px;
+      background: var(--warning);
+      border-radius: 50%;
+    }
+
+    .q-matrix-btn.review-correct {
+      background: var(--success) !important;
+      border-color: var(--success) !important;
+      color: #fff !important;
+    }
+    .q-matrix-btn.review-incorrect {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #fff !important;
+    }
+
+    .palette-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+    }
+    .legend-dot.answered {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .legend-dot.flagged {
+      background: var(--warning);
+      border-color: var(--warning);
+    }
+
+    .sidebar-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      max-width: 580px;
+      width: 100%;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      color: #94A3B8;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      background: #F8FAFC;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .score-banner {
+      text-align: center;
+      padding: 24px;
+      background: linear-gradient(135deg, var(--primary) 0%, #22378D 100%);
+      color: #fff;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+    }
+
+    .score-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #FDE047;
+      margin-bottom: 4px;
+    }
+
+    .score-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .stats-breakdown {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .json-editor {
+      width: 100%;
+      height: 320px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: #0F172A;
+      color: #E2E8F0;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+      .app-container {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+      }
+      .question-grid {
+        grid-template-columns: repeat(8, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .topbar-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .question-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      .stats-breakdown {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      .topbar, .sidebar, .modal-overlay, .flag-btn, .quick-symbol-bar {
+        display: none !important;
+      }
+      .app-container {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+      .exam-header-card, .question-card, .section-banner {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+      }
+      .options-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-container">
+      <div class="brand">
+        <div class="brand-icon">∑</div>
+        <div class="brand-text">
+          <h1>NETIZEN MATH QUIZ</h1>
+          <p>Hệ thống Đề thi Trực tuyến chuẩn GDPT 2018</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div id="examTimer" class="timer-badge" title="Thời gian còn lại">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span id="timerText">45:00</span>
+        </div>
+
+        <button id="btnOpenJsonModal" class="btn btn-outline btn-sm" type="button" title="Xem hoặc thay đổi dữ liệu JSON">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          <span>Quản lý JSON</span>
+        </button>
+
+        <button id="btnResetTest" class="btn btn-outline btn-sm" type="button" title="Làm lại từ đầu">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          </svg>
+          <span>Làm lại</span>
+        </button>
+
+        <button id="btnSubmitExam" class="btn btn-accent" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Nộp bài</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <main class="main-content" id="mainContent">
+      
+      <div class="exam-header-card">
+        <span class="exam-title-badge" id="topicBadge">Toán 10 (GDPT 2018) • Vận dụng & Vận dụng cao</span>
+        <h2 class="exam-main-title" id="mainExamTitle">PHIẾU HỌC TẬP INFOGRAPHIC: MỆNH ĐỀ TOÁN HỌC</h2>
+        <p class="exam-subtitle" id="subExamTitle">Chuyên đề Toán 10 - Chương I: Mệnh đề và Tập hợp</p>
+
+        <div class="student-info-strip">
+          <div class="student-field">
+            <span>Họ và tên:</span>
+            <input type="text" id="studentName" class="student-input" value="Nguyễn Văn An" placeholder="Nhập tên học sinh">
+          </div>
+          <div class="student-field">
+            <span>Lớp:</span>
+            <input type="text" id="studentClass" class="student-input" value="10A1" style="width: 70px;">
+          </div>
+          <div class="student-field">
+            <span>Ngày làm bài:</span>
+            <span id="currentDateStr" style="font-weight: 700;">09/09/2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="quizSectionsContainer"></div>
+
+    </main>
+
+    <aside class="sidebar">
+      <div class="palette-card">
+        <div class="palette-header">
+          <h3 class="palette-title">Bảng Câu Hỏi</h3>
+          <span class="palette-progress-text" id="progressText">0 / 19 câu</span>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <div class="palette-section-group">
+          <div class="palette-section-title">
+            <span>Phần I (MCQ 4 lựa chọn)</span>
+            <span id="p1StatusCount">0/10</span>
+          </div>
+          <div class="question-grid" id="gridPart1"></div>
+        </div>
+
+        <div class="palette-section-group">
+          <div class="palette-section-title">
+            <span>Phần II (Đúng - Sai)</span>
+            <span id="p2StatusCount">0/4</span>
+          </div>
+          <div class="question-grid" id="gridPart2"></div>
+        </div>
+
+        <div class="palette-section-group">
+          <div class="palette-section-title">
+            <span>Phần III (Trả lời ngắn)</span>
+            <span id="p3StatusCount">0/5</span>
+          </div>
+          <div class="question-grid" id="gridPart3"></div>
+        </div>
+
+        <div class="palette-legend">
+          <div class="legend-item">
+            <span class="legend-dot"></span>
+            <span>Chưa làm</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot answered"></span>
+            <span>Đã làm</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot flagged"></span>
+            <span>Đánh dấu</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-actions">
+        <button id="btnSubmitSidebar" class="btn btn-accent" style="width: 100%; padding: 12px;" type="button">
+          Hoàn thành & Nộp bài
+        </button>
+        <button id="btnPrintExam" class="btn btn-outline" style="width: 100%;" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>In đề thi (Khổ A4)</span>
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <div id="modalConfirmSubmit" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Xác Nhận Nộp Bài</h3>
+        <button class="modal-close-btn" data-close="modalConfirmSubmit">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 1rem; margin-bottom: 14px;">Bạn có chắc chắn muốn nộp bài thi ngay bây giờ không?</p>
+        <div id="unansweredWarning" style="background: var(--warning-light); border: 1px solid var(--warning-border); padding: 12px 16px; border-radius: var(--radius-md); font-size: 0.88rem; color: #92400E; display: none;">
+          ⚠️ <strong>Chú ý:</strong> Bạn vẫn còn <strong id="unansweredCount">0</strong> câu chưa trả lời. Hãy kiểm tra lại trước khi hoàn tất!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-close="modalConfirmSubmit" type="button">Tiếp tục làm bài</button>
+        <button id="btnConfirmFinalSubmit" class="btn btn-accent" type="button">Xác nhận Nộp</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalScoreReport" class="modal-overlay">
+    <div class="modal-card" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Kết Quả Bài Thi</h3>
+        <button class="modal-close-btn" data-close="modalScoreReport">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="score-banner">
+          <div class="score-number" id="finalScoreVal">0.0</div>
+          <div class="score-label">TRÊN THANG ĐIỂM 10.0 (CHUẨN BỘ GD&ĐT)</div>
+        </div>
+
+        <div class="stats-breakdown">
+          <div class="stat-box">
+            <div class="stat-val" id="p1ScoreVal">0.0 / 3.0</div>
+            <div class="stat-sub">Phần I (MCQ)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="p2ScoreVal">0.0 / 4.0</div>
+            <div class="stat-sub">Phần II (Đúng/Sai)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="p3ScoreVal">0.0 / 3.0</div>
+            <div class="stat-sub">Phần III (Trả lời ngắn)</div>
+          </div>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px 18px; font-size: 0.88rem; line-height: 1.6;">
+          <p>⏱ <strong>Thời gian hoàn thành:</strong> <span id="timeTakenText">0 phút</span></p>
+          <p>🎯 <strong>Độ chính xác tổng thể:</strong> <span id="accuracyPercent">0%</span></p>
+          <p style="margin-top: 8px; color: var(--primary); font-weight: 600;">Hệ thống đã kích hoạt <strong>Chế độ Xem lại (Review Mode)</strong>. Bạn có thể xem lại bài thi trực tiếp trên giao diện để theo dõi đáp án đúng và phẫu thuật bẫy tư duy chi tiết!</p>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-close="modalScoreReport" type="button">Đóng</button>
+        <button id="btnReviewDirectly" class="btn btn-primary" type="button">Xem lời giải chi tiết</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalJsonManager" class="modal-overlay">
+    <div class="modal-card" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Quản Lý Ngân Hàng Đề JSON</h3>
+        <button class="modal-close-btn" data-close="modalJsonManager">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 12px;">
+          Bạn có thể dán dữ liệu JSON mới vào khung bên dưới hoặc tải file <code>.json</code> từ máy tính để ứng dụng tự động render đề thi trực tuyến.
+        </p>
+        <textarea id="jsonEditorArea" class="json-editor" spellcheck="false"></textarea>
+        
+        <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+          <label class="btn btn-outline btn-sm" style="cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span>Tải file .JSON lên</span>
+            <input type="file" id="fileJsonUpload" accept=".json" style="display: none;">
+          </label>
+          <button id="btnDownloadCurrentJson" class="btn btn-outline btn-sm" type="button">
+            Xuất JSON hiện tại
+          </button>
+          <button id="btnResetToDefaultJson" class="btn btn-outline btn-sm" type="button">
+            Khôi phục đề Mệnh đề chuẩn
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-close="modalJsonManager" type="button">Đóng</button>
+        <button id="btnApplyNewJson" class="btn btn-primary" type="button">Áp dụng JSON này</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_QUIZ_DATA = {
+  "metadata": {
+    "topic": "Mệnh đề",
+    "subject": "Toán 10 (GDPT 2018)",
+    "grade_level": "Lớp 10",
+    "difficulty_level": "Vận dụng và Vận dụng cao",
+    "question_counts": {
+      "part_1_mcq": 10,
+      "part_2_true_false": 4,
+      "part_3_short_answer": 5
+    },
+    "solution_mode": "TẮT"
+  },
+  "title": {
+    "main_title": "PHIẾU HỌC TẬP INFOGRAPHIC: MỆNH ĐỀ TOÁN HỌC",
+    "subtitle": "Chuyên đề Toán 10 - Chương I: Mệnh đề và Tập hợp (GDPT 2018)",
+    "student_info": [
+      "Họ và tên: ........................................",
+      "Lớp: ................",
+      "Ngày: ....../....../........"
+    ]
+  },
+  "style": {
+    "document_type": "Infographic phiếu học tập viết tay học thuật A4",
+    "aspect_ratio": "3:4 (A4 dọc, 210x297 mm, 300 DPI)",
+    "color_palette": {
+      "primary_header": "#C62828 (Đỏ son)",
+      "content_and_lines": "#182A78 (Xanh mực)",
+      "background": "#FAFAFA (Giấy trắng ngà nhẹ, sạch)"
+    },
+    "typography": "Chữ viết tay học thuật sắc nét, công thức LaTeX chuẩn xác, tiếng Việt 100%"
+  },
+  "layout": {
+    "page_structure": "Khổ A4 dọc, 1 trang duy nhất, mật độ nội dung cao, phân chia 3 vùng rõ ràng bằng khoảng trắng và đường kẻ mảnh",
+    "section_allocations": {
+      "part_1": "Phần I: Trắc nghiệm 4 lựa chọn (Chiếm 45% diện tích, 2 cột cân đối, 10 câu)",
+      "part_2": "Phần II: Đúng - Sai (Chiếm 28% diện tích, lưới 2 cột x 2 hàng, 4 câu)",
+      "part_3": "Phần III: Trả lời ngắn (Chiếm 27% diện tích, bố cục toàn chiều ngang, 5 câu)"
+    }
+  },
+  "content_sections": {
+    "part_1_mcq": {
+      "section_title": "PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU - MỨC ĐỘ VẬN DỤNG & VẬN DỤNG CAO)",
+      "instruction": "Khoanh tròn vào chữ cái A, B, C hoặc D trước phương án trả lời đúng nhất.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Cho mệnh đề $P: \"\\forall x \\in \\mathbb{R}, x^2 - x + 1 > 0\"$. Mệnh đề phủ định $\\overline{P}$ của $P$ là:",
+          "options": {
+            "A": "$\\exists x \\in \\mathbb{R}, x^2 - x + 1 \\le 0$",
+            "B": "$\\exists x \\in \\mathbb{R}, x^2 - x + 1 < 0$",
+            "C": "$\\forall x \\in \\mathbb{R}, x^2 - x + 1 \\le 0$",
+            "D": "$\\exists x \\notin \\mathbb{R}, x^2 - x + 1 \\le 0$"
+          }
+        },
+        {
+          "id": 2,
+          "question": "Xét các phát biểu tương đương về tam giác $ABC$. Phát biểu nào sau đây là MỆNH ĐỀ SAI?",
+          "options": {
+            "A": "Tam giác $ABC$ đều $\\Leftrightarrow$ Tam giác $ABC$ cân và có một góc bằng $60^\\circ$.",
+            "B": "Tam giác $ABC$ vuông tại $A \\Leftrightarrow AB^2 + AC^2 = BC^2$.",
+            "C": "Tam giác $ABC$ có hai góc bằng $60^\\circ \\Leftrightarrow$ Tam giác $ABC$ là tam giác đều.",
+            "D": "Tam giác $ABC$ cân tại $A \\Leftrightarrow AB = AC$ và $\\widehat{A} = 60^\\circ$."
+          }
+        },
+        {
+          "id": 3,
+          "question": "Cho hai mệnh đề chứa biến $P(x): \"x^2 - 5x + 4 = 0\"$ và $Q(x): \"x^2 - 1 = 0\"$. Tìm $x \\in \\mathbb{R}$ để mệnh đề kéo theo $P(x) \\Rightarrow Q(x)$ nhận giá trị SAI.",
+          "options": {
+            "A": "$x = 1$",
+            "B": "$x = 4$",
+            "C": "$x = -1$",
+            "D": "$x = 2$"
+          }
+        },
+        {
+          "id": 4,
+          "question": "Cho mệnh đề $P: \"\\forall x \\in \\mathbb{R}, x^2 + (m+1)x + 1 > 0\"$. Tìm tất cả các giá trị thực của tham số $m$ để $P$ là mệnh đề ĐÚNG.",
+          "options": {
+            "A": "$-3 < m < 1$",
+            "B": "$m < -3$ hoặc $m > 1$",
+            "C": "$-1 < m < 3$",
+            "D": "$-3 \\le m \\le 1$"
+          }
+        },
+        {
+          "id": 5,
+          "question": "Cho phát biểu: \"Tồn tại số nguyên $n$ sao cho $n^2 + 3n + 1$ là số chẵn\". Mệnh đề phủ định của phát biểu này và tính đúng sai của nó là:",
+          "options": {
+            "A": "\"$\\forall n \\in \\mathbb{Z}, n^2 + 3n + 1$ là số lẻ\" - Mệnh đề ĐÚNG.",
+            "B": "\"$\\forall n \\in \\mathbb{Z}, n^2 + 3n + 1$ là số lẻ\" - Mệnh đề SAI.",
+            "C": "\"$\\forall n \\in \\mathbb{Z}, n^2 + 3n + 1$ là số chẵn\" - Mệnh đề ĐÚNG.",
+            "D": "\"$\\exists n \\in \\mathbb{Z}, n^2 + 3n + 1$ là số lẻ\" - Mệnh đề SAI."
+          }
+        },
+        {
+          "id": 6,
+          "question": "Cho hai mệnh đề $P: \"x \\text{ chia hết cho } 6\"$ và $Q: \"x \\text{ chia hết cho } 2 \\text{ và chia hết cho } 3\"$ ($x \\in \\mathbb{N}$). Khẳng định nào sau đây đúng?",
+          "options": {
+            "A": "$P$ là điều kiện đủ để có $Q$, nhưng không phải là điều kiện cần.",
+            "B": "$P$ là điều kiện cần để có $Q$, nhưng không phải là điều kiện đủ.",
+            "C": "$P$ là điều kiện cần và đủ để có $Q$.",
+            "D": "$P$ và $Q$ không có quan hệ kéo theo."
+          }
+        },
+        {
+          "id": 7,
+          "question": "Cho mệnh đề $P(n): \"n^2 + 1 \\text{ chia hết cho } 5\"$ với $n \\in \\mathbb{N}$. Với giá trị $n$ nào dưới đây thì $P(n)$ là mệnh đề ĐÚNG?",
+          "options": {
+            "A": "$n = 5$",
+            "B": "$n = 7$",
+            "C": "$n = 8$",
+            "D": "$n = 10$"
+          }
+        },
+        {
+          "id": 8,
+          "question": "Cho mệnh đề $A: \"\\exists x \\in \\mathbb{R}, x^2 - mx + 4 = 0\"$. Tìm tất cả các giá trị của $m$ để mệnh đề $A$ ĐÚNG.",
+          "options": {
+            "A": "$-4 \\le m \\le 4$",
+            "B": "$m \\le -4$ hoặc $m \\ge 4$",
+            "C": "$m < -4$ hoặc $m > 4$",
+            "D": "$-4 < m < 4$"
+          }
+        },
+        {
+          "id": 9,
+          "question": "Phát biểu nào sau đây nêu ĐÚNG điều kiện cần và đủ để phương trình $ax^2 + bx + c = 0 \\;(a \\neq 0)$ có hai nghiệm trái dấu?",
+          "options": {
+            "A": "$a$ và $c$ trái dấu ($ac < 0$).",
+            "B": "$\\Delta > 0$ và $ac > 0$.",
+            "C": "$b^2 - 4ac > 0$.",
+            "D": "$a$ và $b$ trái dấu."
+          }
+        },
+        {
+          "id": 10,
+          "question": "Cho mệnh đề $P: \"\\text{Nếu một số tự nhiên chia hết cho } 9 \\text{ thì nó chia hết cho } 3\"$. Mệnh đề đảo $Q$ của $P$ và tính đúng sai của $Q$ là:",
+          "options": {
+            "A": "\"Nếu một số tự nhiên chia hết cho $3$ thì nó chia hết cho $9$\" - Mệnh đề SAI.",
+            "B": "\"Nếu một số tự nhiên không chia hết cho $9$ thì không chia hết cho $3$\" - Mệnh đề ĐÚNG.",
+            "C": "\"Một số tự nhiên chia hết cho $9$ khi và chỉ khi chia hết cho $3$\" - Mệnh đề ĐÚNG.",
+            "D": "\"Nếu một số tự nhiên chia hết cho $3$ thì nó chia hết cho $9$\" - Mệnh đề ĐÚNG."
+          }
+        }
+      ]
+    },
+    "part_2_true_false": {
+      "section_title": "PHẦN II. TRẮC NGHIỆM ĐÚNG - SAI (4 CÂU - MỖI CÂU GỒM 4 NHẬN ĐỊNH a, b, c, d)",
+      "instruction": "Học sinh ghi chữ Đ (Đúng) hoặc S (Sai) vào ô trống tương ứng trước mỗi nhận định.",
+      "questions": [
+        {
+          "id": 1,
+          "context": "Xét các mệnh đề chứa lượng tử và phủ định của chúng trên tập số thực $\\mathbb{R}$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Mệnh đề $P: \"\\forall x \\in \\mathbb{R}, x^2 + 1 > 0\"$ nhận giá trị đúng.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Phủ định của $P$ là $\\overline{P}: \"\\exists x \\in \\mathbb{R}, x^2 + 1 \\le 0\"$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Mệnh đề $Q: \"\\exists x \\in \\mathbb{R}, x^2 - 3x + 2 = 0\"$ nhận giá trị sai.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Phủ định của $Q$ là $\\overline{Q}: \"\\forall x \\in \\mathbb{R}, x^2 - 3x + 2 \\neq 0\"$.",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "context": "Cho tam giác $ABC$ và ba mệnh đề $P: \"\\text{Tam giác } ABC \\text{ cân tại } A\"$, $Q: \"\\text{Tam giác } ABC \\text{ có hai đường cao } AB \\text{ và } AC \\text{ bằng nhau}\"$, $R: \"\\text{Tam giác } ABC \\text{ có } \\widehat{B} = \\widehat{C}\"$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Mệnh đề kéo theo $P \\Rightarrow R$ là một mệnh đề đúng.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Mệnh đề $R$ là điều kiện đủ để có $P$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Mệnh đề tương đương $P \\Leftrightarrow R$ phát biểu là: \"Tam giác $ABC$ cân tại $A$ là điều kiện cần và đủ để $\\widehat{B} = \\widehat{C}$\".",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Phủ định của mệnh đề $P$ là: \"Tam giác $ABC$ là tam giác đều\".",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "context": "Xét mệnh đề chứa biến $P(n): \"n^2 - 1 \\text{ chia hết cho } 8\"$ với $n$ là số tự nhiên lẻ:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": " Mệnh đề $P(3)$ nhận giá trị đúng.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": " Mệnh đề $P(5)$ nhận giá trị sai.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Với mọi số tự nhiên lẻ $n = 2k + 1 \\;(k \\in \\mathbb{N})$, mệnh đề $P(n)$ luôn luôn đúng.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Mệnh đề \"$\\forall n \\in \\mathbb{N}, n \\text{ lẻ} \\Rightarrow n^2 - 1 \\vdots 8$\" có mệnh đề đảo là mệnh đề đúng.",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "context": "Cho tam thức bậc hai $f(x) = x^2 - 2mx + m + 2$. Xét mệnh đề $A: \"\\forall x \\in \\mathbb{R}, f(x) > 0\"$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Mệnh đề $A$ đúng khi và chỉ khi $\\Delta' = m^2 - m - 2 < 0$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Tập hợp các giá trị thực của $m$ để $A$ đúng là khoảng $(-1; 2)$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Khi $m = 3$, phủ định của mệnh đề $A$ là mệnh đề đúng.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Khi $m = -1$, mệnh đề $A$ nhận giá trị đúng.",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        }
+      ]
+    },
+    "part_3_short_answer": {
+      "section_title": "PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU - BAO GỒM VẬN DỤNG THỰC TẾ)",
+      "instruction": "Học sinh viết đáp số hoặc câu trả lời ngắn gọn vào khoảng trống bên dưới mỗi câu hỏi.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Câu 1. Tìm điều kiện của tham số $m$ để mệnh đề \"$x^2 - 2x + m > 0, \\forall x \\in \\mathbb{R}$\" là mệnh đề đúng.",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 2,
+          "question": "Câu 2. Cho mệnh đề $P: \"\\exists x \\in \\mathbb{R}, x^2 - 4x + 4 \\le 0\"$. Tìm giá trị $x$ duy nhất làm cho khẳng định trong $P$ nhận giá trị đúng.",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 3,
+          "question": "Câu 3. Có bao nhiêu giá trị nguyên $m \\in [-5; 5]$ để mệnh đề kéo theo $P \\Rightarrow Q$ đúng, biết $P: \"x = 2\"$ và $Q: \"x^2 - mx + 4 = 0\"$?",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 4,
+          "question": "Câu 4. Lớp 10A có 40 học sinh. Gọi $P$ là mệnh đề: \"Mọi học sinh lớp 10A đều tham gia câu lạc bộ Toán học\". Biết rằng thực tế có 35 học sinh tham gia và 5 học sinh không tham gia. Xác định số lượng phản ví dụ làm mệnh đề $P$ sai.",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 5,
+          "question": "Câu 5 (Vận dụng thực tế). Một công ty ra thông báo: \"Nếu doanh thu tháng 10 đạt trên 500 triệu đồng ($P$) thì toàn bộ nhân viên được thưởng 10% lương ($Q$)\". Thực tế tháng 10 doanh thu đạt 520 triệu đồng nhưng nhân viên không được thưởng. Hỏi mệnh đề kéo theo $P \\Rightarrow Q$ nhận giá trị ĐÚNG hay SAI?",
+          "answer_space": "Đáp số: ...................................................................................................."
+        }
+      ]
+    }
+  }
+};
+    const ANSWER_KEY = {
+  "part1": {
+    "1": {
+      "answer": "A",
+      "explanation": "Phủ định của mệnh đề $\\forall x \\in \\mathbb{R}, P(x)$ là $\\exists x \\in \\mathbb{R}, \\overline{P(x)}$. Do đó phủ định của $x^2 - x + 1 > 0$ là $x^2 - x + 1 \\le 0$. Bẫy sai lầm: Học sinh thường nhầm phủ định của $>$ là $<$ (chọn B) mà quên dấu bằng $\\le$."
+    },
+    "2": {
+      "answer": "D",
+      "explanation": "Mệnh đề D sai: Tam giác $ABC$ cân tại $A$ chỉ cần điều kiện $AB = AC$. Nếu bổ sung thêm $\\widehat{A} = 60^\\circ$ thì tam giác trở thành tam giác đều. Đây là điều kiện thừa làm hẹp khái niệm tam giác cân."
+    },
+    "3": {
+      "answer": "B",
+      "explanation": "$P(x) \\Leftrightarrow x \\in \\{1; 4\\}$, $Q(x) \\Leftrightarrow x \\in \\{-1; 1\\}$. Mệnh đề kéo theo $P(x) \\Rightarrow Q(x)$ SAI khi và chỉ khi tiền đề $P(x)$ ĐÚNG và kết luận $Q(x)$ SAI. Tại $x = 4$, $P(4)$ đúng ($4^2 - 5(4) + 4 = 0$) nhưng $Q(4)$ sai ($4^2 - 1 = 15 \\neq 0$), do đó $P(4) \\Rightarrow Q(4)$ nhận giá trị SAI."
+    },
+    "4": {
+      "answer": "A",
+      "explanation": "Tam thức bậc hai $x^2 + (m+1)x + 1 > 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow a = 1 > 0$ (luôn đúng) và $\\Delta = (m+1)^2 - 4 < 0 \\Leftrightarrow m^2 + 2m - 3 < 0 \\Leftrightarrow -3 < m < 1$."
+    },
+    "5": {
+      "answer": "A",
+      "explanation": "Phủ định của phát biểu $\\exists n \\in \\mathbb{Z}, P(n)$ là \"$\\forall n \\in \\mathbb{Z}, n^2 + 3n + 1$ là số lẻ\". Ta có $n^2 + 3n + 1 = n(n+3) + 1$. Vì $n$ và $n+3$ luôn khác tính chẵn lẻ nên tích $n(n+3)$ luôn là số chẵn. Do đó $n(n+3) + 1$ luôn là số lẻ với mọi số nguyên $n$. Mệnh đề phủ định là mệnh đề ĐÚNG."
+    },
+    "6": {
+      "answer": "C",
+      "explanation": "Vì $2$ và $3$ là hai số nguyên tố cùng nhau $(\\text{ƯCLN}(2, 3) = 1)$ nên một số tự nhiên chia hết cho cả $2$ và $3$ khi và chỉ khi nó chia hết cho $2 \\times 3 = 6$. Vậy $P \\Leftrightarrow Q$, tức $P$ là điều kiện cần và đủ để có $Q$."
+    },
+    "7": {
+      "answer": "B",
+      "acceptable": [
+        "B",
+        "C"
+      ],
+      "explanation": "Kiểm tra: Với $n = 7 \\Rightarrow 7^2 + 1 = 50$ chia hết cho 5 (Đúng). Ngoài ra với $n = 8 \\Rightarrow 8^2 + 1 = 65$ cũng chia hết cho 5 (Hệ thống chấp nhận cả B và C)."
+    },
+    "8": {
+      "answer": "B",
+      "explanation": "Mệnh đề $A$ đúng khi phương trình $x^2 - mx + 4 = 0$ có nghiệm thực, tức là $\\Delta = m^2 - 16 \\ge 0 \\Leftrightarrow m \\le -4$ hoặc $m \\ge 4$."
+    },
+    "9": {
+      "answer": "A",
+      "explanation": "Phương trình bậc hai $ax^2 + bx + c = 0$ có 2 nghiệm trái dấu khi và chỉ khi $P = \\frac{c}{a} < 0 \\Leftrightarrow ac < 0$. Khi $ac < 0$ thì biệt thức $\\Delta = b^2 - 4ac > 0$ luôn được đảm bảo."
+    },
+    "10": {
+      "answer": "A",
+      "explanation": "Mệnh đề $P: \"A \\Rightarrow B\"$. Mệnh đề đảo $Q$ là: \"Nếu một số tự nhiên chia hết cho 3 thì nó chia hết cho 9\". Đây là mệnh đề sai (phản ví dụ: số 6 chia hết cho 3 nhưng không chia hết cho 9)."
+    }
+  },
+  "part2": {
+    "1": {
+      "answers": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "d": true
+      },
+      "explanations": {
+        "a": "Đúng: Vì $x^2 \\ge 0$ nên $x^2 + 1 \\ge 1 > 0, \\forall x \\in \\mathbb{R}$.",
+        "b": "Đúng: Quy tắc phủ định: $\\forall$ thành $\\exists$, dấu $>$ thành $\\le$.",
+        "c": "Sai: Phương trình $x^2 - 3x + 2 = 0$ có hai nghiệm thực $x = 1, x = 2$, nên mệnh đề tồn tại $Q$ là Đúng. Nhận định c nói $Q$ sai là một nhận định Sai.",
+        "d": "Đúng: Phủ định của tồn tại là với mọi, phủ định dấu $=$ là $\\neq$."
+      }
+    },
+    "2": {
+      "answers": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "d": false
+      },
+      "explanations": {
+        "a": "Đúng: Tam giác $ABC$ cân tại $A$ thì hai góc ở đáy $\\widehat{B} = \\widehat{C}$.",
+        "b": "Đúng: Mệnh đề $R \\Rightarrow P$ là mệnh đề đúng, nên $R$ là điều kiện đủ để có $P$.",
+        "c": "Đúng: Vì $P \\Leftrightarrow R$ đúng nên hai mệnh đề tương đương, biểu diễn quan hệ điều kiện cần và đủ.",
+        "d": "Sai: Phủ định của 'Tam giác $ABC$ cân tại $A$' là 'Tam giác $ABC$ không cân tại $A$'."
+      }
+    },
+    "3": {
+      "answers": {
+        "a": true,
+        "b": false,
+        "c": true,
+        "d": true
+      },
+      "explanations": {
+        "a": "Đúng: $P(3) = 3^2 - 1 = 8 \\vdots 8$.",
+        "b": "Sai: $P(5) = 5^2 - 1 = 24 \\vdots 8$. Mệnh đề $P(5)$ đúng nhưng nhận định b bảo sai, nên nhận định b là Sai.",
+        "c": "Đúng: Với $n = 2k + 1$, $n^2 - 1 = 4k(k+1) \\vdots 8$ vì $k(k+1)$ là tích hai số nguyên liên tiếp nên chia hết cho 2.",
+        "d": "Đúng: Nếu $n^2 - 1 \\vdots 8$ thì $n^2$ lẻ $\\Rightarrow n$ lẻ. Mệnh đề đảo luôn đúng."
+      }
+    },
+    "4": {
+      "answers": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "d": false
+      },
+      "explanations": {
+        "a": "Đúng: $a = 1 > 0$, tam thức luôn dương $\\Leftrightarrow \\Delta' = m^2 - m - 2 < 0$.",
+        "b": "Đúng: Giải $m^2 - m - 2 < 0 \\Leftrightarrow -1 < m < 2$.",
+        "c": "Đúng: Khi $m = 3$, tam thức có $\\Delta' = 4 > 0$ nên mệnh đề $A$ sai, suy ra phủ định $\\overline{A}$ là đúng.",
+        "d": "Sai: Khi $m = -1$, $f(x) = (x+1)^2$. Tại $x = -1$, $f(-1) = 0$ không lớn hơn 0. Do đó $A$ sai."
+      }
+    }
+  },
+  "part3": {
+    "1": {
+      "answer": "m > 1",
+      "acceptable": [
+        "m > 1",
+        "m>1",
+        ">1",
+        "1",
+        "(1; +\\infty)",
+        "(1;+\\infty)"
+      ],
+      "explanation": "Tam thức bậc hai $x^2 - 2x + m > 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow a = 1 > 0$ và $\\Delta' = 1 - m < 0 \\Leftrightarrow m > 1$."
+    },
+    "2": {
+      "answer": "2",
+      "acceptable": [
+        "2",
+        "x = 2",
+        "x=2"
+      ],
+      "explanation": "Ta có $x^2 - 4x + 4 \\le 0 \\Leftrightarrow (x-2)^2 \\le 0$. Vì bình phương luôn không âm nên đẳng thức chỉ xảy ra khi $x - 2 = 0 \\Leftrightarrow x = 2$."
+    },
+    "3": {
+      "answer": "1",
+      "acceptable": [
+        "1",
+        "1 giá trị",
+        "m = 4",
+        "m=4"
+      ],
+      "explanation": "Mệnh đề $P \\Rightarrow Q$ đúng khi $x = 2$ thì $Q$ đúng: $2^2 - 2m + 4 = 0 \\Leftrightarrow 8 - 2m = 0 \\Leftrightarrow m = 4$. Có đúng 1 giá trị nguyên $m = 4 \\in [-5; 5]$."
+    },
+    "4": {
+      "answer": "5",
+      "acceptable": [
+        "5",
+        "5 học sinh",
+        "5 em"
+      ],
+      "explanation": "Mệnh đề khẳng định mọi học sinh đều tham gia. 5 học sinh không tham gia đóng vai trò là 5 phản ví dụ trực tiếp chứng minh mệnh đề sai."
+    },
+    "5": {
+      "answer": "SAI",
+      "acceptable": [
+        "SAI",
+        "Sai",
+        "sai",
+        "S",
+        "s"
+      ],
+      "explanation": "Mệnh đề kéo theo $P \\Rightarrow Q$ nhận giá trị SAI khi và chỉ khi tiền đề $P$ ĐÚNG nhưng kết luận $Q$ SAI. Ở đây doanh thu 520 triệu ($P$ ĐÚNG) nhưng nhân viên không được thưởng ($Q$ SAI)."
+    }
+  }
+};
+
+    let currentQuizData = JSON.parse(JSON.stringify(DEFAULT_QUIZ_DATA));
+    let userAnswers = {
+      part1: {},
+      part2: {},
+      part3: {}
+    };
+    let flaggedQuestions = new Set();
+    let isReviewMode = false;
+    let timerInterval = null;
+    let remainingSeconds = 45 * 60;
+    let examStartTime = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+    });
+
+    function initApp() {
+      const now = new Date();
+      const dateStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
+      document.getElementById('currentDateStr').textContent = dateStr;
+
+      renderExam(currentQuizData);
+      startTimer();
+      bindEvents();
+      triggerMathRender();
+    }
+
+    function renderExam(quizData) {
+      const container = document.getElementById('quizSectionsContainer');
+      container.innerHTML = '';
+
+      if (quizData.title) {
+        document.getElementById('mainExamTitle').textContent = quizData.title.main_title || "BÀI TẬP TRẮC NGHIỆM TOÁN HỌC";
+        document.getElementById('subExamTitle').textContent = quizData.title.subtitle || "";
+      }
+      if (quizData.metadata) {
+        document.getElementById('topicBadge').textContent = (quizData.metadata.subject || "Toán 10") + " • " + (quizData.metadata.topic || "") + " (" + (quizData.metadata.difficulty_level || "") + ")";
+      }
+
+      const sections = quizData.content_sections || {};
+
+      if (sections.part_1_mcq && sections.part_1_mcq.questions) {
+        const p1 = sections.part_1_mcq;
+        const banner = document.createElement('div');
+        banner.className = 'section-banner part-1';
+        banner.id = 'sec_part1';
+        banner.innerHTML = `
+          <span class="section-tag">Phần I • Trọng số 3.0 điểm</span>
+          <h3 class="section-title">${escapeHtml(p1.section_title)}</h3>
+          <p class="section-instruction">${escapeHtml(p1.instruction || "")}</p>
+        `;
+        container.appendChild(banner);
+
+        p1.questions.forEach((q, idx) => {
+          const card = document.createElement('div');
+          card.className = 'question-card part-1';
+          card.id = 'card_p1_' + q.id;
+
+          const isFlagged = flaggedQuestions.has('p1_' + q.id);
+          const selectedOption = userAnswers.part1[q.id] || null;
+
+          card.innerHTML = `
+            <div class="question-header">
+              <div class="q-number-badge">Câu ${idx + 1} • 0.3đ</div>
+              <button class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('p1_${q.id}')" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="${isFlagged ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                <span>${isFlagged ? 'Đã đánh dấu' : 'Đánh dấu'}</span>
+              </button>
+            </div>
+            <div class="question-text">${formatMathText(q.question)}</div>
+            <div class="options-grid" id="opt_grid_${q.id}">
+              ${Object.entries(q.options).map(([key, text]) => `
+                <div class="option-item ${selectedOption === key ? 'selected' : ''}" 
+                     id="opt_p1_${q.id}_${key}" 
+                     onclick="selectPart1Option(${q.id}, '${key}')">
+                  <div class="option-key">${key}</div>
+                  <div class="option-content">${formatMathText(text)}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="solution-box" id="sol_p1_${q.id}">
+              <div class="solution-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Lời giải chi tiết & Phẫu thuật bẫy sai lầm</span>
+              </div>
+              <div class="solution-body" id="sol_body_p1_${q.id}"></div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      if (sections.part_2_true_false && sections.part_2_true_false.questions) {
+        const p2 = sections.part_2_true_false;
+        const banner = document.createElement('div');
+        banner.className = 'section-banner part-2';
+        banner.id = 'sec_part2';
+        banner.innerHTML = `
+          <span class="section-tag">Phần II • Trọng số 4.0 điểm (Thang luỹ tiến)</span>
+          <h3 class="section-title">${escapeHtml(p2.section_title)}</h3>
+          <p class="section-instruction">${escapeHtml(p2.instruction || "")}</p>
+        `;
+        container.appendChild(banner);
+
+        p2.questions.forEach((q, idx) => {
+          const card = document.createElement('div');
+          card.className = 'question-card part-2';
+          card.id = 'card_p2_' + q.id;
+
+          const isFlagged = flaggedQuestions.has('p2_' + q.id);
+
+          card.innerHTML = `
+            <div class="question-header">
+              <div class="q-number-badge">Câu ${idx + 1} (Phần II) • Tối đa 1.0đ</div>
+              <button class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('p2_${q.id}')" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="${isFlagged ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                <span>${isFlagged ? 'Đã đánh dấu' : 'Đánh dấu'}</span>
+              </button>
+            </div>
+            <div class="question-text">${formatMathText(q.context || "")}</div>
+            
+            <div class="tf-table-container">
+              ${q.statements.map((st) => {
+                const subKey = st.label.replace(/[^a-z0-9]/gi, '').toLowerCase();
+                const curVal = userAnswers.part2[q.id] ? userAnswers.part2[q.id][subKey] : undefined;
+                return `
+                  <div class="tf-statement-row" id="row_p2_${q.id}_${subKey}">
+                    <div class="tf-label">${st.label}</div>
+                    <div class="tf-text">${formatMathText(st.text)}</div>
+                    <div class="tf-controls">
+                      <button type="button" class="tf-btn ${curVal === true ? 'active-true' : ''}" 
+                              id="btn_tf_${q.id}_${subKey}_true"
+                              onclick="selectPart2Value(${q.id}, '${subKey}', true)">
+                        ✓ Đúng
+                      </button>
+                      <button type="button" class="tf-btn ${curVal === false ? 'active-false' : ''}" 
+                              id="btn_tf_${q.id}_${subKey}_false"
+                              onclick="selectPart2Value(${q.id}, '${subKey}', false)">
+                        ✗ Sai
+                      </button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <div class="solution-box" id="sol_p2_${q.id}">
+              <div class="solution-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Lời giải chi tiết từng ý a, b, c, d</span>
+              </div>
+              <div class="solution-body" id="sol_body_p2_${q.id}"></div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      if (sections.part_3_short_answer && sections.part_3_short_answer.questions) {
+        const p3 = sections.part_3_short_answer;
+        const banner = document.createElement('div');
+        banner.className = 'section-banner part-3';
+        banner.id = 'sec_part3';
+        banner.innerHTML = `
+          <span class="section-tag">Phần III • Trọng số 3.0 điểm</span>
+          <h3 class="section-title">${escapeHtml(p3.section_title)}</h3>
+          <p class="section-instruction">${escapeHtml(p3.instruction || "")}</p>
+        `;
+        container.appendChild(banner);
+
+        p3.questions.forEach((q, idx) => {
+          const card = document.createElement('div');
+          card.className = 'question-card part-3';
+          card.id = 'card_p3_' + q.id;
+
+          const isFlagged = flaggedQuestions.has('p3_' + q.id);
+          const curAnswer = userAnswers.part3[q.id] || "";
+
+          card.innerHTML = `
+            <div class="question-header">
+              <div class="q-number-badge">Câu ${idx + 1} (Trả lời ngắn) • 0.6đ</div>
+              <button class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('p3_${q.id}')" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="${isFlagged ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                <span>${isFlagged ? 'Đã đánh dấu' : 'Đánh dấu'}</span>
+              </button>
+            </div>
+            <div class="question-text">${formatMathText(q.question)}</div>
+            
+            <div class="short-answer-box">
+              <div class="input-label-row">
+                <span>Điền câu trả lời ngắn:</span>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Hỗ trợ số, phân số hoặc ký tự</span>
+              </div>
+              <div class="short-input-group">
+                <input type="text" 
+                       id="input_p3_${q.id}" 
+                       class="short-input" 
+                       value="${escapeHtml(curAnswer)}" 
+                       placeholder="Gõ đáp số tại đây..."
+                       oninput="handlePart3Input(${q.id}, this.value)">
+              </div>
+              <div class="quick-symbol-bar">
+                <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Ký tự nhanh:</span>
+                <button type="button" class="symbol-btn" onclick="insertSymbol(${q.id}, '-')">Âm (-)</button>
+                <button type="button" class="symbol-btn" onclick="insertSymbol(${q.id}, '/')">Phân số (/)</button>
+                <button type="button" class="symbol-btn" onclick="insertSymbol(${q.id}, '>')">&gt;</button>
+                <button type="button" class="symbol-btn" onclick="insertSymbol(${q.id}, '<')">&lt;</button>
+                <button type="button" class="symbol-btn" onclick="insertSymbol(${q.id}, 'ĐÚNG')">ĐÚNG</button>
+                <button type="button" class="symbol-btn" onclick="insertSymbol(${q.id}, 'SAI')">SAI</button>
+              </div>
+            </div>
+
+            <div class="solution-box" id="sol_p3_${q.id}">
+              <div class="solution-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Đáp án chuẩn & Hướng dẫn chấm</span>
+              </div>
+              <div class="solution-body" id="sol_body_p3_${q.id}"></div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      renderQuestionPalette();
+      updateProgress();
+    }
+
+    function renderQuestionPalette() {
+      const sec = currentQuizData.content_sections || {};
+
+      const grid1 = document.getElementById('gridPart1');
+      grid1.innerHTML = '';
+      if (sec.part_1_mcq && sec.part_1_mcq.questions) {
+        sec.part_1_mcq.questions.forEach((q, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'q-matrix-btn';
+          btn.id = 'palette_p1_' + q.id;
+          btn.textContent = idx + 1;
+          btn.onclick = () => scrollToCard('card_p1_' + q.id);
+          grid1.appendChild(btn);
+        });
+      }
+
+      const grid2 = document.getElementById('gridPart2');
+      grid2.innerHTML = '';
+      if (sec.part_2_true_false && sec.part_2_true_false.questions) {
+        sec.part_2_true_false.questions.forEach((q, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'q-matrix-btn';
+          btn.id = 'palette_p2_' + q.id;
+          btn.textContent = idx + 1;
+          btn.onclick = () => scrollToCard('card_p2_' + q.id);
+          grid2.appendChild(btn);
+        });
+      }
+
+      const grid3 = document.getElementById('gridPart3');
+      grid3.innerHTML = '';
+      if (sec.part_3_short_answer && sec.part_3_short_answer.questions) {
+        sec.part_3_short_answer.questions.forEach((q, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'q-matrix-btn';
+          btn.id = 'palette_p3_' + q.id;
+          btn.textContent = idx + 1;
+          btn.onclick = () => scrollToCard('card_p3_' + q.id);
+          grid3.appendChild(btn);
+        });
+      }
+
+      updatePaletteUI();
+    }
+
+    function updatePaletteUI() {
+      const sec = currentQuizData.content_sections || {};
+
+      let p1Answered = 0;
+      if (sec.part_1_mcq && sec.part_1_mcq.questions) {
+        sec.part_1_mcq.questions.forEach(q => {
+          const btn = document.getElementById('palette_p1_' + q.id);
+          if (!btn) return;
+          const isAnswered = !!userAnswers.part1[q.id];
+          const isFlagged = flaggedQuestions.has('p1_' + q.id);
+
+          btn.classList.toggle('answered', isAnswered);
+          btn.classList.toggle('flagged', isFlagged);
+          if (isAnswered) p1Answered++;
+        });
+        document.getElementById('p1StatusCount').textContent = p1Answered + '/' + sec.part_1_mcq.questions.length;
+      }
+
+      let p2Answered = 0;
+      if (sec.part_2_true_false && sec.part_2_true_false.questions) {
+        sec.part_2_true_false.questions.forEach(q => {
+          const btn = document.getElementById('palette_p2_' + q.id);
+          if (!btn) return;
+          const userSub = userAnswers.part2[q.id] || {};
+          const isAnswered = Object.keys(userSub).length >= 4;
+          const isFlagged = flaggedQuestions.has('p2_' + q.id);
+
+          btn.classList.toggle('answered', isAnswered);
+          btn.classList.toggle('flagged', isFlagged);
+          if (isAnswered) p2Answered++;
+        });
+        document.getElementById('p2StatusCount').textContent = p2Answered + '/' + sec.part_2_true_false.questions.length;
+      }
+
+      let p3Answered = 0;
+      if (sec.part_3_short_answer && sec.part_3_short_answer.questions) {
+        sec.part_3_short_answer.questions.forEach(q => {
+          const btn = document.getElementById('palette_p3_' + q.id);
+          if (!btn) return;
+          const isAnswered = (userAnswers.part3[q.id] || "").trim().length > 0;
+          const isFlagged = flaggedQuestions.has('p3_' + q.id);
+
+          btn.classList.toggle('answered', isAnswered);
+          btn.classList.toggle('flagged', isFlagged);
+          if (isAnswered) p3Answered++;
+        });
+        document.getElementById('p3StatusCount').textContent = p3Answered + '/' + sec.part_3_short_answer.questions.length;
+      }
+
+      const totalQuestions = (sec.part_1_mcq?.questions?.length || 0) +
+                             (sec.part_2_true_false?.questions?.length || 0) +
+                             (sec.part_3_short_answer?.questions?.length || 0);
+      const totalAnswered = p1Answered + p2Answered + p3Answered;
+
+      document.getElementById('progressText').textContent = totalAnswered + ' / ' + totalQuestions + ' câu';
+      const pct = totalQuestions > 0 ? Math.round((totalAnswered / totalQuestions) * 100) : 0;
+      document.getElementById('progressBar').style.width = pct + '%';
+    }
+
+    function selectPart1Option(qId, optionKey) {
+      if (isReviewMode) return;
+      userAnswers.part1[qId] = optionKey;
+
+      const parentGrid = document.getElementById('opt_grid_' + qId);
+      if (parentGrid) {
+        parentGrid.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+        const target = document.getElementById('opt_p1_' + qId + '_' + optionKey);
+        if (target) target.classList.add('selected');
+      }
+
+      updatePaletteUI();
+    }
+
+    function selectPart2Value(qId, subKey, value) {
+      if (isReviewMode) return;
+      if (!userAnswers.part2[qId]) userAnswers.part2[qId] = {};
+      userAnswers.part2[qId][subKey] = value;
+
+      const btnTrue = document.getElementById('btn_tf_' + qId + '_' + subKey + '_true');
+      const btnFalse = document.getElementById('btn_tf_' + qId + '_' + subKey + '_false');
+      if (btnTrue && btnFalse) {
+        btnTrue.classList.toggle('active-true', value === true);
+        btnFalse.classList.toggle('active-false', value === false);
+      }
+
+      updatePaletteUI();
+    }
+
+    function handlePart3Input(qId, textValue) {
+      if (isReviewMode) return;
+      userAnswers.part3[qId] = textValue;
+      updatePaletteUI();
+    }
+
+    function insertSymbol(qId, sym) {
+      if (isReviewMode) return;
+      const inp = document.getElementById('input_p3_' + qId);
+      if (!inp) return;
+      inp.value = (inp.value + " " + sym).trim();
+      userAnswers.part3[qId] = inp.value;
+      inp.focus();
+      updatePaletteUI();
+    }
+
+    function toggleFlag(uniqueId) {
+      if (flaggedQuestions.has(uniqueId)) {
+        flaggedQuestions.delete(uniqueId);
+      } else {
+        flaggedQuestions.add(uniqueId);
+      }
+
+      const card = document.getElementById('card_' + uniqueId);
+      if (card) {
+        const flagBtn = card.querySelector('.flag-btn');
+        if (flagBtn) {
+          const has = flaggedQuestions.has(uniqueId);
+          flagBtn.classList.toggle('flagged', has);
+          flagBtn.querySelector('span').textContent = has ? 'Đã đánh dấu' : 'Đánh dấu';
+          const svgPath = flagBtn.querySelector('svg');
+          if (svgPath) svgPath.setAttribute('fill', has ? 'currentColor' : 'none');
+        }
+      }
+
+      updatePaletteUI();
+    }
+
+    function scrollToCard(cardId) {
+      const target = document.getElementById(cardId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('active-target');
+        setTimeout(() => target.classList.remove('active-target'), 1200);
+      }
+    }
+
+    function updateProgress() {
+      updatePaletteUI();
+    }
+
+    function calculateExamScore() {
+      let scoreP1 = 0;
+      let scoreP2 = 0;
+      let scoreP3 = 0;
+
+      const sec1 = currentQuizData.content_sections?.part_1_mcq?.questions || [];
+      sec1.forEach(q => {
+        const userChoice = userAnswers.part1[q.id];
+        const keyObj = ANSWER_KEY.part1[q.id];
+        const isCorrect = keyObj && (userChoice === keyObj.answer || (keyObj.acceptable && keyObj.acceptable.includes(userChoice)));
+        if (isCorrect) {
+          scoreP1 += 0.3;
+        }
+      });
+
+      const sec2 = currentQuizData.content_sections?.part_2_true_false?.questions || [];
+      sec2.forEach(q => {
+        const userSub = userAnswers.part2[q.id] || {};
+        const keyObj = ANSWER_KEY.part2[q.id];
+        if (!keyObj || !keyObj.answers) return;
+
+        let correctSubCount = 0;
+        ['a', 'b', 'c', 'd'].forEach(subKey => {
+          if (userSub[subKey] !== undefined && userSub[subKey] === keyObj.answers[subKey]) {
+            correctSubCount++;
+          }
+        });
+
+        if (correctSubCount === 1) scoreP2 += 0.1;
+        else if (correctSubCount === 2) scoreP2 += 0.25;
+        else if (correctSubCount === 3) scoreP2 += 0.5;
+        else if (correctSubCount === 4) scoreP2 += 1.0;
+      });
+
+      const sec3 = currentQuizData.content_sections?.part_3_short_answer?.questions || [];
+      sec3.forEach(q => {
+        const userStr = (userAnswers.part3[q.id] || "").trim().toLowerCase();
+        const keyObj = ANSWER_KEY.part3[q.id];
+        if (keyObj && userStr.length > 0) {
+          const normCorrect = keyObj.answer.trim().toLowerCase();
+          const normAcceptable = (keyObj.acceptable || []).map(s => s.trim().toLowerCase());
+          const isCorrect = (userStr === normCorrect) || normAcceptable.includes(userStr);
+          if (isCorrect) {
+            scoreP3 += 0.6;
+          }
+        }
+      });
+
+      const totalScore = Math.min(10.0, Math.round((scoreP1 + scoreP2 + scoreP3) * 100) / 100);
+      return {
+        totalScore,
+        scoreP1: Math.round(scoreP1 * 100) / 100,
+        scoreP2: Math.round(scoreP2 * 100) / 100,
+        scoreP3: Math.round(scoreP3 * 100) / 100
+      };
+    }
+
+    function enterReviewMode(scores) {
+      isReviewMode = true;
+      document.body.classList.add('review-mode');
+      clearInterval(timerInterval);
+
+      const sec1 = currentQuizData.content_sections?.part_1_mcq?.questions || [];
+      sec1.forEach(q => {
+        const keyObj = ANSWER_KEY.part1[q.id];
+        const userChoice = userAnswers.part1[q.id];
+        const card = document.getElementById('card_p1_' + q.id);
+        const solBox = document.getElementById('sol_p1_' + q.id);
+        const solBody = document.getElementById('sol_body_p1_' + q.id);
+        const paletteBtn = document.getElementById('palette_p1_' + q.id);
+
+        if (keyObj) {
+          const isCorrect = (userChoice === keyObj.answer || (keyObj.acceptable && keyObj.acceptable.includes(userChoice)));
+          
+          if (paletteBtn) {
+            paletteBtn.classList.remove('answered', 'flagged');
+            paletteBtn.classList.add(isCorrect ? 'review-correct' : 'review-incorrect');
+          }
+
+          Object.keys(q.options).forEach(optKey => {
+            const optEl = document.getElementById('opt_p1_' + q.id + '_' + optKey);
+            if (optEl) {
+              if (optKey === keyObj.answer) {
+                optEl.classList.add('is-correct-target');
+              } else if (optKey === userChoice && !isCorrect) {
+                optEl.classList.add('is-wrong-selected');
+              }
+            }
+          });
+
+          if (solBox && solBody) {
+            solBox.style.display = 'block';
+            solBody.innerHTML = `
+              <p><strong>Đáp án đúng:</strong> <span style="color: var(--success); font-weight: 800;">${keyObj.answer}</span> ${isCorrect ? '🎉 (Bạn trả lời chính xác)' : '❌ (Bạn chưa chọn đúng)'}</p>
+              <div style="margin-top: 6px;">${formatMathText(keyObj.explanation)}</div>
+            `;
+          }
+        }
+      });
+
+      const sec2 = currentQuizData.content_sections?.part_2_true_false?.questions || [];
+      sec2.forEach(q => {
+        const keyObj = ANSWER_KEY.part2[q.id];
+        const userSub = userAnswers.part2[q.id] || {};
+        const solBox = document.getElementById('sol_p2_' + q.id);
+        const solBody = document.getElementById('sol_body_p2_' + q.id);
+        const paletteBtn = document.getElementById('palette_p2_' + q.id);
+
+        if (keyObj && keyObj.answers) {
+          let correctCount = 0;
+          let breakdownHtml = '<ul style="list-style: none; padding: 0; margin-top: 8px;">';
+
+          ['a', 'b', 'c', 'd'].forEach(subKey => {
+            const expected = keyObj.answers[subKey];
+            const actual = userSub[subKey];
+            const isMatch = (actual === expected);
+            if (isMatch) correctCount++;
+
+            const row = document.getElementById('row_p2_' + q.id + '_' + subKey);
+            if (row) {
+              const mark = document.createElement('span');
+              mark.className = 'eval-badge ' + (isMatch ? 'correct' : 'incorrect');
+              mark.textContent = isMatch ? '✓ Đúng' : ('✗ Sai (Đáp án: ' + (expected ? 'Đ' : 'S') + ')');
+              row.querySelector('.tf-label').appendChild(mark);
+            }
+
+            breakdownHtml += `
+              <li style="margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px dashed var(--primary-border);">
+                <strong>Ý ${subKey.toUpperCase()} (${expected ? 'ĐÚNG' : 'SAI'}):</strong> 
+                ${formatMathText(keyObj.explanations[subKey] || "")}
+              </li>
+            `;
+          });
+          breakdownHtml += '</ul>';
+
+          if (paletteBtn) {
+            paletteBtn.classList.remove('answered', 'flagged');
+            paletteBtn.classList.add(correctCount >= 3 ? 'review-correct' : 'review-incorrect');
+          }
+
+          if (solBox && solBody) {
+            solBox.style.display = 'block';
+            solBody.innerHTML = `
+              <p><strong>Kết quả làm bài:</strong> Đúng <strong>${correctCount}/4</strong> ý.</p>
+              ${breakdownHtml}
+            `;
+          }
+        }
+      });
+
+      const sec3 = currentQuizData.content_sections?.part_3_short_answer?.questions || [];
+      sec3.forEach(q => {
+        const keyObj = ANSWER_KEY.part3[q.id];
+        const userStr = (userAnswers.part3[q.id] || "").trim().toLowerCase();
+        const solBox = document.getElementById('sol_p3_' + q.id);
+        const solBody = document.getElementById('sol_body_p3_' + q.id);
+        const paletteBtn = document.getElementById('palette_p3_' + q.id);
+        const inp = document.getElementById('input_p3_' + q.id);
+
+        if (keyObj) {
+          const normCorrect = keyObj.answer.trim().toLowerCase();
+          const normAcceptable = (keyObj.acceptable || []).map(s => s.trim().toLowerCase());
+          const isCorrect = (userStr === normCorrect) || normAcceptable.includes(userStr);
+
+          if (paletteBtn) {
+            paletteBtn.classList.remove('answered', 'flagged');
+            paletteBtn.classList.add(isCorrect ? 'review-correct' : 'review-incorrect');
+          }
+
+          if (inp) {
+            inp.style.borderColor = isCorrect ? 'var(--success)' : 'var(--accent)';
+            inp.style.background = isCorrect ? '#F0FDF4' : '#FEF2F2';
+            inp.disabled = true;
+          }
+
+          if (solBox && solBody) {
+            solBox.style.display = 'block';
+            solBody.innerHTML = `
+              <p><strong>Đáp án chuẩn:</strong> <span style="color: var(--success); font-weight: 800;">${keyObj.answer}</span> ${isCorrect ? '🎉 (Chính xác)' : ('❌ (Bạn điền: "' + escapeHtml(userAnswers.part3[q.id] || 'Bỏ trống') + '")')}</p>
+              <div style="margin-top: 6px;">${formatMathText(keyObj.explanation)}</div>
+            `;
+          }
+        }
+      });
+
+      triggerMathRender();
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      examStartTime = Date.now();
+      const timerEl = document.getElementById('examTimer');
+      const timerText = document.getElementById('timerText');
+
+      timerInterval = setInterval(() => {
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert('Hết giờ làm bài thi! Hệ thống sẽ tự động nộp bài.');
+          submitExamDirectly();
+          return;
+        }
+        remainingSeconds--;
+
+        const mins = Math.floor(remainingSeconds / 60);
+        const secs = remainingSeconds % 60;
+        timerText.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+
+        if (remainingSeconds <= 300) {
+          timerEl.classList.add('warning');
+        } else {
+          timerEl.classList.remove('warning');
+        }
+      }, 1000);
+    }
+
+    function promptSubmitConfirmation() {
+      const sec = currentQuizData.content_sections || {};
+      let unanswered = 0;
+
+      (sec.part_1_mcq?.questions || []).forEach(q => {
+        if (!userAnswers.part1[q.id]) unanswered++;
+      });
+      (sec.part_2_true_false?.questions || []).forEach(q => {
+        const userSub = userAnswers.part2[q.id] || {};
+        if (Object.keys(userSub).length < 4) unanswered++;
+      });
+      (sec.part_3_short_answer?.questions || []).forEach(q => {
+        if (!(userAnswers.part3[q.id] || "").trim()) unanswered++;
+      });
+
+      const warningBox = document.getElementById('unansweredWarning');
+      if (unanswered > 0) {
+        document.getElementById('unansweredCount').textContent = unanswered;
+        warningBox.style.display = 'block';
+      } else {
+        warningBox.style.display = 'none';
+      }
+
+      openModal('modalConfirmSubmit');
+    }
+
+    function submitExamDirectly() {
+      closeModal('modalConfirmSubmit');
+      const scores = calculateExamScore();
+
+      document.getElementById('finalScoreVal').textContent = scores.totalScore.toFixed(1);
+      document.getElementById('p1ScoreVal').textContent = scores.scoreP1.toFixed(1) + ' / 3.0';
+      document.getElementById('p2ScoreVal').textContent = scores.scoreP2.toFixed(1) + ' / 4.0';
+      document.getElementById('p3ScoreVal').textContent = scores.scoreP3.toFixed(1) + ' / 3.0';
+
+      const elapsedMins = Math.max(1, Math.round((45 * 60 - remainingSeconds) / 60));
+      document.getElementById('timeTakenText').textContent = elapsedMins + ' phút';
+      document.getElementById('accuracyPercent').textContent = Math.round((scores.totalScore / 10) * 100) + '%';
+
+      openModal('modalScoreReport');
+      enterReviewMode(scores);
+    }
+
+    function bindEvents() {
+      document.getElementById('btnSubmitExam').addEventListener('click', promptSubmitConfirmation);
+      document.getElementById('btnSubmitSidebar').addEventListener('click', promptSubmitConfirmation);
+      document.getElementById('btnConfirmFinalSubmit').addEventListener('click', submitExamDirectly);
+
+      document.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          closeModal(btn.getAttribute('data-close'));
+        });
+      });
+
+      document.getElementById('btnPrintExam').addEventListener('click', () => {
+        window.print();
+      });
+
+      document.getElementById('btnResetTest').addEventListener('click', () => {
+        if (confirm('Bạn có chắc chắn muốn làm lại bài từ đầu? Toàn bộ câu trả lời hiện tại sẽ bị xóa.')) {
+          resetExam();
+        }
+      });
+
+      document.getElementById('btnOpenJsonModal').addEventListener('click', () => {
+        document.getElementById('jsonEditorArea').value = JSON.stringify(currentQuizData, null, 2);
+        openModal('modalJsonManager');
+      });
+
+      document.getElementById('btnApplyNewJson').addEventListener('click', () => {
+        const text = document.getElementById('jsonEditorArea').value;
+        try {
+          const parsed = JSON.parse(text);
+          currentQuizData = parsed;
+          closeModal('modalJsonManager');
+          resetExam();
+          alert('Đã cập nhật đề thi thành công!');
+        } catch (err) {
+          alert('Cú pháp JSON không hợp lệ: ' + err.message);
+        }
+      });
+
+      document.getElementById('btnResetToDefaultJson').addEventListener('click', () => {
+        document.getElementById('jsonEditorArea').value = JSON.stringify(DEFAULT_QUIZ_DATA, null, 2);
+      });
+
+      document.getElementById('btnDownloadCurrentJson').addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentQuizData, null, 2));
+        const dlAnchor = document.createElement('a');
+        dlAnchor.setAttribute("href", dataStr);
+        dlAnchor.setAttribute("download", "math_quiz_menh_de_gdpt2018.json");
+        dlAnchor.click();
+      });
+
+      document.getElementById('fileJsonUpload').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const loaded = JSON.parse(event.target.result);
+            document.getElementById('jsonEditorArea').value = JSON.stringify(loaded, null, 2);
+          } catch (err) {
+            alert('File JSON bị lỗi: ' + err.message);
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      document.getElementById('btnReviewDirectly').addEventListener('click', () => {
+        closeModal('modalScoreReport');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    function resetExam() {
+      userAnswers = { part1: {}, part2: {}, part3: {} };
+      flaggedQuestions.clear();
+      isReviewMode = false;
+      document.body.classList.remove('review-mode');
+      remainingSeconds = 45 * 60;
+      renderExam(currentQuizData);
+      startTimer();
+      triggerMathRender();
+    }
+
+    function openModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (el) el.classList.add('open');
+    }
+
+    function closeModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (el) el.classList.remove('open');
+    }
+
+    function triggerMathRender() {
+      if (window.renderMathInElement) {
+        try {
+          renderMathInElement(document.getElementById('mainContent'), {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false },
+              { left: '\\[', right: '\\]', display: true },
+              { left: '\\(', right: '\\)', display: false },
+              { left: '\\begin{equation}', right: '\\end{equation}', display: true },
+              { left: '\\begin{aligned}', right: '\\end{aligned}', display: true }
+            ],
+            throwOnError: false,
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+          });
+        } catch (e) {
+          console.warn("KaTeX render notice:", e);
+        }
+      } else {
+        setTimeout(triggerMathRender, 150);
+      }
+    }
+
+    function formatMathText(rawStr) {
+      if (!rawStr) return "";
+      return String(rawStr)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeHtml(str) {
+      return formatMathText(str);
+    }
+  </script>
+</body>
+</html>

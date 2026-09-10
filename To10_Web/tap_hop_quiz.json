@@ -1,0 +1,437 @@
+{
+  "metadata": {
+    "topic": "Tập hợp",
+    "subject": "Toán 10 (GDPT 2018)",
+    "grade_level": "Lớp 10",
+    "difficulty_level": "Thông hiểu và Vận dụng",
+    "question_counts": {
+      "part_1_mcq": 10,
+      "part_2_true_false": 4,
+      "part_3_short_answer": 5
+    },
+    "solution_mode": "BAT"
+  },
+  "title": {
+    "main_title": "PHIẾU HỌC TẬP INFOGRAPHIC: TẬP HỢP VÀ CÁC PHÉP TOÁN TẬP HỢP",
+    "subtitle": "Chuyên đề Toán 10 - Chương I: Mệnh đề và Tập hợp (GDPT 2018)",
+    "student_info": [
+      "Họ và tên: ........................................",
+      "Lớp: ................",
+      "Ngày: ....../....../........"
+    ]
+  },
+  "style": {
+    "document_type": "Infographic phiếu học tập viết tay học thuật A4",
+    "aspect_ratio": "3:4 (A4 dọc, 210x297 mm, 300 DPI)",
+    "color_palette": {
+      "primary_header": "#C62828 (Đỏ son)",
+      "content_and_lines": "#182A78 (Xanh mực)",
+      "background": "#FAFAFA (Giấy trắng ngà nhẹ, sạch)"
+    },
+    "typography": "Chữ viết tay học thuật sắc nét, công thức LaTeX chuẩn xác, tiếng Việt 100%"
+  },
+  "layout": {
+    "page_structure": "Khổ A4 dọc, 1 trang duy nhất, mật độ nội dung cao, phân chia 3 vùng rõ ràng bằng khoảng trắng và đường kẻ mảnh",
+    "section_allocations": {
+      "part_1": "Phần I: Trắc nghiệm 4 lựa chọn (Chiếm 45% diện tích, 2 cột cân đối, 10 câu)",
+      "part_2": "Phần II: Đúng - Sai (Chiếm 28% diện tích, lưới 2 cột x 2 hàng, 4 câu)",
+      "part_3": "Phần III: Trả lời ngắn (Chiếm 27% diện tích, bố cục toàn chiều ngang, 5 câu)"
+    }
+  },
+  "content_sections": {
+    "part_1_mcq": {
+      "section_title": "PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU)",
+      "instruction": "Khoanh tròn vào chữ cái A, B, C hoặc D trước phương án trả lời đúng nhất.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Cho tập hợp $A = \\{x \\in \\mathbb{R} \\mid (x^2 - 4)(x - 1) = 0\\}$. Khẳng định nào sau đây là đúng?",
+          "options": {
+            "A": "$A = \\{-2, 1, 2\\}$",
+            "B": "$A = \\{1, 2\\}$",
+            "C": "$A = \\{-2, 2\\}$",
+            "D": "$A = \\{-1, 1, 2\\}$"
+          }
+        },
+        {
+          "id": 2,
+          "question": "Ký hiệu nào sau đây thể hiện đúng phát biểu: \"Số $2$ là một số tự nhiên\"?",
+          "options": {
+            "A": "$2 \\in \\mathbb{N}$",
+            "B": "$2 \\subset \\mathbb{N}$",
+            "C": "$\\{2\\} \\in \\mathbb{N}$",
+            "D": "$2 = \\mathbb{N}$"
+          }
+        },
+        {
+          "id": 3,
+          "question": "Cho hai tập hợp $A = \\{1, 2, 3, 4, 5\\}$ và $B = \\{2, 4, 6, 8\\}$. Tìm tập hợp $A \\cap B$.",
+          "options": {
+            "A": "$\\{2, 4\\}$",
+            "B": "$\\{1, 2, 3, 4, 5, 6, 8\\}$",
+            "C": "$\\{1, 3, 5\\}$",
+            "D": "$\\{6, 8\\}$"
+          }
+        },
+        {
+          "id": 4,
+          "question": "Cho hai tập hợp $A = \\{-1, 0, 1, 2\\}$ và $B = \\{0, 2, 4\\}$. Tìm tập hợp hiệu $A \\setminus B$.",
+          "options": {
+            "A": "$\\{-1, 1\\}$",
+            "B": "$\\{0, 2\\}$",
+            "C": "$\\{4\\}$",
+            "D": "$\\{-1, 0, 1, 2, 4\\}$"
+          }
+        },
+        {
+          "id": 5,
+          "question": "Cho tập hợp $A = (-2; 3]$ và $B = (1; 5)$. Tìm tập hợp $A \\cup B$.",
+          "options": {
+            "A": "$(-2; 5)$",
+            "B": "$(1; 3]$",
+            "C": "$[-2; 5]$",
+            "D": "$(-2; 1)$"
+          }
+        },
+        {
+          "id": 6,
+          "question": "Cho tập hợp $A = [-1; 4]$. Tìm phần bù $C_{\\mathbb{R}} A$.",
+          "options": {
+            "A": "$(-\\infty; -1) \\cup (4; +\\infty)$",
+            "B": "$(-\\infty; -1] \\cup [4; +\\infty)$",
+            "C": "$(-\\infty; 4)$",
+            "D": "$(4; +\\infty)$"
+          }
+        },
+        {
+          "id": 7,
+          "question": "Tập hợp $A = \\{a, b, c\\}$ có tất cả bao nhiêu tập hợp con?",
+          "options": {
+            "A": "$8$",
+            "B": "$6$",
+            "C": "$7$",
+            "D": "$9$"
+          }
+        },
+        {
+          "id": 8,
+          "question": "Cho hai khoảng $A = (-\\infty; m)$ và $B = (3; +\\infty)$. Tìm điều kiện của tham số $m$ để $A \\cap B = \\emptyset$.",
+          "options": {
+            "A": "$m \\le 3$",
+            "B": "$m < 3$",
+            "C": "$m > 3$",
+            "D": "$m \\ge 3$"
+          }
+        },
+        {
+          "id": 9,
+          "question": "Cho hai tập hợp $A = [m-1; m+3]$ và $B = (-2; 5)$. Tìm tất cả các giá trị của $m$ để $A \\subset B$.",
+          "options": {
+            "A": "$-1 < m < 2$",
+            "B": "$-1 \\le m \\le 2$",
+            "C": "$m > -1$",
+            "D": "$m < 2$"
+          }
+        },
+        {
+          "id": 10,
+          "question": "Lớp 10A có 42 học sinh, trong đó có 25 học sinh thích môn Toán, 18 học sinh thích môn Tiếng Anh và 8 học sinh không thích môn nào trong hai môn này. Hỏi có bao nhiêu học sinh thích cả hai môn Toán và Tiếng Anh?",
+          "options": {
+            "A": "$9$",
+            "B": "$7$",
+            "C": "$11$",
+            "D": "$5$"
+          }
+        }
+      ]
+    },
+    "part_2_true_false": {
+      "section_title": "PHẦN II. TRẮC NGHIỆM ĐÚNG - SAI (4 CÂU)",
+      "instruction": "Học sinh ghi chữ Đ (Đúng) hoặc S (Sai) vào ô trống tương ứng trước mỗi nhận định.",
+      "questions": [
+        {
+          "id": 1,
+          "context": "Cho hai tập hợp $A = \\{x \\in \\mathbb{R} \\mid x^2 - 5x + 6 = 0\\}$ và $B = \\{x \\in \\mathbb{Z} \\mid -1 \\le x \\le 3\\}$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Viết tập hợp $A$ dưới dạng liệt kê phần tử ta được $A = \\{2, 3\\}$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Số phần tử của tập hợp $B$ là $4$ phần tử.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Giao của hai tập hợp là $A \\cap B = \\{2, 3\\}$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Tập hợp $A$ không phải là tập con của tập hợp $B$ ($A \\not\\subset B$).",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "context": "Cho hai tập hợp $A = [-3; 2)$ và $B = (0; 5]$ trên tập số thực $\\mathbb{R}$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Hợp của hai tập hợp là $A \\cup B = [-3; 5]$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Giao của hai tập hợp là $A \\cap B = (0; 2)$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Hiệu của hai tập hợp là $A \\setminus B = [-3; 0]$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Phần bù của $A$ trong $\\mathbb{R}$ là $C_{\\mathbb{R}} A = (-\\infty; -3) \\cup [2; +\\infty)$.",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "context": "Xét quan hệ bao hàm giữa các tập hợp số $\\mathbb{N}, \\mathbb{Z}, \\mathbb{Q}, \\mathbb{R}$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Tập hợp các số tự nhiên $\\mathbb{N}$ là tập con của tập hợp các số nguyên $\\mathbb{Z}$ ($\\mathbb{N} \\subset \\mathbb{Z}$).",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Phép giao $\\mathbb{Z} \\cap \\mathbb{Q} = \\mathbb{Z}$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Phép hiệu $\\mathbb{R} \\setminus \\mathbb{Q}$ là tập hợp các số vô tỉ $\\mathbb{I}$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Phần bù $C_{\\mathbb{R}} \\mathbb{N} = (0; +\\infty)$.",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "context": "Cho hai tập hợp phụ thuộc tham số $m$: $A = (1; m+1]$ và $B = (2; 6)$:",
+          "statements": [
+            {
+              "label": "a)",
+              "text": "Điều kiện để tập hợp $A$ khác rỗng ($A \\neq \\emptyset$) là $m > 0$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "b)",
+              "text": "Khi $m = 4$, tập hợp $A = (1; 5]$ và $A \\cap B = (2; 5]$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "c)",
+              "text": "Điều kiện của $m$ để $A \\cap B = \\emptyset$ là $m \\le 1$.",
+              "checkbox": "□ Đ  □ S"
+            },
+            {
+              "label": "d)",
+              "text": "Điều kiện của $m$ để $B \\subset A$ là $m \\ge 5$.",
+              "checkbox": "□ Đ  □ S"
+            }
+          ]
+        }
+      ]
+    },
+    "part_3_short_answer": {
+      "section_title": "PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU)",
+      "instruction": "Học sinh viết đáp số hoặc câu trả lời ngắn gọn vào khoảng trống bên dưới mỗi câu hỏi.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Câu 1. Cho tập hợp $A = \\{x \\in \\mathbb{R} \\mid (x^2 - 9)(x^2 - 4x + 3) = 0\\}$. Hỏi tập hợp $A$ có tất cả bao nhiêu tập hợp con?",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 2,
+          "question": "Câu 2. Cho hai khoảng $A = [-2; 4]$ và $B = (m; m+3)$. Tìm tất cả các giá trị thực của tham số $m$ để $B \\subset A$.",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 3,
+          "question": "Câu 3. Cho hai tập hợp $A = (-\\infty; m+1]$ và $B = (2; +\\infty)$. Tìm tất cả các giá trị thực của tham số $m$ để $A \\cap B = \\emptyset$.",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 4,
+          "question": "Câu 4. Một công ty phỏng vấn 100 khách hàng về việc sử dụng hai sản phẩm A và B. Kết quả có 65 người dùng sản phẩm A, 45 người dùng sản phẩm B và 15 người không dùng sản phẩm nào. Hỏi có bao nhiêu người dùng CẢ HAI sản phẩm A và B?",
+          "answer_space": "Đáp số: ...................................................................................................."
+        },
+        {
+          "id": 5,
+          "question": "Câu 5 (Vận dụng thực tế). Lớp 10B có 40 học sinh. Trong kỳ thi học sinh giỏi cấp trường, có 22 học sinh thi môn Toán, 18 học sinh thi môn Vật lý và 10 học sinh không thi môn nào. Trường quyết định trao thưởng cho các học sinh thi CHỈ MỘT môn. Hỏi có bao nhiêu học sinh lớp 10B được trao thưởng?",
+          "answer_space": "Đáp số: ...................................................................................................."
+        }
+      ]
+    }
+  },
+  "answer_key": {
+    "part_1_mcq": [
+      {
+        "id": 1,
+        "answer": "A",
+        "explanation": "Giải phương trình: $(x^2 - 4)(x - 1) = 0 \\Leftrightarrow \\left[ \\begin{array}{l} x^2 - 4 = 0 \\\\ x - 1 = 0 \\end{array} \\right. \\Leftrightarrow \\left[ \\begin{array}{l} x = 2 \\\\ x = -2 \\\\ x = 1 \\end{array} \\right.$.\nViết dạng liệt kê: $A = \\{-2, 1, 2\\}$."
+      },
+      {
+        "id": 2,
+        "answer": "A",
+        "explanation": "Vì $2$ là một phần tử của tập hợp số tự nhiên $\\mathbb{N}$ nên ký hiệu đúng là $2 \\in \\mathbb{N}$."
+      },
+      {
+        "id": 3,
+        "answer": "A",
+        "explanation": "Phép giao $A \\cap B$ lấy các phần tử chung của hai tập hợp: $A \\cap B = \\{2, 4\\}$."
+      },
+      {
+        "id": 4,
+        "answer": "A",
+        "explanation": "Hiệu $A \\setminus B$ gồm các phần tử thuộc $A$ nhưng không thuộc $B$: $A \\setminus B = \\{-1, 1\\}$."
+      },
+      {
+        "id": 5,
+        "answer": "A",
+        "explanation": "Biểu diễn trên trục số, hợp $A \\cup B = (-2; 3] \\cup (1; 5) = (-2; 5)$."
+      },
+      {
+        "id": 6,
+        "answer": "A",
+        "explanation": "Phần bù $C_{\\mathbb{R}} A = \\mathbb{R} \\setminus [-1; 4] = (-\\infty; -1) \\cup (4; +\\infty)$."
+      },
+      {
+        "id": 7,
+        "answer": "A",
+        "explanation": "Tập hợp $A$ có $n = 3$ phần tử. Số tập hợp con của $A$ là $2^n = 2^3 = 8$."
+      },
+      {
+        "id": 8,
+        "answer": "A",
+        "explanation": "Để $(-\\infty; m) \\cap (3; +\\infty) = \\emptyset$ thì khoảng $(-\\infty; m)$ phải nằm hoàn toàn bên trái điểm $3$, tức là $m \\le 3$."
+      },
+      {
+        "id": 9,
+        "answer": "A",
+        "explanation": "Để $A \\subset B \\Leftrightarrow [m-1; m+3] \\subset (-2; 5) \\Leftrightarrow \\begin{cases} m - 1 > -2 \\\\ m + 3 < 5 \\end{cases} \\Leftrightarrow \\begin{cases} m > -1 \\\\ m < 2 \\end{cases} \\Leftrightarrow -1 < m < 2$."
+      },
+      {
+        "id": 10,
+        "answer": "A",
+        "explanation": "Số học sinh thích ít nhất một môn là $42 - 8 = 34$ học sinh.\nTheo công thức tập hợp: $n(T \\cup A) = n(T) + n(A) - n(T \\cap A) \\Rightarrow 34 = 25 + 18 - n(T \\cap A) \\Rightarrow n(T \\cap A) = 43 - 34 = 9$ học sinh."
+      }
+    ],
+    "part_2_true_false": [
+      {
+        "id": 1,
+        "answers": {
+          "a": "Đ",
+          "b": "S",
+          "c": "Đ",
+          "d": "S"
+        },
+        "explanation": "a) $x^2 - 5x + 6 = 0 \\Leftrightarrow x = 2 \\text{ hoặc } x = 3 \\Rightarrow A = \\{2, 3\\}$ (Đúng).\nb) $B = \\{-1, 0, 1, 2, 3\\}$ có $5$ phần tử (Sai).\nc) Các phần tử chung là $2$ và $3 \\Rightarrow A \\cap B = \\{2, 3\\}$ (Đúng).\nd) Vì mọi phần tử của $A$ đều thuộc $B$ nên $A \\subset B$ (Sai)."
+      },
+      {
+        "id": 2,
+        "answers": {
+          "a": "Đ",
+          "b": "Đ",
+          "c": "Đ",
+          "d": "Đ"
+        },
+        "explanation": "a) $A \\cup B = [-3; 2) \\cup (0; 5] = [-3; 5]$ (Đúng).\nb) $A \\cap B = [-3; 2) \\cap (0; 5] = (0; 2)$ (Đúng).\nc) $A \\setminus B = [-3; 2) \\setminus (0; 5] = [-3; 0]$ (Đúng).\nd) $C_{\\mathbb{R}} A = \\mathbb{R} \\setminus [-3; 2) = (-\\infty; -3) \\cup [2; +\\infty)$ (Đúng)."
+      },
+      {
+        "id": 3,
+        "answers": {
+          "a": "Đ",
+          "b": "Đ",
+          "c": "Đ",
+          "d": "S"
+        },
+        "explanation": "a) Mối quan hệ bao hàm chuẩn giữa các tập số $\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$ (Đúng).\nb) Mọi số nguyên đều là số hữu tỉ nên $\\mathbb{Z} \\cap \\mathbb{Q} = \\mathbb{Z}$ (Đúng).\nc) Định nghĩa tập số vô tỉ $\\mathbb{I} = \\mathbb{R} \\setminus \\mathbb{Q}$ (Đúng).\nd) Tập hợp $\\mathbb{N}$ là tập rời rạc, không phải khoảng, nên phần bù $C_{\\mathbb{R}} \\mathbb{N} = (0; +\\infty)$ là Sai."
+      },
+      {
+        "id": 4,
+        "answers": {
+          "a": "Đ",
+          "b": "Đ",
+          "c": "Đ",
+          "d": "Đ"
+        },
+        "explanation": "a) $A \\neq \\emptyset \\Leftrightarrow m + 1 > 1 \\Leftrightarrow m > 0$ (Đúng).\nb) Khi $m = 4 \\Rightarrow A = (1; 5] \\Rightarrow A \\cap B = (1; 5] \\cap (2; 6) = (2; 5]$ (Đúng).\nc) $A \\cap B = \\emptyset \\Leftrightarrow m + 1 \\le 2 \\Leftrightarrow m \\le 1$ (Đúng).\nd) $B \\subset A \\Leftrightarrow (2; 6) \\subset (1; m+1] \\Leftrightarrow m + 1 \\ge 6 \\Leftrightarrow m \\ge 5$ (Đúng)."
+      }
+    ],
+    "part_3_short_answer": [
+      {
+        "id": 1,
+        "answer": "8",
+        "explanation": "Giải phương trình $(x^2 - 9)(x^2 - 4x + 3) = 0 \\Leftrightarrow \\left[ \\begin{array}{l} x = \\pm 3 \\\\ x = 1 \\text{ hoặc } x = 3 \\end{array} \\right. \\Leftrightarrow x \\in \\{-3, 1, 3\\}$.\nTập hợp $A = \\{-3, 1, 3\\}$ có $3$ phần tử. Số tập hợp con của $A$ là $2^3 = 8$."
+      },
+      {
+        "id": 2,
+        "answer": "$-2 \\le m \\le 1$",
+        "acceptable": [
+          "-2 <= m <= 1",
+          "-2<=m<=1",
+          "[-2; 1]",
+          "[-2;1]",
+          "-2 \\le m \\le 1"
+        ],
+        "explanation": "Để $B \\subset A \\Leftrightarrow (m; m+3) \\subset [-2; 4] \\Leftrightarrow \\begin{cases} m \\ge -2 \\\\ m + 3 \\le 4 \\end{cases} \\Leftrightarrow \\begin{cases} m \\ge -2 \\\\ m \\le 1 \\end{cases} \\Leftrightarrow -2 \\le m \\le 1$."
+      },
+      {
+        "id": 3,
+        "answer": "$m \\le 1$",
+        "acceptable": [
+          "m <= 1",
+          "m<=1",
+          "m \\le 1",
+          "<= 1",
+          "<=1",
+          "1"
+        ],
+        "explanation": "Để $(-\\infty; m+1] \\cap (2; +\\infty) = \\emptyset$ thì khoảng $(-\\infty; m+1]$ nằm hoàn toàn bên trái điểm $2$, tức là $m + 1 \\le 2 \\Leftrightarrow m \\le 1$."
+      },
+      {
+        "id": 4,
+        "answer": "25",
+        "acceptable": [
+          "25",
+          "25 người"
+        ],
+        "explanation": "Số người dùng ít nhất một sản phẩm A hoặc B là $100 - 15 = 85$ người.\nÁp dụng công thức tập hợp: $n(A \\cup B) = n(A) + n(B) - n(A \\cap B) \\Rightarrow 85 = 65 + 45 - n(A \\cap B) \\Rightarrow n(A \\cap B) = 110 - 85 = 25$ người."
+      },
+      {
+        "id": 5,
+        "answer": "20",
+        "acceptable": [
+          "20",
+          "20 học sinh",
+          "20 em"
+        ],
+        "explanation": "Số học sinh thi ít nhất một môn là $40 - 10 = 30$ học sinh.\nSố học sinh thi cả hai môn Toán và Lý là $n(T \\cap L) = n(T) + n(L) - n(T \\cup L) = 22 + 18 - 30 = 10$ học sinh.\nSố học sinh thi CHỈ MỘT môn là $n(T \\cup L) - n(T \\cap L) = 30 - 10 = 20$ học sinh."
+      }
+    ]
+  }
+}

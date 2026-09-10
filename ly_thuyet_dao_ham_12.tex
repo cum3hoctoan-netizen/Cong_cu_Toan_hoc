@@ -1,0 +1,298 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+\geometry{
+    a4paper,
+    left=20mm,
+    right=20mm,
+    top=25mm,
+    bottom=25mm
+}
+
+\setlength{\headheight}{16pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Chuyên đề Giải tích 12: Lý thuyết Ứng dụng đạo hàm}}
+\rfoot{Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Định nghĩa môi trường Định nghĩa (dn) và Ví dụ (vd) theo đúng yêu cầu
+\theoremstyle{definition}
+\newtheorem{dn}{Định nghĩa}[section]
+\newtheorem{vd}{Ví dụ}[section]
+\newtheorem{dl}{Định lý}[section]
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{HỆ THỐNG LÝ THUYẾT CỐT LÕI: ỨNG DỤNG ĐẠO HÀM}}\\[2mm]
+    {\large \textbf{CHƯƠNG I -- GIẢI TÍCH LỚP 12 (GDPT 2018)}}\\[1mm]
+    {\normalsize \textit{Chuẩn kiến thức khảo thí Sở GD\&ĐT TP.HCM -- Định hướng Tư duy thực chất}}
+\end{center}
+
+\vspace{5mm}
+
+\section{Tính đơn điệu của hàm số (Monotonicity)}
+
+\begin{dn}[Tính đơn điệu trên khoảng]
+Cho hàm số $y = f(x)$ xác định trên tập $K$, trong đó $K$ là một khoảng, một đoạn hoặc một nửa khoảng.
+\begin{enumerate}
+    \item[a)] Hàm số $y = f(x)$ được gọi là \textbf{đồng biến (tăng)} trên $K$ nếu:
+    \[
+    \forall x_1, x_2 \in K, \quad x_1 < x_2 \implies f(x_1) < f(x_2).
+    \]
+    \item[b)] Hàm số $y = f(x)$ được gọi là \textbf{nghịch biến (giảm)} trên $K$ nếu:
+    \[
+    \forall x_1, x_2 \in K, \quad x_1 < x_2 \implies f(x_1) > f(x_2).
+    \]
+\end{enumerate}
+Hàm số đồng biến hoặc nghịch biến trên $K$ được gọi chung là hàm số \textbf{đơn điệu} trên $K$.
+\end{dn}
+
+\begin{dl}[Điều kiện đủ về tính đơn điệu]
+Giả sử hàm số $y = f(x)$ có đạo hàm trên khoảng $K$:
+\begin{itemize}
+    \item Nếu $f'(x) > 0$ với mọi $x \in K$ thì hàm số đồng biến trên khoảng $K$.
+    \item Nếu $f'(x) < 0$ với mọi $x \in K$ thì hàm số nghịch biến trên khoảng $K$.
+    \item Nếu $f'(x) = 0$ với mọi $x \in K$ thì hàm số không đổi (hàm hằng) trên khoảng $K$.
+\end{itemize}
+\end{dl}
+
+\begin{dl}[Điều kiện cần và đủ mở rộng]
+Giả sử hàm số $y = f(x)$ liên tục trên khoảng $K$ và có đạo hàm tại mọi điểm trên $K$ (có thể trừ một số hữu hạn điểm):
+\begin{itemize}
+    \item Hàm số $y = f(x)$ đồng biến trên $K$ khi và chỉ khi $f'(x) \ge 0$ với mọi $x \in K$, và đẳng thức $f'(x) = 0$ chỉ xảy ra tại một số hữu hạn điểm thuộc $K$.
+    \item Hàm số $y = f(x)$ nghịch biến trên $K$ khi và chỉ khi $f'(x) \le 0$ với mọi $x \in K$, và đẳng thức $f'(x) = 0$ chỉ xảy ra tại một số hữu hạn điểm thuộc $K$.
+\end{itemize}
+\end{dl}
+
+\noindent \textbf{* Lưu ý quan trọng về bản chất:}
+\begin{itemize}
+    \item \textbf{Tính chất cục bộ của khoảng:} Tính đơn điệu chỉ được xét riêng rẽ trên từng khoảng. Tuyệt đối không dùng ký hiệu hợp ($\cup$) hay dấu loại trừ ($\setminus$). Ví dụ với hàm số $y = \frac{1}{x}$, ta kết luận: \textit{Hàm số nghịch biến trên từng khoảng $(-\infty; 0)$ và $(0; +\infty)$}, không viết $(-\infty; 0) \cup (0; +\infty)$.
+    \item \textbf{Ngoại lệ hàm phân thức bậc nhất trên bậc nhất:} Với hàm số $y = \frac{ax+b}{cx+d}$ ($ad - bc \ne 0$), đạo hàm $y' = \frac{ad-bc}{(cx+d)^2}$ không thể triệt tiêu tại hữu hạn điểm. Do đó điều kiện đơn điệu luôn là bất đẳng thức ngặt ($y' > 0$ hoặc $y' < 0$), không lấy dấu bằng.
+\end{itemize}
+
+\begin{vd}
+Tìm các khoảng đồng biến và nghịch biến của hàm số $f(x) = 2x^3 - 3x^2 - 12x + 5$.
+\end{vd}
+\noindent \textbf{Hướng dẫn giải:} \\
+Tập xác định: $D = \mathbb{R}$. Đạo hàm:
+\[
+f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 6(x + 1)(x - 2).
+\]
+Giải phương trình $f'(x) = 0 \iff x = -1$ hoặc $x = 2$.
+\begin{itemize}
+    \item Với $x \in (-\infty; -1)$ hoặc $x \in (2; +\infty)$ thì $f'(x) > 0$. Do đó hàm số đồng biến trên các khoảng $(-\infty; -1)$ và $(2; +\infty)$.
+    \item Với $x \in (-1; 2)$ thì $f'(x) < 0$. Do đó hàm số nghịch biến trên khoảng $(-1; 2)$.
+\end{itemize}
+
+\begin{vd}
+Tìm tất cả các giá trị của tham số $m$ để hàm số $y = \frac{x + 2m}{x - m}$ đồng biến trên từng khoảng xác định.
+\end{vd}
+\noindent \textbf{Hướng dẫn giải:} \\
+Tập xác định: $D = \mathbb{R} \setminus \{m\}$. Đạo hàm với mọi $x \ne m$:
+\[
+y' = \frac{1 \cdot (-m) - 2m \cdot 1}{(x - m)^2} = \frac{-3m}{(x - m)^2}.
+\]
+Hàm số đồng biến trên từng khoảng xác định khi và chỉ khi:
+\[
+y' > 0, \quad \forall x \ne m \iff -3m > 0 \iff m < 0.
+\]
+Vậy các giá trị cần tìm là $m < 0$.
+
+\vspace{5mm}
+\section{Cực trị của hàm số (Extrema)}
+
+\begin{dn}[Điểm cực trị của hàm số]
+Cho hàm số $y = f(x)$ xác định trên tập $D$ và $x_0 \in D$.
+\begin{enumerate}
+    \item[a)] Điểm $x_0$ được gọi là \textbf{điểm cực đại} của hàm số nếu tồn tại một khoảng $(a; b) \subset D$ chứa $x_0$ sao cho:
+    \[
+    f(x) < f(x_0), \quad \forall x \in (a; b) \setminus \{x_0\}.
+    \]
+    Khi đó $f(x_0)$ được gọi là \textbf{giá trị cực đại} (ký hiệu $y_{\text{CĐ}}$), và điểm $M(x_0; f(x_0))$ gọi là điểm cực đại của đồ thị hàm số.
+    \item[b)] Điểm $x_0$ được gọi là \textbf{điểm cực tiểu} của hàm số nếu tồn tại một khoảng $(a; b) \subset D$ chứa $x_0$ sao cho:
+    \[
+    f(x) > f(x_0), \quad \forall x \in (a; b) \setminus \{x_0\}.
+    \]
+    Khi đó $f(x_0)$ được gọi là \textbf{giá trị cực tiểu} (ký hiệu $y_{\text{CT}}$), và điểm $N(x_0; f(x_0))$ gọi là điểm cực tiểu của đồ thị hàm số.
+\end{enumerate}
+\end{dn}
+
+\begin{dl}[Điều kiện cần để đạt cực trị -- Định lý Fermat]
+Nếu hàm số $y = f(x)$ đạt cực trị tại điểm $x_0$ và có đạo hàm tại đó thì $f'(x_0) = 0$.
+\end{dl}
+
+\begin{dl}[Điều kiện đủ 1 -- Quy tắc xét dấu đạo hàm cấp một]
+Giả sử hàm số $y = f(x)$ liên tục trên khoảng $(a; b)$ chứa $x_0$ và có đạo hàm trên các khoảng $(a; x_0)$ và $(x_0; b)$:
+\begin{itemize}
+    \item Nếu $f'(x)$ đổi dấu từ \textbf{dương sang âm} khi $x$ đi qua $x_0$ (từ trái sang phải) thì $x_0$ là điểm cực đại.
+    \item Nếu $f'(x)$ đổi dấu từ \textbf{âm sang dương} khi $x$ đi qua $x_0$ (từ trái sang phải) thì $x_0$ là điểm cực tiểu.
+\end{itemize}
+\end{dl}
+
+\begin{dl}[Điều kiện đủ 2 -- Đạo hàm cấp hai]
+Giả sử hàm số $y = f(x)$ có đạo hàm cấp hai liên tục trên khoảng chứa điểm $x_0$, với $f'(x_0) = 0$:
+\begin{itemize}
+    \item Nếu $f''(x_0) < 0$ thì $x_0$ là điểm cực đại của hàm số.
+    \item Nếu $f''(x_0) > 0$ thì $x_0$ là điểm cực tiểu của hàm số.
+    \item Nếu $f''(x_0) = 0$ thì chưa thể kết luận, phải quay lại xét dấu của $f'(x)$.
+\end{itemize}
+\end{dl}
+
+\noindent \textbf{* Lưu ý quan trọng về bản chất:} Hàm số vẫn có thể đạt cực trị tại điểm $x_0$ mà tại đó đạo hàm $f'(x_0)$ \textbf{không tồn tại}, miễn là hàm số liên tục tại điểm $x_0$ và đạo hàm $f'(x)$ đổi dấu khi đi qua $x_0$ (tiêu biểu như hàm $y = |x|$ đạt cực tiểu tại $x = 0$).
+
+\begin{vd}
+Tìm các điểm cực trị của hàm số $f(x) = x^4 - 4x^2 + 3$.
+\end{vd}
+\noindent \textbf{Hướng dẫn giải:} \\
+Tập xác định: $D = \mathbb{R}$. Đạo hàm:
+\[
+f'(x) = 4x^3 - 8x = 4x(x^2 - 2).
+\]
+Phương trình $f'(x) = 0 \iff x = 0$ hoặc $x = \pm\sqrt{2}$. \\
+Đạo hàm cấp hai: $f''(x) = 12x^2 - 8$.
+\begin{itemize}
+    \item Tại $x = 0$: $f''(0) = -8 < 0 \implies x = 0$ là điểm cực đại; $y_{\text{CĐ}} = f(0) = 3$.
+    \item Tại $x = \pm\sqrt{2}$: $f''(\pm\sqrt{2}) = 12(2) - 8 = 16 > 0 \implies x = \pm\sqrt{2}$ là hai điểm cực tiểu; $y_{\text{CT}} = f(\pm\sqrt{2}) = -1$.
+\end{itemize}
+
+\vspace{5mm}
+\section{Giá trị lớn nhất và Giá trị nhỏ nhất của hàm số}
+
+\begin{dn}[GTLN và GTNN trên tập $D$]
+Cho hàm số $y = f(x)$ xác định trên tập hợp $D$.
+\begin{enumerate}
+    \item[a)] Số $M$ được gọi là \textbf{giá trị lớn nhất (GTLN)} của $f(x)$ trên $D$ (ký hiệu $M = \max_{D} f(x)$) nếu:
+    \[
+    \begin{cases}
+    f(x) \le M, \quad \forall x \in D \\
+    \exists x_0 \in D: \quad f(x_0) = M.
+    \end{cases}
+    \]
+    \item[b)] Số $m$ được gọi là \textbf{giá trị nhỏ nhất (GTNN)} của $f(x)$ trên $D$ (ký hiệu $m = \min_{D} f(x)$) nếu:
+    \[
+    \begin{cases}
+    f(x) \ge m, \quad \forall x \in D \\
+    \exists x_0 \in D: \quad f(x_0) = m.
+    \end{cases}
+    \]
+\end{enumerate}
+\end{dn}
+
+\begin{dl}[Định lý Weierstrass]
+Nếu hàm số $y = f(x)$ liên tục trên một đoạn đóng $[a; b]$ thì nó luôn luôn đạt được giá trị lớn nhất và giá trị nhỏ nhất trên đoạn đó.
+\end{dl}
+
+\noindent \textbf{* Quy trình tìm GTLN -- GTNN trên đoạn $[a; b]$:}
+\begin{enumerate}
+    \item Tìm các điểm $x_1, x_2, \dots, x_k \in (a; b)$ mà tại đó $f'(x) = 0$ hoặc đạo hàm không xác định.
+    \item Tính các giá trị $f(a), f(b), f(x_1), \dots, f(x_k)$.
+    \item So sánh các giá trị đã tính: số lớn nhất là GTLN, số nhỏ nhất là GTNN.
+\end{enumerate}
+
+\noindent \textbf{* Lưu ý khi tìm trên khoảng mở hoặc miền vô hạn:} Bắt buộc phải lập bảng biến thiên và tính giới hạn tại các đầu mút biên để xem giá trị cực trị có thực sự là lớn nhất/nhỏ nhất trên toàn miền hay không.
+
+\begin{vd}
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 - 3x^2 - 9x + 35$ trên đoạn $[-4; 4]$.
+\end{vd}
+\noindent \textbf{Hướng dẫn giải:} \\
+Hàm số liên tục trên $[-4; 4]$. Đạo hàm:
+\[
+f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3).
+\]
+Giải $f'(x) = 0 \iff x = -1 \in (-4; 4)$ hoặc $x = 3 \in (-4; 4)$. \\
+Tính giá trị tại các điểm biên và điểm dừng:
+\begin{itemize}
+    \item $f(-4) = (-4)^3 - 3(-4)^2 - 9(-4) + 35 = -41$.
+    \item $f(4) = 4^3 - 3(4)^2 - 9(4) + 35 = 15$.
+    \item $f(-1) = (-1)^3 - 3(-1)^2 - 9(-1) + 35 = 40$.
+    \item $f(3) = 3^3 - 3(3)^2 - 9(3) + 35 = 8$.
+\end{itemize}
+So sánh các giá trị trên: $\max_{[-4; 4]} f(x) = f(-1) = 40$, và $\min_{[-4; 4]} f(x) = f(-4) = -41$.
+
+\vspace{5mm}
+\section{Đường tiệm cận của đồ thị hàm số (Asymptotes)}
+
+\begin{dn}[Tiệm cận đứng]
+Đường thẳng $x = x_0$ được gọi là \textbf{đường tiệm cận đứng} của đồ thị hàm số $y = f(x)$ nếu ít nhất một trong các điều kiện sau được thỏa mãn:
+\[
+\lim_{x \to x_0^+} f(x) = +\infty, \quad \lim_{x \to x_0^+} f(x) = -\infty, \quad \lim_{x \to x_0^-} f(x) = +\infty, \quad \lim_{x \to x_0^-} f(x) = -\infty.
+\]
+\end{dn}
+
+\begin{dn}[Tiệm cận ngang]
+Đường thẳng $y = y_0$ được gọi là \textbf{đường tiệm cận ngang} của đồ thị hàm số $y = f(x)$ nếu ít nhất một trong các điều kiện sau được thỏa mãn:
+\[
+\lim_{x \to +\infty} f(x) = y_0 \quad \text{hoặc} \quad \lim_{x \to -\infty} f(x) = y_0.
+\]
+\end{dn}
+
+\begin{dn}[Tiệm cận xiên -- Kiến thức trọng tâm GDPT 2018]
+Đường thẳng $y = ax + b$ ($a \ne 0$) được gọi là \textbf{đường tiệm cận xiên} của đồ thị hàm số $y = f(x)$ nếu thỏa mãn một trong hai điều kiện sau:
+\[
+\lim_{x \to +\infty} [f(x) - (ax + b)] = 0 \quad \text{hoặc} \quad \lim_{x \to -\infty} [f(x) - (ax + b)] = 0.
+\]
+\end{dn}
+
+\noindent \textbf{* Phương pháp tìm tiệm cận xiên:}
+\begin{enumerate}
+    \item \textbf{Qua giới hạn:} $a = \lim_{x \to \pm\infty} \frac{f(x)}{x}$ ($a \ne 0$) và $b = \lim_{x \to \pm\infty} [f(x) - ax]$.
+    \item \textbf{Chia đa thức (Hàm phân thức bậc hai trên bậc nhất):} Biểu diễn $f(x) = \frac{P(x)}{Q(x)} = ax + b + \frac{R(x)}{Q(x)}$ với $\lim_{x \to \pm\infty} \frac{R(x)}{Q(x)} = 0$. Khi đó đường thẳng $y = ax + b$ chính là tiệm cận xiên.
+\end{enumerate}
+
+\begin{vd}
+Tìm các đường tiệm cận của đồ thị hàm số $y = \frac{2x^2 - 3x + 2}{x - 1}$.
+\end{vd}
+\noindent \textbf{Hướng dẫn giải:} \\
+Tập xác định: $D = \mathbb{R} \setminus \{1\}$.
+\begin{itemize}
+    \item \textbf{Tiệm cận đứng:} Vì $\lim_{x \to 1^+} \frac{2x^2 - 3x + 2}{x - 1} = +\infty$ nên đường thẳng $x = 1$ là tiệm cận đứng.
+    \item \textbf{Tiệm cận xiên:} Chia tử thức cho mẫu thức:
+    \[
+    \frac{2x^2 - 3x + 2}{x - 1} = 2x - 1 + \frac{1}{x - 1}.
+    \]
+    Do $\lim_{x \to \pm\infty} \left[ y - (2x - 1) \right] = \lim_{x \to \pm\infty} \frac{1}{x - 1} = 0$, nên đường thẳng $y = 2x - 1$ là tiệm cận xiên của đồ thị hàm số.
+\end{itemize}
+
+\vspace{5mm}
+\section{Ứng dụng đạo hàm giải bài toán thực tế tối ưu hóa}
+
+\begin{dn}[Bài toán tối ưu hóa thực tế]
+\textbf{Bài toán tối ưu hóa trong thực tế} là bài toán tìm giá trị lớn nhất (để tối đa hóa lợi nhuận, năng suất, thể tích) hoặc giá trị nhỏ nhất (để tối thiểu hóa chi phí, thời gian, nguyên vật liệu) của một đại lượng mục tiêu phụ thuộc vào một hoặc nhiều biến số có ràng buộc thực tiễn.
+\end{dn}
+
+\noindent \textbf{* Quy trình 4 bước giải bài toán tối ưu hóa:}
+\begin{enumerate}
+    \item \textbf{Bước 1 (Xây dựng mô hình):} Xác định biến độc lập $x$ và tìm miền xác định thực tế $D$ của biến số dựa trên các ràng buộc thực tiễn ($x > 0$, góc $\alpha \in (0; \pi/2)$).
+    \item \textbf{Bước 2 (Thiết lập hàm mục tiêu):} Biểu diễn đại lượng cần tối ưu thành hàm số $y = f(x)$ theo biến $x$.
+    \item \textbf{Bước 3 (Khảo sát giải tích):} Sử dụng công cụ đạo hàm để tìm $\max_D f(x)$ hoặc $\min_D f(x)$ trên miền xác định $D$.
+    \item \textbf{Bước 4 (Kết luận):} Trả lời câu hỏi và diễn giải kết quả thu được theo đúng bối cảnh thực tế.
+\end{enumerate}
+
+\begin{vd}
+Một người nông dân muốn dùng $100\text{ m}$ lưới rào để rào một khu đất hình chữ nhật giáp một bờ sông thẳng (không cần rào phía bờ sông). Xác định kích thước của khu đất để diện tích rào được là lớn nhất.
+\end{vd}
+\noindent \textbf{Hướng dẫn giải:}
+\begin{itemize}
+    \item \textbf{Bước 1:} Gọi chiều rộng khu đất (phần rào vuông góc với bờ sông) là $x\text{ (m)}$. Do tổng chiều dài rào là $100\text{ m}$ nên điều kiện thực tế là $0 < x < 50$.
+    \item \textbf{Bước 2:} Chiều dài khu đất dọc theo bờ sông là: $100 - 2x\text{ (m)}$. Diện tích khu đất rào được là:
+    \[
+    S(x) = x(100 - 2x) = 100x - 2x^2\text{ (m}^2\text{)}.
+    \]
+    \item \textbf{Bước 3:} Khảo sát hàm số $S(x)$ trên khoảng $(0; 50)$:
+    \[
+    S'(x) = 100 - 4x; \quad S'(x) = 0 \iff 100 - 4x = 0 \iff x = 25\text{ (m)}.
+    \]
+    Đạo hàm cấp hai: $S''(x) = -4 < 0 \implies x = 25$ là điểm cực đại duy nhất trên $(0; 50)$. \\
+    Do đó diện tích rào được lớn nhất là $S_{\max} = S(25) = 25(100 - 50) = 1250\text{ (m}^2\text{)}$.
+    \item \textbf{Bước 4 (Kết luận):} Để diện tích lớn nhất, người nông dân cần rào khu đất có chiều rộng vuông góc bờ sông là $25\text{ m}$ và chiều dài dọc bờ sông là $50\text{ m}$.
+\end{itemize}
+
+\end{document}
