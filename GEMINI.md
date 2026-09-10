@@ -4,7 +4,10 @@ Mỗi khi người dùng yêu cầu tạo bài trắc nghiệm (HTML/CSS/JS):
 
 1. **Sinh mã trắc nghiệm & Tích hợp Webhook Chấm điểm n8n:**
    - Viết hoàn thiện giao diện HTML/CSS/JS (tích hợp KaTeX hiển thị công thức, giao diện thân thiện, tương tác chọn đáp án, nộp bài, chấm điểm và lời giải chi tiết).
-   - Có ô nhập họ tên học sinh với `id="input-ten"` (mặc định nếu để trống: "Học sinh ẩn danh").
+   - BẮT BUỘC phải tạo 3 ô input cho học sinh điền thông tin trước khi làm bài:
+     + Họ và tên (ID: `input-ten`, mặc định nếu trống: `"Ẩn danh"`)
+     + Mã Học Sinh (ID: `input-ma-hs`, mặc định nếu trống: `"Trống"`, VD: `NTH26-001`)
+     + Lớp/Nhóm (ID: `input-lop`, mặc định nếu trống: `"Trống"`, VD: `10A1`)
    - Nút "Nộp bài" bắt buộc có `id="btn-nop-bai"`.
    - Mỗi câu hỏi phải định nghĩa trường `skill` (kỹ năng/chuyên đề tương ứng).
    - Trong hàm chấm điểm, tự động tính toán:
@@ -15,11 +18,17 @@ Mỗi khi người dùng yêu cầu tạo bài trắc nghiệm (HTML/CSS/JS):
      const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
 
      document.getElementById('btn-nop-bai').addEventListener('click', async function() {
-         const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Học sinh ẩn danh";
+         const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+         // LẤY THÊM MÃ HS VÀ LỚP
+         const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+         const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+         
          const tenBaiThi = document.title || "Bài kiểm tra Toán"; 
          
          const payload = {
              hoc_sinh: tenHocSinh,
+             ma_hs: maHocSinh,   // Dữ liệu mới cho n8n
+             lop: lopNhom,       // Dữ liệu mới cho n8n
              bai_thi: tenBaiThi,
              diem: diem_so, 
              thoi_gian_nop: new Date().toLocaleString('vi-VN'),
@@ -39,13 +48,13 @@ Mỗi khi người dùng yêu cầu tạo bài trắc nghiệm (HTML/CSS/JS):
              });
 
              if (response.ok) {
-                 const n8n_data = await response.json();
-                 alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\n\nNhận xét từ Integra Academy:\n${n8n_data.nhan_xet}`);
+                 // Không cần đợi JSON trả về nữa, chỉ cần Webhook thành công
+                 alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
              } else {
                  alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
              }
          } catch (error) {
-             alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ AI nhận xét).");
+             alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
          } finally {
              btn.innerHTML = originalText;
              btn.disabled = false;

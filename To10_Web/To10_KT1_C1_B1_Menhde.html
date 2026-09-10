@@ -291,34 +291,34 @@
       color: var(--success);
     }
 
-    .student-input-container {
-      display: flex;
-      align-items: center;
+    .student-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
       background: var(--bg-card-alt);
-      padding: 12px 16px;
+      padding: 14px 18px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
-      flex-wrap: wrap;
     }
 
-    .student-input-container label {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--primary);
+    .student-input-item {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 6px;
     }
 
-    .student-input-container input {
-      flex: 1;
-      min-width: 240px;
-      padding: 8px 14px;
+    .student-input-item label {
+      font-weight: 700;
+      font-size: 0.84rem;
+      color: var(--primary);
+    }
+
+    .student-input-item input {
+      padding: 8px 12px;
       border-radius: var(--radius-sm);
       border: 1.5px solid var(--primary-border);
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-main);
       outline: none;
@@ -326,7 +326,7 @@
       background: #fff;
     }
 
-    .student-input-container input:focus {
+    .student-input-item input:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-light);
     }
@@ -921,10 +921,20 @@
           </div>
         </div>
 
-        <!-- Ô nhập họ tên học sinh -->
-        <div class="student-input-container">
-          <label for="input-ten">👤 Họ và tên học sinh:</label>
-          <input type="text" id="input-ten" placeholder="Nhập họ và tên của em trước khi nộp bài...">
+        <!-- Thông tin học sinh bắt buộc -->
+        <div class="student-info-grid">
+          <div class="student-input-item">
+            <label for="input-ten">👤 Họ và tên:</label>
+            <input type="text" id="input-ten" placeholder="Nhập họ và tên...">
+          </div>
+          <div class="student-input-item">
+            <label for="input-ma-hs">🏷️ Mã Học Sinh:</label>
+            <input type="text" id="input-ma-hs" placeholder="Ví dụ: NTH26-001">
+          </div>
+          <div class="student-input-item">
+            <label for="input-lop">🏫 Lớp / Nhóm:</label>
+            <input type="text" id="input-lop" placeholder="Ví dụ: 10A1">
+          </div>
         </div>
       </div>
 
@@ -1630,11 +1640,17 @@
             chamDiemBaiThi();
         }
 
-        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value.trim() || "Học sinh ẩn danh" : "Học sinh ẩn danh";
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        // LẤY THÊM MÃ HS VÀ LỚP
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
         const tenBaiThi = document.title || "Bài kiểm tra Toán"; 
         
         const payload = {
             hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,   // Dữ liệu mới cho n8n
+            lop: lopNhom,       // Dữ liệu mới cho n8n
             bai_thi: tenBaiThi,
             diem: diem_so, 
             thoi_gian_nop: new Date().toLocaleString('vi-VN'),
@@ -1654,13 +1670,13 @@
             });
 
             if (response.ok) {
-                const n8n_data = await response.json();
-                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\n\nNhận xét từ Integra Academy:\n${n8n_data.nhan_xet}`);
+                // Không cần đợi JSON trả về nữa, chỉ cần Webhook thành công
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
             } else {
                 alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
             }
         } catch (error) {
-            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ AI nhận xét).");
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
         } finally {
             btn.innerHTML = originalText;
             btn.disabled = false;
