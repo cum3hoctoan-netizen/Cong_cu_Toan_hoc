@@ -36,8 +36,16 @@ function deployQuiz(htmlInput, folderName, fileName) {
             console.log("Lưu ý khi git pull:", e.message);
         }
         execSync('git add .', { stdio: 'inherit' });
-        execSync(`git commit -m "Auto-deploy: Thêm bài ${cleanFileName}"`, { stdio: 'inherit' });
-        execSync('git push', { stdio: 'inherit' });
+        try {
+            execSync(`git commit -m "Auto-deploy: Thêm bài ${cleanFileName}"`, { stdio: 'inherit' });
+        } catch (e) {
+            console.log("Git commit thông báo: Không có thay đổi mới để commit.");
+        }
+        try {
+            execSync('git push', { stdio: 'inherit' });
+        } catch (e) {
+            console.log("Lưu ý khi git push:", e.message);
+        }
 
         // 5. Tạo link gửi học sinh
         const webLink = `https://cong-cu-toan-hoc.vercel.app/${folderName}/${cleanFileName}`;
