@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textit{Bổ đề Hình học: Định lý Thales \& Phương tích}}
+\rhead{\small\textbf{Integra Typesetter}}
+\rfoot{\small Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{CÁC BỔ ĐỀ HÌNH HỌC CỐT LÕI}}\\[2mm]
+	{\small \textit{(Định lý Thales, Tam giác đồng dạng và Phương tích đường tròn)}}
+\end{center}
+\vspace{4mm}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Bổ đề 1: Định lý Thales và Tam giác đồng dạng với các đường song song}]
+Cho tam giác $TNC$ có $M \in TN, D \in TC$. 
+\begin{enumerate}
+    \item Nếu $MD \parallel NC$ thì $\dfrac{TD}{TC} = \dfrac{TM}{TN} = \dfrac{MD}{NC}$.
+    \item Nếu $DN \parallel MB$ (với $B \in TD$) thì $\dfrac{TB}{TD} = \dfrac{TM}{TN} = \dfrac{BM}{DN}$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!75!black,title=\textbf{Bổ đề 2: Phương tích và Tiêu chuẩn tiếp xúc của đường tròn}]
+Cho ba điểm $E, D, F$ không thẳng hàng và điểm $T$ thuộc đường thẳng $EF$ ($T$ nằm ngoài đoạn $EF$). Đường thẳng qua $T$ và $D$ tiếp xúc với đường tròn ngoại tiếp tam giác $DEF$ tại $D$ khi và chỉ khi:
+\[
+TD^2 = TE \cdot TF \iff \widehat{TDE} = \widehat{TFD} \iff \Delta TDE \sim \Delta TFD \text{ (c-g-c)}
+\]
+\end{tcolorbox}
+
+\end{document}

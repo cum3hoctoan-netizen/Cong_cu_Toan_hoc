@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textit{Tài liệu Hình học Chuyên đề -- Bổ đề cốt lõi}}
+\rhead{\small\textbf{Integra Typesetter}}
+\rfoot{\small Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{CÁC BỔ ĐỀ CỐT LÕI HÌNH HỌC PHẲNG}}\\[2mm]
+	{\small \textit{(Ứng dụng trong các bài toán Hình học Vận dụng cao / Chuyên Toán)}}
+\end{center}
+\vspace{4mm}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Bổ đề 1: Hệ thức khoảng cách Trực tâm và Cặp tia đẳng giác}]
+Cho tam giác $ABC$ nhọn nội tiếp đường tròn $(O; R)$ có trực tâm $H$. Khi đó:
+\begin{enumerate}
+    \item $\widehat{BAH} = \widehat{CAO} = 90^\circ - \widehat{B}$ (Tia $AH$ và $AO$ đẳng giác trong góc $\widehat{BAC}$).
+    \item $AH = 2R \cos \widehat{BAC}$. Đặc biệt, nếu $\widehat{BAC} = 60^\circ$ thì $AH = R = AO$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{2mm}
+
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!75!black,title=\textbf{Bổ đề 2: Đường đối cực của một điểm đối với đường tròn qua Tứ giác toàn phần}]
+Cho tứ giác toàn phần $AXDY.PH'$ nội tiếp đường tròn $(O)$ (với $AD$ là đường kính, $X = PA \cap (O)$, $Y = PD \cap (O)$). Khi đó, giao điểm của các cặp cạnh đối và giao điểm của hai đường chéo tạo thành tam giác tự cực. Đặc biệt, đường đối cực của điểm $P$ đối với $(O)$ đi qua giao điểm của $XY$ và $AD$, đồng thời đi qua trực tâm tương ứng $H'$.
+\end{tcolorbox}
+
+\vspace{2mm}
+
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=\textbf{Bổ đề 3: Định lý La Hire}]
+Trong mặt phẳng cho đường tròn $(O)$. Điểm $M$ nằm trên đường đối cực của điểm $N$ khi và chỉ khi điểm $N$ nằm trên đường đối cực của điểm $M$.
+\end{tcolorbox}
+
+\end{document}

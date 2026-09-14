@@ -1,0 +1,94 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usetikzlibrary{calc,intersections}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.2, font=\footnotesize]
+    % Đường tròn ngoại tiếp (O)
+    \coordinate (O) at (0,0);
+    \def\R{3.4}
+    \draw[thick, blue!80!black] (O) circle (\R);
+    \filldraw[black] (O) circle (1.2pt) node[below right] {$O$};
+
+    % Các đỉnh tam giác nhọn, không cân
+    \coordinate (A) at (78:\R);
+    \coordinate (B) at (205:\R);
+    \coordinate (C) at (325:\R);
+
+    % Chân các đường cao D, E, F
+    \coordinate (D) at ($(B)!(A)!(C)$);
+    \coordinate (E) at ($(A)!(B)!(C)$);
+    \coordinate (F) at ($(A)!(C)!(B)$);
+
+    % Trực tâm H
+    \path[name path=altAD] (A) -- (D);
+    \path[name path=altBE] (B) -- (E);
+    \path[name intersections={of=altAD and altBE, by=H}];
+
+    % Các trung điểm M, N, P
+    \coordinate (M) at ($(A)!0.5!(B)$);
+    \coordinate (N) at ($(A)!0.5!(C)$);
+    \coordinate (P) at ($(B)!0.5!(C)$);
+
+    % Điểm X = EF giao BC
+    \path[name path=lineEF] ($(E)!-2.5!(F)$) -- ($(F)!3!(E)$);
+    \path[name path=lineBC] ($(B)!-2.5!(C)$) -- ($(C)!1.5!(B)$);
+    \path[name intersections={of=lineEF and lineBC, by=X}];
+
+    % Điểm K = EF giao MN
+    \path[name path=lineMN] ($(M)!-1.5!(N)$) -- ($(N)!3!(M)$);
+    \path[name intersections={of=lineEF and lineMN, by=K}];
+
+    % Tiếp tuyến tại A của (O) cắt MN tại Y
+    % Vector tiếp tuyến vuông góc với OA
+    \coordinate (tanA) at ($(A)!1!90:(O)$);
+    \path[name path=lineTanA] ($(A)!-3!(tanA)$) -- ($(A)!3!(tanA)$);
+    \path[name intersections={of=lineTanA and lineMN, by=Y}];
+
+    % Đường thẳng Euler OH
+    \draw[thick, red!80!black] ($(O)!-0.8!(H)$) -- ($(H)!2.2!(O)$);
+
+    % Vẽ tam giác và các đoạn thẳng chính
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (X) -- (C);
+    \draw[thick, blue] (X) -- (K);
+    \draw[thick, purple] (Y) -- (N);
+    \draw[thick, purple] (A) -- (Y);
+    \draw[thick, orange!90!black] (A) -- (K);
+    \draw[thick, orange!90!black] (X) -- (Y);
+
+    % Đường trung tuyến AP và đường đối trung AL (cho câu b)
+    \coordinate (G) at ($(A)!2/3!(P)$);
+    % Dựng AL đối xứng AP qua phân giác góc A:
+    % D là hình chiếu, L là trung điểm DP
+    \coordinate (L) at ($(D)!0.5!(P)$);
+    \draw[dashed, teal] (A) -- (P);
+    \draw[dashed, olive] (A) -- (L);
+
+    % Vẽ các đoạn đường cao
+    \draw[gray, dashed] (A) -- (D);
+    \draw[gray, dashed] (B) -- (E);
+    \draw[gray, dashed] (C) -- (F);
+
+    % Điểm
+    \filldraw[black] (A) circle (1.5pt) node[above] {$A$};
+    \filldraw[black] (B) circle (1.5pt) node[below left] {$B$};
+    \filldraw[black] (C) circle (1.5pt) node[below right] {$C$};
+    \filldraw[black] (D) circle (1.3pt) node[below] {$D$};
+    \filldraw[black] (E) circle (1.3pt) node[above right] {$E$};
+    \filldraw[black] (F) circle (1.3pt) node[above left] {$F$};
+    \filldraw[black] (H) circle (1.3pt) node[below left] {$H$};
+    \filldraw[black] (M) circle (1.3pt) node[left] {$M$};
+    \filldraw[black] (N) circle (1.3pt) node[right] {$N$};
+    \filldraw[black] (P) circle (1.3pt) node[below] {$P$};
+    \filldraw[black] (X) circle (1.5pt) node[below left] {$X$};
+    \filldraw[black] (K) circle (1.5pt) node[above] {$K$};
+    \filldraw[black] (Y) circle (1.5pt) node[above left] {$Y$};
+    \filldraw[black] (L) circle (1.3pt) node[below] {$L$};
+    \filldraw[black] (G) circle (1.3pt) node[right] {$G$};
+
+    % Đánh dấu góc vuông AK vuông góc OH
+    \draw[red] ($(K)!0.15!(A)$) -- ++($(O)!0.15!(H)-(O)$);
+\end{tikzpicture}
+\end{document}

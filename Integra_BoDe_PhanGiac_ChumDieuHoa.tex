@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textit{Bổ đề Hình học: Phân giác, Chùm điều hòa \& Đường đối trung}}
+\rhead{\small\textbf{Integra Typesetter}}
+\rfoot{\small Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{CÁC BỔ ĐỀ HÌNH HỌC PHẲNG CHUYÊN SÂU}}\\[2mm]
+	{\small \textit{(Đường phân giác -- Chùm điều hòa trực giao -- Điểm tiếp xúc đường tròn nội tiếp)}}
+\end{center}
+\vspace{4mm}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Bổ đề 1: Tính chất Giao điểm của Phân giác và Đường trung bình}]
+Cho tam giác $ABC$ có đường tròn nội tiếp $(I)$ tiếp xúc với ba cạnh tại $J, E, F$. Phân giác trong $BI, CI$ lần lượt cắt đường trung bình $MN$ ($M \in AB, N \in AC$) tại $K, H$. Khi đó:
+\begin{enumerate}
+    \item $K \in JE$ và $AK \perp BI$.
+    \item $H \in JF$ và $AH \perp CI$.
+    \item Tứ giác $AKJH$ là hình bình hành, suy ra $JA$ đi qua trung điểm của $HK$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!75!black,title=\textbf{Bổ đề 2: Chùm điều hòa Trực giao}]
+Cho hai chùm điều hòa bốn tia $O_1(ABCD) = -1$ và $O_2(A'B'C'D') = -1$. Nếu ba cặp tia tương ứng vuông góc:
+\[
+O_1A \perp O_2A', \quad O_1B \perp O_2B', \quad O_1C \perp O_2C'
+\]
+thì cặp tia thứ tư cũng vuông góc: $O_1D \perp O_2D'$.
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=\textbf{Bổ đề 3: Sự đồng quy giữa Trung tuyến và Tiếp điểm}]
+Cho tam giác $ABC$ nội tiếp đường tròn có $(I)$ tiếp xúc $BC, CA, AB$ tại $D, E, F$. $K$ là trung điểm $BC$. Khi đó ba đường thẳng $AK, ID, EF$ đồng quy.
+\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usetikzlibrary{calc,intersections,through}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.2, font=\footnotesize]
+    % Tọa độ đường tròn (O) và tam giác nhọn ABC không cân
+    \coordinate (O) at (0,0);
+    \def\R{3.2}
+    \draw[thick, blue!80!black] (O) circle (\R);
+    
+    % Chọn các góc để tam giác nhọn, không cân
+    \coordinate (A) at (75:\R);
+    \coordinate (B) at (195:\R);
+    \coordinate (C) at (335:\R);
+    
+    % Điểm D đối xứng của A qua O (đường kính AD)
+    \coordinate (D) at ($(O)!-1!(A)$);
+    
+    % Trực tâm H của tam giác ABC
+    \coordinate (K) at ($(B)!(A)!(C)$); % Chân đường cao từ A lên BC
+    \coordinate (B1) at ($(A)!(B)!(C)$); % Chân đường cao từ B lên AC
+    \path[name path=altA] (A) -- (K);
+    \path[name path=altB] (B) -- (B1);
+    \path[name intersections={of=altA and altB, by=H}];
+    
+    % Điểm A' đối xứng A qua BC
+    \coordinate (A') at ($(A)!2!(K)$);
+    
+    % Điểm P trên BC sao cho AP vuông góc OH
+    \coordinate (A_perp) at ($(A)!1!90:($(A)+(H)-(O)$)$);
+    \path[name path=perpAP] ($(A)!-10!(A_perp)$) -- ($(A)!10!(A_perp)$);
+    \path[name path=lineBC] ($(B)!-0.5!(C)$) -- ($(B)!2.5!(C)$);
+    \path[name intersections={of=perpAP and lineBC, by=P}];
+    
+    % Trực tâm H' của tam giác ADP
+    \coordinate (L) at ($(A)!(D)!(P)$); % Hình chiếu D lên AP
+    \coordinate (E) at ($(A)!(P)!(D)$); % Hình chiếu P lên AD
+    \path[name path=altD_ADP] ($(D)!-1!(L)$) -- ($(D)!3!(L)$);
+    \path[name path=altP_ADP] ($(P)!-1!(E)$) -- ($(P)!3!(E)$);
+    \path[name intersections={of=altD_ADP and altP_ADP, by=H'}];
+    
+    % Đường nối dài BC đến P
+    \draw[dashed, gray] (C) -- (P);
+    
+    % Vẽ các cạnh tam giác ABC
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    
+    % Vẽ cấu hình bài toán
+    \draw[dashed, gray] (A) -- (D);
+    \draw[thick, teal] (O) -- (H);
+    \draw[thick, red!80!black] (A) -- (P);
+    \draw[thick, purple] (A) -- (A');
+    \draw[dashed, gray] (D) -- (P);
+    
+    % Nối trực tâm H'
+    \draw[thick, orange!90!black] (D) -- (H') -- (P);
+    \draw[dashed, orange!90!black] (A) -- (H');
+    \draw[thick, magenta] (H') -- (A');
+    \draw[thick, cyan!80!black] (O) -- (P);
+    
+    % Đánh dấu các điểm
+    \filldraw[black] (A) circle (1.5pt) node[above] {$A$};
+    \filldraw[black] (B) circle (1.5pt) node[left] {$B$};
+    \filldraw[black] (C) circle (1.5pt) node[below right] {$C$};
+    \filldraw[black] (O) circle (1.5pt) node[above right] {$O$};
+    \filldraw[black] (D) circle (1.5pt) node[below left] {$D$};
+    \filldraw[black] (H) circle (1.5pt) node[left] {$H$};
+    \filldraw[black] (P) circle (1.5pt) node[below right] {$P$};
+    \filldraw[black] (A') circle (1.5pt) node[below] {$A'$};
+    \filldraw[red] (H') circle (1.8pt) node[below left] {$H'$};
+    
+    % Đánh dấu góc vuông AP vuông góc OH
+    \coordinate (sq1) at ($(A)!0.25cm!(P)$);
+    \coordinate (sq2) at ($(sq1)!0.25cm!90:(P)$);
+    \coordinate (sq3) at ($(A)!0.25cm!90:(P)$);
+    \draw[red] (sq1) -- (sq2) -- (sq3);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textit{Bổ đề Hình học: Tứ giác điều hòa, Tam giác trực tâm \& Phép vị tự}}
+\rhead{\small\textbf{Integra Typesetter}}
+\rfoot{\small Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{CÁC BỔ ĐỀ HÌNH HỌC PHẲNG NÂNG CAO}}\\[2mm]
+	{\small \textit{(Tứ giác điều hòa -- Định lý Ptolemy -- Tam giác trực tâm \& Phép vị tự)}}
+\end{center}
+\vspace{4mm}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Bổ đề 1: Tứ giác điều hòa và Định lý Ptolemy}]
+Cho đường tròn $(I)$ và điểm $A$ nằm ngoài đường tròn với hai tiếp tuyến $AN, AP$. Cát tuyến bất kỳ qua $A$ cắt $(I)$ tại $A'$ và $D$. Khi đó:
+\begin{enumerate}
+    \item Tứ giác $NPA'D$ là tứ giác điều hòa, thỏa mãn:
+    \[
+    DN \cdot PA' = DP \cdot NA' = \frac{1}{2} DA' \cdot NP
+    \]
+    \item Hệ thức Ptolemy: $DN \cdot PA' + DP \cdot NA' = DA' \cdot NP$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!75!black,title=\textbf{Bổ đề 2: Tâm nội tiếp và Ngoại tiếp của Tam giác trực tâm}]
+Cho tam giác nhọn $ABC$ có trực tâm $H$, tâm ngoại tiếp $O$ và tam giác trực tâm là $UVW$ (chân các đường cao). Khi đó:
+\begin{enumerate}
+    \item $H$ là tâm đường tròn nội tiếp của tam giác $UVW$.
+    \item Tâm đường tròn ngoại tiếp của tam giác $UVW$ là tâm đường tròn Euler $O_9$ của tam giác $ABC$.
+    \item Đường thẳng nối tâm nội tiếp và tâm ngoại tiếp của tam giác $UVW$ trùng với đường thẳng Euler $OH$ của tam giác $ABC$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=\textbf{Bổ đề 3: Phép vị tự và Trục nối các tâm đặc biệt}]
+Nếu hai tam giác $T_1$ và $T_2$ vị tự với nhau (có các cạnh tương ứng song song), thì đường thẳng nối tâm nội tiếp và tâm ngoại tiếp của $T_1$ song song (hoặc trùng) với đường thẳng nối tâm nội tiếp và tâm ngoại tiếp của $T_2$.
+\end{tcolorbox}
+
+\end{document}

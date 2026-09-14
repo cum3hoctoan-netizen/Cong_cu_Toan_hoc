@@ -1,0 +1,76 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usetikzlibrary{calc,intersections,through}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.1, font=\footnotesize]
+    % Định nghĩa đường tròn (O)
+    \coordinate (O) at (0,0);
+    \def\R{3.2}
+    \draw[thick, blue!80!black] (O) circle (\R);
+    \node[below right] at (O) {$O$};
+    \filldraw[black] (O) circle (1.2pt);
+
+    % Tam giác ABC nhọn, AB < AC
+    \coordinate (A) at (100:\R);
+    \coordinate (B) at (215:\R);
+    \coordinate (C) at (325:\R);
+
+    % Điểm D thuộc BC sao cho DB < DC (lấy tỉ lệ 0.38)
+    \coordinate (D) at ($(B)!0.38!(C)$);
+
+    % Dựng M thuộc AB sao cho DM // AC
+    % Dựng N thuộc AC sao cho DN // AB
+    \coordinate (M) at ($(B)!0.38!(A)$);
+    \coordinate (N) at ($(C)!0.62!(A)$);
+
+    % Đường thẳng MN kéo dài cắt BC kéo dài tại T và cắt (O) tại E, F
+    \path[name path=lineBC] ($(B)!-1.5!(C)$) -- ($(C)!1.2!(B)$);
+    \path[name path=lineMN_ext] ($(N)!3.5!(M)$) -- ($(M)!2.5!(N)$);
+    \path[name intersections={of=lineBC and lineMN_ext, by=T}];
+
+    % Đường thẳng MN cắt đường tròn (O) tại E và F
+    \path[name path=circleO] (O) circle (\R);
+    \path[name intersections={of=circleO and lineMN_ext, by={F,E}}];
+
+    % Vẽ đường tròn ngoại tiếp tam giác DEF
+    % Dựng tâm O1 bằng giao hai đường trung trực của DE và DF
+    \coordinate (midDE) at ($(D)!0.5!(E)$);
+    \coordinate (midDF) at ($(D)!0.5!(F)$);
+    \coordinate (pDE) at ($(midDE)!1!90:(E)$);
+    \coordinate (pDF) at ($(midDF)!1!90:(F)$);
+    \path[name path=bisDE] ($(midDE)!-5!(pDE)$) -- ($(midDE)!5!(pDE)$);
+    \path[name path=bisDF] ($(midDF)!-5!(pDF)$) -- ($(midDF)!5!(pDF)$);
+    \path[name intersections={of=bisDE and bisDF, by=O1}];
+    
+    % Vẽ đường tròn (DEF) qua D
+    \node[draw, thick, teal, circle through=(D)] at (O1) {};
+
+    % Vẽ tam giác và các cạnh
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, red!70!black] (T) -- (C);
+    \draw[thick, red!70!black] (T) -- (F);
+    
+    % Vẽ hình bình hành AMDN
+    \draw[dashed, purple] (D) -- (M);
+    \draw[dashed, purple] (D) -- (N);
+    \draw[dashed, gray] (M) -- (N);
+
+    % Nối tam giác DEF
+    \draw[thick, orange!90!black] (D) -- (E);
+    \draw[thick, orange!90!black] (D) -- (F);
+
+    % Điểm
+    \filldraw[black] (A) circle (1.5pt) node[above] {$A$};
+    \filldraw[black] (B) circle (1.5pt) node[below left] {$B$};
+    \filldraw[black] (C) circle (1.5pt) node[below right] {$C$};
+    \filldraw[black] (D) circle (1.5pt) node[below] {$D$};
+    \filldraw[black] (M) circle (1.5pt) node[above left] {$M$};
+    \filldraw[black] (N) circle (1.5pt) node[above right] {$N$};
+    \filldraw[black] (T) circle (1.5pt) node[left] {$T$};
+    \filldraw[blue!80!black] (E) circle (1.5pt) node[above left] {$E$};
+    \filldraw[blue!80!black] (F) circle (1.5pt) node[above right] {$F$};
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usetikzlibrary{calc,intersections,through}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.25, font=\footnotesize]
+    % Đường tròn ngoại tiếp (O)
+    \coordinate (O) at (0,0);
+    \def\R{3.5}
+    \draw[thick, blue!70!black] (O) circle (\R);
+
+    % Đỉnh A, B, C không cân, nhọn
+    \coordinate (A) at (105:\R);
+    \coordinate (B) at (215:\R);
+    \coordinate (C) at (325:\R);
+
+    % Điểm D: chính giữa cung BC không chứa A
+    \coordinate (D) at (270:\R);
+
+    % Điểm DB: chính giữa cung AC không chứa B (để dựng phân giác góc B)
+    \coordinate (DB) at (35:\R);
+
+    % Trung điểm các cạnh
+    \coordinate (M) at ($(A)!0.5!(B)$);
+    \coordinate (N) at ($(A)!0.5!(C)$);
+    \coordinate (L) at ($(B)!0.5!(C)$);
+
+    % Tâm nội tiếp I: giao điểm phân giác AD và B-DB
+    \path[name path=bisA] (A) -- (D);
+    \path[name path=bisB] (B) -- (DB);
+    \path[name intersections={of=bisA and bisB, by=I}];
+
+    % Tiếp điểm J, E, F của đường tròn nội tiếp (I)
+    \coordinate (J) at ($(B)!(I)!(C)$);
+    \coordinate (E) at ($(C)!(I)!(A)$);
+    \coordinate (F) at ($(A)!(I)!(B)$);
+
+    % Vẽ đường tròn nội tiếp (I) tiếp xúc với BC tại J
+    \node[draw, thick, teal, circle through=(J)] at (I) {};
+
+    % Giao điểm K = MN giao JE; H = MN giao JF
+    \path[name path=lineMN] ($(M)!-2!(N)$) -- ($(N)!3!(M)$);
+    \path[name path=lineJE] ($(J)!-0.5!(E)$) -- ($(E)!2.5!(J)$);
+    \path[name path=lineJF] ($(J)!-0.5!(F)$) -- ($(F)!2.5!(J)$);
+    \path[name intersections={of=lineMN and lineJE, by=K}];
+    \path[name intersections={of=lineMN and lineJF, by=H}];
+
+    % Đường tròn (IBC) có tâm là D, bán kính DB
+    \node[draw, dashed, gray, circle through=(B)] at (D) {};
+
+    % Điểm G = IJ giao lại (IBC)
+    \path[name path=lineIJ] ($(I)!-3!(J)$) -- ($(I)!6!(J)$);
+    \path let \p1 = ($(B)-(D)$) in \pgfextra{\xdef\rIBC{veclen(\x1,\y1)}};
+    \path[name path=circIBC] (D) circle (\rIBC);
+    \path[name intersections={of=lineIJ and circIBC, by={pt1, pt2}}];
+    % Điểm G là giao điểm khác I (nằm phía dưới J)
+    \coordinate (G) at (pt2);
+
+    % Điểm T = đối xứng của G qua tâm D (vì DT là đường kính của (IBC))
+    \coordinate (T) at ($(G)!2!(D)$);
+
+    % Hình chiếu R, S của D lên AB, AC
+    \coordinate (R) at ($(A)!(D)!(B)$);
+    \coordinate (S) at ($(A)!(D)!(C)$);
+
+    % Vẽ tam giác và các cạnh chính
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (M) -- (N);
+    \draw[thick, purple] (A) -- (K) -- (J) -- (H) -- cycle;
+    \draw[thick, orange!90!black] (A) -- (J);
+    \draw[thick, red] (I) -- (T);
+
+    % Đường nối D-G-T
+    \draw[dashed, gray] (G) -- (T);
+
+    % Đường thẳng Simson RS
+    \draw[thick, magenta] ($(R)!-0.5!(S)$) -- ($(S)!1.5!(R)$);
+
+    % Đánh dấu các điểm
+    \filldraw[black] (A) circle (1.3pt) node[above] {$A$};
+    \filldraw[black] (B) circle (1.3pt) node[below left] {$B$};
+    \filldraw[black] (C) circle (1.3pt) node[below right] {$C$};
+    \filldraw[black] (D) circle (1.3pt) node[below] {$D$};
+    \filldraw[black] (I) circle (1.3pt) node[above right] {$I$};
+    \filldraw[black] (J) circle (1.2pt) node[below] {$J$};
+    \filldraw[black] (E) circle (1.2pt) node[above right] {$E$};
+    \filldraw[black] (F) circle (1.2pt) node[above left] {$F$};
+    \filldraw[black] (M) circle (1.2pt) node[left] {$M$};
+    \filldraw[black] (N) circle (1.2pt) node[right] {$N$};
+    \filldraw[black] (K) circle (1.3pt) node[above right] {$K$};
+    \filldraw[black] (H) circle (1.3pt) node[above left] {$H$};
+    \filldraw[black] (G) circle (1.3pt) node[below right] {$G$};
+    \filldraw[black] (T) circle (1.3pt) node[above left] {$T$};
+    \filldraw[black] (R) circle (1.2pt) node[left] {$R$};
+    \filldraw[black] (S) circle (1.2pt) node[right] {$S$};
+    \filldraw[black] (L) circle (1.2pt) node[below] {$L$};
+
+\end{tikzpicture}
+\end{document}

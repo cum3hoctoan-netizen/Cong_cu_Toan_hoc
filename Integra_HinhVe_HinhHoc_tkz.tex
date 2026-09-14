@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5, line join=round, line cap=round]
+    % Định nghĩa các đỉnh tam giác và tâm O
+    \tkzDefPoint(0,0){O}
+    \tkzDefPoint(115:3){A}
+    \tkzDefPoint(205:3){B}
+    \tkzDefPoint(-10:3){C}
+    
+    % Vẽ đường tròn ngoại tiếp
+    \tkzDrawCircle(O,A)
+    
+    % Xác định trực tâm H
+    \tkzDefTriangleCenter[ortho](A,B,C) \tkzGetPoint{H}
+    
+    % Lấy điểm P trên đoạn BC
+    \tkzDefBarycentricPoint(B=4,C=5) \tkzGetPoint{P}
+    
+    % Giao điểm T của AP và đường tròn (O)
+    \tkzInterLC(A,P)(O,A) \tkzGetPoints{T}{A_dummy}
+    
+    % Kẻ TD song song với HO cắt (O) tại D
+    \tkzDefLine[parallel=through T](H,O) \tkzGetPoint{dirTD}
+    \tkzInterLC(T,dirTD)(O,A) \tkzGetPoints{D_dummy}{D}
+    
+    % H' là giao điểm của DP và AB
+    \tkzInterLL(D,P)(A,B) \tkzGetPoint{H'}
+    
+    % VẼ CÁC ĐƯỜNG THẲNG
+    \tkzDrawSegments(A,B B,C C,A) % Tam giác ABC
+    \tkzDrawSegments(A,H A,T T,D)
+    \tkzDrawSegments(H',B H',T H',D)
+    \tkzDrawSegments(C,D)
+    
+    % Vẽ đoạn HO và TD kèm mũi tên đỏ thể hiện song song (Vector)
+    \draw[->, red, thick] (H) -- ($(H)!0.6!(O)$);
+    \draw (H) -- (O);
+    \draw[->, red, thick] (T) -- ($(T)!0.55!(D)$);
+    \draw (T) -- (D);
+
+    % VẼ VÀ ĐẶT TÊN CÁC ĐIỂM
+    \tkzDrawPoints[fill=black,size=3](A,B,C,O,H,P,T,D,H')
+    \tkzLabelPoint[above](A){$A$}
+    \tkzLabelPoint[below left](B){$B$}
+    \tkzLabelPoint[right](C){$C$}
+    \tkzLabelPoint[below right](O){$O$}
+    \tkzLabelPoint[below left](H){$H$}
+    \tkzLabelPoint[above right](P){$P$}
+    \tkzLabelPoint[below](T){$T$}
+    \tkzLabelPoint[right](D){$D$}
+    \tkzLabelPoint[left](H'){$H'$}
+\end{tikzpicture}
+\end{center}
+
+\end{document}

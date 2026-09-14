@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textit{Bổ đề Hình học: Trục đẳng phương, Brocard \& Cặp tia đẳng giác}}
+\rhead{\small\textbf{Integra Typesetter}}
+\rfoot{\small Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{CÁC BỔ ĐỀ HÌNH HỌC PHẲNG NÂNG CAO}}\\[2mm]
+	{\small \textit{(Trục đẳng phương -- Định lý Brocard -- Cặp tia đẳng giác)}}
+\end{center}
+\vspace{4mm}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Bổ đề 1: Trục đẳng phương vuông góc với Đường nối tâm}]
+Cho hai đường tròn $(O_1)$ và $(O_2)$ phân biệt cắt nhau tại $A$. Nếu điểm $K$ thỏa mãn $\mathcal{P}_{K/(O_1)} = \mathcal{P}_{K/(O_2)}$ thì đường thẳng $AK$ chính là trục đẳng phương của $(O_1)$ và $(O_2)$, đồng thời $AK \perp O_1 O_2$.
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!75!black,title=\textbf{Bổ đề 2: Định lý Brocard cho Tứ giác nội tiếp}]
+Cho tứ giác $BFEC$ nội tiếp đường tròn tâm $P$. Gọi $H = BE \cap CF$, $A = BF \cap CE$, $X = EF \cap BC$. Khi đó, tam giác $AXH$ là tam giác tự cực đối với đường tròn $(P)$, và tâm $P$ chính là trực tâm của tam giác $AXH$. Đặc biệt:
+\[
+XH \perp AP, \quad PH \perp AX, \quad PA \perp XH
+\]
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=\textbf{Bổ đề 3: Cặp tia đẳng giác và Tỉ số Tangent}]
+Trong góc $\widehat{xAy}$, hai tia $Az, At$ đẳng giác khi và chỉ khi phân giác của $\widehat{xAy}$ cũng là phân giác của $\widehat{zAt}$. Nếu $AD \perp BC$ là đường cao và $AL, AP$ lần lượt là đường đối trung và đường trung tuyến kẻ từ $A$, thì:
+\[
+\widehat{DAL} = \widehat{OAG} \quad \text{và} \quad \widehat{DAP} = \widehat{HAG}
+\]
+\end{tcolorbox}
+
+\end{document}

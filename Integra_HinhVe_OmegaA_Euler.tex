@@ -1,0 +1,93 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usetikzlibrary{calc,intersections,through}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.15, font=\footnotesize]
+    % Tam giác nhọn ABC không cân
+    \coordinate (A) at (1.8, 5.2);
+    \coordinate (B) at (-2.2, 0);
+    \coordinate (C) at (4.6, 0);
+
+    % Tâm nội tiếp I và bán kính r
+    \coordinate (I) at (1.527, 1.835);
+    \def\rIn{1.835}
+
+    % Tiếp điểm M, N, P
+    \coordinate (M) at ($(B)!(I)!(C)$);
+    \coordinate (N) at ($(C)!(I)!(A)$);
+    \coordinate (P) at ($(A)!(I)!(B)$);
+
+    % Đường tròn nội tiếp (I)
+    \node[draw, thick, teal, circle through=(M)] at (I) {};
+
+    % Tam giác tiếp xúc MNP
+    \draw[dashed, teal] (M) -- (N) -- (P) -- cycle;
+
+    % Giao điểm A' của AM với đường tròn (I)
+    \path[name path=AM] (A) -- (M);
+    \path[name path=circIn] (I) circle (\rIn);
+    \path[name intersections={of=AM and circIn, by={A',junkA}}];
+
+    % Vẽ tam giác ABC
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+
+    % Đường tròn (Omega_A) qua A tiếp xúc ngoài với (I) tại A'
+    % Tâm OA là giao của đường thẳng IA' và đường trung trực của AA'
+    \path[name path=lineIA] (I) -- ($(I)!3!(A')$);
+    \coordinate (midAA) at ($(A)!0.5!(A')$);
+    \path[name path=bisAA] ($(midAA)!-3!90:(A)$) -- ($(midAA)!3!90:(A)$);
+    \path[name intersections={of=lineIA and bisAA, by=OA}];
+
+    % Vẽ đường tròn (Omega_A) qua A
+    \node[draw, thick, purple, circle through=(A)] at (OA) {};
+
+    % Giao điểm A_b, A_c của (Omega_A) với AB, AC
+    \path let \p1 = ($(A)-(OA)$) in \pgfextra{\xdef\rOA{veclen(\x1,\y1)}};
+    \path[name path=circOA] (OA) circle (\rOA);
+    \path[name path=lineAB] (A) -- ($(A)!2.5!(B)$);
+    \path[name path=lineAC] (A) -- ($(A)!2.5!(C)$);
+    \path[name intersections={of=circOA and lineAB, by={junkAb, Ab}}];
+    \path[name intersections={of=circOA and lineAC, by={junkAc, Ac}}];
+
+    % Đoạn thẳng A_b A_c
+    \draw[thick, red] ($(Ab)!-0.3!(Ac)$) -- ($(Ac)!1.3!(Ab)$);
+
+    % Các đường cao AU, BV, CW và trực tâm H
+    \coordinate (U) at ($(B)!(A)!(C)$);
+    \coordinate (V) at ($(C)!(B)!(A)$);
+    \coordinate (W) at ($(A)!(C)!(B)$);
+    \path[name path=altAU] (A) -- (U);
+    \path[name path=altBV] (B) -- (V);
+    \path[name intersections={of=altAU and altBV, by=H}];
+
+    % Tam giác trực tâm UVW
+    \draw[dashed, blue] (U) -- (V) -- (W) -- cycle;
+
+    % Tâm ngoại tiếp O của ABC
+    \coordinate (midAB) at ($(A)!0.5!(B)$);
+    \coordinate (midBC) at ($(B)!0.5!(C)$);
+    \path[name path=bisAB] ($(midAB)!-3!90:(B)$) -- ($(midAB)!3!90:(B)$);
+    \path[name path=bisBC] ($(midBC)!-3!90:(C)$) -- ($(midBC)!3!90:(C)$);
+    \path[name intersections={of=bisAB and bisBC, by=O}];
+
+    % Trục Euler OH
+    \draw[thick, blue!80!black] ($(O)!-0.5!(H)$) -- ($(H)!1.6!(O)$);
+
+    % Đánh dấu các điểm
+    \filldraw[black] (A) circle (1.5pt) node[above] {$A$};
+    \filldraw[black] (B) circle (1.5pt) node[below left] {$B$};
+    \filldraw[black] (C) circle (1.5pt) node[below right] {$C$};
+    \filldraw[black] (I) circle (1.3pt) node[below] {$I$};
+    \filldraw[black] (M) circle (1.3pt) node[below] {$M$};
+    \filldraw[black] (N) circle (1.3pt) node[above right] {$N$};
+    \filldraw[black] (P) circle (1.3pt) node[above left] {$P$};
+    \filldraw[black] (A') circle (1.3pt) node[below left] {$A'$};
+    \filldraw[black] (Ab) circle (1.3pt) node[left] {$A_b$};
+    \filldraw[black] (Ac) circle (1.3pt) node[right] {$A_c$};
+    \filldraw[black] (H) circle (1.3pt) node[left] {$H$};
+    \filldraw[black] (O) circle (1.3pt) node[right] {$O$};
+
+\end{tikzpicture}
+\end{document}

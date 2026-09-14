@@ -1,0 +1,52 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textit{Bổ đề Hình học: Cấu hình Góc $45^\circ$ \& Tiêu chuẩn Carnot}}
+\rhead{\small\textbf{Integra Typesetter}}
+\rfoot{\small Trang \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{CÁC BỔ ĐỀ HÌNH HỌC PHẲNG ĐẶC SẮC}}\\[2mm]
+	{\small \textit{(Cấu hình góc $45^\circ$ -- Trực tâm -- Tiêu chuẩn trực giao Carnot)}}
+\end{center}
+\vspace{4mm}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Bổ đề 1: Cấu hình Góc $45^\circ$, Trực tâm và Đường kính}]
+Cho tam giác $ABC$ nội tiếp $(O)$ có $\widehat{A} = 45^\circ$, trực tâm $H$. Khi đó:
+\begin{enumerate}
+    \item $\Delta OBC$ vuông cân tại $O$, suy ra $AH = 2OM = BC$.
+    \item Các tam giác $ACR, ABS$ vuông cân tại $C$ và $B$. Giao điểm $L = BS \cap CR$ là trực tâm tam giác $ARS$, thuộc $(O)$ và $AL$ là đường kính của $(O)$.
+    \item $AL = RS \implies AO = \dfrac{RS}{2}$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!75!black,title=\textbf{Bổ đề 2: Định lý Bốn điểm (Tiêu chuẩn Trực giao Carnot)}]
+Cho bốn điểm phân biệt $A, B, C, D$. Đường thẳng $AB$ vuông góc với đường thẳng $CD$ khi và chỉ khi:
+\[
+AC^2 - AD^2 = BC^2 - BD^2
+\]
+\end{tcolorbox}
+
+\end{document}
