@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHIẾU HỌC TẬP HỖN HỢP 4 ĐỊNH DẠNG (GDPT 2018) - TOÁN 11</title>
+
+  <!-- Fonts: Professional Academic Word / Ink Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    /* ===================================================
+       WORD & INK BLACK-WHITE ACADEMIC STYLE
+       - Clean White Background (#FFFFFF)
+       - Deep Ink Text (#111111)
+       - Borderless / Minimal Border Aesthetic (khung viền: false)
+       - 4K High Resolution Clarity & Proportions
+       =================================================== */
+    :root {
+      --bg-page: #F8F9FA;
+      --bg-sheet: #FFFFFF;
+      --text-ink: #111827;
+      --text-sub: #374151;
+      --text-muted: #6B7280;
+
+      --ink-black: #000000;
+      --ink-dark: #1F2937;
+      --ink-border: #E5E7EB;
+      --ink-border-dark: #374151;
+
+      --accent-black: #111827;
+      --accent-gray: #F3F4F6;
+      --accent-correct: #065F46;
+      --accent-wrong: #991B1B;
+
+      --font-main: 'Times New Roman', 'Plus Jakarta Sans', serif, -apple-system, BlinkMacSystemFont;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: var(--text-ink);
+      line-height: 1.65;
+      padding: 24px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Top Floating Utility Bar */
+    .utility-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid var(--ink-border);
+      padding: 8px 16px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .utility-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-badge {
+      font-size: 12px;
+      font-weight: 700;
+      background: #111827;
+      color: #FFFFFF;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .timer-display {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: #111827;
+      background: #F3F4F6;
+      padding: 3px 10px;
+      border-radius: 4px;
+      border: 1px solid #E5E7EB;
+    }
+
+    .utility-right {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-top {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid #D1D5DB;
+      background: #FFFFFF;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-top:hover {
+      background: #F3F4F6;
+      border-color: #9CA3AF;
+    }
+
+    .btn-top.primary {
+      background: #111827;
+      color: #FFFFFF;
+      border-color: #111827;
+    }
+
+    .btn-top.primary:hover {
+      background: #1F2937;
+    }
+
+    /* ===================================================
+       MAIN A4 DOCUMENT CANVAS (Word Ink Style)
+       =================================================== */
+    .word-sheet {
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-sheet);
+      padding: 44px 50px 40px 50px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* Word Header Layout */
+    .word-header-table {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #111827;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .school-column {
+      text-align: center;
+    }
+
+    .school-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .exam-code {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .test-column {
+      text-align: center;
+      flex-grow: 1;
+      padding: 0 20px;
+    }
+
+    .test-main-title {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .test-sub-title {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-style: italic;
+    }
+
+    /* Student Info Input Section (Word dotted style) */
+    .student-info-bar {
+      background: #FAFAFA;
+      border: 1px solid #E5E7EB;
+      border-radius: 4px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .info-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-input-group label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+    }
+
+    .info-input-group input {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      padding: 6px 10px;
+      border: 1px solid #D1D5DB;
+      border-radius: 4px;
+      background: #FFFFFF;
+      color: #111827;
+      outline: none;
+    }
+
+    .info-input-group input:focus {
+      border-color: #111827;
+      box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
+    }
+
+    /* Instruction banner */
+    .instruction-line {
+      font-family: 'Times New Roman', serif;
+      font-size: 13.5px;
+      font-style: italic;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #D1D5DB;
+    }
+
+    /* Questions Container */
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .question-block {
+      background: #FFFFFF;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .question-block:last-child {
+      border-bottom: none;
+    }
+
+    .question-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .q-type-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      background: #E5E7EB;
+      color: #1F2937;
+    }
+
+    .q-score-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .q-stem {
+      font-family: 'Times New Roman', serif;
+      font-size: 16.5px;
+      font-weight: 600;
+      color: #111827;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* TikZ / SVG Container */
+    .q-visual-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0 16px 0;
+      padding: 10px;
+      background: #FAFAFA;
+      border: 1px solid #E5E7EB;
+      border-radius: 4px;
+    }
+
+    .tikz-svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* FORMAT 1: MCQ 4 Options Grid */
+    .mcq-options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 16px;
+      margin-bottom: 12px;
+    }
+
+    .mcq-option-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid #E5E7EB;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: #FFFFFF;
+      font-family: 'Times New Roman', serif;
+      font-size: 15.5px;
+    }
+
+    .mcq-option-label:hover {
+      background: #F9FAFB;
+      border-color: #9CA3AF;
+    }
+
+    .mcq-option-label input[type="radio"] {
+      cursor: pointer;
+      accent-color: #111827;
+      width: 16px;
+      height: 16px;
+    }
+
+    .mcq-option-label.selected {
+      border-color: #111827;
+      background: #F3F4F6;
+      font-weight: 700;
+    }
+
+    .mcq-option-label.is-correct {
+      background: #ECFDF5 !important;
+      border-color: #059669 !important;
+      color: #065F46;
+    }
+
+    .mcq-option-label.is-wrong {
+      background: #FEF2F2 !important;
+      border-color: #DC2626 !important;
+      color: #991B1B;
+    }
+
+    /* FORMAT 2: True/False Statements Table */
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .tf-table th, .tf-table td {
+      border: 1px solid #D1D5DB;
+      padding: 8px 12px;
+      font-size: 15px;
+    }
+
+    .tf-table th {
+      background: #F3F4F6;
+      font-weight: 700;
+      text-align: center;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .tf-choice-cell {
+      text-align: center;
+      width: 70px;
+    }
+
+    .tf-btn-choice {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #D1D5DB;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: all 0.15s ease;
+      background: #FFF;
+      user-select: none;
+    }
+
+    .tf-btn-choice:hover {
+      background: #F3F4F6;
+      border-color: #9CA3AF;
+    }
+
+    .tf-btn-choice.active {
+      background: #111827;
+      color: #FFF;
+      border-color: #111827;
+    }
+
+    .tf-btn-choice.state-correct {
+      background: #059669 !important;
+      color: #FFF !important;
+      border-color: #059669 !important;
+    }
+
+    .tf-btn-choice.state-wrong {
+      background: #DC2626 !important;
+      color: #FFF !important;
+      border-color: #DC2626 !important;
+    }
+
+    /* FORMAT 3: Short Answer Input */
+    .short-answer-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0 14px 0;
+      background: #FAFAFA;
+      border: 1px solid #E5E7EB;
+      padding: 10px 16px;
+      border-radius: 4px;
+    }
+
+    .short-answer-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    .short-answer-input {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border: 1px solid #D1D5DB;
+      border-radius: 4px;
+      outline: none;
+      width: 180px;
+    }
+
+    .short-answer-input:focus {
+      border-color: #111827;
+      box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
+    }
+
+    /* FORMAT 4: Essay Input / Self-Verification */
+    .essay-wrap {
+      margin: 10px 0 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .essay-textarea {
+      width: 100%;
+      height: 110px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      padding: 10px;
+      border: 1px solid #D1D5DB;
+      border-radius: 4px;
+      outline: none;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .essay-textarea:focus {
+      border-color: #111827;
+      box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
+    }
+
+    .essay-answer-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #FAFAFA;
+      padding: 8px 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 4px;
+    }
+
+    /* Detailed Solution Box */
+    .solution-box {
+      margin-top: 14px;
+      background: #F9FAFB;
+      border: 1px solid #D1D5DB;
+      border-left: 3px solid #111827;
+      padding: 12px 16px;
+      border-radius: 2px;
+      font-family: 'Times New Roman', serif;
+      font-size: 15px;
+      line-height: 1.6;
+      display: block;
+    }
+
+    .solution-box.hide-sol {
+      display: none;
+    }
+
+    .solution-title {
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-sans);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Bottom Action Row */
+    .bottom-action-bar {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #111827;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-submit-main {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      background: #111827;
+      color: #FFFFFF;
+      border: 1px solid #111827;
+      padding: 10px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-submit-main:hover {
+      background: #1F2937;
+    }
+
+    /* Footer */
+    .word-footer {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+    }
+
+    /* Modal Kết quả */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #FFFFFF;
+      width: 90%;
+      max-width: 520px;
+      border-radius: 8px;
+      padding: 26px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .modal-score-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #111827;
+      color: #FFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+
+    .modal-score-val {
+      font-size: 26px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      line-height: 1;
+    }
+
+    .modal-score-max {
+      font-size: 10px;
+      opacity: 0.8;
+      font-family: var(--font-mono);
+    }
+
+    .modal-skills-box {
+      text-align: left;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      padding: 12px 14px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 13px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    .modal-btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #FFF !important;
+        padding: 0 !important;
+      }
+      .utility-bar, .bottom-action-bar, .modal-backdrop {
+        display: none !important;
+      }
+      .word-sheet {
+        box-shadow: none !important;
+        padding: 10mm 12mm !important;
+        max-width: 100% !important;
+      }
+      .solution-box {
+        display: block !important;
+        background: #FFF !important;
+        border-color: #666 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-left">
+      <span class="status-badge">TOÁN 11</span>
+      <div class="timer-display" id="quizTimer">40:00</div>
+    </div>
+    <div class="utility-right">
+      <button class="btn-top" id="btnToggleSol">💡 Hiện/Ẩn Lời giải</button>
+      <button class="btn-top" onclick="window.print()">🖨️ In đề A4</button>
+      <button class="btn-top primary" onclick="document.getElementById('btn-nop-bai').click()">📝 Nộp bài</button>
+    </div>
+  </div>
+
+  <!-- A4 Word Canvas -->
+  <main class="word-sheet">
+
+    <!-- Header Section -->
+    <div class="word-header-table">
+      <div class="school-column">
+        <div class="school-title">TRƯỜNG THPT CHUYÊN</div>
+        <div class="school-title">TỔ TOÁN HỌC</div>
+        <div class="exam-code">(Đề gồm 05 câu / 01 trang)</div>
+      </div>
+      <div class="test-column">
+        <h1 class="test-main-title">PHIẾU HỌC TẬP HỖN HỢP 4 ĐỊNH DẠNG (GDPT 2018)</h1>
+        <div class="test-sub-title">BÀI 1: GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC • Thời gian làm bài: 40 phút</div>
+      </div>
+    </div>
+
+    <!-- Student Information Inputs (BẮT BUỘC 3 TRƯỜNG THEO QUY CHUẨN) -->
+    <div class="student-info-bar">
+      <div class="info-input-group">
+        <label for="input-ten">1. Họ và tên học sinh:</label>
+        <input type="text" id="input-ten" placeholder="Nhập họ và tên...">
+      </div>
+      <div class="info-input-group">
+        <label for="input-ma-hs">2. Mã Học Sinh:</label>
+        <input type="text" id="input-ma-hs" placeholder="VD: NTH26-001">
+      </div>
+      <div class="info-input-group">
+        <label for="input-lop">3. Lớp / Nhóm:</label>
+        <input type="text" id="input-lop" placeholder="VD: 11A1">
+      </div>
+    </div>
+
+    <div class="instruction-line">
+      * Hướng dẫn: Thí sinh làm bài theo đúng từng định dạng câu hỏi (chọn phương án, đánh dấu Đúng/Sai, điền số hoặc trình bày lời giải). Nhấn "Nộp bài & Chấm điểm" khi hoàn tất.
+    </div>
+
+    <!-- Questions List -->
+    <div class="questions-list">
+
+      <!-- CÂU 1: MCQ -->
+      <article class="question-block" id="q-block-1">
+        <div class="question-meta-row">
+          <span class="q-type-badge">Phần I: Trắc nghiệm 4 lựa chọn</span>
+          <span class="q-score-badge">2.0 điểm • Nhận biết</span>
+        </div>
+        <div class="q-stem">Câu 1. Đổi số đo của góc $\alpha = 105^\circ$ sang đơn vị rađian.</div>
+        <div class="mcq-options-grid">
+          
+            <label class="mcq-option-label" id="label-q1-A">
+              <input type="radio" name="q1" value="A" onchange="selectMcq(1, 'A')">
+              <span><b>A.</b> $\dfrac{7\pi}{12}$</span>
+            </label>
+          
+            <label class="mcq-option-label" id="label-q1-B">
+              <input type="radio" name="q1" value="B" onchange="selectMcq(1, 'B')">
+              <span><b>B.</b> $\dfrac{5\pi}{12}$</span>
+            </label>
+          
+            <label class="mcq-option-label" id="label-q1-C">
+              <input type="radio" name="q1" value="C" onchange="selectMcq(1, 'C')">
+              <span><b>C.</b> $\dfrac{7\pi}{6}$</span>
+            </label>
+          
+            <label class="mcq-option-label" id="label-q1-D">
+              <input type="radio" name="q1" value="D" onchange="selectMcq(1, 'D')">
+              <span><b>D.</b> $\dfrac{5\pi}{6}$</span>
+            </label>
+          
+        </div>
+        <div class="solution-box" id="sol-1">
+          <div class="solution-title">📖 Lời giải chi tiết câu 1:</div>
+          <div>Áp dụng công thức chuyển đổi từ độ sang rađian: $1^\circ = \dfrac{\pi}{180}\text{ rad}$.<br>Do đó: $$\alpha = 105^\circ = 105 \cdot \frac{\pi}{180} = \frac{105}{180}\pi = \frac{7\pi}{12}\text{ rad}.$$<br><b>Đáp án đúng: A.</b></div>
+        </div>
+      </article>
+
+      <!-- CÂU 2: MCQ -->
+      <article class="question-block" id="q-block-2">
+        <div class="question-meta-row">
+          <span class="q-type-badge">Phần I: Trắc nghiệm 4 lựa chọn</span>
+          <span class="q-score-badge">2.0 điểm • Thông hiểu</span>
+        </div>
+        <div class="q-stem">Câu 2. Cho góc lượng giác $\alpha$ thỏa mãn $\dfrac{\pi}{2} < \alpha < \pi$ và $\sin\alpha = \dfrac{3}{5}$. Tính $\cos\alpha$.</div>
+        <div class="mcq-options-grid">
+          
+            <label class="mcq-option-label" id="label-q2-A">
+              <input type="radio" name="q2" value="A" onchange="selectMcq(2, 'A')">
+              <span><b>A.</b> $\cos\alpha = \dfrac{4}{5}$</span>
+            </label>
+          
+            <label class="mcq-option-label" id="label-q2-B">
+              <input type="radio" name="q2" value="B" onchange="selectMcq(2, 'B')">
+              <span><b>B.</b> $\cos\alpha = -\dfrac{4}{5}$</span>
+            </label>
+          
+            <label class="mcq-option-label" id="label-q2-C">
+              <input type="radio" name="q2" value="C" onchange="selectMcq(2, 'C')">
+              <span><b>C.</b> $\cos\alpha = \dfrac{16}{25}$</span>
+            </label>
+          
+            <label class="mcq-option-label" id="label-q2-D">
+              <input type="radio" name="q2" value="D" onchange="selectMcq(2, 'D')">
+              <span><b>D.</b> $\cos\alpha = -\dfrac{16}{25}$</span>
+            </label>
+          
+        </div>
+        <div class="solution-box" id="sol-2">
+          <div class="solution-title">📖 Lời giải chi tiết câu 2:</div>
+          <div>Ta có hệ thức Pytago lượng giác: $$\sin^2\alpha + \cos^2\alpha = 1 \implies \cos^2\alpha = 1 - \sin^2\alpha = 1 - \left(\frac{3}{5}\right)^2 = 1 - \frac{9}{25} = \frac{16}{25}.$$<br>Vì $\dfrac{\pi}{2} < \alpha < \pi$ (góc phần tư thứ II), hoành độ điểm biểu diễn âm nên $\cos\alpha < 0$.<br>Do đó: $$\cos\alpha = -\sqrt{\frac{16}{25}} = -\frac{4}{5}.$$<br><b>Đáp án đúng: B.</b></div>
+        </div>
+      </article>
+
+      <!-- CÂU 3: TRUE / FALSE WITH TIKZ SVG -->
+      <article class="question-block" id="q-block-3">
+        <div class="question-meta-row">
+          <span class="q-type-badge">Phần II: Trắc nghiệm Đúng - Sai</span>
+          <span class="q-score-badge">2.0 điểm (0.5đ/ý) • Thông hiểu</span>
+        </div>
+        <div class="q-stem">Câu 3. Trên đường tròn lượng giác gốc $A(1;0)$, xét điểm biểu diễn $M$ của góc lượng giác $\alpha = \dfrac{2\pi}{3}$. Xét tính đúng hay sai của các mệnh đề sau:</div>
+        
+        <!-- TikZ vector illustration converted to SVG -->
+        <div class="q-visual-wrap">
+          
+<svg viewBox="0 0 320 280" width="280" height="245" xmlns="http://www.w3.org/2000/svg" class="tikz-svg">
+  <defs>
+    <marker id="arrWord" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#111" />
+    </marker>
+  </defs>
+
+  <!-- Background clean white -->
+  <rect width="320" height="280" fill="#FFF" />
+
+  <!-- Center O = (160, 140), Radius = 85 -->
+  <!-- Circle -->
+  <circle cx="160" cy="140" r="85" fill="none" stroke="#111" stroke-width="1.2" />
+
+  <!-- Axes Ox, Oy -->
+  <line x1="30" y1="140" x2="290" y2="140" stroke="#111" stroke-width="1.2" marker-end="url(#arrWord)" />
+  <line x1="160" y1="260" x2="160" y2="20" stroke="#111" stroke-width="1.2" marker-end="url(#arrWord)" />
+  <text x="295" y="144" font-family="'Times New Roman', serif" font-size="14" font-style="italic" fill="#111">x</text>
+  <text x="164" y="18" font-family="'Times New Roman', serif" font-size="14" font-style="italic" fill="#111">y</text>
+  <text x="146" y="156" font-family="'Times New Roman', serif" font-size="14" font-style="italic" fill="#111">O</text>
+
+  <!-- Origin A(1;0) at (160+85, 140) = (245, 140) -->
+  <circle cx="245" cy="140" r="2.5" fill="#111" />
+  <text x="250" y="155" font-family="'Times New Roman', serif" font-size="13" font-style="italic" fill="#111">A</text>
+
+  <!-- Point M at 120 deg: dx = 85*cos(120) = -42.5 => x = 117.5. dy = 85*sin(120) = 73.6 => y = 140 - 73.6 = 66.4 -->
+  <!-- Line OM -->
+  <line x1="160" y1="140" x2="117.5" y2="66.4" stroke="#111" stroke-width="1.5" />
+  <circle cx="117.5" cy="66.4" r="3.5" fill="#111" />
+  <text x="100" y="60" font-family="'Times New Roman', serif" font-size="14" font-weight="bold" font-style="italic" fill="#111">M</text>
+
+  <!-- Dashed projection to Ox: H(117.5, 140) -->
+  <line x1="117.5" y1="66.4" x2="117.5" y2="140" stroke="#111" stroke-width="1" stroke-dasharray="3,3" />
+  <text x="108" y="156" font-family="'Times New Roman', serif" font-size="12" font-style="italic" fill="#111">x_M</text>
+
+  <!-- Dashed projection to Oy: K(160, 66.4) -->
+  <line x1="117.5" y1="66.4" x2="160" y2="66.4" stroke="#111" stroke-width="1" stroke-dasharray="3,3" />
+  <text x="165" y="70" font-family="'Times New Roman', serif" font-size="12" font-style="italic" fill="#111">y_M</text>
+
+  <!-- Angle arc alpha = 120 deg from (160+26, 140) = (186, 140) to radius 26 at 120 deg: (160-13, 140-22.5) = (147, 117.5) -->
+  <path d="M 186 140 A 26 26 0 0 0 147 117.5" fill="none" stroke="#111" stroke-width="1.2" marker-end="url(#arrWord)" />
+  <text x="175" y="118" font-family="'Times New Roman', serif" font-size="13" font-style="italic" fill="#111">&alpha;</text>
+
+  <!-- Subtitle for figure -->
+  <text x="160" y="272" font-family="'Times New Roman', serif" font-size="12" font-style="italic" fill="#444" text-anchor="middle">Hình 1. Điểm biểu diễn M trên đường tròn lượng giác</text>
+</svg>
+
+        </div>
+
+        <table class="tf-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Mệnh đề</th>
+              <th class="tf-choice-cell">Đúng</th>
+              <th class="tf-choice-cell">Sai</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td><b>a)</b> Điểm $M$ thuộc góc phần tư thứ II của đường tròn lượng giác.</td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-a-D" onclick="selectTf('a', 'D')">Đ</span>
+                </td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-a-S" onclick="selectTf('a', 'S')">S</span>
+                </td>
+              </tr>
+            
+              <tr>
+                <td><b>b)</b> Hoành độ của điểm $M$ là $x_M = \dfrac{1}{2}$.</td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-b-D" onclick="selectTf('b', 'D')">Đ</span>
+                </td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-b-S" onclick="selectTf('b', 'S')">S</span>
+                </td>
+              </tr>
+            
+              <tr>
+                <td><b>c)</b> Tung độ của điểm $M$ là $y_M = \dfrac{\sqrt{3}}{2}$.</td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-c-D" onclick="selectTf('c', 'D')">Đ</span>
+                </td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-c-S" onclick="selectTf('c', 'S')">S</span>
+                </td>
+              </tr>
+            
+              <tr>
+                <td><b>d)</b> Giá trị $\tan\alpha = -\sqrt{3}$.</td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-d-D" onclick="selectTf('d', 'D')">Đ</span>
+                </td>
+                <td class="tf-choice-cell">
+                  <span class="tf-btn-choice" id="btn-tf-d-S" onclick="selectTf('d', 'S')">S</span>
+                </td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        <div class="solution-box" id="sol-3">
+          <div class="solution-title">📖 Lời giải chi tiết câu 3:</div>
+          <div><b>Lời giải chi tiết câu 3:</b><br>Điểm biểu diễn góc $\alpha = \dfrac{2\pi}{3}$ có tọa độ $M\left(\cos\dfrac{2\pi}{3}; \sin\dfrac{2\pi}{3}\right) = M\left(-\dfrac{1}{2}; \dfrac{\sqrt{3}}{2}\right)$.<br>• a) Đúng vì $90^\circ < 120^\circ < 180^\circ$ (Góc phần tư II).<br>• b) Sai vì $x_M = -\dfrac{1}{2}$.<br>• c) Đúng vì $y_M = \dfrac{\sqrt{3}}{2}$.<br>• d) Đúng vì $\tan\left(\dfrac{2\pi}{3}\right) = -\sqrt{3}$.</div>
+        </div>
+      </article>
+
+      <!-- CÂU 4: SHORT ANSWER -->
+      <article class="question-block" id="q-block-4">
+        <div class="question-meta-row">
+          <span class="q-type-badge">Phần III: Trả lời ngắn</span>
+          <span class="q-score-badge">2.0 điểm • Vận dụng</span>
+        </div>
+        <div class="q-stem">Câu 4. Một bánh xe có bán kính $R = 25\text{ cm}$. Khi bánh xe quay được một góc lượng giác $\alpha = \dfrac{3\pi}{5}\text{ rad}$, độ dài cung tròn mà bánh xe quét được bằng bao nhiêu xentimét (làm tròn kết quả đến hàng phần mười)?</div>
+        
+        <div class="short-answer-wrap">
+          <span class="short-answer-label">Đáp số của em:</span>
+          <input type="text" class="short-answer-input" id="input-q4" placeholder="Nhập số thập phân..." autocomplete="off">
+          <span style="font-size:13px; color:#4B5563;">cm</span>
+        </div>
+
+        <div class="solution-box" id="sol-4">
+          <div class="solution-title">📖 Lời giải chi tiết câu 4:</div>
+          <div>Áp dụng công thức độ dài cung tròn: $l = R \cdot \alpha$.<br>Với $R = 25\text{ cm}$ và $\alpha = \dfrac{3\pi}{5}\text{ rad}$, ta có:<br>$$l = 25 \cdot \frac{3\pi}{5} = 15\pi \approx 15 \cdot 3,14159 \approx 47,124\text{ cm}.$$<br>Làm tròn đến hàng phần mười theo yêu cầu đề bài, ta được kết quả: <b>$47,1\text{ cm}$</b>.</div>
+        </div>
+      </article>
+
+      <!-- CÂU 5: ESSAY / APPLICATION -->
+      <article class="question-block" id="q-block-5">
+        <div class="question-meta-row">
+          <span class="q-type-badge">Phần IV: Tự luận & Mô hình hóa</span>
+          <span class="q-score-badge">2.0 điểm • Vận dụng</span>
+        </div>
+        <div class="q-stem">Câu 5. Một cabin của đu quay Sun Wheel có bán kính $R = 30\text{ m}$ quay ngược chiều kim đồng hồ. Trục quay $O$ nằm ở độ cao $32\text{ m}$ so với mặt đất. Khi cabin quay được một góc lượng giác $\alpha = \dfrac{7\pi}{6}\text{ rad}$ tính từ điểm xuất phát thấp nhất $A_0(0; -30)$, hãy tính chiều cao $h$ của cabin so với mặt đất tại thời điểm đó.</div>
+
+        <div class="essay-wrap">
+          <div class="essay-answer-row">
+            <span class="short-answer-label">1. Chiều cao $h$ tính được:</span>
+            <input type="text" class="short-answer-input" id="input-q5" placeholder="Nhập giá trị h..." autocomplete="off">
+            <span style="font-size:13px; color:#4B5563;">mét (làm tròn hoặc ghi số chính xác)</span>
+          </div>
+          <div style="font-size:12.5px; color:#4B5563; font-weight:600;">2. Tóm tắt các bước giải tự luận (tùy chọn):</div>
+          <textarea class="essay-textarea" id="textarea-q5" placeholder="Ghi tóm tắt: Hệ trục Oxy, góc vị trí phi, công thức tính tung độ y_M và chiều cao h = 32 + y_M..."></textarea>
+        </div>
+
+        <div class="solution-box" id="sol-5">
+          <div class="solution-title">📖 Lời giải chi tiết câu 5:</div>
+          <div><b>Lời giải chi tiết câu 5:</b><br><b>Bước 1. Thiết lập hệ tọa độ:</b><br>Chọn hệ trục tọa độ $Oxy$ gắn tại trục tâm $O$ của đu quay, trục $Oy$ hướng thẳng đứng lên trên, trục $Ox$ nằm ngang hướng theo chiều quay dương.<br>Trục $O$ cách mặt đất $32\text{ m}$. Điểm xuất phát thấp nhất của cabin là $A_0(0; -30)$, ứng với góc vị trí ban đầu $\varphi_0 = -\dfrac{\pi}{2}$ rad trên đường tròn lượng giác.<br><br><b>Bước 2. Xác định góc vị trí của cabin sau khi quay:</b><br>Đu quay quay ngược chiều kim đồng hồ góc $\alpha = \dfrac{7\pi}{6}\text{ rad}$. Góc lượng giác của vị trí mới $M$ so với tia gốc $Ox$ là:<br>$$\varphi = \varphi_0 + \alpha = -\frac{\pi}{2} + \frac{7\pi}{6} = \frac{4\pi}{6} = \frac{2\pi}{3}\text{ rad} \quad (120^\circ).$$<br><b>Bước 3. Tính tung độ và chiều cao của cabin:</b><br>Tung độ của cabin tại vị trí $M$ so với trục $O$ là:<br>$$y_M = R \cdot \sin\varphi = 30 \cdot \sin\left(\frac{2\pi}{3}\right) = 30 \cdot \frac{\sqrt{3}}{2} = 15\sqrt{3} \approx 25,98\text{ m}.$$<br>Chiều cao của cabin so với mặt đất tại thời điểm đó:<br>$$h = 32 + y_M = 32 + 15\sqrt{3} \approx 32 + 25,98 = 57,98\text{ m} \approx 58\text{ m}.$$<br><i>(Lưu ý: Trường hợp tính góc $\alpha = \dfrac{7\pi}{6}$ trực tiếp theo trục chuẩn $OA$ thì $y = 30\sin(7\pi/6) = -15\text{ m} \Rightarrow h = 32 - 15 = 17\text{ m}$. Cả hai cách hiểu đều được chấp nhận).</i></div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom Action Row -->
+    <div class="bottom-action-bar">
+      <div style="font-size:13px; color:#4B5563;">
+        Kiểm tra kỹ các đáp án trước khi bấm nộp bài.
+      </div>
+      <button class="btn-submit-main" id="btn-nop-bai">
+        <span>📝</span> Nộp bài & Chấm điểm
+      </button>
+    </div>
+
+    <!-- Word Footer -->
+    <div class="word-footer">
+      <div>Phiếu học tập môn Toán 11 • Chương I Lượng giác</div>
+      <div>Thiết kế bởi NCE</div>
+    </div>
+
+  </main>
+
+  <!-- Modal Kết quả chấm điểm -->
+  <div class="modal-backdrop" id="scoreModal">
+    <div class="modal-box">
+      <div class="modal-score-circle">
+        <div class="modal-score-val" id="modalScore">0.0</div>
+        <div class="modal-score-max">/ 10 ĐIỂM</div>
+      </div>
+      <h3 style="font-size:18px; font-weight:700; margin-bottom:6px;" id="modalGrade">KẾT QUẢ BÀI LÀM</h3>
+      <p style="font-size:13px; color:#4B5563;" id="modalSub">Hệ thống đã tự động ghi nhận và phân tích chi tiết kết quả.</p>
+
+      <div class="modal-skills-box" id="modalSkills">
+        <!-- Chuyên đề cần củng cố -->
+      </div>
+
+      <div class="modal-btn-row">
+        <button class="btn-top primary" onclick="document.getElementById('scoreModal').classList.remove('open')">Xem lại bài làm</button>
+        <button class="btn-top" onclick="location.reload()">Làm lại đề</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quiz = {
+  "subject": "TOÁN 11",
+  "chapter": "CHƯƠNG I: HÀM SỐ LƯỢNG GIÁC VÀ PHƯƠNG TRÌNH LƯỢNG GIÁC",
+  "topic": "BÀI 1: GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC",
+  "title": "PHIẾU HỌC TẬP HỖN HỢP 4 ĐỊNH DẠNG (GDPT 2018)",
+  "subtitle": "Đề kiểm tra đánh giá năng lực • 5 câu hỗn hợp (Trắc nghiệm, Đúng/Sai, Trả lời ngắn, Tự luận)",
+  "timeLimitMinutes": 40,
+  "designer": "Thiết kế bởi NCE",
+  "questions": [
+    {
+      "id": 1,
+      "type": "mcq",
+      "level": "Nhận biết",
+      "skill": "Chuyển đổi số đo góc từ độ sang rađian",
+      "question": "Câu 1. Đổi số đo của góc $\\alpha = 105^\\circ$ sang đơn vị rađian.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\dfrac{7\\pi}{12}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\dfrac{5\\pi}{12}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\dfrac{7\\pi}{6}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\dfrac{5\\pi}{6}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Áp dụng công thức chuyển đổi từ độ sang rađian: $1^\\circ = \\dfrac{\\pi}{180}\\text{ rad}$.<br>Do đó: $$\\alpha = 105^\\circ = 105 \\cdot \\frac{\\pi}{180} = \\frac{105}{180}\\pi = \\frac{7\\pi}{12}\\text{ rad}.$$<br><b>Đáp án đúng: A.</b>"
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "level": "Thông hiểu",
+      "skill": "Tính giá trị lượng giác khi biết một giá trị và khoảng góc",
+      "question": "Câu 2. Cho góc lượng giác $\\alpha$ thỏa mãn $\\dfrac{\\pi}{2} < \\alpha < \\pi$ và $\\sin\\alpha = \\dfrac{3}{5}$. Tính $\\cos\\alpha$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\cos\\alpha = \\dfrac{4}{5}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\cos\\alpha = -\\dfrac{4}{5}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\cos\\alpha = \\dfrac{16}{25}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\cos\\alpha = -\\dfrac{16}{25}$"
+        }
+      ],
+      "correct": "B",
+      "explanation": "Ta có hệ thức Pytago lượng giác: $$\\sin^2\\alpha + \\cos^2\\alpha = 1 \\implies \\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - \\left(\\frac{3}{5}\\right)^2 = 1 - \\frac{9}{25} = \\frac{16}{25}.$$<br>Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ (góc phần tư thứ II), hoành độ điểm biểu diễn âm nên $\\cos\\alpha < 0$.<br>Do đó: $$\\cos\\alpha = -\\sqrt{\\frac{16}{25}} = -\\frac{4}{5}.$$<br><b>Đáp án đúng: B.</b>"
+    },
+    {
+      "id": 3,
+      "type": "true_false",
+      "level": "Thông hiểu",
+      "skill": "Xác định tọa độ điểm biểu diễn và giá trị lượng giác trên đường tròn lượng giác",
+      "question": "Câu 3. Trên đường tròn lượng giác gốc $A(1;0)$, xét điểm biểu diễn $M$ của góc lượng giác $\\alpha = \\dfrac{2\\pi}{3}$. Xét tính đúng hay sai của các mệnh đề sau:",
+      "hasSvg": true,
+      "statements": [
+        {
+          "id": "a",
+          "text": "Điểm $M$ thuộc góc phần tư thứ II của đường tròn lượng giác.",
+          "correct": "D",
+          "expl": "Vì $\\dfrac{\\pi}{2} < \\dfrac{2\\pi}{3} < \\pi$ nên điểm $M$ thuộc góc phần tư thứ II."
+        },
+        {
+          "id": "b",
+          "text": "Hoành độ của điểm $M$ là $x_M = \\dfrac{1}{2}$.",
+          "correct": "S",
+          "expl": "Hoành độ $x_M = \\cos\\left(\\dfrac{2\\pi}{3}\\right) = \\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\cos\\left(\\dfrac{\\pi}{3}\\right) = -\\dfrac{1}{2} \\neq \\dfrac{1}{2}$."
+        },
+        {
+          "id": "c",
+          "text": "Tung độ của điểm $M$ là $y_M = \\dfrac{\\sqrt{3}}{2}$.",
+          "correct": "D",
+          "expl": "Tung độ $y_M = \\sin\\left(\\dfrac{2\\pi}{3}\\right) = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{\\sqrt{3}}{2}$."
+        },
+        {
+          "id": "d",
+          "text": "Giá trị $\\tan\\alpha = -\\sqrt{3}$.",
+          "correct": "D",
+          "expl": "Ta có $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{3}/2}{-1/2} = -\\sqrt{3}$."
+        }
+      ],
+      "explanation": "<b>Lời giải chi tiết câu 3:</b><br>Điểm biểu diễn góc $\\alpha = \\dfrac{2\\pi}{3}$ có tọa độ $M\\left(\\cos\\dfrac{2\\pi}{3}; \\sin\\dfrac{2\\pi}{3}\\right) = M\\left(-\\dfrac{1}{2}; \\dfrac{\\sqrt{3}}{2}\\right)$.<br>• a) Đúng vì $90^\\circ < 120^\\circ < 180^\\circ$ (Góc phần tư II).<br>• b) Sai vì $x_M = -\\dfrac{1}{2}$.<br>• c) Đúng vì $y_M = \\dfrac{\\sqrt{3}}{2}$.<br>• d) Đúng vì $\\tan\\left(\\dfrac{2\\pi}{3}\\right) = -\\sqrt{3}$."
+    },
+    {
+      "id": 4,
+      "type": "short_answer",
+      "level": "Vận dụng",
+      "skill": "Ứng dụng công thức tính độ dài cung tròn trong thực tế",
+      "question": "Câu 4. Một bánh xe có bán kính $R = 25\\text{ cm}$. Khi bánh xe quay được một góc lượng giác $\\alpha = \\dfrac{3\\pi}{5}\\text{ rad}$, độ dài cung tròn mà bánh xe quét được bằng bao nhiêu xentimét (làm tròn kết quả đến hàng phần mười)?",
+      "acceptableAnswers": [
+        "47.1",
+        "47,1",
+        "47.1 cm",
+        "47,1 cm",
+        "47.1cm",
+        "47,1cm",
+        "15pi",
+        "15\\pi"
+      ],
+      "displayAnswer": "47,1",
+      "explanation": "Áp dụng công thức độ dài cung tròn: $l = R \\cdot \\alpha$.<br>Với $R = 25\\text{ cm}$ và $\\alpha = \\dfrac{3\\pi}{5}\\text{ rad}$, ta có:<br>$$l = 25 \\cdot \\frac{3\\pi}{5} = 15\\pi \\approx 15 \\cdot 3,14159 \\approx 47,124\\text{ cm}.$$<br>Làm tròn đến hàng phần mười theo yêu cầu đề bài, ta được kết quả: <b>$47,1\\text{ cm}$</b>."
+    },
+    {
+      "id": 5,
+      "type": "essay",
+      "level": "Vận dụng",
+      "skill": "Mô hình hóa bài toán chuyển động tròn đều bằng góc lượng giác",
+      "question": "Câu 5. Một cabin của đu quay Sun Wheel có bán kính $R = 30\\text{ m}$ quay ngược chiều kim đồng hồ. Trục quay $O$ nằm ở độ cao $32\\text{ m}$ so với mặt đất. Khi cabin quay được một góc lượng giác $\\alpha = \\dfrac{7\\pi}{6}\\text{ rad}$ tính từ điểm xuất phát thấp nhất $A_0(0; -30)$, hãy tính chiều cao $h$ của cabin so với mặt đất tại thời điểm đó.",
+      "acceptableAnswers": [
+        "58",
+        "58m",
+        "58 m",
+        "57.98",
+        "57,98",
+        "57.98m",
+        "58 mét",
+        "17",
+        "17m",
+        "17 m"
+      ],
+      "displayAnswer": "58 m (hoặc 57,98 m)",
+      "explanation": "<b>Lời giải chi tiết câu 5:</b><br><b>Bước 1. Thiết lập hệ tọa độ:</b><br>Chọn hệ trục tọa độ $Oxy$ gắn tại trục tâm $O$ của đu quay, trục $Oy$ hướng thẳng đứng lên trên, trục $Ox$ nằm ngang hướng theo chiều quay dương.<br>Trục $O$ cách mặt đất $32\\text{ m}$. Điểm xuất phát thấp nhất của cabin là $A_0(0; -30)$, ứng với góc vị trí ban đầu $\\varphi_0 = -\\dfrac{\\pi}{2}$ rad trên đường tròn lượng giác.<br><br><b>Bước 2. Xác định góc vị trí của cabin sau khi quay:</b><br>Đu quay quay ngược chiều kim đồng hồ góc $\\alpha = \\dfrac{7\\pi}{6}\\text{ rad}$. Góc lượng giác của vị trí mới $M$ so với tia gốc $Ox$ là:<br>$$\\varphi = \\varphi_0 + \\alpha = -\\frac{\\pi}{2} + \\frac{7\\pi}{6} = \\frac{4\\pi}{6} = \\frac{2\\pi}{3}\\text{ rad} \\quad (120^\\circ).$$<br><b>Bước 3. Tính tung độ và chiều cao của cabin:</b><br>Tung độ của cabin tại vị trí $M$ so với trục $O$ là:<br>$$y_M = R \\cdot \\sin\\varphi = 30 \\cdot \\sin\\left(\\frac{2\\pi}{3}\\right) = 30 \\cdot \\frac{\\sqrt{3}}{2} = 15\\sqrt{3} \\approx 25,98\\text{ m}.$$<br>Chiều cao của cabin so với mặt đất tại thời điểm đó:<br>$$h = 32 + y_M = 32 + 15\\sqrt{3} \\approx 32 + 25,98 = 57,98\\text{ m} \\approx 58\\text{ m}.$$<br><i>(Lưu ý: Trường hợp tính góc $\\alpha = \\dfrac{7\\pi}{6}$ trực tiếp theo trục chuẩn $OA$ thì $y = 30\\sin(7\\pi/6) = -15\\text{ m} \\Rightarrow h = 32 - 15 = 17\\text{ m}$. Cả hai cách hiểu đều được chấp nhận).</i>"
+    }
+  ]
+};
+
+    let userAnswers = {
+      q1: null,
+      q2: null,
+      q3: { a: null, b: null, c: null, d: null },
+      q4: "",
+      q5: ""
+    };
+
+    let isSubmitted = false;
+    let isSolVisible = true;
+    let timerSeconds = 40 * 60;
+    let timerInterval = null;
+
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
+    // Timer Countdown
+    function startTimer() {
+      const timerEl = document.getElementById('quizTimer');
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert('Hết giờ làm bài! Hệ thống tự động nộp bài.');
+          document.getElementById('btn-nop-bai').click();
+          return;
+        }
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerEl.textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    // Interactive MCQ Selection
+    function selectMcq(qId, key) {
+      if (isSubmitted) return;
+      userAnswers['q' + qId] = key;
+      document.querySelectorAll(`#q-block-${qId} .mcq-option-label`).forEach(lbl => {
+        lbl.classList.remove('selected');
+      });
+      const selectedLabel = document.getElementById(`label-q${qId}-${key}`);
+      if (selectedLabel) selectedLabel.classList.add('selected');
+    }
+
+    // Interactive True/False Selection
+    function selectTf(stmtId, choice) {
+      if (isSubmitted) return;
+      userAnswers.q3[stmtId] = choice;
+      const btnD = document.getElementById(`btn-tf-${stmtId}-D`);
+      const btnS = document.getElementById(`btn-tf-${stmtId}-S`);
+      if (choice === 'D') {
+        btnD.classList.add('active');
+        btnS.classList.remove('active');
+      } else {
+        btnS.classList.add('active');
+        btnD.classList.remove('active');
+      }
+    }
+
+    // Toggle Solutions
+    function toggleSolutions(forceState = null) {
+      if (forceState !== null) isSolVisible = forceState;
+      else isSolVisible = !isSolVisible;
+
+      document.querySelectorAll('.solution-box').forEach(sb => {
+        if (isSolVisible) sb.classList.remove('hide-sol');
+        else sb.classList.add('hide-sol');
+      });
+
+      const btn = document.getElementById('btnToggleSol');
+      if (btn) {
+        btn.textContent = isSolVisible ? '🙈 Ẩn lời giải' : '💡 Hiện lời giải';
+      }
+    }
+
+    // Grading Logic
+    function chamDiem() {
+      isSubmitted = true;
+      clearInterval(timerInterval);
+
+      diem_so = 0;
+      mang_cau_sai = [];
+
+      // Câu 1: MCQ (2.0 điểm)
+      if (userAnswers.q1 === quiz.questions[0].correct) {
+        diem_so += 2.0;
+        document.getElementById(`label-q1-${quiz.questions[0].correct}`).classList.add('is-correct');
+      } else {
+        mang_cau_sai.push(quiz.questions[0].skill);
+        if (userAnswers.q1) {
+          document.getElementById(`label-q1-${userAnswers.q1}`).classList.add('is-wrong');
+        }
+        document.getElementById(`label-q1-${quiz.questions[0].correct}`).classList.add('is-correct');
+      }
+
+      // Câu 2: MCQ (2.0 điểm)
+      if (userAnswers.q2 === quiz.questions[1].correct) {
+        diem_so += 2.0;
+        document.getElementById(`label-q2-${quiz.questions[1].correct}`).classList.add('is-correct');
+      } else {
+        mang_cau_sai.push(quiz.questions[1].skill);
+        if (userAnswers.q2) {
+          document.getElementById(`label-q2-${userAnswers.q2}`).classList.add('is-wrong');
+        }
+        document.getElementById(`label-q2-${quiz.questions[1].correct}`).classList.add('is-correct');
+      }
+
+      // Câu 3: True / False (2.0 điểm, 0.5 điểm mỗi ý)
+      let q3CorrectCount = 0;
+      quiz.questions[2].statements.forEach(st => {
+        const uVal = userAnswers.q3[st.id];
+        const btnChosen = document.getElementById(`btn-tf-${st.id}-${uVal}`);
+        const btnCorrect = document.getElementById(`btn-tf-${st.id}-${st.correct}`);
+
+        if (uVal === st.correct) {
+          q3CorrectCount++;
+          diem_so += 0.5;
+          if (btnChosen) btnChosen.classList.add('state-correct');
+        } else {
+          if (btnChosen) btnChosen.classList.add('state-wrong');
+          if (btnCorrect) btnCorrect.classList.add('state-correct');
+        }
+      });
+      if (q3CorrectCount < 4) {
+        mang_cau_sai.push(quiz.questions[2].skill);
+      }
+
+      // Câu 4: Trả lời ngắn (2.0 điểm)
+      const inputQ4 = (document.getElementById('input-q4').value || '').trim().toLowerCase().replace(',', '.');
+      const acceptableQ4 = ["47.1", "47.1 cm", "47.1cm", "15pi", "15*pi", "47.12"];
+      const isQ4Correct = acceptableQ4.some(a => inputQ4.includes(a.replace(',', '.')));
+      if (isQ4Correct) {
+        diem_so += 2.0;
+        document.getElementById('input-q4').style.borderColor = '#059669';
+        document.getElementById('input-q4').style.backgroundColor = '#ECFDF5';
+      } else {
+        mang_cau_sai.push(quiz.questions[3].skill);
+        document.getElementById('input-q4').style.borderColor = '#DC2626';
+        document.getElementById('input-q4').style.backgroundColor = '#FEF2F2';
+      }
+
+      // Câu 5: Tự luận & Điền kết quả (2.0 điểm)
+      const inputQ5 = (document.getElementById('input-q5').value || '').trim().toLowerCase().replace(',', '.');
+      const essayText = (document.getElementById('textarea-q5').value || '').trim();
+      const acceptableQ5 = ["58", "57.98", "57.9", "17", "17m", "58m"];
+      const isQ5AnswerMatch = acceptableQ5.some(a => inputQ5.includes(a));
+      
+      if (isQ5AnswerMatch || (essayText.length > 20 && inputQ5.length > 0)) {
+        diem_so += 2.0;
+        document.getElementById('input-q5').style.borderColor = '#059669';
+        document.getElementById('input-q5').style.backgroundColor = '#ECFDF5';
+      } else if (essayText.length > 10) {
+        diem_so += 1.0; // Điểm khuyến khích cho nỗ lực trình bày tự luận
+        mang_cau_sai.push(quiz.questions[4].skill);
+      } else {
+        mang_cau_sai.push(quiz.questions[4].skill);
+        document.getElementById('input-q5').style.borderColor = '#DC2626';
+        document.getElementById('input-q5').style.backgroundColor = '#FEF2F2';
+      }
+
+      diem_so = Math.round(diem_so * 10) / 10;
+
+      // Update Modal
+      document.getElementById('modalScore').textContent = diem_so.toFixed(1);
+      const skillsBox = document.getElementById('modalSkills');
+      if (mang_cau_sai.length > 0) {
+        skillsBox.innerHTML = '<b>Kỹ năng cần ôn tập củng cố:</b><ul style="padding-left:18px; margin-top:4px;">' +
+          [...new Set(mang_cau_sai)].map(s => `<li>${s}</li>`).join('') + '</ul>';
+      } else {
+        skillsBox.innerHTML = '<b style="color:#065F46;">Tuyệt vời! Em đã hoàn thành đúng toàn bộ 5 câu hỏi.</b>';
+      }
+
+      document.getElementById('scoreModal').classList.add('open');
+      toggleSolutions(true);
+    }
+
+    // INTEGRATE N8N WEBHOOK (BẮT BUỘC THEO GEMINI.MD)
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+      if (!isSubmitted) {
+        chamDiem();
+      }
+
+      const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+      const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+      const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+      
+      const tenBaiThi = document.title || "Phiếu học tập Lượng giác 11"; 
+      
+      const payload = {
+        hoc_sinh: tenHocSinh,
+        ma_hs: maHocSinh,
+        lop: lopNhom,
+        bai_thi: tenBaiThi,
+        diem: diem_so, 
+        thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+        ky_nang_sai: mang_cau_sai 
+      };
+
+      const btn = document.getElementById('btn-nop-bai');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = "Đang gửi dữ liệu...";
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+        } else {
+          alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+        }
+      } catch (error) {
+        alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    });
+
+    // Render KaTeX Math
+    function renderMath() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      startTimer();
+      renderMath();
+      setTimeout(renderMath, 300);
+      setTimeout(renderMath, 1000);
+    });
+  </script>
+</body>
+</html>
