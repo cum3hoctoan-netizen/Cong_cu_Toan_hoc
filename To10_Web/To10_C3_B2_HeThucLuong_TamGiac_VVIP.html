@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHIẾU HỌC TẬP VVIP: HỆ THỨC LƯỢNG TRONG TAM GIÁC & TỐI ƯU HÌNH HỌC</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #182A78;
+      --primary-hover: #111e56;
+      --primary-light: #EEF2FB;
+      --primary-border: #CCD8F5;
+      
+      --accent: #C62828;
+      --accent-hover: #A31D1D;
+      --accent-light: #FEF2F2;
+      --accent-border: #FECACA;
+      
+      --bg-page: #FAFAFA;
+      --bg-card: #FFFFFF;
+      --bg-card-alt: #F8FAFC;
+      
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      
+      --success: #15803D;
+      --success-light: #DCFCE7;
+      --danger: #B91C1C;
+      --danger-light: #FEE2E2;
+      --warning: #B45309;
+      --warning-light: #FEF3C7;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .topbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #E53935 100%);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3);
+    }
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.25);
+    }
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover {
+      background: #F1F5F9;
+    }
+    .btn-sol-toggle {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+    .btn-sol-toggle:hover {
+      background: #FDE68A;
+    }
+    .btn-sol-toggle.active {
+      background: #D1FAE5;
+      color: #065F46;
+      border-color: #6EE7B7;
+    }
+
+    /* MAIN LAYOUT */
+    .container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* HEADER BANNER */
+    .header-card {
+      background: linear-gradient(135deg, #182A78 0%, #283E9E 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-card::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .header-title-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .header-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #FFF;
+    }
+    .header-card p {
+      font-size: 13.5px;
+      opacity: 0.9;
+      max-width: 800px;
+    }
+
+    /* STUDENT INFO FORM */
+    .student-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .student-info-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .student-input-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .student-input-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .student-input-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .student-input-item label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .student-input-item input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #F8FAFC;
+      transition: all 0.2s;
+    }
+    .student-input-item input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #FFF;
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.1);
+    }
+
+    /* SECTION HEADER */
+    .section-header-box {
+      background: linear-gradient(135deg, #C62828 0%, #D32F2F 100%);
+      color: white;
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin: 28px 0 16px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-header-box h3 {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+    .section-header-box p {
+      font-size: 12px;
+      opacity: 0.92;
+    }
+
+    /* QUESTION CARD */
+    .q-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s;
+      scroll-margin-top: 80px;
+    }
+    .q-card:hover {
+      border-color: #CBD5E1;
+    }
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .q-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .q-badge-score {
+      background: #F1F5F9;
+      color: var(--text-muted);
+      border-color: #E2E8F0;
+      font-weight: 600;
+    }
+    .q-skill {
+      font-size: 11.5px;
+      color: #64748B;
+      font-style: italic;
+      background: #F8FAFC;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #EEF2F6;
+    }
+    .q-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    /* PART 1: MCQ OPTIONS */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 650px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      background: #FFF;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .option-btn:hover {
+      border-color: var(--primary-border);
+      background: var(--primary-light);
+    }
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: #EEF2FB;
+      box-shadow: 0 0 0 2px rgba(24, 42, 120, 0.15);
+    }
+    .option-key {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .option-btn.selected .option-key {
+      background: var(--primary);
+      color: white;
+    }
+    .option-text {
+      flex: 1;
+      padding-top: 1px;
+    }
+
+    /* PART 2: TRUE / FALSE STATEMENTS */
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .tf-row {
+      border-bottom: 1px solid #F1F5F9;
+      transition: background 0.15s;
+    }
+    .tf-row:last-child {
+      border-bottom: none;
+    }
+    .tf-label {
+      padding: 10px 8px;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13.5px;
+      width: 32px;
+      vertical-align: top;
+    }
+    .tf-text {
+      padding: 10px 12px;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .tf-actions {
+      padding: 10px 8px;
+      width: 130px;
+      text-align: right;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .tf-btn-group {
+      display: inline-flex;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .tf-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      background: #F8FAFC;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tf-btn:first-child {
+      border-right: 1px solid var(--border-color);
+    }
+    .tf-btn.selected-t {
+      background: var(--success);
+      color: white;
+    }
+    .tf-btn.selected-f {
+      background: var(--danger);
+      color: white;
+    }
+
+    /* PART 3: SHORT ANSWER */
+    .sa-box {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sa-input {
+      padding: 10px 16px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      min-width: 260px;
+      background: #F8FAFC;
+      transition: all 0.2s;
+    }
+    .sa-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.1);
+    }
+    .sa-feedback {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: none;
+    }
+    .sa-feedback.correct {
+      display: inline-block;
+      background: var(--success-light);
+      color: var(--success);
+    }
+    .sa-feedback.incorrect {
+      display: inline-block;
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    /* SOLUTION BOX */
+    .solution-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: #14532D;
+      display: block;
+      transition: all 0.2s ease;
+    }
+    .solution-box.hide-sol {
+      display: none;
+    }
+    .solution-box .sol-title {
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .solution-box .sol-body {
+      line-height: 1.6;
+    }
+
+    /* GRADED STATES */
+    .option-btn.graded-correct {
+      border-color: var(--success) !important;
+      background: #ECFDF5 !important;
+      color: #065F46 !important;
+      font-weight: 600;
+    }
+    .option-btn.graded-correct .option-key {
+      background: var(--success) !important;
+      color: white !important;
+    }
+    .option-btn.graded-incorrect {
+      border-color: var(--danger) !important;
+      background: #FEF2F2 !important;
+      color: #991B1B !important;
+    }
+    .option-btn.graded-incorrect .option-key {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+    .tf-btn.graded-correct {
+      background: var(--success) !important;
+      color: white !important;
+    }
+    .tf-btn.graded-incorrect {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+
+    /* SIDEBAR / QUESTION PALETTE */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+    }
+    .palette-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .palette-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #F1F5F9;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary) 0%, #3B82F6 100%);
+      transition: width 0.3s;
+    }
+    .palette-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin: 12px 0 8px 0;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .pal-btn {
+      width: 100%;
+      aspect-ratio: 1;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: #FFF;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .pal-btn:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .pal-btn.answered {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .pal-btn.correct {
+      background: var(--success) !important;
+      color: white !important;
+      border-color: var(--success) !important;
+    }
+    .pal-btn.incorrect {
+      background: var(--danger) !important;
+      color: white !important;
+      border-color: var(--danger) !important;
+    }
+    .palette-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    /* MODAL RESULT */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .score-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-light) 0%, #DBEAFE 100%);
+      border: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+    .score-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1;
+    }
+    .score-max {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .modal-grade {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .modal-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .breakdown-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 8px;
+    }
+    .breakdown-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .breakdown-score {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 2px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .modal-skills-missed {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 12.5px;
+      color: #991B1B;
+      margin-bottom: 20px;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .modal-btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* PRINT OPTIMIZATION */
+    @media print {
+      .topbar, .sidebar, .modal-overlay, .btn-sol-toggle {
+        display: none !important;
+      }
+      .container {
+        grid-template-columns: 1fr;
+        margin: 0;
+        padding: 0;
+      }
+      .solution-box {
+        display: block !important;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-content">
+      <div class="topbar-brand">
+        <div class="brand-icon">Δ</div>
+        <div class="brand-text">
+          <h1>PHIẾU HỌC TẬP VVIP: HỆ THỨC LƯỢNG TRONG TAM GIÁC & TỐI ƯU HÌNH HỌC</h1>
+          <p>Chuyên đề Nâng cao Toán 10 - Chương III: Hệ thức lượng trong tam giác (GDPT 2018) • Vận dụng và Vận dụng cao</p>
+        </div>
+      </div>
+      <div class="topbar-controls">
+        <div class="timer-badge">
+          <span>⏱️</span>
+          <span id="quizTimer">45:00</span>
+        </div>
+        <button class="btn btn-sol-toggle active" id="btnToggleSol">🙈 Ẩn lời giải</button>
+        <button class="btn btn-accent" id="btnSubmitTop">Nộp bài</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- Left Column / Quiz Contents -->
+    <div class="content-col">
+
+      <!-- Header Hero Card -->
+      <div class="header-card">
+        <div class="header-title-badge">CHUYÊN ĐỀ NÂNG CAO VVIP • GDPT 2018</div>
+        <h2>PHIẾU HỌC TẬP VVIP: HỆ THỨC LƯỢNG TRONG TAM GIÁC & TỐI ƯU HÌNH HỌC</h2>
+        <p>Chuyên đề Nâng cao Toán 10 - Chương III: Hệ thức lượng trong tam giác (GDPT 2018) — Dành cho nhóm học sinh VVIP. Tuyển tập các bài toán định lý Sin, Cosin biến đổi đẳng thức nâng cao, bài toán cực trị diện tích tam giác và mô hình hóa đo đạc thực tế.</p>
+      </div>
+
+      <!-- Student Info Card -->
+      <div class="student-info-card">
+        <div class="student-info-title">
+          <span>👤</span> Thông tin học sinh làm bài
+        </div>
+        <div class="student-input-grid">
+          <div class="student-input-item">
+            <label for="input-ten">📝 Họ và tên học sinh:</label>
+            <input type="text" id="input-ten" placeholder="Nhập họ và tên...">
+          </div>
+          <div class="student-input-item">
+            <label for="input-ma-hs">🏷️ Mã Học Sinh:</label>
+            <input type="text" id="input-ma-hs" placeholder="Ví dụ: NTH26-001">
+          </div>
+          <div class="student-input-item">
+            <label for="input-lop">🏫 Lớp / Nhóm:</label>
+            <input type="text" id="input-lop" placeholder="Ví dụ: 10A1">
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN -->
+      <div class="section-header-box">
+        <h3>PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU - 3.0 ĐIỂM)</h3>
+        <p>Khoanh tròn vào chữ cái A, B, C hoặc D trước phương án trả lời đúng nhất. Mỗi câu đúng được 0.3 điểm.</p>
+      </div>
+      <div id="part1Container"></div>
+
+      <!-- PHẦN II: TRẮC NGHIỆM ĐÚNG - SAI -->
+      <div class="section-header-box" style="background: linear-gradient(135deg, #182A78 0%, #2563EB 100%);">
+        <h3>PHẦN II. TRẮC NGHIỆM ĐÚNG - SAI (4 CÂU - 4.0 ĐIỂM)</h3>
+        <p>Ghi Đúng (Đ) hoặc Sai (S) cho từng nhận định a, b, c, d. Đúng 1 ý: 0.1đ | 2 ý: 0.25đ | 3 ý: 0.5đ | 4 ý: 1.0đ.</p>
+      </div>
+      <div id="part2Container"></div>
+
+      <!-- PHẦN III: TRẢ LỜI NGẮN -->
+      <div class="section-header-box" style="background: linear-gradient(135deg, #991B1B 0%, #DC2626 100%);">
+        <h3>PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU - 3.0 ĐIỂM)</h3>
+        <p>Điền đáp số ngắn gọn vào ô tương ứng (bao gồm 2 bài toán mô hình thực tế đo chiều cao núi và rào phân cách đất). Mỗi câu đúng được 0.6 điểm.</p>
+      </div>
+      <div id="part3Container"></div>
+
+    </div>
+
+    <!-- Sidebar / Question Palette -->
+    <aside class="sidebar">
+      <div class="palette-card">
+        <div class="palette-title">
+          <span>Tiến độ làm bài</span>
+          <span id="progressText" style="font-family:'JetBrains Mono',monospace; color:var(--primary);">0/19</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="palette-section-label">Phần I: Trắc nghiệm (10 câu)</div>
+        <div class="palette-grid" id="palPart1"></div>
+
+        <div class="palette-section-label">Phần II: Đúng - Sai (4 câu)</div>
+        <div class="palette-grid" id="palPart2"></div>
+
+        <div class="palette-section-label">Phần III: Trả lời ngắn (5 câu)</div>
+        <div class="palette-grid" id="palPart3"></div>
+
+        <div class="palette-actions">
+          <button class="btn btn-accent" id="btn-nop-bai" style="width: 100%;">📝 Nộp bài & Chấm điểm</button>
+          <button class="btn btn-outline" id="btnResetQuiz" style="width: 100%;">🔄 Làm lại đề</button>
+          <button class="btn btn-outline" onclick="window.print()" style="width: 100%;">🖨️ In đề thi / PDF</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Modal Kết Quả -->
+  <div class="modal-overlay" id="scoreModal">
+    <div class="modal-card">
+      <div class="score-circle">
+        <div class="score-number" id="modalScore">0.0</div>
+        <div class="score-max">/ 10 điểm</div>
+      </div>
+      <h3 class="modal-grade" id="modalGradeText">KẾT QUẢ BÀI THI</h3>
+      <p class="modal-sub" id="modalSubText">Chi tiết điểm thành phần các phần thi</p>
+      
+      <div class="modal-breakdown">
+        <div class="breakdown-box">
+          <div class="breakdown-label">Phần I</div>
+          <div class="breakdown-score" id="scoreP1">0.0 / 3.0</div>
+        </div>
+        <div class="breakdown-box">
+          <div class="breakdown-label">Phần II</div>
+          <div class="breakdown-score" id="scoreP2">0.0 / 4.0</div>
+        </div>
+        <div class="breakdown-box">
+          <div class="breakdown-label">Phần III</div>
+          <div class="breakdown-score" id="scoreP3">0.0 / 3.0</div>
+        </div>
+      </div>
+
+      <div class="modal-skills-missed" id="modalSkillsMissed">
+        <!-- Chuyên đề cần ôn tập -->
+      </div>
+
+      <div class="modal-btn-row">
+        <button class="btn btn-primary" id="btnCloseModal">Xem chi tiết bài làm</button>
+        <button class="btn btn-outline" id="btnRetakeModal">Làm lại bài</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quiz = {
+  "title": "PHIẾU HỌC TẬP VVIP: HỆ THỨC LƯỢNG TRONG TAM GIÁC & TỐI ƯU HÌNH HỌC",
+  "subtitle": "Chuyên đề Nâng cao Toán 10 - Chương III: Hệ thức lượng trong tam giác (GDPT 2018)",
+  "target": "Nhóm học sinh VVIP (Tập trung Vận dụng & Vận dụng cao)",
+  "level": "Vận dụng và Vận dụng cao",
+  "solutionMode": "BAT",
+  "part1": [
+    {
+      "id": 1,
+      "skill": "Phân tích hằng đẳng thức hiệu hai bình phương biến đổi định lý Cosin. Bẫy hay gặp: Học sinh nhầm hằng đẳng thức $(a+b)^2 - c^2$ dẫn đến sai dấu cosin.",
+      "question": "Cho tam giác $ABC$ có các cạnh $a, b, c$ thỏa mãn đẳng thức $(a+b+c)(a+b-c) = 3ab$. Tính số đo góc $C$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\widehat{C} = 60^\\circ$"
+        },
+        {
+          "key": "B",
+          "text": "$\\widehat{C} = 120^\\circ$"
+        },
+        {
+          "key": "C",
+          "text": "$\\widehat{C} = 30^\\circ$"
+        },
+        {
+          "key": "D",
+          "text": "$\\widehat{C} = 45^\\circ$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Khai triển biến đổi vế trái:<br>$$(a+b+c)(a+b-c) = (a+b)^2 - c^2 = a^2 + 2ab + b^2 - c^2$$<br>Theo đề bài: $a^2 + 2ab + b^2 - c^2 = 3ab \\iff a^2 + b^2 - c^2 = ab$.<br>Áp dụng định lý Cosin tính $\\cos C$:<br>$$\\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab} = \\dfrac{ab}{2ab} = \\dfrac{1}{2}$$<br>Vì $0^\\circ < C < 180^\\circ$ nên $\\widehat{C} = 60^\\circ$."
+    },
+    {
+      "id": 2,
+      "skill": "Kết hợp định lý Cosin tính cạnh $a$, công thức $S = \\frac{1}{2}bc\\sin A$ và $S = pr$ tính bán kính $r$. Bẫy trục căn thức ở mẫu số.",
+      "question": "Cho tam giác $ABC$ có $b = 7, c = 5$ và $\\cos A = \\dfrac{3}{5}$. Tính bán kính đường tròn nội tiếp $r$ của tam giác $ABC$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$r = 3 - \\sqrt{2}$"
+        },
+        {
+          "key": "B",
+          "text": "$r = 3 + \\sqrt{2}$"
+        },
+        {
+          "key": "C",
+          "text": "$r = 2\\sqrt{2} - 1$"
+        },
+        {
+          "key": "D",
+          "text": "$r = \\sqrt{2} + 1$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Tính cạnh $a$ bằng định lý Cosin:<br>$$a^2 = b^2 + c^2 - 2bc \\cos A = 7^2 + 5^2 - 2(7)(5)\\left(\\dfrac{3}{5}\\right) = 49 + 25 - 42 = 32 \\implies a = 4\\sqrt{2}$$<br>Do $\\cos A = \\dfrac{3}{5} > 0 \\implies \\sin A = \\sqrt{1 - \\cos^2 A} = \\sqrt{1 - \\dfrac{9}{25}} = \\dfrac{4}{5}$.<br>Diện tích: $S = \\dfrac{1}{2}bc \\sin A = \\dfrac{1}{2} \\cdot 7 \\cdot 5 \\cdot \\dfrac{4}{5} = 14$.<br>Nửa chu vi: $p = \\dfrac{a+b+c}{2} = \\dfrac{4\\sqrt{2} + 7 + 5}{2} = 6 + 2\\sqrt{2}$.<br>Bán kính đường tròn nội tiếp:<br>$$r = \\dfrac{S}{p} = \\dfrac{14}{6 + 2\\sqrt{2}} = \\dfrac{7}{3 + \\sqrt{2}} = \\dfrac{7(3 - \\sqrt{2})}{9 - 2} = 3 - \\sqrt{2}$$"
+    },
+    {
+      "id": 3,
+      "skill": "Biện luận bất đẳng thức hình học từ đẳng thức số mũ bậc 4 $a^4 = b^4 + c^4$. Bẫy ngộ nhận $a^4 = b^4 + c^4 \\implies a^2 = b^2 + c^2$ (vuông).",
+      "question": "Cho tam giác $ABC$ có các cạnh $a, b, c$ thỏa mãn $a^4 = b^4 + c^4$. Khẳng định nào sau đây là ĐÚNG về các góc của tam giác $ABC$?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tam giác $ABC$ có cả 3 góc đều là góc nhọn."
+        },
+        {
+          "key": "B",
+          "text": "Tam giác $ABC$ là tam giác tù."
+        },
+        {
+          "key": "C",
+          "text": "Tam giác $ABC$ là tam giác vuông."
+        },
+        {
+          "key": "D",
+          "text": "Tam giác $ABC$ có góc $A$ là góc tù."
+        }
+      ],
+      "correct": "A",
+      "explanation": "Ta có $a^4 = b^4 + c^4 < (b^2 + c^2)^2 = b^4 + 2b^2c^2 + c^4$.<br>Lấy căn bậc hai hai vế: $a^2 < b^2 + c^2 \\implies b^2 + c^2 - a^2 > 0 \\implies \\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} > 0 \\implies \\widehat{A}$ là góc nhọn.<br>Mặt khác $a^4 = b^4 + c^4 \\implies a^4 > b^4$ và $a^4 > c^4 \\implies a > b$ và $a > c$.<br>Vì $a$ là cạnh lớn nhất nên góc $A$ là góc lớn nhất trong tam giác.<br>Do góc lớn nhất $\\widehat{A}$ là góc nhọn nên cả 3 góc của tam giác $ABC$ đều là góc nhọn."
+    },
+    {
+      "id": 4,
+      "skill": "Chuyển đổi quan hệ độ dài cạnh sang tỉ lệ sin các góc bằng định lý Sin $a = 2R\\sin A$.",
+      "question": "Cho tam giác $ABC$ có các cạnh thỏa mãn $b + c = 2a$. Tính giá trị của biểu thức $P = \\sin B + \\sin C - 2\\sin A$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$P = 0$"
+        },
+        {
+          "key": "B",
+          "text": "$P = 1$"
+        },
+        {
+          "key": "C",
+          "text": "$P = -1$"
+        },
+        {
+          "key": "D",
+          "text": "$P = \\dfrac{1}{2}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Theo định lý Sin trong tam giác $ABC$: $a = 2R\\sin A, b = 2R\\sin B, c = 2R\\sin C$.<br>Thay vào giả thiết $b + c = 2a$:<br>$$2R\\sin B + 2R\\sin C = 2(2R\\sin A) \\iff \\sin B + \\sin C = 2\\sin A$$<br>Do đó: $$P = \\sin B + \\sin C - 2\\sin A = 0$$"
+    },
+    {
+      "id": 5,
+      "skill": "Sử dụng công thức đường trung tuyến $m_a^2 = \\frac{2(b^2+c^2)-a^2}{4}$ chứng minh tam giác vuông.",
+      "question": "Cho tam giác $ABC$ có ba đường trung tuyến $m_a, m_b, m_c$ thỏa mãn $m_a^2 + m_b^2 = 5m_c^2$. Khẳng định nào sau đây đúng?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tam giác $ABC$ vuông tại $C$."
+        },
+        {
+          "key": "B",
+          "text": "Tam giác $ABC$ vuông tại $A$."
+        },
+        {
+          "key": "C",
+          "text": "Tam giác $ABC$ cân tại $C$."
+        },
+        {
+          "key": "D",
+          "text": "Tam giác $ABC$ đều."
+        }
+      ],
+      "correct": "A",
+      "explanation": "Thay công thức đường trung tuyến vào giả thiết $m_a^2 + m_b^2 = 5m_c^2$:<br>$$\\dfrac{2(b^2+c^2)-a^2}{4} + \\dfrac{2(a^2+c^2)-b^2}{4} = 5 \\cdot \\dfrac{2(a^2+b^2)-c^2}{4}$$<br>$$\\iff a^2 + b^2 + 4c^2 = 10a^2 + 10b^2 - 5c^2 \\iff 9c^2 = 9a^2 + 9b^2 \\iff c^2 = a^2 + b^2$$<br>Theo định lý Pythagoras đảo, tam giác $ABC$ vuông tại $C$."
+    },
+    {
+      "id": 6,
+      "skill": "Đánh giá bất đẳng thức Cauchy (AM-GM) cho diện tích tam giác $S = \\frac{1}{2}ab\\sin C \\le \\frac{1}{4}(a^2+b^2)$.",
+      "question": "Cho tam giác $ABC$ có diện tích $S = \\dfrac{1}{4}(a^2 + b^2)$. Khẳng định nào sau đây mô tả ĐÚNG dạng của tam giác $ABC$?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tam giác $ABC$ vuông cân tại $C$."
+        },
+        {
+          "key": "B",
+          "text": "Tam giác $ABC$ là tam giác đều."
+        },
+        {
+          "key": "C",
+          "text": "Tam giác $ABC$ vuông cân tại $A$."
+        },
+        {
+          "key": "D",
+          "text": "Tam giác $ABC$ cân tại $A$ có góc $\\widehat{C} = 60^\\circ$."
+        }
+      ],
+      "correct": "A",
+      "explanation": "Ta có $S = \\dfrac{1}{2}ab \\sin C \\le \\dfrac{1}{2}ab$ (vì $\\sin C \\le 1$).<br>Theo bất đẳng thức AM-GM: $\\dfrac{1}{2}ab \\le \\dfrac{1}{2} \\cdot \\dfrac{a^2+b^2}{2} = \\dfrac{1}{4}(a^2+b^2)$.<br>Do đó $S \\le \\dfrac{1}{4}(a^2+b^2)$.<br>Dấu \"=\" xảy ra khi và chỉ khi:<br>$$\\begin{cases} a = b \\\\ \\sin C = 1 \\end{cases} \\iff \\begin{cases} a = b \\\\ \\widehat{C} = 90^\\circ \\end{cases}$$<br>Vậy tam giác $ABC$ vuông cân tại $C$."
+    },
+    {
+      "id": 7,
+      "skill": "Kết hợp công thức $S = \\frac{1}{2}ah_a = pr$ biến đổi tỉ số $\\frac{h_a}{r} = \\frac{2p}{a}$.",
+      "question": "Cho tam giác $ABC$ có độ dài ba cạnh $a = 13, b = 14, c = 15$. Gọi $h_a$ là độ dài đường cao kẻ từ $A$ và $r$ là bán kính đường tròn nội tiếp. Tính tỉ số $\\dfrac{h_a}{r}$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\dfrac{h_a}{r} = \\dfrac{42}{13}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\dfrac{h_a}{r} = \\dfrac{21}{13}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\dfrac{h_a}{r} = \\dfrac{84}{13}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\dfrac{h_a}{r} = \\dfrac{14}{13}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Ta có $S = \\dfrac{1}{2}a h_a = p r \\implies h_a = \\dfrac{2S}{a}$ và $r = \\dfrac{S}{p}$.<br>Lập tỉ số: $$\\dfrac{h_a}{r} = \\dfrac{2S/a}{S/p} = \\dfrac{2p}{a}$$<br>Tính nửa chu vi $p = \\dfrac{13 + 14 + 15}{2} = 21$.<br>Suy ra: $$\\dfrac{h_a}{r} = \\dfrac{2(21)}{13} = \\dfrac{42}{13}$$"
+    },
+    {
+      "id": 8,
+      "skill": "Chuyển đẳng thức sin sang đẳng thức cạnh bằng định lý Sin để tìm góc $C$.",
+      "question": "Cho tam giác $ABC$ có các góc thỏa mãn $\\sin^2 A + \\sin^2 B = \\sin^2 C + \\sin A \\cdot \\sin B$. Tính số đo góc $C$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\widehat{C} = 60^\\circ$"
+        },
+        {
+          "key": "B",
+          "text": "$\\widehat{C} = 120^\\circ$"
+        },
+        {
+          "key": "C",
+          "text": "$\\widehat{C} = 45^\\circ$"
+        },
+        {
+          "key": "D",
+          "text": "$\\widehat{C} = 30^\\circ$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Thế $\\sin A = \\dfrac{a}{2R}, \\sin B = \\dfrac{b}{2R}, \\sin C = \\dfrac{c}{2R}$ vào giả thiết:<br>$$\\left(\\dfrac{a}{2R}\\right)^2 + \\left(\\dfrac{b}{2R}\\right)^2 = \\left(\\dfrac{c}{2R}\\right)^2 + \\dfrac{a}{2R} \\cdot \\dfrac{b}{2R} \\iff a^2 + b^2 = c^2 + ab$$<br>$$\\iff a^2 + b^2 - c^2 = ab \\implies \\cos C = \\dfrac{a^2+b^2-c^2}{2ab} = \\dfrac{ab}{2ab} = \\dfrac{1}{2} \\implies \\widehat{C} = 60^\\circ$$"
+    },
+    {
+      "id": 9,
+      "skill": "Định lý Sin giải tam giác khi biết một cạnh và hai góc kề. Bẫy tính $\\sin 75^\\circ = \\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$.",
+      "question": "Cho tam giác $ABC$ có $BC = 6$, góc $\\widehat{B} = 60^\\circ$, $\\widehat{C} = 45^\\circ$. Tính độ dài cạnh $AB$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$AB = 6(\\sqrt{3}-1)$"
+        },
+        {
+          "key": "B",
+          "text": "$AB = 3(\\sqrt{6}-\\sqrt{2})$"
+        },
+        {
+          "key": "C",
+          "text": "$AB = 6(\\sqrt{3}+1)$"
+        },
+        {
+          "key": "D",
+          "text": "$AB = 3(\\sqrt{6}+\\sqrt{2})$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Góc $\\widehat{A} = 180^\\circ - (60^\\circ + 45^\\circ) = 75^\\circ$.<br>Theo định lý Sin:<br>$$\\dfrac{AB}{\\sin C} = \\dfrac{BC}{\\sin A} \\implies AB = \\dfrac{BC \\cdot \\sin 45^\\circ}{\\sin 75^\\circ} = \\dfrac{6 \\cdot \\dfrac{\\sqrt{2}}{2}}{\\dfrac{\\sqrt{6}+\\sqrt{2}}{4}} = \\dfrac{12\\sqrt{2}}{\\sqrt{6}+\\sqrt{2}}$$<br>Trục căn thức ở mẫu:<br>$$AB = \\dfrac{12\\sqrt{2}(\\sqrt{6}-\\sqrt{2})}{4} = 3\\sqrt{2}(\\sqrt{6}-\\sqrt{2}) = 6\\sqrt{3} - 6 = 6(\\sqrt{3}-1)$$"
+    },
+    {
+      "id": 10,
+      "skill": "Công thức diện tích phân giác $S_{ABC} = S_{ABD} + S_{ADC}$ tính độ dài đường phân giác.",
+      "question": "Cho tam giác $ABC$ có góc $\\widehat{A} = 120^\\circ$, độ dài đường phân giác trong $AD = d$. Biểu diễn $d$ theo hai cạnh $b = AC$ và $c = AB$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$d = \\dfrac{bc}{b+c}$"
+        },
+        {
+          "key": "B",
+          "text": "$d = \\dfrac{2bc}{b+c}$"
+        },
+        {
+          "key": "C",
+          "text": "$d = \\dfrac{bc\\sqrt{3}}{b+c}$"
+        },
+        {
+          "key": "D",
+          "text": "$d = \\dfrac{bc}{2(b+c)}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Đường phân giác $AD$ chia góc $A = 120^\\circ$ thành hai góc $\\widehat{BAD} = \\widehat{CAD} = 60^\\circ$.<br>Ta có: $S_{ABC} = S_{ABD} + S_{ADC}$<br>$$\\iff \\dfrac{1}{2}bc \\sin 120^\\circ = \\dfrac{1}{2}c d \\sin 60^\\circ + \\dfrac{1}{2}b d \\sin 60^\\circ$$<br>Vì $\\sin 120^\\circ = \\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2} \\neq 0$, rút gọn hai vế được:<br>$$bc = cd + bd = d(b + c) \\implies d = \\dfrac{bc}{b + c}$$"
+    }
+  ],
+  "part2": [
+    {
+      "id": 1,
+      "skill": "Tính toán toàn diện các đại lượng tam giác: cosin góc tù, diện tích Heron, bán kính R, r.",
+      "context": "Cho tam giác $ABC$ có độ dài ba cạnh $a = 7, b = 5, c = 3$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Góc $A$ của tam giác $ABC$ là góc tù và có số đo $\\widehat{A} = 120^\\circ$.",
+          "correct": true,
+          "explanation": "$\\cos A = \\dfrac{5^2+3^2-7^2}{2(5)(3)} = \\dfrac{-15}{30} = -\\dfrac{1}{2} \\implies \\widehat{A} = 120^\\circ$ tù. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Diện tích tam giác $ABC$ bằng $\\dfrac{15\\sqrt{3}}{4}$.",
+          "correct": true,
+          "explanation": "$S = \\dfrac{1}{2}bc \\sin A = \\dfrac{1}{2}(5)(3)\\sin 120^\\circ = \\dfrac{15\\sqrt{3}}{4}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Bán kính đường tròn ngoại tiếp tam giác $ABC$ bằng $R = \\dfrac{7\\sqrt{3}}{3}$.",
+          "correct": true,
+          "explanation": "$R = \\dfrac{a}{2\\sin A} = \\dfrac{7}{2\\sin 120^\\circ} = \\dfrac{7}{\\sqrt{3}} = \\dfrac{7\\sqrt{3}}{3}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "d",
+          "text": "Bán kính đường tròn nội tiếp tam giác $ABC$ bằng $r = \\dfrac{\\sqrt{3}}{2}$.",
+          "correct": true,
+          "explanation": "Nửa chu vi $p = \\dfrac{7+5+3}{2} = \\dfrac{15}{2} \\implies r = \\dfrac{S}{p} = \\dfrac{15\\sqrt{3}/4}{15/2} = \\dfrac{\\sqrt{3}}{2}$. Mệnh đề ĐÚNG."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "skill": "Đánh giá góc nhọn từ $a^3 = b^3 + c^3$ và bất đẳng thức diện tích $S < \\dfrac{1}{2}a^2$.",
+      "context": "Cho tam giác $ABC$ có các cạnh thỏa mãn $a^3 = b^3 + c^3$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "$a$ là độ dài cạnh lớn nhất trong tam giác $ABC$.",
+          "correct": true,
+          "explanation": "$a^3 = b^3 + c^3 > b^3 \\implies a > b$ và tương tự $a > c \\implies a$ lớn nhất. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Cả ba góc $A, B, C$ của tam giác $ABC$ đều là góc nhọn.",
+          "correct": true,
+          "explanation": "Ta có $a^2 = (b^3+c^3)^{2/3} < b^2 + c^2 \\implies b^2+c^2-a^2 > 0 \\implies \\cos A > 0 \\implies A$ nhọn. Vì $a$ lớn nhất nên cả 3 góc nhọn. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Tam giác $ABC$ có thể là một tam giác vuông.",
+          "correct": false,
+          "explanation": "Nếu vuông tại $A$ thì $a^2 = b^2+c^2$, điều này mâu thuẫn với $a^2 < b^2+c^2$. Mệnh đề SAI."
+        },
+        {
+          "label": "d",
+          "text": "Tỉ số giữa diện tích $S$ và $a^2$ luôn nhỏ hơn $\\dfrac{1}{2}$.",
+          "correct": true,
+          "explanation": "$S = \\dfrac{1}{2}bc \\sin A < \\dfrac{1}{2}bc < \\dfrac{1}{2}a^2 \\implies \\dfrac{S}{a^2} < \\dfrac{1}{2}$. Mệnh đề ĐÚNG."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "skill": "Chứng minh tam giác đều từ hai hệ thức $a+b=2c$ và $c^2=ab$. Bẫy phân biệt $R = 2r$ trong tam giác đều.",
+      "context": "Cho tam giác $ABC$ có các góc thỏa mãn $\\sin A + \\sin B = 2\\sin C$ và $c^2 = ab$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Độ dài ba cạnh $a, b, c$ lập thành một cấp số cộng theo thứ tự $a + b = 2c$.",
+          "correct": true,
+          "explanation": "Theo định lý Sin: $\\sin A + \\sin B = 2\\sin C \\iff a + b = 2c$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Tam giác $ABC$ là tam giác đều.",
+          "correct": true,
+          "explanation": "Ta có $(a+b)^2 = 4c^2 = 4ab \\iff a^2 - 2ab + b^2 = 0 \\iff (a-b)^2 = 0 \\iff a = b$. Suy ra $a = b = c \\implies$ tam giác đều. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Bán kính đường tròn ngoại tiếp $R$ bằng bán kính đường tròn nội tiếp $r$.",
+          "correct": false,
+          "explanation": "Trong tam giác đều $R = \\dfrac{a}{\\sqrt{3}}$ và $r = \\dfrac{a}{2\\sqrt{3}} \\implies R = 2r \\neq r$. Mệnh đề SAI."
+        },
+        {
+          "label": "d",
+          "text": "Số đo mỗi góc trong tam giác $ABC$ bằng $60^\\circ$.",
+          "correct": true,
+          "explanation": "Tam giác đều có mỗi góc bằng $60^\\circ$. Mệnh đề ĐÚNG."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "skill": "Giải tam giác ứng dụng thực tế định lý Sin tính khoảng cách và chiều cao khoảng cách bờ biển.",
+      "context": "Hai trạm quan sát hải đăng $A$ và $B$ nằm trên đường bờ biển thẳng cách nhau $10\\text{ km}$. Từ trạm $A$ và $B$, người ta phát hiện một tàu thủy $C$ ở ngoài khơi dưới các góc nhìn $\\widehat{CAB} = 75^\\circ$ và $\\widehat{CBA} = 60^\\circ$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Góc nhìn từ tàu thủy $C$ tới hai trạm hải đăng có số đo $\\widehat{ACB} = 45^\\circ$.",
+          "correct": true,
+          "explanation": "$\\widehat{ACB} = 180^\\circ - (75^\\circ + 60^\\circ) = 45^\\circ$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Khoảng cách từ trạm $A$ đến tàu thủy $C$ bằng $5\\sqrt{6}\\text{ km}$.",
+          "correct": true,
+          "explanation": "Áp dụng định lý Sin: $AC = \\dfrac{AB \\sin 60^\\circ}{\\sin 45^\\circ} = \\dfrac{10 \\cdot \\dfrac{\\sqrt{3}}{2}}{\\dfrac{\\sqrt{2}}{2}} = 5\\sqrt{6}\\text{ km}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Khoảng cách từ trạm $B$ đến tàu thủy $C$ bằng $5\\sqrt{3}\\text{ km}$.",
+          "correct": false,
+          "explanation": "Theo định lý Sin: $BC = \\dfrac{AB \\sin 75^\\circ}{\\sin 45^\\circ} = \\dfrac{10 \\cdot \\dfrac{\\sqrt{6}+\\sqrt{2}}{4}}{\\dfrac{\\sqrt{2}}{2}} = 5(\\sqrt{3}+1)\\text{ km} \\neq 5\\sqrt{3}$. Mệnh đề SAI."
+        },
+        {
+          "label": "d",
+          "text": "Khoảng cách ngắn nhất từ tàu thủy $C$ đến đường bờ biển $AB$ xấp xỉ bằng $11,83\\text{ km}$.",
+          "correct": true,
+          "explanation": "Khoảng cách ngắn nhất là đường cao $h_c = AC \\cdot \\sin 75^\\circ = 5\\sqrt{6} \\cdot \\dfrac{\\sqrt{6}+\\sqrt{2}}{4} = \\dfrac{15+5\\sqrt{3}}{2} \\approx 11,83\\text{ km}$. Mệnh đề ĐÚNG."
+        }
+      ]
+    }
+  ],
+  "part3": [
+    {
+      "id": 1,
+      "skill": "Mô hình hóa thực tế đo chiều cao không thể tiếp cận chân bằng định lý Sin và tam giác vuông.",
+      "question": "Câu 1 (Vận dụng thực tế Đo chiều cao ngọn núi không thể tới chân). Để đo chiều cao $CD = h$ của một ngọn núi, người ta chọn hai điểm $A$ và $B$ trên mặt đất bằng phẳng sao cho $A, B, D$ thẳng hàng ($D$ là chân ngọn núi nằm thẳng đứng dưới đỉnh $C$). Biết $AB = 500\\text{ m}$, góc nâng nhìn lên đỉnh núi tại $A$ là $\\widehat{CAD} = 30^\\circ$, và tại $B$ là $\\widehat{CBD} = 45^\\circ$. Tính chiều cao $h$ của ngọn núi (làm tròn đến hàng đơn vị theo mét).",
+      "answer_display": "683 m",
+      "acceptable": [
+        "683",
+        "683 m",
+        "683m",
+        "683 mét",
+        "250(\\sqrt{3}+1)",
+        "250(sqrt(3)+1)",
+        "683.01",
+        "683,01"
+      ],
+      "explanation": "Xét tam giác $ABC$ có $\\widehat{CAD} = 30^\\circ, \\widehat{CBD} = 45^\\circ \\implies \\widehat{ACB} = 45^\\circ - 30^\\circ = 15^\\circ$.<br>Áp dụng định lý Sin trong tam giác $ABC$:<br>$$\\dfrac{BC}{\\sin 30^\\circ} = \\dfrac{AB}{\\sin 15^\\circ} \\implies BC = \\dfrac{500 \\cdot \\sin 30^\\circ}{\\sin 15^\\circ} = \\dfrac{250}{\\dfrac{\\sqrt{6}-\\sqrt{2}}{4}} = 250(\\sqrt{6}+\\sqrt{2})\\text{ m}$$<br>Trong tam giác vuông $BCD$ tại $D$:<br>$$h = CD = BC \\cdot \\sin 45^\\circ = 250(\\sqrt{6}+\\sqrt{2}) \\cdot \\dfrac{\\sqrt{2}}{2} = 250(\\sqrt{3}+1) \\approx 683,01\\text{ m}$$<br>Làm tròn đến hàng đơn vị: $683\\text{ m}$."
+    },
+    {
+      "id": 2,
+      "skill": "Ứng dụng diện tích tam giác $S = S_1 + S_2$ tính đường phân giác rào phân cách.",
+      "question": "Câu 2 (Vận dụng thực tế Tối ưu đường rào phân cách đất). Một mảnh đất hình tam giác $ABC$ có $AB = 40\\text{ m}, AC = 60\\text{ m}$ và góc $\\widehat{A} = 60^\\circ$. Chủ nhà muốn chia mảnh đất làm hai phần bởi đường phân giác trong $AD$ ($D \\in BC$). Tính độ dài đoạn rào phân cách $AD$ (làm tròn đến hàng phần mười theo đơn vị mét).",
+      "answer_display": "41,6 m (hoặc 24√3 m)",
+      "acceptable": [
+        "41,6",
+        "41.6",
+        "41,6 m",
+        "41.6 m",
+        "41,6m",
+        "41.6m",
+        "24\\sqrt{3}",
+        "24sqrt(3)",
+        "24 căn 3",
+        "24can3",
+        "41.57",
+        "41,57"
+      ],
+      "explanation": "Ta có: $S_{ABC} = S_{ABD} + S_{ADC}$<br>$$\\iff \\dfrac{1}{2} \\cdot 40 \\cdot 60 \\cdot \\sin 60^\\circ = \\dfrac{1}{2} \\cdot 40 \\cdot AD \\cdot \\sin 30^\\circ + \\dfrac{1}{2} \\cdot 60 \\cdot AD \\cdot \\sin 30^\\circ$$<br>$$\\iff 1200\\sqrt{3} = 20 AD + 30 AD = 50 AD \\implies AD = \\dfrac{1200\\sqrt{3}}{50} = 24\\sqrt{3}\\text{ m}$$<br>Giá trị xấp xỉ làm tròn hàng phần mười: $24\\sqrt{3} \\approx 41,569 \\approx 41,6\\text{ m}$."
+    },
+    {
+      "id": 3,
+      "skill": "Tính bán kính ngoại tiếp cố định khi biết cạnh đối diện và góc $2R = \\frac{a}{\\sin A}$.",
+      "question": "Câu 3. Cho tam giác $ABC$ có $BC = 10$. Điểm $A$ thay đổi trong mặt phẳng sao cho góc $\\widehat{A} = 60^\\circ$. Tìm giá trị nhỏ nhất của bán kính đường tròn ngoại tiếp $R$ của tam giác $ABC$.",
+      "answer_display": "10√3/3 (hoặc ≈ 5,77)",
+      "acceptable": [
+        "10\\sqrt{3}/3",
+        "10sqrt(3)/3",
+        "10 căn 3 / 3",
+        "10can3/3",
+        "5.77",
+        "5,77",
+        "5.8",
+        "5,8"
+      ],
+      "explanation": "Theo định lý Sin: $2R = \\dfrac{BC}{\\sin A} = \\dfrac{10}{\\sin 60^\\circ} = \\dfrac{10}{\\dfrac{\\sqrt{3}}{2}} = \\dfrac{20}{\\sqrt{3}}$.<br>$$\\implies R = \\dfrac{10}{\\sqrt{3}} = \\dfrac{10\\sqrt{3}}{3}$$<br>Vì $R$ là hằng số không phụ thuộc vào vị trí điểm $A$ nên giá trị nhỏ nhất là $R_{\\min} = \\dfrac{10\\sqrt{3}}{3} \\approx 5,77$."
+    },
+    {
+      "id": 4,
+      "skill": "Cực trị diện tích tam giác theo chu vi cố định bằng bất đẳng thức AM-GM cho công thức Heron.",
+      "question": "Câu 4. Cho tam giác $ABC$ có chu vi $2p = 12$. Tìm diện tích lớn nhất $S_{\\max}$ của tam giác $ABC$.",
+      "answer_display": "4√3 (hoặc ≈ 6,93)",
+      "acceptable": [
+        "4\\sqrt{3}",
+        "4sqrt(3)",
+        "4 căn 3",
+        "4can3",
+        "\\sqrt{48}",
+        "sqrt(48)",
+        "can 48",
+        "6.93",
+        "6,93",
+        "6.9",
+        "6,9"
+      ],
+      "explanation": "Nửa chu vi $p = 6$.<br>Áp dụng bất đẳng thức AM-GM cho ba số dương $(p-a), (p-b), (p-c)$:<br>$$(p-a)(p-b)(p-c) \\le \\left[\\dfrac{(p-a)+(p-b)+(p-c)}{3}\\right]^3 = \\left(\\dfrac{3p - 2p}{3}\\right)^3 = \\left(\\dfrac{p}{3}\\right)^3 = 2^3 = 8$$<br>Do đó: $$S = \\sqrt{p(p-a)(p-b)(p-c)} \\le \\sqrt{6 \\cdot 8} = \\sqrt{48} = 4\\sqrt{3}$$<br>Dấu \"=\" xảy ra khi $p-a = p-b = p-c \\iff a = b = c = 4$ (tam giác đều)."
+    },
+    {
+      "id": 5,
+      "skill": "Cực trị bán kính đường tròn nội tiếp tam giác vuông $r = \\frac{b+c-a}{2}$ sử dụng bất đẳng thức Cauchy.",
+      "question": "Câu 5. Cho tam giác $ABC$ vuông tại $A$ có cạnh huyền $a = 10$. Tìm giá trị lớn nhất của bán kính đường tròn nội tiếp $r_{\\max}$ của tam giác $ABC$.",
+      "answer_display": "5(√2 - 1) (hoặc ≈ 2,07)",
+      "acceptable": [
+        "5(\\sqrt{2}-1)",
+        "5(sqrt(2)-1)",
+        "5(\\sqrt{2} - 1)",
+        "5(sqrt(2) - 1)",
+        "5\\sqrt{2}-5",
+        "5sqrt(2)-5",
+        "2.07",
+        "2,07",
+        "2.1",
+        "2,1"
+      ],
+      "explanation": "Trong tam giác vuông tại $A$ có cạnh huyền $a = 10$, bán kính nội tiếp là $r = \\dfrac{b+c-10}{2}$.<br>Áp dụng bất đẳng thức Cauchy: $(b+c)^2 \\le 2(b^2+c^2) = 2a^2 = 200 \\implies b+c \\le 10\\sqrt{2}$.<br>Do đó: $$r \\le \\dfrac{10\\sqrt{2}-10}{2} = 5\\sqrt{2}-5 = 5(\\sqrt{2}-1)$$<br>Dấu \"=\" xảy ra khi $b = c = 5\\sqrt{2}$ (tam giác vuông cân, $r_{\\max} \\approx 2,07$)."
+    }
+  ]
+};
+
+    let userAnswers = {
+      part1: {},
+      part2: {},
+      part3: {}
+    };
+
+    let isSubmitted = false;
+    let isSolutionsVisible = true; // Solution mode: BAT
+    let timerSeconds = 45 * 60;
+    let timerInterval = null;
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
+    // TIMER
+    function startTimer() {
+      const timerDisplay = document.getElementById('quizTimer');
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert('Hết giờ làm bài! Hệ thống sẽ tự động nộp bài.');
+          document.getElementById('btn-nop-bai').click();
+          return;
+        }
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerDisplay.textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    // RENDER QUIZ
+    function renderQuiz() {
+      // 1. Phần I: Trắc nghiệm 4 lựa chọn
+      const p1Container = document.getElementById('part1Container');
+      const palP1 = document.getElementById('palPart1');
+      p1Container.innerHTML = '';
+      palP1.innerHTML = '';
+
+      quiz.part1.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = `card-p1-${q.id}`;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="q-badge">Câu ${q.id}</span>
+              <span class="q-badge q-badge-score">0.3 điểm</span>
+            </div>
+            <span class="q-skill">${q.skill}</span>
+          </div>
+          <div class="q-title">${q.question}</div>
+          <div class="options-grid">
+            ${q.options.map(opt => `
+              <button class="option-btn" data-qid="${q.id}" data-key="${opt.key}">
+                <span class="option-key">${opt.key}</span>
+                <span class="option-text">${opt.text}</span>
+              </button>
+            `).join('')}
+          </div>
+          <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-p1-${q.id}">
+            <div class="sol-title">💡 Lời giải chi tiết & Đáp án: Phương án ${q.correct}</div>
+            <div class="sol-body">${q.explanation}</div>
+          </div>
+        `;
+        p1Container.appendChild(card);
+
+        // Palette item
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-p1-${q.id}`;
+        palBtn.textContent = q.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palP1.appendChild(palBtn);
+      });
+
+      // 2. Phần II: Đúng - Sai
+      const p2Container = document.getElementById('part2Container');
+      const palP2 = document.getElementById('palPart2');
+      p2Container.innerHTML = '';
+      palP2.innerHTML = '';
+
+      quiz.part2.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = `card-p2-${q.id}`;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="q-badge" style="background:#EEF2FB; color:#182A78; border-color:#CCD8F5;">Câu ${q.id} (Đúng/Sai)</span>
+              <span class="q-badge q-badge-score">Tối đa 1.0 điểm</span>
+            </div>
+            <span class="q-skill">${q.skill}</span>
+          </div>
+          <div class="q-title">${q.context}</div>
+          <table class="tf-table">
+            ${q.items.map(it => `
+              <tr class="tf-row">
+                <td class="tf-label">${it.label})</td>
+                <td class="tf-text">${it.text}</td>
+                <td class="tf-actions">
+                  <div class="tf-btn-group">
+                    <button class="tf-btn" id="tf-btn-${q.id}-${it.label}-true" data-qid="${q.id}" data-item="${it.label}" data-val="true">Đ</button>
+                    <button class="tf-btn" id="tf-btn-${q.id}-${it.label}-false" data-qid="${q.id}" data-item="${it.label}" data-val="false">S</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </table>
+          <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-p2-${q.id}">
+            <div class="sol-title">💡 Lời giải chi tiết Phần II - Câu ${q.id}:</div>
+            <div class="sol-body">
+              ${q.items.map(it => `
+                <div style="margin-bottom: 6px;">
+                  <b>${it.label}) [${it.correct ? '<span style="color:var(--success);">ĐÚNG</span>' : '<span style="color:var(--danger);">SAI</span>'}]:</b> ${it.explanation}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        p2Container.appendChild(card);
+
+        // Palette item
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-p2-${q.id}`;
+        palBtn.textContent = 'II.' + q.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palP2.appendChild(palBtn);
+      });
+
+      // 3. Phần III: Trả lời ngắn
+      const p3Container = document.getElementById('part3Container');
+      const palP3 = document.getElementById('palPart3');
+      p3Container.innerHTML = '';
+      palP3.innerHTML = '';
+
+      quiz.part3.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = `card-p3-${q.id}`;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="q-badge" style="background:#FEF2F2; color:#B91C1C; border-color:#FECACA;">Câu ${q.id} (Trả lời ngắn)</span>
+              <span class="q-badge q-badge-score">0.6 điểm</span>
+            </div>
+            <span class="q-skill">${q.skill}</span>
+          </div>
+          <div class="q-title">${q.question}</div>
+          <div class="sa-box">
+            <label style="font-weight: 700; font-size: 13.5px;">Đáp số:</label>
+            <input type="text" class="sa-input" id="sa-input-${q.id}" placeholder="Nhập kết quả hoặc biểu thức..." data-qid="${q.id}">
+            <span class="sa-feedback" id="sa-fb-${q.id}"></span>
+          </div>
+          <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-p3-${q.id}">
+            <div class="sol-title">💡 Lời giải & Đáp số chuẩn: ${q.answer_display}</div>
+            <div class="sol-body">${q.explanation}</div>
+          </div>
+        `;
+        p3Container.appendChild(card);
+
+        // Palette item
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-p3-${q.id}`;
+        palBtn.textContent = 'III.' + q.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palP3.appendChild(palBtn);
+      });
+
+      setupInteractions();
+      updateProgress();
+    }
+
+    // INTERACTION HANDLERS
+    function setupInteractions() {
+      // Part 1 Clicks
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (isSubmitted) return;
+          const qid = this.dataset.qid;
+          const key = this.dataset.key;
+
+          const card = document.getElementById(`card-p1-${qid}`);
+          card.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+
+          userAnswers.part1[qid] = key;
+          document.getElementById(`pal-btn-p1-${qid}`).classList.add('answered');
+          updateProgress();
+        });
+      });
+
+      // Part 2 Clicks
+      document.querySelectorAll('.tf-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (isSubmitted) return;
+          const qid = this.dataset.qid;
+          const item = this.dataset.item;
+          const val = this.dataset.val === 'true';
+
+          const btnT = document.getElementById(`tf-btn-${qid}-${item}-true`);
+          const btnF = document.getElementById(`tf-btn-${qid}-${item}-false`);
+
+          if (val) {
+            btnT.classList.add('selected-t');
+            btnF.classList.remove('selected-f');
+          } else {
+            btnF.classList.add('selected-f');
+            btnT.classList.remove('selected-t');
+          }
+
+          if (!userAnswers.part2[qid]) userAnswers.part2[qid] = {};
+          userAnswers.part2[qid][item] = val;
+
+          // Check if all 4 statements of question are answered
+          if (Object.keys(userAnswers.part2[qid]).length === 4) {
+            document.getElementById(`pal-btn-p2-${qid}`).classList.add('answered');
+          }
+          updateProgress();
+        });
+      });
+
+      // Part 3 Inputs
+      document.querySelectorAll('.sa-input').forEach(inp => {
+        inp.addEventListener('input', function() {
+          if (isSubmitted) return;
+          const qid = this.dataset.qid;
+          const val = this.value.trim();
+
+          userAnswers.part3[qid] = val;
+          const palBtn = document.getElementById(`pal-btn-p3-${qid}`);
+          if (val) {
+            palBtn.classList.add('answered');
+          } else {
+            palBtn.classList.remove('answered');
+          }
+          updateProgress();
+        });
+      });
+    }
+
+    // UPDATE PROGRESS BAR
+    function updateProgress() {
+      let answeredCount = 0;
+      const total = 10 + 4 + 5; // 19 questions
+
+      // Part 1
+      answeredCount += Object.keys(userAnswers.part1).length;
+      // Part 2
+      quiz.part2.forEach(q => {
+        if (userAnswers.part2[q.id] && Object.keys(userAnswers.part2[q.id]).length === 4) {
+          answeredCount++;
+        }
+      });
+      // Part 3
+      quiz.part3.forEach(q => {
+        if (userAnswers.part3[q.id] && userAnswers.part3[q.id].trim() !== '') {
+          answeredCount++;
+        }
+      });
+
+      const pct = Math.round((answeredCount / total) * 100);
+
+      document.getElementById('progressText').textContent = `${answeredCount}/${total}`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+    }
+
+    // CHẤM ĐIỂM
+    function normalizeStr(s) {
+      return (s || '').toLowerCase()
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.')
+        .replace(/độ|deg|°|m|mét|km|cm|cm\^2|cm2/g, '')
+        .replace(/\$/g, '')
+        .replace(/\\/g, '');
+    }
+
+    function chamDiemBaiThi() {
+      isSubmitted = true;
+      if (timerInterval) clearInterval(timerInterval);
+
+      let scoreP1 = 0;
+      let scoreP2 = 0;
+      let scoreP3 = 0;
+      mang_cau_sai = [];
+
+      // 1. Chấm Phần I (10 câu, mỗi câu 0.3đ)
+      quiz.part1.forEach(q => {
+        const userChoice = userAnswers.part1[q.id];
+        const palBtn = document.getElementById(`pal-btn-p1-${q.id}`);
+        const card = document.getElementById(`card-p1-${q.id}`);
+
+        card.querySelectorAll('.option-btn').forEach(btn => {
+          if (btn.dataset.key === q.correct) {
+            btn.classList.add('graded-correct');
+          } else if (btn.dataset.key === userChoice) {
+            btn.classList.add('graded-incorrect');
+          }
+        });
+
+        if (userChoice === q.correct) {
+          scoreP1 += 0.3;
+          palBtn.classList.add('correct');
+        } else {
+          palBtn.classList.add('incorrect');
+          mang_cau_sai.push(q.skill);
+        }
+      });
+
+      // 2. Chấm Phần II (4 câu, Đúng-Sai chuẩn: 1 ý 0.1đ, 2 ý 0.25đ, 3 ý 0.5đ, 4 ý 1.0đ)
+      const p2Weights = { 1: 0.1, 2: 0.25, 3: 0.5, 4: 1.0 };
+      quiz.part2.forEach(q => {
+        const userQ = userAnswers.part2[q.id] || {};
+        let correctCount = 0;
+        const palBtn = document.getElementById(`pal-btn-p2-${q.id}`);
+
+        q.items.forEach(it => {
+          const userVal = userQ[it.label];
+          const btnT = document.getElementById(`tf-btn-${q.id}-${it.label}-true`);
+          const btnF = document.getElementById(`tf-btn-${q.id}-${it.label}-false`);
+
+          if (it.correct === true) {
+            btnT.classList.add('graded-correct');
+            if (userVal === false) btnF.classList.add('graded-incorrect');
+          } else {
+            btnF.classList.add('graded-correct');
+            if (userVal === true) btnT.classList.add('graded-incorrect');
+          }
+
+          if (userVal === it.correct) {
+            correctCount++;
+          }
+        });
+
+        const qScore = p2Weights[correctCount] || 0;
+        scoreP2 += qScore;
+
+        if (correctCount === 4) {
+          palBtn.classList.add('correct');
+        } else {
+          palBtn.classList.add('incorrect');
+          mang_cau_sai.push(q.skill);
+        }
+      });
+
+      // 3. Chấm Phần III (5 câu, mỗi câu 0.6đ)
+      quiz.part3.forEach(q => {
+        const userVal = normalizeStr(userAnswers.part3[q.id]);
+        const palBtn = document.getElementById(`pal-btn-p3-${q.id}`);
+        const fb = document.getElementById(`sa-fb-${q.id}`);
+        const input = document.getElementById(`sa-input-${q.id}`);
+
+        const isCorrect = q.acceptable.some(acc => normalizeStr(acc) === userVal);
+
+        if (isCorrect) {
+          scoreP3 += 0.6;
+          palBtn.classList.add('correct');
+          fb.textContent = '✓ Chính xác (+0.6đ)';
+          fb.className = 'sa-feedback correct';
+          input.style.borderColor = 'var(--success)';
+        } else {
+          palBtn.classList.add('incorrect');
+          fb.textContent = `✗ Sai (Đáp án: ${q.answer_display})`;
+          fb.className = 'sa-feedback incorrect';
+          input.style.borderColor = 'var(--danger)';
+          mang_cau_sai.push(q.skill);
+        }
+      });
+
+      // Tổng điểm (thang 10)
+      diem_so = Math.round((scoreP1 + scoreP2 + scoreP3) * 10) / 10;
+
+      // Cập nhật UI Modal
+      document.getElementById('modalScore').textContent = diem_so.toFixed(1);
+      document.getElementById('scoreP1').textContent = `${scoreP1.toFixed(1)} / 3.0`;
+      document.getElementById('scoreP2').textContent = `${scoreP2.toFixed(2)} / 4.0`;
+      document.getElementById('scoreP3').textContent = `${scoreP3.toFixed(1)} / 3.0`;
+
+      let gradeTitle = "XUẤT SẮC - VVIP LEVEL!";
+      let gradeSub = "Tư duy biến đổi đẳng thức nâng cao và tối ưu hình học cực kỳ xuất sắc!";
+      if (diem_so < 5.0) {
+        gradeTitle = "CẦN CỐ GẮNG HƠN!";
+        gradeSub = "Em hãy xem lại các chuyên đề sai sót phía dưới và ôn lại các bất đẳng thức hình học nhé.";
+      } else if (diem_so < 8.0) {
+        gradeTitle = "KẾT QUẢ RẤT TỐT!";
+        gradeSub = "Cần rèn luyện thêm kỹ năng tính toán bài toán đo đạc thực tế và bất đẳng thức Cauchy.";
+      }
+
+      const skillsBox = document.getElementById('modalSkillsMissed');
+      if (mang_cau_sai.length > 0) {
+        skillsBox.innerHTML = '<b>Kỹ năng cần ôn luyện thêm:</b><ul style="padding-left: 18px; margin-top: 4px;">' +
+          [...new Set(mang_cau_sai)].map(s => `<li>${s}</li>`).join('') + '</ul>';
+      } else {
+        skillsBox.innerHTML = '<b style="color: var(--success);">Đỉnh cao VVIP! Em không làm sai bất kỳ câu hỏi nào.</b>';
+      }
+
+      document.getElementById('modalGradeText').textContent = gradeTitle;
+      document.getElementById('modalSubText').textContent = gradeSub;
+      document.getElementById('scoreModal').classList.add('open');
+
+      toggleSolutions(true);
+    }
+
+    // TÍCH HỢP HỆ THỐNG CHẤM ĐIỂM TỰ ĐỘNG - N8N
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            chamDiemBaiThi();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        // LẤY THÊM MÃ HS VÀ LỚP
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
+        const tenBaiThi = document.title || "Bài kiểm tra Toán"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,   // Dữ liệu mới cho n8n
+            lop: lopNhom,       // Dữ liệu mới cho n8n
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                // Không cần đợi JSON trả về nữa, chỉ cần Webhook thành công
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    // Nút nộp bài trên Topbar
+    document.getElementById('btnSubmitTop').addEventListener('click', () => {
+      document.getElementById('btn-nop-bai').click();
+    });
+
+    // TOGGLE LỜI GIẢI
+    function toggleSolutions(forceState = null) {
+      if (forceState !== null) {
+        isSolutionsVisible = forceState;
+      } else {
+        isSolutionsVisible = !isSolutionsVisible;
+      }
+
+      const boxes = document.querySelectorAll('.solution-box');
+      boxes.forEach(b => {
+        if (isSolutionsVisible) b.classList.remove('hide-sol');
+        else b.classList.add('hide-sol');
+      });
+
+      const btn = document.getElementById('btnToggleSol');
+      if (btn) {
+        if (isSolutionsVisible) {
+          btn.classList.add('active');
+          btn.textContent = '🙈 Ẩn lời giải';
+        } else {
+          btn.classList.remove('active');
+          btn.textContent = '💡 Hiện lời giải';
+        }
+      }
+    }
+
+    function resetQuiz() {
+      if (!confirm('Bạn có chắc chắn muốn làm lại bài thi từ đầu?')) return;
+      location.reload();
+    }
+
+    // EVENT LISTENERS KHÁC
+    document.getElementById('btnToggleSol').addEventListener('click', () => toggleSolutions());
+    document.getElementById('btnResetQuiz').addEventListener('click', resetQuiz);
+    document.getElementById('btnCloseModal').addEventListener('click', () => {
+      document.getElementById('scoreModal').classList.remove('open');
+    });
+    document.getElementById('btnRetakeModal').addEventListener('click', () => {
+      document.getElementById('scoreModal').classList.remove('open');
+      location.reload();
+    });
+
+    function renderMath() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    // INIT
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+      startTimer();
+      setTimeout(renderMath, 200);
+      setTimeout(renderMath, 800);
+    });
+  </script>
+</body>
+</html>
