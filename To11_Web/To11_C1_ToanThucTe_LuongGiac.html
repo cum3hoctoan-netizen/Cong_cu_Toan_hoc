@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOÁN THỰC TẾ TOÁN 11 - GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #182A78;
+      --primary-hover: #111e56;
+      --primary-light: #EEF2FB;
+      --primary-border: #CCD8F5;
+      
+      --accent: #C62828;
+      --accent-hover: #A31D1D;
+      --accent-light: #FEF2F2;
+      --accent-border: #FECACA;
+      
+      --bg-page: #FAFAFA;
+      --bg-card: #FFFFFF;
+      --bg-card-alt: #F8FAFC;
+      
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      
+      --success: #15803D;
+      --success-light: #DCFCE7;
+      --danger: #B91C1C;
+      --danger-light: #FEE2E2;
+      --warning: #B45309;
+      --warning-light: #FEF3C7;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .topbar-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent) 0%, #E53935 100%);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3);
+    }
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.25);
+    }
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover {
+      background: #F1F5F9;
+    }
+    .btn-sol-toggle {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+    .btn-sol-toggle:hover {
+      background: #FDE68A;
+    }
+    .btn-sol-toggle.active {
+      background: #D1FAE5;
+      color: #065F46;
+      border-color: #6EE7B7;
+    }
+
+    /* MAIN LAYOUT */
+    .container {
+      max-width: 1300px;
+      margin: 24px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* HEADER BANNER */
+    .header-card {
+      background: linear-gradient(135deg, #182A78 0%, #283E9E 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-card::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .header-title-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .header-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #FFF;
+    }
+    .header-card p {
+      font-size: 13.5px;
+      opacity: 0.92;
+      max-width: 850px;
+    }
+
+    /* STUDENT INFO FORM */
+    .student-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .student-info-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .student-input-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .student-input-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .student-input-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .student-input-item label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .student-input-item input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #F8FAFC;
+      transition: all 0.2s;
+    }
+    .student-input-item input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #FFF;
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.1);
+    }
+
+    /* 3-COLUMN INFOGRAPHIC PROBLEM CARD */
+    .infographic-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      scroll-margin-top: 80px;
+      transition: border-color 0.2s;
+    }
+    .infographic-card:hover {
+      border-color: #CBD5E1;
+    }
+    
+    .card-top-header {
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12.5px;
+    }
+    .card-skill {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* 3-COLUMN GRID */
+    .three-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.15fr;
+      gap: 0;
+    }
+    @media (max-width: 1100px) {
+      .three-col-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .col-solution {
+        grid-column: span 2;
+        border-top: 1px solid var(--border-color);
+      }
+    }
+    @media (max-width: 700px) {
+      .three-col-grid {
+        grid-template-columns: 1fr;
+      }
+      .col-solution {
+        grid-column: span 1;
+      }
+    }
+
+    .col-cell {
+      padding: 20px;
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+    }
+    .col-cell:last-child {
+      border-right: none;
+    }
+
+    .col-header-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--primary-light);
+    }
+    .col-header-label.accent {
+      color: var(--accent);
+      border-bottom-color: var(--accent-light);
+    }
+    .col-header-label.success {
+      color: var(--success);
+      border-bottom-color: var(--success-light);
+    }
+
+    /* COLUMN 1: QUESTION CONTENT */
+    .problem-text {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    /* COLUMN 2: VECTOR VISUALIZATION */
+    .svg-wrapper {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .problem-svg {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* COLUMN 3: INTERACTIVE MCQ & SHORT ANSWER */
+    .mcq-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .opt-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      background: #FFF;
+      cursor: pointer;
+      text-align: left;
+      font-size: 13.5px;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .opt-btn:hover {
+      border-color: var(--primary-border);
+      background: var(--primary-light);
+    }
+    .opt-btn.selected {
+      border-color: var(--primary);
+      background: #EEF2FB;
+      box-shadow: 0 0 0 2px rgba(24, 42, 120, 0.15);
+    }
+    .opt-key {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .opt-btn.selected .opt-key {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* SHORT ANSWER INPUT ROW */
+    .short-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+    .short-input-row label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .short-input {
+      flex: 1;
+      padding: 6px 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+      background: white;
+    }
+    .short-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .sa-badge {
+      font-size: 12px;
+      font-weight: 700;
+      display: none;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .sa-badge.correct {
+      display: inline-block;
+      background: var(--success-light);
+      color: var(--success);
+    }
+    .sa-badge.incorrect {
+      display: inline-block;
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    /* SOLUTION ACCORDION */
+    .solution-box {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+      color: #14532D;
+      line-height: 1.6;
+      margin-top: auto;
+    }
+    .solution-box.hide-sol {
+      display: none;
+    }
+    .sol-heading {
+      font-weight: 700;
+      color: #166534;
+      text-transform: uppercase;
+      font-size: 11.5px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* GRADED STATES */
+    .opt-btn.graded-correct {
+      border-color: var(--success) !important;
+      background: #ECFDF5 !important;
+      color: #065F46 !important;
+      font-weight: 600;
+    }
+    .opt-btn.graded-correct .opt-key {
+      background: var(--success) !important;
+      color: white !important;
+    }
+    .opt-btn.graded-incorrect {
+      border-color: var(--danger) !important;
+      background: #FEF2F2 !important;
+      color: #991B1B !important;
+    }
+    .opt-btn.graded-incorrect .opt-key {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+
+    /* SIDEBAR / QUESTION PALETTE */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+    }
+    .palette-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .palette-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #F1F5F9;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary) 0%, #3B82F6 100%);
+      transition: width 0.3s;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .pal-btn {
+      width: 100%;
+      aspect-ratio: 1;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #FFF;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .pal-btn:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .pal-btn.answered {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .pal-btn.correct {
+      background: var(--success) !important;
+      color: white !important;
+      border-color: var(--success) !important;
+    }
+    .pal-btn.incorrect {
+      background: var(--danger) !important;
+      color: white !important;
+      border-color: var(--danger) !important;
+    }
+    .palette-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      text-align: center;
+      padding: 30px 20px 10px 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* MODAL RESULT */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .score-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-light) 0%, #DBEAFE 100%);
+      border: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+    .score-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1;
+    }
+    .score-max {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .modal-grade {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .modal-skills-missed {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 12.5px;
+      color: #991B1B;
+      margin-bottom: 20px;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .modal-btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* PRINT OPTIMIZATION */
+    @media print {
+      .topbar, .sidebar, .modal-overlay, .btn-sol-toggle, .mcq-options-container, .short-input-row {
+        display: none !important;
+      }
+      .container {
+        grid-template-columns: 1fr;
+        margin: 0;
+        padding: 0;
+      }
+      .solution-box {
+        display: block !important;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-content">
+      <div class="topbar-brand">
+        <div class="brand-icon">📐</div>
+        <div class="brand-text">
+          <h1>TOÁN THỰC TẾ TOÁN 11 - GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC</h1>
+          <p>Chuyên đề Toán 11 - Chương I: Hàm số lượng giác và Phương trình lượng giác (GDPT 2018)</p>
+        </div>
+      </div>
+      <div class="topbar-controls">
+        <div class="timer-badge">
+          <span>⏱️</span>
+          <span id="quizTimer">45:00</span>
+        </div>
+        <button class="btn btn-sol-toggle active" id="btnToggleSol">🙈 Ẩn lời giải</button>
+        <button class="btn btn-accent" id="btnSubmitTop">Nộp bài</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- Left Column / Problems Container -->
+    <div class="content-col">
+
+      <!-- Header Hero Card -->
+      <div class="header-card">
+        <div class="header-title-badge">PHIẾU HỌC TẬP INFOGRAPHIC 3 CỘT • GDPT 2018</div>
+        <h2>TOÁN THỰC TẾ TOÁN 11 - GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC</h2>
+        <p>Chuyên đề Toán 11 - Chương I: Hàm số lượng giác và Phương trình lượng giác (GDPT 2018) — Bố cục Infographic 3 Cột học thuật chuẩn mực: Cột 1 Đề bài toán học • Cột 2 Vector minh họa trực quan sinh động • Cột 3 Tương tác chọn đáp án và Lời giải chi tiết.</p>
+      </div>
+
+      <!-- Student Info Card -->
+      <div class="student-info-card">
+        <div class="student-info-title">
+          <span>👤</span> Thông tin học sinh làm bài
+        </div>
+        <div class="student-input-grid">
+          <div class="student-input-item">
+            <label for="input-ten">📝 Họ và tên học sinh:</label>
+            <input type="text" id="input-ten" placeholder="Nhập họ và tên...">
+          </div>
+          <div class="student-input-item">
+            <label for="input-ma-hs">🏷️ Mã Học Sinh:</label>
+            <input type="text" id="input-ma-hs" placeholder="Ví dụ: NTH26-001">
+          </div>
+          <div class="student-input-item">
+            <label for="input-lop">🏫 Lớp / Nhóm:</label>
+            <input type="text" id="input-lop" placeholder="Ví dụ: 11A1">
+          </div>
+        </div>
+      </div>
+
+      <!-- List of 5 3-Column Problems -->
+      <div id="problemsContainer"></div>
+
+      <!-- Footer -->
+      <footer class="page-footer">
+        Thiết kế bởi Integra Academy • Bản quyền chuyên đề Toán 11 GDPT 2018
+      </footer>
+
+    </div>
+
+    <!-- Sidebar / Question Palette -->
+    <aside class="sidebar">
+      <div class="palette-card">
+        <div class="palette-title">
+          <span>Tiến độ bài làm</span>
+          <span id="progressText" style="font-family:'JetBrains Mono',monospace; color:var(--primary);">0/5</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:8px;">
+          Danh sách bài toán thực tế (5 bài)
+        </div>
+        <div class="palette-grid" id="paletteGrid"></div>
+
+        <div class="palette-actions">
+          <button class="btn btn-accent" id="btn-nop-bai" style="width: 100%;">📝 Nộp bài & Chấm điểm</button>
+          <button class="btn btn-outline" id="btnResetQuiz" style="width: 100%;">🔄 Làm lại đề</button>
+          <button class="btn btn-outline" onclick="window.print()" style="width: 100%;">🖨️ In Infographic PDF</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Modal Kết Quả -->
+  <div class="modal-overlay" id="scoreModal">
+    <div class="modal-card">
+      <div class="score-circle">
+        <div class="score-number" id="modalScore">0.0</div>
+        <div class="score-max">/ 10 điểm</div>
+      </div>
+      <h3 class="modal-grade" id="modalGradeText">KẾT QUẢ BÀI LÀM</h3>
+      <p class="modal-sub" id="modalSubText">Chi tiết điểm thành phần 5 bài toán thực tế</p>
+      
+      <div class="modal-skills-missed" id="modalSkillsMissed">
+        <!-- Chuyên đề cần ôn tập -->
+      </div>
+
+      <div class="modal-btn-row">
+        <button class="btn btn-primary" id="btnCloseModal">Xem lại chi tiết bài làm</button>
+        <button class="btn btn-outline" id="btnRetakeModal">Làm lại bài</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quiz = {
+  "title": "TOÁN THỰC TẾ TOÁN 11 - GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC LƯỢNG GIÁC",
+  "subtitle": "Chuyên đề Toán 11 - Chương I: Hàm số lượng giác và Phương trình lượng giác (GDPT 2018)",
+  "target": "Học sinh lớp 11 - GDPT 2018",
+  "level": "Ứng dụng thực tế & Mô hình hóa toán học",
+  "chanTrang": "Thiết kế bởi Integra Academy",
+  "problems": [
+    {
+      "id": 1,
+      "name": "Đu quay Sun Wheel",
+      "skill": "Ứng dụng giá trị lượng giác góc 7pi/6 tính tọa độ và độ cao cabin đu quay so với mặt đất",
+      "question": "Đu quay Sun Wheel có bán kính $R = 30\\text{ m}$, cabin xuất phát tại điểm thấp nhất $A_0$ cách mặt đất $2\\text{ m}$. Đu quay quay ngược chiều kim đồng hồ. Khi cabin quay được một góc lượng giác $\\alpha = \\frac{7\\pi}{6}\\text{ rad}$ (tính từ điểm xuất phát $A_0$), hãy tính các giá trị lượng giác $\\sin\\alpha, \\cos\\alpha$ trên đường tròn lượng giác gắn với tâm đu quay và xác định chiều cao $h$ của cabin so với mặt đất tại thời điểm đó.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\sin\\alpha = -\\dfrac{1}{2};\\ \\cos\\alpha = -\\dfrac{\\sqrt{3}}{2};\\ h = 17\\text{ m}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\sin\\alpha = \\dfrac{1}{2};\\ \\cos\\alpha = -\\dfrac{\\sqrt{3}}{2};\\ h = 47\\text{ m}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\sin\\alpha = -\\dfrac{1}{2};\\ \\cos\\alpha = \\dfrac{\\sqrt{3}}{2};\\ h = 15\\text{ m}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2};\\ \\cos\\alpha = -\\dfrac{1}{2};\\ h = 17\\text{ m}$"
+        }
+      ],
+      "correct": "A",
+      "shortAnswerAcceptable": [
+        "17",
+        "17m",
+        "17 m",
+        "17 mét",
+        "h = 17",
+        "h=17",
+        "h = 17m",
+        "-1/2",
+        "-0.5"
+      ],
+      "explanation": "<b>1. Xác định giá trị lượng giác góc $\\alpha = \\frac{7\\pi}{6}$ (thuộc góc phần tư III):</b><br>$$\\sin\\left(\\frac{7\\pi}{6}\\right) = \\sin\\left(\\pi + \\frac{\\pi}{6}\\right) = -\\sin\\left(\\frac{\\pi}{6}\\right) = -\\frac{1}{2}$$$$\\cos\\left(\\frac{7\\pi}{6}\\right) = \\cos\\left(\\pi + \\frac{\\pi}{6}\\right) = -\\cos\\left(\\frac{\\pi}{6}\\right) = -\\frac{\\sqrt{3}}{2}$$<br><b>2. Tung độ cabin so với tâm $O$:</b><br>Tâm $O$ của đu quay nằm ở độ cao: $h_O = 2 + R = 2 + 30 = 32\\text{ m}$ so với mặt đất.<br>Tung độ của cabin so với tâm $O$ trên trục thẳng đứng $Oy$ là:<br>$$y = R \\cdot \\sin\\alpha = 30 \\cdot \\left(-\\frac{1}{2}\\right) = -15\\text{ m}$$<br><b>3. Chiều cao cabin so với mặt đất:</b><br>$$h = h_O + y = 32 + (-15) = 17\\text{ m}$$<br><b>Đáp số chuẩn:</b> $\\sin\\left(\\frac{7\\pi}{6}\\right) = -\\frac{1}{2}$; $\\cos\\left(\\frac{7\\pi}{6}\\right) = -\\frac{\\sqrt{3}}{2}$; $h = 17\\text{ m}$.",
+      "svg": "\n<svg viewBox=\"0 0 400 340\" class=\"problem-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Sky background -->\n  <defs>\n    <linearGradient id=\"skyGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#0f172a\" />\n      <stop offset=\"100%\" stop-color=\"#1e293b\" />\n    </linearGradient>\n    <radialGradient id=\"sunWheelGlow\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n      <stop offset=\"0%\" stop-color=\"rgba(245, 158, 11, 0.25)\" />\n      <stop offset=\"100%\" stop-color=\"rgba(245, 158, 11, 0)\" />\n    </radialGradient>\n  </defs>\n  <rect width=\"400\" height=\"340\" fill=\"url(#skyGrad)\" rx=\"10\" />\n  \n  <!-- Ground -->\n  <rect x=\"0\" y=\"300\" width=\"400\" height=\"40\" fill=\"#334155\" />\n  <line x1=\"0\" y1=\"300\" x2=\"400\" y2=\"300\" stroke=\"#475569\" stroke-width=\"2\" />\n  <text x=\"20\" y=\"322\" fill=\"#94a3b8\" font-size=\"11\" font-weight=\"600\">Mặt đất (y = 0 m)</text>\n  \n  <!-- Ferris wheel structure -->\n  <!-- Wheel center O at (200, 140), Radius = 100 px (representing 30m) -->\n  <!-- Ground at y=300: Bottom of wheel at y=240 (represents 2m above ground), Center at y=140 (represents 32m) -->\n  \n  <!-- Wheel glow & circle -->\n  <circle cx=\"200\" cy=\"140\" r=\"115\" fill=\"url(#sunWheelGlow)\" />\n  <circle cx=\"200\" cy=\"140\" r=\"100\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"2.5\" stroke-dasharray=\"6,3\" />\n  <circle cx=\"200\" cy=\"140\" r=\"85\" fill=\"none\" stroke=\"rgba(245, 158, 11, 0.4)\" stroke-width=\"1\" />\n  \n  <!-- Spokes -->\n  <g stroke=\"rgba(245, 158, 11, 0.35)\" stroke-width=\"1.2\">\n    <line x1=\"200\" y1=\"40\" x2=\"200\" y2=\"240\" />\n    <line x1=\"100\" y1=\"140\" x2=\"300\" y2=\"140\" />\n    <line x1=\"129\" y1=\"69\" x2=\"271\" y2=\"211\" />\n    <line x1=\"129\" y1=\"211\" x2=\"271\" y2=\"69\" />\n    <line x1=\"113\" y1=\"190\" x2=\"287\" y2=\"90\" />\n    <line x1=\"113\" y1=\"90\" x2=\"287\" y2=\"190\" />\n  </g>\n  \n  <!-- Wheel Legs -->\n  <line x1=\"200\" y1=\"140\" x2=\"160\" y2=\"300\" stroke=\"#64748b\" stroke-width=\"3\" />\n  <line x1=\"200\" y1=\"140\" x2=\"240\" y2=\"300\" stroke=\"#64748b\" stroke-width=\"3\" />\n  \n  <!-- Center O -->\n  <circle cx=\"200\" cy=\"140\" r=\"5\" fill=\"#38bdf8\" />\n  <text x=\"208\" y=\"136\" fill=\"#38bdf8\" font-size=\"12\" font-weight=\"700\">O(32m)</text>\n  \n  <!-- Coordinate axes Oxy at Center O -->\n  <line x1=\"80\" y1=\"140\" x2=\"320\" y2=\"140\" stroke=\"#94a3b8\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <line x1=\"200\" y1=\"20\" x2=\"200\" y2=\"260\" stroke=\"#94a3b8\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <text x=\"325\" y=\"144\" fill=\"#94a3b8\" font-size=\"11\">x</text>\n  <text x=\"204\" y=\"24\" fill=\"#94a3b8\" font-size=\"11\">y</text>\n  \n  <!-- Start position A0 at lowest point (200, 240) -->\n  <circle cx=\"200\" cy=\"240\" r=\"5\" fill=\"#ef4444\" />\n  <text x=\"180\" y=\"258\" fill=\"#ef4444\" font-size=\"11\" font-weight=\"700\">A₀ (2m)</text>\n  \n  <!-- Cabin at angle 210 degrees = 7pi/6 -->\n  <!-- cos(210) = -0.866 -> x = 200 - 86.6 = 113.4 -->\n  <!-- sin(210) = -0.5 -> y = 140 - (-50) = 190 -->\n  <line x1=\"200\" y1=\"140\" x2=\"113.4\" y2=\"190\" stroke=\"#38bdf8\" stroke-width=\"2.5\" />\n  \n  <!-- Angle arc 7pi/6 -->\n  <path d=\"M 230 140 A 30 30 0 1 1 174 155\" fill=\"none\" stroke=\"#f43f5e\" stroke-width=\"2\" marker-end=\"url(#arrow)\" />\n  <text x=\"135\" y=\"115\" fill=\"#f43f5e\" font-size=\"11\" font-weight=\"700\">α = 7π/6</text>\n  \n  <!-- Cabin highlight -->\n  <circle cx=\"113.4\" cy=\"190\" r=\"8\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"2\" />\n  <text x=\"50\" y=\"195\" fill=\"#f59e0b\" font-size=\"12\" font-weight=\"700\">Cabin (210°)</text>\n  \n  <!-- Projection lines to y-axis -->\n  <line x1=\"113.4\" y1=\"190\" x2=\"200\" y2=\"190\" stroke=\"#38bdf8\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\" />\n  <circle cx=\"200\" cy=\"190\" r=\"3\" fill=\"#38bdf8\" />\n  <text x=\"206\" y=\"194\" fill=\"#38bdf8\" font-size=\"10\">y = -15m</text>\n  \n  <!-- Height dimension line: from ground (300) to cabin (190) -->\n  <!-- Height = 32 - 15 = 17m (represented by 300 - 190 = 110px) -->\n  <line x1=\"330\" y1=\"300\" x2=\"330\" y2=\"190\" stroke=\"#10b981\" stroke-width=\"2\" marker-start=\"url(#dot)\" marker-end=\"url(#dot)\" />\n  <line x1=\"322\" y1=\"300\" x2=\"338\" y2=\"300\" stroke=\"#10b981\" stroke-width=\"1.5\" />\n  <line x1=\"113.4\" y1=\"190\" x2=\"338\" y2=\"190\" stroke=\"#10b981\" stroke-width=\"1\" stroke-dasharray=\"3,3\" />\n  <rect x=\"336\" y=\"235\" width=\"56\" height=\"20\" rx=\"4\" fill=\"#10b981\" />\n  <text x=\"342\" y=\"249\" fill=\"#ffffff\" font-size=\"11\" font-weight=\"700\">h = 17 m</text>\n</svg>\n"
+    },
+    {
+      "id": 2,
+      "name": "Guồng nước tròn ven sông",
+      "skill": "Xác định các giá trị lượng giác góc âm -pi/4 và tính độ sâu chìm dưới mặt nước của guồng nước",
+      "question": "Một guồng nước tròn bán kính $R = 2,5\\text{ m}$ quay đều ngược chiều kim đồng hồ. Trục quay $O$ nằm cao hơn mặt nước $0,5\\text{ m}$. Một gáo múc nước $M$ trên vành guồng có vị trí ứng với góc lượng giác $(OA, OM) = \\alpha = -\\frac{\\pi}{4}\\text{ rad}$ (với $OA$ là tia gốc nằm ngang song song mặt nước theo chiều dương $Ox$). Tính các giá trị $\\sin\\alpha, \\cos\\alpha, \\tan\\alpha$ và khoảng cách từ $M$ đến mặt nước.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\sin\\alpha = -\\dfrac{\\sqrt{2}}{2}, \\cos\\alpha = \\dfrac{\\sqrt{2}}{2}, \\tan\\alpha = -1$; Chìm dưới mặt nước $1,27\\text{ m}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\sin\\alpha = \\dfrac{\\sqrt{2}}{2}, \\cos\\alpha = -\\dfrac{\\sqrt{2}}{2}, \\tan\\alpha = -1$; Cao hơn mặt nước $1,27\\text{ m}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\sin\\alpha = -\\dfrac{\\sqrt{2}}{2}, \\cos\\alpha = \\dfrac{\\sqrt{2}}{2}, \\tan\\alpha = 1$; Chìm dưới mặt nước $2,27\\text{ m}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\sin\\alpha = -1, \\cos\\alpha = 0, \\tan\\alpha = 0$; Chìm dưới mặt nước $0,5\\text{ m}$"
+        }
+      ],
+      "correct": "A",
+      "shortAnswerAcceptable": [
+        "1.27",
+        "1,27",
+        "1.27m",
+        "1,27m",
+        "1.27 m",
+        "1,27 m",
+        "-1.27",
+        "-1,27",
+        "1.3",
+        "1,3"
+      ],
+      "explanation": "<b>1. Giá trị lượng giác của góc $\\alpha = -\\frac{\\pi}{4}$ (góc phần tư IV):</b><br>$$\\sin\\left(-\\frac{\\pi}{4}\\right) = -\\frac{\\sqrt{2}}{2}$$$$\\cos\\left(-\\frac{\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2}$$$$\\tan\\left(-\\frac{\\pi}{4}\\right) = \\frac{\\sin(-\\pi/4)}{\\cos(-\\pi/4)} = -1$$<br><b>2. Tung độ điểm $M$ so với tâm $O$:</b><br>$$y_M = R \\cdot \\sin\\alpha = 2,5 \\cdot \\left(-\\frac{\\sqrt{2}}{2}\\right) \\approx -1,768\\text{ m} \\approx -1,77\\text{ m}$$<br><b>3. Vị trí so với mặt nước:</b><br>Do trục quay $O$ cao hơn mặt nước $0,5\\text{ m}$, vị trí của $M$ so với mặt phẳng nước là:<br>$$h_M = 0,5 + y_M = 0,5 + (-1,77) = -1,27\\text{ m}$$<br>Do $h_M < 0$, gáo $M$ đang chìm dưới mặt nước một khoảng là $1,27\\text{ m}$.<br><b>Đáp số chuẩn:</b> $\\sin\\left(-\\frac{\\pi}{4}\\right) = -\\frac{\\sqrt{2}}{2}, \\cos\\left(-\\frac{\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2}, \\tan\\left(-\\frac{\\pi}{4}\\right) = -1$; Dưới mặt nước $1,27\\text{ m}$.",
+      "svg": "\n<svg viewBox=\"0 0 400 340\" class=\"problem-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <linearGradient id=\"riverGrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#0284c7\" />\n      <stop offset=\"100%\" stop-color=\"#0369a1\" />\n    </linearGradient>\n  </defs>\n  <!-- Background -->\n  <rect width=\"400\" height=\"340\" fill=\"#f8fafc\" rx=\"10\" />\n  \n  <!-- River water at y = 190 (since O is at 140, distance is 50px representing 0.5m) -->\n  <!-- Radius 2.5m represented by 125px -->\n  <rect x=\"0\" y=\"190\" width=\"400\" height=\"150\" fill=\"url(#riverGrad)\" />\n  <line x1=\"0\" y1=\"190\" x2=\"400\" y2=\"190\" stroke=\"#38bdf8\" stroke-width=\"2\" />\n  <text x=\"20\" y=\"210\" fill=\"#ffffff\" font-size=\"11\" font-weight=\"700\">Mặt nước (y = -0,5 m)</text>\n  \n  <!-- Wheel Center O at (200, 140) -->\n  <!-- Wheel Rim (Radius = 110 px ~ 2.5m) -->\n  <circle cx=\"200\" cy=\"140\" r=\"110\" fill=\"none\" stroke=\"#78350f\" stroke-width=\"8\" opacity=\"0.85\" />\n  <circle cx=\"200\" cy=\"140\" r=\"95\" fill=\"none\" stroke=\"#92400e\" stroke-width=\"3\" />\n  \n  <!-- Spokes of wood -->\n  <g stroke=\"#b45309\" stroke-width=\"2.5\">\n    <line x1=\"90\" y1=\"140\" x2=\"310\" y2=\"140\" />\n    <line x1=\"200\" y1=\"30\" x2=\"200\" y2=\"250\" />\n    <line x1=\"122\" y1=\"62\" x2=\"278\" y2=\"218\" />\n    <line x1=\"122\" y1=\"218\" x2=\"278\" y2=\"62\" />\n  </g>\n  \n  <!-- Coordinate axes at O -->\n  <line x1=\"70\" y1=\"140\" x2=\"330\" y2=\"140\" stroke=\"#0284c7\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <line x1=\"200\" y1=\"20\" x2=\"200\" y2=\"280\" stroke=\"#0284c7\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <text x=\"335\" y=\"144\" fill=\"#0284c7\" font-size=\"11\" font-weight=\"600\">Ox (OA)</text>\n  <text x=\"204\" y=\"24\" fill=\"#0284c7\" font-size=\"11\" font-weight=\"600\">Oy</text>\n  \n  <!-- Point O -->\n  <circle cx=\"200\" cy=\"140\" r=\"6\" fill=\"#f59e0b\" stroke=\"#78350f\" stroke-width=\"2\" />\n  <text x=\"175\" y=\"132\" fill=\"#78350f\" font-size=\"12\" font-weight=\"800\">O (+0,5m)</text>\n  \n  <!-- Bucket M at angle alpha = -pi/4 = -45 deg -->\n  <!-- cos(-45) = 0.707 -> x = 200 + 110*0.707 = 277.8 -->\n  <!-- sin(-45) = -0.707 -> y = 140 + 110*0.707 = 217.8 -->\n  <line x1=\"200\" y1=\"140\" x2=\"277.8\" y2=\"217.8\" stroke=\"#dc2626\" stroke-width=\"2.5\" />\n  \n  <!-- Angle arc -->\n  <path d=\"M 240 140 A 40 40 0 0 1 228 168\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"2\" />\n  <text x=\"246\" y=\"165\" fill=\"#dc2626\" font-size=\"11\" font-weight=\"700\">α = -π/4</text>\n  \n  <!-- Bucket icon M -->\n  <rect x=\"270\" y=\"210\" width=\"16\" height=\"16\" rx=\"3\" fill=\"#ea580c\" stroke=\"#ffffff\" stroke-width=\"1.5\" />\n  <text x=\"292\" y=\"222\" fill=\"#ea580c\" font-size=\"12\" font-weight=\"800\">Gáo M</text>\n  \n  <!-- Depth marker below water (from 190 to 217.8) -->\n  <line x1=\"330\" y1=\"190\" x2=\"330\" y2=\"217.8\" stroke=\"#ffffff\" stroke-width=\"2\" />\n  <line x1=\"324\" y1=\"190\" x2=\"336\" y2=\"190\" stroke=\"#ffffff\" stroke-width=\"1.5\" />\n  <line x1=\"286\" y1=\"217.8\" x2=\"336\" y2=\"217.8\" stroke=\"#ffffff\" stroke-width=\"1\" stroke-dasharray=\"3,3\" />\n  <rect x=\"270\" y=\"242\" width=\"122\" height=\"22\" rx=\"4\" fill=\"#0f172a\" />\n  <text x=\"276\" y=\"257\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">Chìm sâu: 1,27 m</text>\n</svg>\n"
+    },
+    {
+      "id": 3,
+      "name": "Kim đồng hồ treo tường",
+      "skill": "Xác định góc quay lượng giác của kim đồng hồ và tọa độ điểm trên mặt phẳng tọa độ Oxy",
+      "question": "Đồng hồ treo tường có kim phút dài $12\\text{ cm}$. Chọn hệ trục $Oxy$ có gốc $O$ tại tâm đồng hồ, trục $Oy$ hướng về số 12. Lúc 8 giờ 00, đầu kim phút $M$ ở vị trí số 12. Đến 8 giờ 20 phút, kim phút quét một góc lượng giác $\\alpha$. Hãy xác định góc quay lượng giác $\\alpha$, tính $\\sin\\alpha, \\cos\\alpha$ và tọa độ $(x_M, y_M)$ của đầu kim phút tại thời điểm 8 giờ 20 phút.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\alpha = -\\dfrac{2\\pi}{3}\\text{ rad};\\ \\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}, \\cos\\alpha = -\\dfrac{1}{2};\\ M(6\\sqrt{3}; -6)\\text{ cm}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\alpha = \\dfrac{2\\pi}{3}\\text{ rad};\\ \\sin\\alpha = \\dfrac{\\sqrt{3}}{2}, \\cos\\alpha = -\\dfrac{1}{2};\\ M(-6; 6\\sqrt{3})\\text{ cm}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\alpha = -\\dfrac{\\pi}{3}\\text{ rad};\\ \\sin\\alpha = -\\dfrac{1}{2}, \\cos\\alpha = \\dfrac{\\sqrt{3}}{2};\\ M(6; -6\\sqrt{3})\\text{ cm}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\alpha = -\\dfrac{4\\pi}{3}\\text{ rad};\\ \\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}, \\cos\\alpha = \\dfrac{1}{2};\\ M(12; -6)\\text{ cm}$"
+        }
+      ],
+      "correct": "A",
+      "shortAnswerAcceptable": [
+        "-2pi/3",
+        "-2\\pi/3",
+        "(6\\sqrt{3}; -6)",
+        "(10.39; -6)",
+        "(10,39; -6)",
+        "6\\sqrt{3}",
+        "6sqrt(3)",
+        "10.39",
+        "10,39"
+      ],
+      "explanation": "<b>1. Góc quay lượng giác của kim phút:</b><br>Sau 20 phút, kim phút quay được $\\frac{20}{60} = \\frac{1}{3}$ vòng theo chiều kim đồng hồ (chiều âm):<br>$$\\alpha = -\\frac{1}{3} \\cdot 2\\pi = -\\frac{2\\pi}{3}\\text{ rad} = -120^\\circ$$<br><b>2. Giá trị lượng giác của góc quay $\\alpha$:</b><br>$$\\cos\\left(-\\frac{2\\pi}{3}\\right) = -\\frac{1}{2}; \\quad \\sin\\left(-\\frac{2\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{2}$$<br><b>3. Tọa độ đầu kim $M$ trên mặt phẳng $Oxy$:</b><br>Tại 8 giờ 20 phút, kim phút chỉ chính xác vào số 4.<br>Trục $Ox$ nằm ngang chỉ số 3. Góc giữa tia chỉ số 4 và tia dương $Ox$ là $\\theta = -30^\\circ = -\\frac{\\pi}{6}\\text{ rad}$.<br>Tọa độ của đầu kim $M$ có độ dài $R = 12\\text{ cm}$ là:<br>$$x_M = 12 \\cdot \\cos\\left(-\\frac{\\pi}{6}\\right) = 12 \\cdot \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}\\text{ cm} \\approx 10,39\\text{ cm}$$$$y_M = 12 \\cdot \\sin\\left(-\\frac{\\pi}{6}\\right) = 12 \\cdot \\left(-\\frac{1}{2}\\right) = -6\\text{ cm}$$<br><b>Đáp số chuẩn:</b> $\\alpha = -\\frac{2\\pi}{3}\\text{ rad}$; $\\sin\\alpha = -\\frac{\\sqrt{3}}{2}, \\cos\\alpha = -\\frac{1}{2}$; $M(6\\sqrt{3}; -6)\\text{ cm}$.",
+      "svg": "\n<svg viewBox=\"0 0 400 340\" class=\"problem-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Background -->\n  <rect width=\"400\" height=\"340\" fill=\"#0f172a\" rx=\"10\" />\n  \n  <!-- Clock Outer Ring -->\n  <circle cx=\"200\" cy=\"170\" r=\"130\" fill=\"#1e293b\" stroke=\"#f59e0b\" stroke-width=\"5\" />\n  <circle cx=\"200\" cy=\"170\" r=\"118\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" />\n  \n  <!-- Clock numbers -->\n  <g fill=\"#f8fafc\" font-family=\"'JetBrains Mono', monospace\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">\n    <text x=\"200\" y=\"72\">12</text>\n    <text x=\"252\" y=\"86\">1</text>\n    <text x=\"290\" y=\"124\">2</text>\n    <text x=\"304\" y=\"175\">3</text>\n    <text x=\"290\" y=\"226\">4</text>\n    <text x=\"252\" y=\"264\">5</text>\n    <text x=\"200\" y=\"278\">6</text>\n    <text x=\"148\" y=\"264\">7</text>\n    <text x=\"110\" y=\"226\">8</text>\n    <text x=\"96\" y=\"175\">9</text>\n    <text x=\"110\" y=\"124\">10</text>\n    <text x=\"148\" y=\"86\">11</text>\n  </g>\n  \n  <!-- Coordinate axes Oxy: Origin at (200, 170) -->\n  <line x1=\"80\" y1=\"170\" x2=\"320\" y2=\"170\" stroke=\"#38bdf8\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" opacity=\"0.6\" />\n  <line x1=\"200\" y1=\"50\" x2=\"200\" y2=\"290\" stroke=\"#38bdf8\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" opacity=\"0.6\" />\n  <text x=\"325\" y=\"174\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"600\">x</text>\n  <text x=\"204\" y=\"52\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"600\">y (12h)</text>\n  \n  <!-- Hour hand pointing at 8h20 (approx 8.33h = 250 deg from top -> 160 deg from x) -->\n  <!-- length = 55px -->\n  <line x1=\"200\" y1=\"170\" x2=\"148\" y2=\"188\" stroke=\"#94a3b8\" stroke-width=\"4\" stroke-linecap=\"round\" />\n  \n  <!-- Minute Hand at 12 o'clock initially (dashed) -->\n  <line x1=\"200\" y1=\"170\" x2=\"200\" y2=\"75\" stroke=\"#94a3b8\" stroke-width=\"2\" stroke-dasharray=\"4,3\" />\n  <text x=\"175\" y=\"70\" fill=\"#94a3b8\" font-size=\"10\">8h00</text>\n  \n  <!-- Rotation arrow clockwise from 12 to 4 (angle = -120 deg = -2pi/3) -->\n  <path d=\"M 200 120 A 50 50 0 0 1 243 195\" fill=\"none\" stroke=\"#ef4444\" stroke-width=\"2.5\" />\n  <polygon points=\"243,195 240,185 249,189\" fill=\"#ef4444\" />\n  <text x=\"220\" y=\"125\" fill=\"#ef4444\" font-size=\"11\" font-weight=\"700\">α = -2π/3</text>\n  \n  <!-- Minute hand at 4 o'clock (8h20) -->\n  <!-- Angle from +Ox is -30 deg. Radius R = 95px representing 12cm -->\n  <!-- x = 200 + 95*cos(-30) = 200 + 82.3 = 282.3 -->\n  <!-- y = 170 - 95*sin(-30) = 170 + 47.5 = 217.5 -->\n  <line x1=\"200\" y1=\"170\" x2=\"282.3\" y2=\"217.5\" stroke=\"#f59e0b\" stroke-width=\"3.5\" stroke-linecap=\"round\" />\n  <circle cx=\"282.3\" cy=\"217.5\" r=\"5\" fill=\"#f59e0b\" />\n  \n  <!-- Projections to axes -->\n  <line x1=\"282.3\" y1=\"217.5\" x2=\"282.3\" y2=\"170\" stroke=\"#38bdf8\" stroke-width=\"1\" stroke-dasharray=\"3,3\" />\n  <line x1=\"282.3\" y1=\"217.5\" x2=\"200\" y2=\"217.5\" stroke=\"#38bdf8\" stroke-width=\"1\" stroke-dasharray=\"3,3\" />\n  <text x=\"260\" y=\"165\" fill=\"#38bdf8\" font-size=\"10\">x = 6√3</text>\n  <text x=\"160\" y=\"222\" fill=\"#38bdf8\" font-size=\"10\">y = -6</text>\n  \n  <!-- Center O -->\n  <circle cx=\"200\" cy=\"170\" r=\"5\" fill=\"#f59e0b\" />\n  <text x=\"186\" y=\"186\" fill=\"#f59e0b\" font-size=\"11\" font-weight=\"700\">O</text>\n  \n  <!-- Badge Coordinates -->\n  <rect x=\"235\" y=\"235\" width=\"150\" height=\"24\" rx=\"4\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1\" />\n  <text x=\"242\" y=\"251\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">M(6√3; -6) cm</text>\n</svg>\n"
+    },
+    {
+      "id": 4,
+      "name": "Trạm rada quét hàng hải",
+      "skill": "Ứng dụng giá trị lượng giác góc 3pi/4 xác định tọa độ tàu biển trên màn hình rada hàng hải",
+      "question": "Trạm rada hàng hải đặt tại gốc $O(0,0)$ scan vị trí tàu biển theo góc lượng giác $\\alpha$ tính từ hướng Đông (trục $Ox$ dương). Tàu thủy $S$ cách trạm $15\\text{ km}$ ở góc lượng giác $\\alpha = \\frac{3\\pi}{4}\\text{ rad}$ (hướng Tây - Bắc). Tính các giá trị lượng giác $\\sin\\alpha, \\cos\\alpha, \\cot\\alpha$ và xác định tọa độ $(x_S, y_S)$ của tàu trên màn hình rada.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\sin\\alpha = \\dfrac{\\sqrt{2}}{2}, \\cos\\alpha = -\\dfrac{\\sqrt{2}}{2}, \\cot\\alpha = -1;\\ S\\left(-\\dfrac{15\\sqrt{2}}{2}; \\dfrac{15\\sqrt{2}}{2}\right)\\text{ km}$"
+        },
+        {
+          "key": "B",
+          "text": "$\\sin\\alpha = -\\dfrac{\\sqrt{2}}{2}, \\cos\\alpha = \\dfrac{\\sqrt{2}}{2}, \\cot\\alpha = -1;\\ S\\left(\\dfrac{15\\sqrt{2}}{2}; -\\dfrac{15\\sqrt{2}}{2}\right)\\text{ km}$"
+        },
+        {
+          "key": "C",
+          "text": "$\\sin\\alpha = \\dfrac{\\sqrt{2}}{2}, \\cos\\alpha = \\dfrac{\\sqrt{2}}{2}, \\cot\\alpha = 1;\\ S\\left(\\dfrac{15\\sqrt{2}}{2}; \\dfrac{15\\sqrt{2}}{2}\right)\\text{ km}$"
+        },
+        {
+          "key": "D",
+          "text": "$\\sin\\alpha = \\dfrac{1}{2}, \\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}, \\cot\\alpha = -\\sqrt{3};\\ S(-15; 15)\\text{ km}$"
+        }
+      ],
+      "correct": "A",
+      "shortAnswerAcceptable": [
+        "(-10.61; 10.61)",
+        "(-10,61; 10,61)",
+        "-10.61",
+        "-10,61",
+        "10.61",
+        "10,61",
+        "-15\\sqrt{2}/2",
+        "15\\sqrt{2}/2"
+      ],
+      "explanation": "<b>1. Giá trị lượng giác của góc $\\alpha = \\frac{3\\pi}{4}$ (góc phần tư II):</b><br>$$\\sin\\left(\\frac{3\\pi}{4}\\right) = \\sin\\left(\\pi - \\frac{\\pi}{4}\\right) = \\sin\\left(\\frac{\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2}$$$$\\cos\\left(\\frac{3\\pi}{4}\\right) = -\\cos\\left(\\frac{\\pi}{4}\\right) = -\\frac{\\sqrt{2}}{2}$$$$\\cot\\left(\\frac{3\\pi}{4}\\right) = \\frac{\\cos(3\\pi/4)}{\\sin(3\\pi/4)} = -1$$<br><b>2. Tọa độ của tàu $S$ trên màn hình rada (khoảng cách $R = 15\\text{ km}$):</b><br>$$x_S = R \\cdot \\cos\\alpha = 15 \\cdot \\left(-\\frac{\\sqrt{2}}{2}\\right) = -\\frac{15\\sqrt{2}}{2} \\approx -10,61\\text{ km}$$$$y_S = R \\cdot \\sin\\alpha = 15 \\cdot \\frac{\\sqrt{2}}{2} = \\frac{15\\sqrt{2}}{2} \\approx 10,61\\text{ km}$$<br><b>Đáp số chuẩn:</b> $\\sin\\left(\\frac{3\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2}, \\cos\\left(\\frac{3\\pi}{4}\\right) = -\\frac{\\sqrt{2}}{2}, \\cot\\left(\\frac{3\\pi}{4}\\right) = -1$; Tọa độ $S\\left(-\\frac{15\\sqrt{2}}{2}; \\frac{15\\sqrt{2}}{2}\right)\\text{ km}$.",
+      "svg": "\n<svg viewBox=\"0 0 400 340\" class=\"problem-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Radar Screen Background -->\n  <rect width=\"400\" height=\"340\" fill=\"#030712\" rx=\"10\" />\n  \n  <!-- Concentric Range Rings (origin at 200, 170) -->\n  <circle cx=\"200\" cy=\"170\" r=\"120\" fill=\"#082f49\" stroke=\"#0ea5e9\" stroke-width=\"2\" />\n  <circle cx=\"200\" cy=\"170\" r=\"85\" fill=\"none\" stroke=\"#0284c7\" stroke-width=\"1\" stroke-dasharray=\"4,4\" />\n  <circle cx=\"200\" cy=\"170\" r=\"45\" fill=\"none\" stroke=\"#0284c7\" stroke-width=\"1\" stroke-dasharray=\"4,4\" />\n  \n  <!-- Radial Grid Lines -->\n  <line x1=\"80\" y1=\"170\" x2=\"320\" y2=\"170\" stroke=\"#0ea5e9\" stroke-width=\"1.5\" />\n  <line x1=\"200\" y1=\"50\" x2=\"200\" y2=\"290\" stroke=\"#0ea5e9\" stroke-width=\"1.5\" />\n  <line x1=\"115\" y1=\"85\" x2=\"285\" y2=\"255\" stroke=\"#0369a1\" stroke-width=\"1\" stroke-dasharray=\"3,3\" />\n  <line x1=\"115\" y1=\"255\" x2=\"285\" y2=\"85\" stroke=\"#0369a1\" stroke-width=\"1\" stroke-dasharray=\"3,3\" />\n  \n  <!-- Direction labels -->\n  <text x=\"326\" y=\"174\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">Đông (+Ox)</text>\n  <text x=\"204\" y=\"44\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">Bắc (+Oy)</text>\n  <text x=\"50\" y=\"174\" fill=\"#94a3b8\" font-size=\"10\">Tây</text>\n  <text x=\"204\" y=\"306\" fill=\"#94a3b8\" font-size=\"10\">Nam</text>\n  <text x=\"75\" y=\"78\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">Tây-Bắc (NW)</text>\n  \n  <!-- Center Radar Station O -->\n  <circle cx=\"200\" cy=\"170\" r=\"5\" fill=\"#38bdf8\" />\n  <text x=\"185\" y=\"185\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">O(0,0)</text>\n  \n  <!-- Angle 3pi/4 = 135 deg: ray at 135 deg from +Ox -->\n  <!-- R = 15km represented by 100px -->\n  <!-- cos(135) = -0.707 -> x = 200 - 70.7 = 129.3 -->\n  <!-- sin(135) = 0.707 -> y = 170 - 70.7 = 99.3 -->\n  <line x1=\"200\" y1=\"170\" x2=\"129.3\" y2=\"99.3\" stroke=\"#22c55e\" stroke-width=\"2.5\" />\n  \n  <!-- Angle Arc -->\n  <path d=\"M 235 170 A 35 35 0 0 0 175 145\" fill=\"none\" stroke=\"#f43f5e\" stroke-width=\"2\" />\n  <text x=\"205\" y=\"138\" fill=\"#f43f5e\" font-size=\"11\" font-weight=\"700\">α = 3π/4 (135°)</text>\n  \n  <!-- Ship Target Icon S -->\n  <circle cx=\"129.3\" cy=\"99.3\" r=\"7\" fill=\"#22c55e\" stroke=\"#ffffff\" stroke-width=\"2\" />\n  <text x=\"72\" y=\"104\" fill=\"#22c55e\" font-size=\"12\" font-weight=\"800\">Tàu S (15km)</text>\n  \n  <!-- Projections to axes -->\n  <line x1=\"129.3\" y1=\"99.3\" x2=\"129.3\" y2=\"170\" stroke=\"#f59e0b\" stroke-width=\"1.2\" stroke-dasharray=\"3,3\" />\n  <line x1=\"129.3\" y1=\"99.3\" x2=\"200\" y2=\"99.3\" stroke=\"#f59e0b\" stroke-width=\"1.2\" stroke-dasharray=\"3,3\" />\n  <text x=\"96\" y=\"184\" fill=\"#f59e0b\" font-size=\"10\">-15√2/2 km</text>\n  <text x=\"204\" y=\"103\" fill=\"#f59e0b\" font-size=\"10\">15√2/2 km</text>\n  \n  <!-- Coordinate readout box -->\n  <rect x=\"15\" y=\"270\" width=\"195\" height=\"26\" rx=\"4\" fill=\"#0f172a\" stroke=\"#22c55e\" stroke-width=\"1\" />\n  <text x=\"22\" y=\"287\" fill=\"#22c55e\" font-size=\"11\" font-weight=\"700\">S(-10,61; 10,61) km</text>\n</svg>\n"
+    },
+    {
+      "id": 5,
+      "name": "Lưu lượng khí hô hấp của phổi",
+      "skill": "Mô hình hóa hàm số lượng giác sin tính lưu lượng khí hô hấp phổi theo thời gian",
+      "question": "Tốc độ lưu lượng không khí hô hấp $v$ (lít/giây) tại thời điểm $t$ (giây) được cho bởi công thức $v(t) = 0,85 \\cdot \\sin\\left(\\frac{\\pi t}{3}\\right)$. Tính giá trị lượng giác của góc $x = \\frac{\\pi t}{3}\\text{ rad}$ và tốc độ $v$ tại thời điểm $t = 1,5\\text{ s}$ (khi hít vào tối đa) và $t = 4\\text{ s}$ (khi thở ra).",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tại $t = 1,5\\text{ s}: \\sin\\left(\\dfrac{\\pi}{2}\\right) = 1, v = 0,85\\text{ L/s}$; Tại $t = 4\\text{ s}: \\sin\\left(\\dfrac{4\\pi}{3}\\right) = -\\dfrac{\\sqrt{3}}{2}, v \\approx -0,74\\text{ L/s}$"
+        },
+        {
+          "key": "B",
+          "text": "Tại $t = 1,5\\text{ s}: \\sin\\left(\\dfrac{\\pi}{2}\\right) = 0, v = 0\\text{ L/s}$; Tại $t = 4\\text{ s}: \\sin\\left(\\dfrac{4\\pi}{3}\\right) = \\dfrac{\\sqrt{3}}{2}, v \\approx 0,74\\text{ L/s}$"
+        },
+        {
+          "key": "C",
+          "text": "Tại $t = 1,5\\text{ s}: \\sin\\left(\\dfrac{\\pi}{2}\\right) = 1, v = 0,425\\text{ L/s}$; Tại $t = 4\\text{ s}: \\sin\\left(\\dfrac{4\\pi}{3}\\right) = -\\dfrac{1}{2}, v \\approx -0,425\\text{ L/s}$"
+        },
+        {
+          "key": "D",
+          "text": "Tại $t = 1,5\\text{ s}: \\sin\\left(\\dfrac{\\pi}{2}\\right) = -1, v = -0,85\\text{ L/s}$; Tại $t = 4\\text{ s}: \\sin\\left(\\dfrac{4\\pi}{3}\\right) = 1, v = 0,85\\text{ L/s}$"
+        }
+      ],
+      "correct": "A",
+      "shortAnswerAcceptable": [
+        "0.85",
+        "0,85",
+        "-0.74",
+        "-0,74",
+        "0.85 và -0.74",
+        "0,85 và -0,74",
+        "0.85; -0.74"
+      ],
+      "explanation": "<b>1. Tại thời điểm $t = 1,5\\text{ s}$ (hít vào tối đa):</b><br>Góc lượng giác: $x_1 = \\frac{\\pi \\cdot 1,5}{3} = \\frac{\\pi}{2}\\text{ rad}$.<br>Giá trị lượng giác: $\\sin\\left(\\frac{\\pi}{2}\\right) = 1$.<br>Tốc độ dòng khí hít vào: $$v(1,5) = 0,85 \\cdot \\sin\\left(\\frac{\\pi}{2}\\right) = 0,85 \\cdot 1 = 0,85\\text{ L/s}$$<br><b>2. Tại thời điểm $t = 4\\text{ s}$ (giai đoạn thở ra):</b><br>Góc lượng giác: $x_2 = \\frac{4\\pi}{3}\\text{ rad}$ (góc phần tư III).<br>Giá trị lượng giác: $$\\sin\\left(\\frac{4\\pi}{3}\\right) = \\sin\\left(\\pi + \\frac{\\pi}{3}\\right) = -\\sin\\left(\\frac{\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{2} \\approx -0,866$$<br>Tốc độ dòng khí thở ra (dấu âm biểu thị chiều ngược lại):<br>$$v(4) = 0,85 \\cdot \\left(-\\frac{\\sqrt{3}}{2}\\right) \\approx -0,736\\text{ L/s} \\approx -0,74\\text{ L/s}$$<br><b>Đáp số chuẩn:</b> Tại $t = 1,5\\text{ s}$: $\\sin\\left(\\frac{\\pi}{2}\\right) = 1, v = 0,85\\text{ L/s}$; Tại $t = 4\\text{ s}$: $\\sin\\left(\\frac{4\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{2}, v \\approx -0,74\\text{ L/s}$.",
+      "svg": "\n<svg viewBox=\"0 0 400 340\" class=\"problem-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n  <!-- Background -->\n  <rect width=\"400\" height=\"340\" fill=\"#f8fafc\" rx=\"10\" />\n  \n  <!-- Grid Lines -->\n  <g stroke=\"#e2e8f0\" stroke-width=\"1\">\n    <line x1=\"50\" y1=\"70\" x2=\"370\" y2=\"70\" />\n    <line x1=\"50\" y1=\"120\" x2=\"370\" y2=\"120\" />\n    <line x1=\"50\" y1=\"220\" x2=\"370\" y2=\"220\" />\n    <line x1=\"50\" y1=\"270\" x2=\"370\" y2=\"270\" />\n    <line x1=\"103\" y1=\"40\" x2=\"103\" y2=\"290\" />\n    <line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"290\" />\n    <line x1=\"210\" y1=\"40\" x2=\"210\" y2=\"290\" />\n    <line x1=\"263\" y1=\"40\" x2=\"263\" y2=\"290\" />\n    <line x1=\"316\" y1=\"40\" x2=\"316\" y2=\"290\" />\n  </g>\n  \n  <!-- Axes: origin at (50, 170) -> t from 0 to 6s, v from -1.0 to +1.0 -->\n  <line x1=\"40\" y1=\"170\" x2=\"380\" y2=\"170\" stroke=\"#334155\" stroke-width=\"2\" />\n  <line x1=\"50\" y1=\"30\" x2=\"50\" y2=\"300\" stroke=\"#334155\" stroke-width=\"2\" />\n  <text x=\"375\" y=\"165\" fill=\"#334155\" font-size=\"11\" font-weight=\"700\">t (s)</text>\n  <text x=\"10\" y=\"40\" fill=\"#334155\" font-size=\"11\" font-weight=\"700\">v (L/s)</text>\n  \n  <!-- y-axis labels: scale: 1.0 L/s = 100px -->\n  <!-- 0.85 L/s = 85px -> y = 170 - 85 = 85 -->\n  <text x=\"18\" y=\"90\" fill=\"#0284c7\" font-size=\"10\" font-weight=\"600\">+0,85</text>\n  <text x=\"35\" y=\"174\" fill=\"#64748b\" font-size=\"10\">0</text>\n  <text x=\"18\" y=\"255\" fill=\"#ef4444\" font-size=\"10\" font-weight=\"600\">-0,85</text>\n  \n  <!-- x-axis labels: Period T = 2pi / (pi/3) = 6s. Width 318px for 6s -> 53px per 1s -->\n  <!-- t=1.5s -> x = 50 + 1.5*53 = 129.5 -->\n  <!-- t=3.0s -> x = 50 + 3.0*53 = 209 -->\n  <!-- t=4.0s -> x = 50 + 4.0*53 = 262 -->\n  <!-- t=6.0s -> x = 50 + 6.0*53 = 368 -->\n  <text x=\"123\" y=\"186\" fill=\"#0284c7\" font-size=\"10\" font-weight=\"700\">1,5s</text>\n  <text x=\"205\" y=\"186\" fill=\"#64748b\" font-size=\"10\">3s</text>\n  <text x=\"256\" y=\"186\" fill=\"#ef4444\" font-size=\"10\" font-weight=\"700\">4s</text>\n  <text x=\"363\" y=\"186\" fill=\"#64748b\" font-size=\"10\">6s</text>\n  \n  <!-- Sine Wave Curve v(t) = 0.85*sin(pi*t/3) -->\n  <path d=\"M 50 170 Q 90 85, 129.5 85 T 209 170 T 288.5 255 T 368 170\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"3\" />\n  \n  <!-- Point at t = 1.5s (Peak inhalation) -->\n  <circle cx=\"129.5\" cy=\"85\" r=\"6\" fill=\"#0284c7\" stroke=\"#ffffff\" stroke-width=\"2\" />\n  <line x1=\"129.5\" y1=\"85\" x2=\"129.5\" y2=\"170\" stroke=\"#0284c7\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <line x1=\"50\" y1=\"85\" x2=\"129.5\" y2=\"85\" stroke=\"#0284c7\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <rect x=\"75\" y=\"45\" width=\"135\" height=\"22\" rx=\"4\" fill=\"#e0f2fe\" stroke=\"#0284c7\" stroke-width=\"1\" />\n  <text x=\"82\" y=\"60\" fill=\"#0369a1\" font-size=\"10\" font-weight=\"700\">t=1,5s: v = +0,85 L/s (Hít vào)</text>\n  \n  <!-- Point at t = 4s (Exhalation) -->\n  <!-- v(4) = 0.85 * (-sqrt(3)/2) ~ -0.736 -> y = 170 + 73.6 = 243.6 -->\n  <circle cx=\"262\" cy=\"243.6\" r=\"6\" fill=\"#dc2626\" stroke=\"#ffffff\" stroke-width=\"2\" />\n  <line x1=\"262\" y1=\"170\" x2=\"262\" y2=\"243.6\" stroke=\"#dc2626\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <line x1=\"50\" y1=\"243.6\" x2=\"262\" y2=\"243.6\" stroke=\"#dc2626\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\" />\n  <rect x=\"210\" y=\"275\" width=\"155\" height=\"22\" rx=\"4\" fill=\"#fee2e2\" stroke=\"#dc2626\" stroke-width=\"1\" />\n  <text x=\"216\" y=\"290\" fill=\"#991b1b\" font-size=\"10\" font-weight=\"700\">t=4s: v ≈ -0,74 L/s (Thở ra)</text>\n</svg>\n"
+    }
+  ]
+};
+
+    let userAnswers = {};
+    let isSubmitted = false;
+    let isSolutionsVisible = true;
+    let timerSeconds = 45 * 60;
+    let timerInterval = null;
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
+    // TIMER
+    function startTimer() {
+      const timerDisplay = document.getElementById('quizTimer');
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert('Hết giờ làm bài! Hệ thống sẽ tự động nộp bài.');
+          document.getElementById('btn-nop-bai').click();
+          return;
+        }
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerDisplay.textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    // RENDER 3-COLUMN INFOGRAPHIC
+    function renderProblems() {
+      const container = document.getElementById('problemsContainer');
+      const palGrid = document.getElementById('paletteGrid');
+      container.innerHTML = '';
+      palGrid.innerHTML = '';
+
+      quiz.problems.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = 'infographic-card';
+        card.id = `problem-card-${p.id}`;
+
+        card.innerHTML = `
+          <div class="card-top-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="card-badge">Bài toán ${p.id}</span>
+              <b style="color:var(--primary); font-size:14px;">${p.name}</b>
+              <span style="font-size:11px; background:#F1F5F9; color:#64748B; padding:2px 8px; border-radius:4px;">2.0 điểm</span>
+            </div>
+            <span class="card-skill">${p.skill}</span>
+          </div>
+
+          <div class="three-col-grid">
+            <!-- CỘT 1: ĐỀ BÀI TOÁN -->
+            <div class="col-cell">
+              <div class="col-header-label">
+                <span>📋</span> Cột 1: Đề bài toán học
+              </div>
+              <div class="problem-text">${p.question}</div>
+            </div>
+
+            <!-- CỘT 2: HÌNH ẢNH MÔ HÌNH HÓA VECTOR -->
+            <div class="col-cell" style="background:#FBFDFF;">
+              <div class="col-header-label accent">
+                <span>🎨</span> Cột 2: Sơ đồ mô hình hóa
+              </div>
+              <div class="svg-wrapper">
+                ${p.svg}
+              </div>
+            </div>
+
+            <!-- CỘT 3: TƯƠNG TÁC & LỜI GIẢI ĐÁP SỐ -->
+            <div class="col-cell col-solution">
+              <div class="col-header-label success">
+                <span>💡</span> Cột 3: Tương tác & Lời giải chi tiết
+              </div>
+
+              <!-- Trắc nghiệm phương án -->
+              <div style="font-size:12px; font-weight:700; color:var(--text-secondary); margin-bottom:6px;">
+                Chọn phương án đúng nhất:
+              </div>
+              <div class="mcq-options-container">
+                ${p.options.map(opt => `
+                  <button class="opt-btn" data-pid="${p.id}" data-key="${opt.key}">
+                    <span class="opt-key">${opt.key}</span>
+                    <span class="opt-text">${opt.text}</span>
+                  </button>
+                `).join('')}
+              </div>
+
+              <!-- Ô điền đáp số ngắn (tùy chọn) -->
+              <div class="short-input-row">
+                <label>Hoặc nhập đáp số:</label>
+                <input type="text" class="short-input" id="sa-input-${p.id}" placeholder="Ví dụ: 17 m..." data-pid="${p.id}">
+                <span class="sa-badge" id="sa-badge-${p.id}"></span>
+              </div>
+
+              <!-- Khối lời giải -->
+              <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-box-${p.id}">
+                <div class="sol-heading">
+                  <span>✓</span> Lời giải chi tiết & Đáp số chuẩn (Đáp án ${p.correct})
+                </div>
+                <div>${p.explanation}</div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+
+        // Palette Button
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-${p.id}`;
+        palBtn.textContent = p.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palGrid.appendChild(palBtn);
+      });
+
+      setupInteractions();
+      updateProgress();
+    }
+
+    // NORMALIZE STRING FOR SHORT ANSWER
+    function normalizeStr(s) {
+      return (s || '').toLowerCase()
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.')
+        .replace(/độ|deg|°|m|mét|km|cm|l\/s|lit\/giay/g, '')
+        .replace(/\$/g, '')
+        .replace(/\\/g, '');
+    }
+
+    // INTERACTIONS
+    function setupInteractions() {
+      // Option buttons
+      document.querySelectorAll('.opt-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (isSubmitted) return;
+          const pid = this.dataset.pid;
+          const key = this.dataset.key;
+
+          const card = document.getElementById(`problem-card-${pid}`);
+          card.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+
+          userAnswers[pid] = { type: 'mcq', val: key };
+          document.getElementById(`pal-btn-${pid}`).classList.add('answered');
+          updateProgress();
+        });
+      });
+
+      // Short answer inputs
+      document.querySelectorAll('.short-input').forEach(inp => {
+        inp.addEventListener('input', function() {
+          if (isSubmitted) return;
+          const pid = this.dataset.pid;
+          const val = this.value.trim();
+
+          if (val) {
+            userAnswers[pid] = { type: 'sa', val: val };
+            document.getElementById(`pal-btn-${pid}`).classList.add('answered');
+          } else if (!document.querySelector(`#problem-card-${pid} .opt-btn.selected`)) {
+            delete userAnswers[pid];
+            document.getElementById(`pal-btn-${pid}`).classList.remove('answered');
+          }
+          updateProgress();
+        });
+      });
+    }
+
+    function updateProgress() {
+      const answeredCount = Object.keys(userAnswers).length;
+      const total = quiz.problems.length;
+      const pct = Math.round((answeredCount / total) * 100);
+
+      document.getElementById('progressText').textContent = `${answeredCount}/${total}`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+    }
+
+    // GRADING FUNCTION
+    function chamDiemBaiThi() {
+      isSubmitted = true;
+      if (timerInterval) clearInterval(timerInterval);
+
+      let totalScore = 0;
+      mang_cau_sai = [];
+
+      quiz.problems.forEach(p => {
+        const ans = userAnswers[p.id];
+        const card = document.getElementById(`problem-card-${p.id}`);
+        const palBtn = document.getElementById(`pal-btn-${p.id}`);
+        const badge = document.getElementById(`sa-badge-${p.id}`);
+
+        let isCorrect = false;
+
+        // Check if answered via MCQ or Short Answer
+        if (ans) {
+          if (ans.type === 'mcq' && ans.val === p.correct) {
+            isCorrect = true;
+          } else if (ans.type === 'sa') {
+            const userNorm = normalizeStr(ans.val);
+            if (p.shortAnswerAcceptable.some(acc => normalizeStr(acc) === userNorm)) {
+              isCorrect = true;
+            }
+          }
+        }
+
+        // Highlight options
+        card.querySelectorAll('.opt-btn').forEach(btn => {
+          if (btn.dataset.key === p.correct) {
+            btn.classList.add('graded-correct');
+          } else if (ans && ans.type === 'mcq' && btn.dataset.key === ans.val) {
+            btn.classList.add('graded-incorrect');
+          }
+        });
+
+        if (isCorrect) {
+          totalScore += 2.0;
+          palBtn.classList.add('correct');
+          if (badge) {
+            badge.textContent = '✓ Đúng (+2.0đ)';
+            badge.className = 'sa-badge correct';
+          }
+        } else {
+          palBtn.classList.add('incorrect');
+          mang_cau_sai.push(p.skill);
+          if (badge) {
+            badge.textContent = `✗ Sai (ĐA: ${p.correct})`;
+            badge.className = 'sa-badge incorrect';
+          }
+        }
+      });
+
+      diem_so = Math.round(totalScore * 10) / 10;
+
+      // Update Modal
+      document.getElementById('modalScore').textContent = diem_so.toFixed(1);
+
+      let gradeTitle = "XUẤT SẮC - TOÁN THỰC TẾ 11!";
+      let gradeSub = "Tư duy mô hình hóa hình học và ứng dụng lượng giác thực tiễn rất điêu luyện!";
+      if (diem_so < 5.0) {
+        gradeTitle = "CẦN CỐ GẮNG HƠN!";
+        gradeSub = "Em hãy đối chiếu sơ đồ vector và đọc kỹ từng bước phân tích góc lượng giác nhé.";
+      } else if (diem_so < 8.0) {
+        gradeTitle = "KẾT QUẢ TỐT!";
+        gradeSub = "Em nắm vững các bài toán đu quay, guồng nước và rada. Cần lưu ý thêm dấu tọa độ âm.";
+      }
+
+      const skillsBox = document.getElementById('modalSkillsMissed');
+      if (mang_cau_sai.length > 0) {
+        skillsBox.innerHTML = '<b>Các kỹ năng / mô hình cần củng cố thêm:</b><ul style="padding-left: 18px; margin-top: 6px;">' +
+          [...new Set(mang_cau_sai)].map(s => `<li>${s}</li>`).join('') + '</ul>';
+      } else {
+        skillsBox.innerHTML = '<b style="color: var(--success);">Xuất sắc tuyệt đối! Em làm đúng toàn bộ 5 bài toán thực tế.</b>';
+      }
+
+      document.getElementById('modalGradeText').textContent = gradeTitle;
+      document.getElementById('modalSubText').textContent = gradeSub;
+      document.getElementById('scoreModal').classList.add('open');
+
+      toggleSolutions(true);
+    }
+
+    // INTEGRATE N8N WEBHOOK
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            chamDiemBaiThi();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
+        const tenBaiThi = document.title || "Toán thực tế Toán 11"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,
+            lop: lopNhom,
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    document.getElementById('btnSubmitTop').addEventListener('click', () => {
+      document.getElementById('btn-nop-bai').click();
+    });
+
+    // TOGGLE SOLUTIONS
+    function toggleSolutions(forceState = null) {
+      if (forceState !== null) {
+        isSolutionsVisible = forceState;
+      } else {
+        isSolutionsVisible = !isSolutionsVisible;
+      }
+
+      const boxes = document.querySelectorAll('.solution-box');
+      boxes.forEach(b => {
+        if (isSolutionsVisible) b.classList.remove('hide-sol');
+        else b.classList.add('hide-sol');
+      });
+
+      const btn = document.getElementById('btnToggleSol');
+      if (btn) {
+        if (isSolutionsVisible) {
+          btn.classList.add('active');
+          btn.textContent = '🙈 Ẩn lời giải';
+        } else {
+          btn.classList.remove('active');
+          btn.textContent = '💡 Hiện lời giải';
+        }
+      }
+    }
+
+    function resetQuiz() {
+      if (!confirm('Bạn có chắc chắn muốn làm lại từ đầu?')) return;
+      location.reload();
+    }
+
+    document.getElementById('btnToggleSol').addEventListener('click', () => toggleSolutions());
+    document.getElementById('btnResetQuiz').addEventListener('click', resetQuiz);
+    document.getElementById('btnCloseModal').addEventListener('click', () => {
+      document.getElementById('scoreModal').classList.remove('open');
+    });
+    document.getElementById('btnRetakeModal').addEventListener('click', () => {
+      document.getElementById('scoreModal').classList.remove('open');
+      location.reload();
+    });
+
+    function renderMath() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProblems();
+      startTimer();
+      setTimeout(renderMath, 200);
+      setTimeout(renderMath, 800);
+    });
+  </script>
+</body>
+</html>
