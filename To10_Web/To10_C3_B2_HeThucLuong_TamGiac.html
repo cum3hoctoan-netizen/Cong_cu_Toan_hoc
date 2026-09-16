@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHIẾU HỌC TẬP INFOGRAPHIC: HỆ THỨC LƯỢNG TRONG TAM GIÁC</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #182A78;
+      --primary-hover: #111e56;
+      --primary-light: #EEF2FB;
+      --primary-border: #CCD8F5;
+      
+      --accent: #C62828;
+      --accent-hover: #A31D1D;
+      --accent-light: #FEF2F2;
+      --accent-border: #FECACA;
+      
+      --bg-page: #FAFAFA;
+      --bg-card: #FFFFFF;
+      --bg-card-alt: #F8FAFC;
+      
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      
+      --success: #15803D;
+      --success-light: #DCFCE7;
+      --danger: #B91C1C;
+      --danger-light: #FEE2E2;
+      --warning: #B45309;
+      --warning-light: #FEF3C7;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .topbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #E53935 100%);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3);
+    }
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.25);
+    }
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover {
+      background: #F1F5F9;
+    }
+    .btn-sol-toggle {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+    .btn-sol-toggle:hover {
+      background: #FDE68A;
+    }
+    .btn-sol-toggle.active {
+      background: #D1FAE5;
+      color: #065F46;
+      border-color: #6EE7B7;
+    }
+
+    /* MAIN LAYOUT */
+    .container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* HEADER BANNER */
+    .header-card {
+      background: linear-gradient(135deg, #182A78 0%, #283E9E 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-card::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .header-title-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .header-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #FFF;
+    }
+    .header-card p {
+      font-size: 13.5px;
+      opacity: 0.9;
+      max-width: 800px;
+    }
+
+    /* STUDENT INFO FORM */
+    .student-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .student-info-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .student-input-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .student-input-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .student-input-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .student-input-item label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .student-input-item input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #F8FAFC;
+      transition: all 0.2s;
+    }
+    .student-input-item input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #FFF;
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.1);
+    }
+
+    /* SECTION HEADER */
+    .section-header-box {
+      background: linear-gradient(135deg, #C62828 0%, #D32F2F 100%);
+      color: white;
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin: 28px 0 16px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-header-box h3 {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+    .section-header-box p {
+      font-size: 12px;
+      opacity: 0.92;
+    }
+
+    /* QUESTION CARD */
+    .q-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s;
+      scroll-margin-top: 80px;
+    }
+    .q-card:hover {
+      border-color: #CBD5E1;
+    }
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .q-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .q-badge-score {
+      background: #F1F5F9;
+      color: var(--text-muted);
+      border-color: #E2E8F0;
+      font-weight: 600;
+    }
+    .q-skill {
+      font-size: 11.5px;
+      color: #64748B;
+      font-style: italic;
+      background: #F8FAFC;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #EEF2F6;
+    }
+    .q-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    /* PART 1: MCQ OPTIONS */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 650px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      background: #FFF;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .option-btn:hover {
+      border-color: var(--primary-border);
+      background: var(--primary-light);
+    }
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: #EEF2FB;
+      box-shadow: 0 0 0 2px rgba(24, 42, 120, 0.15);
+    }
+    .option-key {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .option-btn.selected .option-key {
+      background: var(--primary);
+      color: white;
+    }
+    .option-text {
+      flex: 1;
+      padding-top: 1px;
+    }
+
+    /* PART 2: TRUE / FALSE STATEMENTS */
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .tf-row {
+      border-bottom: 1px solid #F1F5F9;
+      transition: background 0.15s;
+    }
+    .tf-row:last-child {
+      border-bottom: none;
+    }
+    .tf-label {
+      padding: 10px 8px;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13.5px;
+      width: 32px;
+      vertical-align: top;
+    }
+    .tf-text {
+      padding: 10px 12px;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .tf-actions {
+      padding: 10px 8px;
+      width: 130px;
+      text-align: right;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .tf-btn-group {
+      display: inline-flex;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .tf-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      background: #F8FAFC;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tf-btn:first-child {
+      border-right: 1px solid var(--border-color);
+    }
+    .tf-btn.selected-t {
+      background: var(--success);
+      color: white;
+    }
+    .tf-btn.selected-f {
+      background: var(--danger);
+      color: white;
+    }
+
+    /* PART 3: SHORT ANSWER */
+    .sa-box {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sa-input {
+      padding: 10px 16px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      min-width: 260px;
+      background: #F8FAFC;
+      transition: all 0.2s;
+    }
+    .sa-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.1);
+    }
+    .sa-feedback {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: none;
+    }
+    .sa-feedback.correct {
+      display: inline-block;
+      background: var(--success-light);
+      color: var(--success);
+    }
+    .sa-feedback.incorrect {
+      display: inline-block;
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    /* SOLUTION BOX */
+    .solution-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: #14532D;
+      display: block;
+      transition: all 0.2s ease;
+    }
+    .solution-box.hide-sol {
+      display: none;
+    }
+    .solution-box .sol-title {
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .solution-box .sol-body {
+      line-height: 1.6;
+    }
+
+    /* GRADED STATES */
+    .option-btn.graded-correct {
+      border-color: var(--success) !important;
+      background: #ECFDF5 !important;
+      color: #065F46 !important;
+      font-weight: 600;
+    }
+    .option-btn.graded-correct .option-key {
+      background: var(--success) !important;
+      color: white !important;
+    }
+    .option-btn.graded-incorrect {
+      border-color: var(--danger) !important;
+      background: #FEF2F2 !important;
+      color: #991B1B !important;
+    }
+    .option-btn.graded-incorrect .option-key {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+    .tf-btn.graded-correct {
+      background: var(--success) !important;
+      color: white !important;
+    }
+    .tf-btn.graded-incorrect {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+
+    /* SIDEBAR / QUESTION PALETTE */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+    }
+    .palette-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .palette-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #F1F5F9;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary) 0%, #3B82F6 100%);
+      transition: width 0.3s;
+    }
+    .palette-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin: 12px 0 8px 0;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .pal-btn {
+      width: 100%;
+      aspect-ratio: 1;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: #FFF;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .pal-btn:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .pal-btn.answered {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .pal-btn.correct {
+      background: var(--success) !important;
+      color: white !important;
+      border-color: var(--success) !important;
+    }
+    .pal-btn.incorrect {
+      background: var(--danger) !important;
+      color: white !important;
+      border-color: var(--danger) !important;
+    }
+    .palette-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    /* MODAL RESULT */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .score-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-light) 0%, #DBEAFE 100%);
+      border: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+    .score-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1;
+    }
+    .score-max {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .modal-grade {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .modal-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .breakdown-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 8px;
+    }
+    .breakdown-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .breakdown-score {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 2px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .modal-skills-missed {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 12.5px;
+      color: #991B1B;
+      margin-bottom: 20px;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .modal-btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* PRINT OPTIMIZATION */
+    @media print {
+      .topbar, .sidebar, .modal-overlay, .btn-sol-toggle {
+        display: none !important;
+      }
+      .container {
+        grid-template-columns: 1fr;
+        margin: 0;
+        padding: 0;
+      }
+      .solution-box {
+        display: block !important;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-content">
+      <div class="topbar-brand">
+        <div class="brand-icon">Δ</div>
+        <div class="brand-text">
+          <h1>PHIẾU HỌC TẬP INFOGRAPHIC: HỆ THỨC LƯỢNG TRONG TAM GIÁC</h1>
+          <p>Chuyên đề Toán 10 - Chương III: Hệ thức lượng trong tam giác (GDPT 2018) • Từ Nhận biết đến Vận dụng</p>
+        </div>
+      </div>
+      <div class="topbar-controls">
+        <div class="timer-badge">
+          <span>⏱️</span>
+          <span id="quizTimer">45:00</span>
+        </div>
+        <button class="btn btn-sol-toggle active" id="btnToggleSol">🙈 Ẩn lời giải</button>
+        <button class="btn btn-accent" id="btnSubmitTop">Nộp bài</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- Left Column / Quiz Contents -->
+    <div class="content-col">
+
+      <!-- Header Hero Card -->
+      <div class="header-card">
+        <div class="header-title-badge">CHUYÊN ĐỀ HỆ THỨC LƯỢNG TRONG TAM GIÁC • GDPT 2018</div>
+        <h2>PHIẾU HỌC TẬP INFOGRAPHIC: HỆ THỨC LƯỢNG TRONG TAM GIÁC</h2>
+        <p>Chuyên đề Toán 10 - Chương III: Hệ thức lượng trong tam giác (GDPT 2018) — Bám sát chương trình Giáo dục Phổ thông 2018. Tích hợp trắc nghiệm 4 lựa chọn, đúng - sai và bài toán thực tế đo đạc khoảng cách tam giác.</p>
+      </div>
+
+      <!-- Student Info Card -->
+      <div class="student-info-card">
+        <div class="student-info-title">
+          <span>👤</span> Thông tin học sinh làm bài
+        </div>
+        <div class="student-input-grid">
+          <div class="student-input-item">
+            <label for="input-ten">📝 Họ và tên học sinh:</label>
+            <input type="text" id="input-ten" placeholder="Nhập họ và tên...">
+          </div>
+          <div class="student-input-item">
+            <label for="input-ma-hs">🏷️ Mã Học Sinh:</label>
+            <input type="text" id="input-ma-hs" placeholder="Ví dụ: NTH26-001">
+          </div>
+          <div class="student-input-item">
+            <label for="input-lop">🏫 Lớp / Nhóm:</label>
+            <input type="text" id="input-lop" placeholder="Ví dụ: 10A1">
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN -->
+      <div class="section-header-box">
+        <h3>PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU - 3.0 ĐIỂM)</h3>
+        <p>Khoanh tròn vào chữ cái A, B, C hoặc D trước phương án trả lời đúng nhất. Mỗi câu đúng được 0.3 điểm.</p>
+      </div>
+      <div id="part1Container"></div>
+
+      <!-- PHẦN II: TRẮC NGHIỆM ĐÚNG - SAI -->
+      <div class="section-header-box" style="background: linear-gradient(135deg, #182A78 0%, #2563EB 100%);">
+        <h3>PHẦN II. TRẮC NGHIỆM ĐÚNG - SAI (4 CÂU - 4.0 ĐIỂM)</h3>
+        <p>Ghi Đúng (Đ) hoặc Sai (S) cho từng nhận định a, b, c, d. Đúng 1 ý: 0.1đ | 2 ý: 0.25đ | 3 ý: 0.5đ | 4 ý: 1.0đ.</p>
+      </div>
+      <div id="part2Container"></div>
+
+      <!-- PHẦN III: TRẢ LỜI NGẮN -->
+      <div class="section-header-box" style="background: linear-gradient(135deg, #991B1B 0%, #DC2626 100%);">
+        <h3>PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU - 3.0 ĐIỂM)</h3>
+        <p>Điền đáp số ngắn gọn vào ô tương ứng (bao gồm 2 bài toán mô hình thực tế đo chiều cao cây trên dốc và khoảng cách 2 tàu). Mỗi câu đúng được 0.6 điểm.</p>
+      </div>
+      <div id="part3Container"></div>
+
+    </div>
+
+    <!-- Sidebar / Question Palette -->
+    <aside class="sidebar">
+      <div class="palette-card">
+        <div class="palette-title">
+          <span>Tiến độ làm bài</span>
+          <span id="progressText" style="font-family:'JetBrains Mono',monospace; color:var(--primary);">0/19</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="palette-section-label">Phần I: Trắc nghiệm (10 câu)</div>
+        <div class="palette-grid" id="palPart1"></div>
+
+        <div class="palette-section-label">Phần II: Đúng - Sai (4 câu)</div>
+        <div class="palette-grid" id="palPart2"></div>
+
+        <div class="palette-section-label">Phần III: Trả lời ngắn (5 câu)</div>
+        <div class="palette-grid" id="palPart3"></div>
+
+        <div class="palette-actions">
+          <button class="btn btn-accent" id="btn-nop-bai" style="width: 100%;">📝 Nộp bài & Chấm điểm</button>
+          <button class="btn btn-outline" id="btnResetQuiz" style="width: 100%;">🔄 Làm lại đề</button>
+          <button class="btn btn-outline" onclick="window.print()" style="width: 100%;">🖨️ In đề thi / PDF</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Modal Kết Quả -->
+  <div class="modal-overlay" id="scoreModal">
+    <div class="modal-card">
+      <div class="score-circle">
+        <div class="score-number" id="modalScore">0.0</div>
+        <div class="score-max">/ 10 điểm</div>
+      </div>
+      <h3 class="modal-grade" id="modalGradeText">KẾT QUẢ BÀI THI</h3>
+      <p class="modal-sub" id="modalSubText">Chi tiết điểm thành phần các phần thi</p>
+      
+      <div class="modal-breakdown">
+        <div class="breakdown-box">
+          <div class="breakdown-label">Phần I</div>
+          <div class="breakdown-score" id="scoreP1">0.0 / 3.0</div>
+        </div>
+        <div class="breakdown-box">
+          <div class="breakdown-label">Phần II</div>
+          <div class="breakdown-score" id="scoreP2">0.0 / 4.0</div>
+        </div>
+        <div class="breakdown-box">
+          <div class="breakdown-label">Phần III</div>
+          <div class="breakdown-score" id="scoreP3">0.0 / 3.0</div>
+        </div>
+      </div>
+
+      <div class="modal-skills-missed" id="modalSkillsMissed">
+        <!-- Chuyên đề cần ôn tập -->
+      </div>
+
+      <div class="modal-btn-row">
+        <button class="btn btn-primary" id="btnCloseModal">Xem chi tiết bài làm</button>
+        <button class="btn btn-outline" id="btnRetakeModal">Làm lại bài</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quiz = {
+  "title": "PHIẾU HỌC TẬP INFOGRAPHIC: HỆ THỨC LƯỢNG TRONG TAM GIÁC",
+  "subtitle": "Chuyên đề Toán 10 - Chương III: Hệ thức lượng trong tam giác (GDPT 2018)",
+  "target": "Học sinh đại trà (Từ Nhận biết đến Vận dụng)",
+  "level": "Từ Nhận biết đến Vận dụng",
+  "solutionMode": "BAT",
+  "part1": [
+    {
+      "id": 1,
+      "skill": "Nhận biết công thức định lý Cosin tính độ dài cạnh trong tam giác.",
+      "question": "Cho tam giác $ABC$ có các cạnh $BC = a, CA = b, AB = c$. Khẳng định nào sau đây là ĐÚNG?",
+      "options": [
+        {
+          "key": "A",
+          "text": "$a^2 = b^2 + c^2 - 2bc \\cos A$"
+        },
+        {
+          "key": "B",
+          "text": "$a^2 = b^2 + c^2 + 2bc \\cos A$"
+        },
+        {
+          "key": "C",
+          "text": "$a^2 = b^2 + c^2 - bc \\cos A$"
+        },
+        {
+          "key": "D",
+          "text": "$a^2 = b^2 + c^2 + bc \\cos A$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Theo định lý Cosin trong tam giác $ABC$, ta có công thức tính cạnh $a$ đối diện góc $A$ là:<br>$$a^2 = b^2 + c^2 - 2bc \\cos A$$"
+    },
+    {
+      "id": 2,
+      "skill": "Nhận biết dạng thức công thức định lý Sin liên hệ với bán kính đường tròn ngoại tiếp R.",
+      "question": "Trong tam giác $ABC$ bất kỳ có bán kính đường tròn ngoại tiếp $R$. Công thức định lý Sin nào sau đây là ĐÚNG?",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\dfrac{a}{\\sin A} = 2R$"
+        },
+        {
+          "key": "B",
+          "text": "$\\dfrac{a}{\\sin A} = R$"
+        },
+        {
+          "key": "C",
+          "text": "$\\dfrac{a}{\\sin A} = 4R$"
+        },
+        {
+          "key": "D",
+          "text": "$\\dfrac{a}{\\sin A} = \\dfrac{1}{2R}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Theo định lý Sin trong tam giác $ABC$, tỉ số giữa độ dài mỗi cạnh và sin của góc đối diện bằng đường kính đường tròn ngoại tiếp:<br>$$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$$"
+    },
+    {
+      "id": 3,
+      "skill": "Nhận biết công thức tính diện tích tam giác qua bán kính đường tròn nội tiếp r và nửa chu vi p.",
+      "question": "Cho tam giác $ABC$ có $a, b, c$ lần lượt là độ dài ba cạnh và $r$ là bán kính đường tròn nội tiếp. Diện tích $S$ của tam giác $ABC$ được tính theo công thức nào?",
+      "options": [
+        {
+          "key": "A",
+          "text": "$S = pr$ với $p = \\dfrac{a+b+c}{2}$"
+        },
+        {
+          "key": "B",
+          "text": "$S = 2pr$ với $p = a+b+c$"
+        },
+        {
+          "key": "C",
+          "text": "$S = \\dfrac{abc}{2r}$"
+        },
+        {
+          "key": "D",
+          "text": "$S = \\dfrac{1}{2}pr$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Công thức tính diện tích tam giác theo bán kính đường tròn nội tiếp $r$ là $S = pr$, trong đó $p = \\dfrac{a+b+c}{2}$ là nửa chu vi của tam giác."
+    },
+    {
+      "id": 4,
+      "skill": "Kỹ năng tính độ dài cạnh bằng định lý Cosin khi biết hai cạnh và góc xen giữa.",
+      "question": "Cho tam giác $ABC$ có $AB = 5, AC = 8$ và $\\widehat{A} = 60^\\circ$. Tính độ dài cạnh $BC$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$BC = 7$"
+        },
+        {
+          "key": "B",
+          "text": "$BC = \\sqrt{129}$"
+        },
+        {
+          "key": "C",
+          "text": "$BC = \\sqrt{89}$"
+        },
+        {
+          "key": "D",
+          "text": "$BC = 49$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Áp dụng định lý Cosin trong tam giác $ABC$:<br>$$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos A = 5^2 + 8^2 - 2 \\cdot 5 \\cdot 8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49$$<br>Suy ra $BC = \\sqrt{49} = 7$."
+    },
+    {
+      "id": 5,
+      "skill": "Kỹ năng sử dụng định lý Sin để tính bán kính đường tròn ngoại tiếp R.",
+      "question": "Cho tam giác $ABC$ có cạnh $a = 6$ và góc $\\widehat{A} = 30^\\circ$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$R = 6$"
+        },
+        {
+          "key": "B",
+          "text": "$R = 3$"
+        },
+        {
+          "key": "C",
+          "text": "$R = 12$"
+        },
+        {
+          "key": "D",
+          "text": "$R = 6\\sqrt{3}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Áp dụng định lý Sin trong tam giác $ABC$:<br>$$2R = \\dfrac{a}{\\sin A} = \\dfrac{6}{\\sin 30^\\circ} = \\dfrac{6}{0,5} = 12 \\implies R = \\dfrac{12}{2} = 6$$"
+    },
+    {
+      "id": 6,
+      "skill": "Kỹ năng tính diện tích tam giác bằng công thức S = (1/2)bc.sinA với góc tù.",
+      "question": "Cho tam giác $ABC$ có $b = 4, c = 6$ và góc $\\widehat{A} = 150^\\circ$. Tính diện tích $S$ của tam giác $ABC$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$S = 6$"
+        },
+        {
+          "key": "B",
+          "text": "$S = 12$"
+        },
+        {
+          "key": "C",
+          "text": "$S = 6\\sqrt{3}$"
+        },
+        {
+          "key": "D",
+          "text": "$S = 12\\sqrt{3}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Áp dụng công thức tính diện tích qua hai cạnh và góc xen giữa:<br>$$S = \\dfrac{1}{2}bc \\sin A = \\dfrac{1}{2} \\cdot 4 \\cdot 6 \\cdot \\sin 150^\\circ = 12 \\cdot \\dfrac{1}{2} = 6$$"
+    },
+    {
+      "id": 7,
+      "skill": "Kỹ năng tính số đo góc bằng hệ quả định lý Cosin khi biết độ dài ba cạnh.",
+      "question": "Cho tam giác $ABC$ có độ dài ba cạnh $a = 7, b = 5, c = 3$. Tính số đo góc $A$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$\\widehat{A} = 120^\\circ$"
+        },
+        {
+          "key": "B",
+          "text": "$\\widehat{A} = 60^\\circ$"
+        },
+        {
+          "key": "C",
+          "text": "$\\widehat{A} = 135^\\circ$"
+        },
+        {
+          "key": "D",
+          "text": "$\\widehat{A} = 45^\\circ$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Áp dụng hệ quả của định lý Cosin:<br>$$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{5^2 + 3^2 - 7^2}{2 \\cdot 5 \\cdot 3} = \\dfrac{25 + 9 - 49}{30} = -\\dfrac{15}{30} = -\\dfrac{1}{2}$$<br>Vì $0^\\circ < A < 180^\\circ$ nên $\\widehat{A} = 120^\\circ$."
+    },
+    {
+      "id": 8,
+      "skill": "Kỹ năng tính diện tích tam giác bằng công thức Heron khi biết độ dài ba cạnh.",
+      "question": "Cho tam giác $ABC$ có ba cạnh $a = 4, b = 5, c = 6$. Tính diện tích $S$ của tam giác $ABC$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$S = \\dfrac{15\\sqrt{7}}{4}$"
+        },
+        {
+          "key": "B",
+          "text": "$S = \\dfrac{9\\sqrt{7}}{4}$"
+        },
+        {
+          "key": "C",
+          "text": "$S = \\dfrac{15\\sqrt{3}}{2}$"
+        },
+        {
+          "key": "D",
+          "text": "$S = \\dfrac{12\\sqrt{5}}{5}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Nửa chu vi tam giác: $p = \\dfrac{a + b + c}{2} = \\dfrac{4 + 5 + 6}{2} = \\dfrac{15}{2}$.<br>Áp dụng công thức Heron:<br>$$S = \\sqrt{p(p-a)(p-b)(p-c)} = \\sqrt{\\dfrac{15}{2} \\cdot \\left(\\dfrac{15}{2}-4\\right) \\cdot \\left(\\dfrac{15}{2}-5\\right) \\cdot \\left(\\dfrac{15}{2}-6\\right)}$$<br>$$= \\sqrt{\\dfrac{15}{2} \\cdot \\dfrac{7}{2} \\cdot \\dfrac{5}{2} \\cdot \\dfrac{3}{2}} = \\sqrt{\\dfrac{1575}{16}} = \\dfrac{15\\sqrt{7}}{4}$$"
+    },
+    {
+      "id": 9,
+      "skill": "Kỹ năng tính độ dài đường trung tuyến trong tam giác.",
+      "question": "Cho tam giác $ABC$ có $a = 6, b = 8, c = 10$. Tính độ dài đường trung tuyến $m_a$ kẻ từ đỉnh $A$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$m_a = \\sqrt{73}$"
+        },
+        {
+          "key": "B",
+          "text": "$m_a = 5$"
+        },
+        {
+          "key": "C",
+          "text": "$m_a = \\sqrt{41}$"
+        },
+        {
+          "key": "D",
+          "text": "$m_a = 7$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Áp dụng công thức tính độ dài đường trung tuyến ứng với cạnh $a$:<br>$$m_a^2 = \\dfrac{2(b^2 + c^2) - a^2}{4} = \\dfrac{2(8^2 + 10^2) - 6^2}{4} = \\dfrac{2(64 + 100) - 36}{4} = \\dfrac{292}{4} = 73$$<br>Suy ra $m_a = \\sqrt{73}$."
+    },
+    {
+      "id": 10,
+      "skill": "Kỹ năng vận dụng định lý Cosin giải bài toán thực tế khoảng cách hai tàu biển.",
+      "question": "Một tàu cá xuất phát từ cảng $A$ chạy theo hướng Đông với vận tốc $60\\text{ km/h}$. Cùng lúc đó, một tàu cứu hộ xuất phát từ $A$ chạy theo hướng $N30^\\circ E$ với vận tốc $50\\text{ km/h}$. Sau $2$ giờ, khoảng cách giữa hai tàu xấp xỉ bằng:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$111,4\\text{ km}$"
+        },
+        {
+          "key": "B",
+          "text": "$110,5\\text{ km}$"
+        },
+        {
+          "key": "C",
+          "text": "$112,0\\text{ km}$"
+        },
+        {
+          "key": "D",
+          "text": "$110,0\\text{ km}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "Quãng đường tàu cá đi được sau 2 giờ: $AB = 60 \\cdot 2 = 120\\text{ km}$ (theo hướng Đông, góc $90^\\circ$ so với hướng Bắc).<br>Quãng đường tàu cứu hộ đi được sau 2 giờ: $AC = 50 \\cdot 2 = 100\\text{ km}$ (hướng $N30^\\circ E$, lệch $30^\\circ$ so với hướng Bắc).<br>Góc giữa hai hướng đi là: $\\widehat{BAC} = 90^\\circ - 30^\\circ = 60^\\circ$.<br>Khoảng cách $BC$ giữa hai tàu theo định lý Cosin:<br>$$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos 60^\\circ = 120^2 + 100^2 - 2 \\cdot 120 \\cdot 100 \\cdot 0,5 = 14400 + 10000 - 12000 = 12400$$<br>Suy ra $BC = \\sqrt{12400} \\approx 111,355\\text{ km} \\approx 111,4\\text{ km}$."
+    }
+  ],
+  "part2": [
+    {
+      "id": 1,
+      "skill": "Kỹ năng tổng hợp giải tam giác khi biết ba cạnh: nửa chu vi, cosin góc, diện tích Heron và bán kính R.",
+      "context": "Cho tam giác $ABC$ có độ dài ba cạnh lần lượt là $a = 7, b = 8, c = 9$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Nửa chu vi của tam giác $ABC$ bằng $p = 12$.",
+          "correct": true,
+          "explanation": "Nửa chu vi $p = \\dfrac{a + b + c}{2} = \\dfrac{7 + 8 + 9}{2} = 12$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Góc $A$ là góc nhọn và có $\\cos A = \\dfrac{2}{3}$.",
+          "correct": true,
+          "explanation": "$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{8^2 + 9^2 - 7^2}{2 \\cdot 8 \\cdot 9} = \\dfrac{64 + 81 - 49}{144} = \\dfrac{96}{144} = \\dfrac{2}{3} > 0 \\implies A$ là góc nhọn. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Diện tích của tam giác $ABC$ bằng $12\\sqrt{5}$.",
+          "correct": true,
+          "explanation": "Áp dụng Heron: $S = \\sqrt{p(p-a)(p-b)(p-c)} = \\sqrt{12(12-7)(12-8)(12-9)} = \\sqrt{12 \\cdot 5 \\cdot 4 \\cdot 3} = \\sqrt{720} = 12\\sqrt{5}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "d",
+          "text": "Bán kính đường tròn ngoại tiếp $R$ của tam giác $ABC$ bằng $\\dfrac{21\\sqrt{5}}{10}$.",
+          "correct": true,
+          "explanation": "$R = \\dfrac{abc}{4S} = \\dfrac{7 \\cdot 8 \\cdot 9}{4 \\cdot 12\\sqrt{5}} = \\dfrac{504}{48\\sqrt{5}} = \\dfrac{21}{2\\sqrt{5}} = \\dfrac{21\\sqrt{5}}{10}$. Mệnh đề ĐÚNG."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "skill": "Kỹ năng giải tam giác khi biết hai góc và một cạnh: định lý Sin, tính góc thứ ba và diện tích.",
+      "context": "Cho tam giác $ABC$ có cạnh $b = 10$, góc $\\widehat{B} = 45^\\circ$ và góc $\\widehat{C} = 60^\\circ$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Số đo góc $A$ của tam giác $ABC$ bằng $75^\\circ$.",
+          "correct": true,
+          "explanation": "Trong tam giác $ABC$: $\\widehat{A} = 180^\\circ - (\\widehat{B} + \\widehat{C}) = 180^\\circ - (45^\\circ + 60^\\circ) = 75^\\circ$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Bán kính đường tròn ngoại tiếp $R$ của tam giác $ABC$ bằng $5\\sqrt{2}$.",
+          "correct": true,
+          "explanation": "Áp dụng định lý Sin: $2R = \\dfrac{b}{\\sin B} = \\dfrac{10}{\\sin 45^\\circ} = \\dfrac{10}{\\sqrt{2}/2} = 10\\sqrt{2} \\implies R = 5\\sqrt{2}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Độ dài cạnh $c$ bằng $5\\sqrt{6}$.",
+          "correct": true,
+          "explanation": "Theo định lý Sin: $c = 2R \\sin C = 2 \\cdot 5\\sqrt{2} \\cdot \\sin 60^\\circ = 10\\sqrt{2} \\cdot \\dfrac{\\sqrt{3}}{2} = 5\\sqrt{6}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "d",
+          "text": "Diện tích tam giác $ABC$ bằng $25(\\sqrt{3} + 1)$.",
+          "correct": false,
+          "explanation": "$S = \\dfrac{1}{2}bc \\sin A = \\dfrac{1}{2} \\cdot 10 \\cdot 5\\sqrt{6} \\cdot \\sin 75^\\circ = 25\\sqrt{6} \\cdot \\dfrac{\\sqrt{6} + \\sqrt{2}}{4} = \\dfrac{25(6 + 2\\sqrt{3})}{4} = \\dfrac{25(3 + \\sqrt{3})}{2} \\neq 25(\\sqrt{3} + 1)$. Mệnh đề SAI."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "skill": "Kỹ năng biến đổi đại số suy ra số đo góc từ định lý Cosin và tính diện tích tam giác.",
+      "context": "Cho tam giác $ABC$ có độ dài ba cạnh thỏa mãn đẳng thức $a^2 = b^2 + c^2 + bc$:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Giá trị của $\\cos A = -\\dfrac{1}{2}$.",
+          "correct": true,
+          "explanation": "Theo định lý Cosin: $a^2 = b^2 + c^2 - 2bc \\cos A$. Đối chiếu với giả thiết $a^2 = b^2 + c^2 + bc$, ta suy ra: $-2bc \\cos A = bc \\iff \\cos A = -\\dfrac{1}{2}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Số đo góc $A$ của tam giác $ABC$ bằng $120^\\circ$.",
+          "correct": true,
+          "explanation": "Do $\\cos A = -\\dfrac{1}{2}$ và $0^\\circ < A < 180^\\circ \\implies \\widehat{A} = 120^\\circ$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Góc $A$ của tam giác $ABC$ là một góc nhọn.",
+          "correct": false,
+          "explanation": "Vì $\\widehat{A} = 120^\\circ > 90^\\circ$ nên góc $A$ là góc tù, không phải góc nhọn. Mệnh đề SAI."
+        },
+        {
+          "label": "d",
+          "text": "Nếu $b = 3$ và $c = 5$ thì diện tích tam giác $ABC$ bằng $\\dfrac{15\\sqrt{3}}{4}$.",
+          "correct": true,
+          "explanation": "$S = \\dfrac{1}{2}bc \\sin A = \\dfrac{1}{2} \\cdot 3 \\cdot 5 \\cdot \\sin 120^\\circ = \\dfrac{15}{2} \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{15\\sqrt{3}}{4}$. Mệnh đề ĐÚNG."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "skill": "Kỹ năng mô hình hóa thực tế bài toán đo chiều cao tháp Ăng-ten bằng hệ thức lượng trong tam giác.",
+      "context": "Để xác định chiều cao $BC$ của một tháp Ăng-ten trên đỉnh tòa nhà $CH$, người ta quan sát từ điểm $A$ cách mặt đất $7\\text{ m}$ thấy đỉnh $B$ và chân $C$ của cột Ăng-ten dưới các góc lần lượt là $50^\\circ$ và $40^\\circ$ so với phương nằm ngang:",
+      "items": [
+        {
+          "label": "a",
+          "text": "Tam giác $ABC$ có góc $\\widehat{ACB} = 130^\\circ$.",
+          "correct": true,
+          "explanation": "Gọi tia nằm ngang qua $A$ cắt trục thẳng đứng của tòa nhà tại $E$. Trong tam giác vuông $AEC$ có góc $\\widehat{CAE} = 40^\\circ \\implies \\widehat{ACE} = 90^\\circ - 40^\\circ = 50^\\circ$. Do $B, C, E$ thẳng hàng nên $\\widehat{ACB} = 180^\\circ - \\widehat{ACE} = 180^\\circ - 50^\\circ = 130^\\circ$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "b",
+          "text": "Nếu biết chiều cao cột Ăng-ten $BC = 5\\text{ m}$ thì góc $\\widehat{BAC} = 10^\\circ$.",
+          "correct": true,
+          "explanation": "Góc nhìn từ $A$ đến đỉnh $B$ là $50^\\circ$, đến chân $C$ là $40^\\circ \\implies \\widehat{BAC} = 50^\\circ - 40^\\circ = 10^\\circ$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "c",
+          "text": "Độ dài đoạn $AC$ xấp xỉ bằng $18,5\\text{ m}$.",
+          "correct": true,
+          "explanation": "Trong $\\triangle ABC$, góc $\\widehat{B} = 180^\\circ - (130^\\circ + 10^\\circ) = 40^\\circ$. Áp dụng định lý Sin: $\\dfrac{AC}{\\sin 40^\\circ} = \\dfrac{BC}{\\sin 10^\\circ} \\implies AC = \\dfrac{5 \\cdot \\sin 40^\\circ}{\\sin 10^\\circ} \\approx \\dfrac{5 \\cdot 0,6428}{0,1736} \\approx 18,51\\text{ m} \\approx 18,5\\text{ m}$. Mệnh đề ĐÚNG."
+        },
+        {
+          "label": "d",
+          "text": "Chiều cao của tòa nhà $CH$ xấp xỉ bằng $18,9\\text{ m}$.",
+          "correct": true,
+          "explanation": "Trong tam giác vuông $AEC$: $CE = AC \\cdot \\sin 40^\\circ \\approx 18,51 \\cdot \\sin 40^\\circ \\approx 11,90\\text{ m}$. Chiều cao của tòa nhà tính từ mặt đất: $CH = CE + 7\\text{ m} \\approx 11,90 + 7 = 18,90\\text{ m} \\approx 18,9\\text{ m}$. Mệnh đề ĐÚNG."
+        }
+      ]
+    }
+  ],
+  "part3": [
+    {
+      "id": 1,
+      "skill": "Kỹ năng áp dụng định lý Cosin tính cạnh thứ ba của tam giác.",
+      "question": "Câu 1. Cho tam giác $ABC$ có $AB = 6, AC = 8, \\widehat{A} = 60^\\circ$. Tính độ dài cạnh $BC$.",
+      "answer_display": "2√13 (hoặc √52 ≈ 7,2)",
+      "acceptable": [
+        "2\\sqrt{13}",
+        "2sqrt(13)",
+        "2 căn 13",
+        "2can13",
+        "\\sqrt{52}",
+        "sqrt(52)",
+        "can 52",
+        "7.21",
+        "7,21",
+        "7.2",
+        "7,2"
+      ],
+      "explanation": "Áp dụng định lý Cosin trong tam giác $ABC$:<br>$$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos A = 6^2 + 8^2 - 2 \\cdot 6 \\cdot 8 \\cdot \\cos 60^\\circ = 36 + 64 - 48 = 52$$<br>Suy ra $BC = \\sqrt{52} = 2\\sqrt{13}$ (xấp xỉ $7,21$)."
+    },
+    {
+      "id": 2,
+      "skill": "Kỹ năng kết hợp công thức Heron và S = pr để tính bán kính đường tròn nội tiếp r.",
+      "question": "Câu 2. Cho tam giác $ABC$ có độ dài ba cạnh $a = 13, b = 14, c = 15$. Tính bán kính $r$ của đường tròn nội tiếp tam giác $ABC$.",
+      "answer_display": "4",
+      "acceptable": [
+        "4",
+        "r = 4",
+        "r=4"
+      ],
+      "explanation": "Nửa chu vi tam giác: $p = \\dfrac{13 + 14 + 15}{2} = 21$.<br>Diện tích tam giác theo công thức Heron:<br>$$S = \\sqrt{p(p-a)(p-b)(p-c)} = \\sqrt{21(21-13)(21-14)(21-15)} = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = \\sqrt{7056} = 84$$<br>Bán kính đường tròn nội tiếp:<br>$$r = \\dfrac{S}{p} = \\dfrac{84}{21} = 4$$"
+    },
+    {
+      "id": 3,
+      "skill": "Kỹ năng suy ngược số đo góc nhọn từ công thức diện tích S = (1/2)ab.sinC.",
+      "question": "Câu 3. Cho tam giác $ABC$ có $a = 8, b = 10$ và diện tích $S = 20$. Tính số đo góc $C$ (biết $C$ là góc nhọn, tính bằng đơn vị độ).",
+      "answer_display": "30°",
+      "acceptable": [
+        "30",
+        "30°",
+        "30 độ",
+        "30 deg",
+        "C = 30°",
+        "30^\\circ",
+        "C = 30"
+      ],
+      "explanation": "Ta có công thức tính diện tích qua hai cạnh $a, b$ và góc $C$:<br>$$S = \\dfrac{1}{2}ab \\sin C \\iff 20 = \\dfrac{1}{2} \\cdot 8 \\cdot 10 \\cdot \\sin C \\iff 40 \\sin C = 20 \\iff \\sin C = \\dfrac{1}{2}$$<br>Vì $C$ là góc nhọn ($0^\\circ < C < 90^\\circ$) nên $\\widehat{C} = 30^\\circ$."
+    },
+    {
+      "id": 4,
+      "skill": "Kỹ năng mô hình hóa thực tế và áp dụng định lý Sin tính chiều cao cây trên sườn dốc.",
+      "question": "Câu 4 (Vận dụng thực tế đo chiều cao). Một cây cổ thụ mọc thẳng đứng bên lề một con dốc có độ dốc $10^\\circ$ so với phương nằm ngang. Từ một điểm dưới chân dốc cách gốc cây $31\\text{ m}$, người ta nhìn thấy đỉnh ngọn cây dưới một góc $40^\\circ$ so với phương nằm ngang. Tính chiều cao của cây (làm tròn đến hàng phần mười theo đơn vị mét).",
+      "answer_display": "20,2 m",
+      "acceptable": [
+        "20,2",
+        "20.2",
+        "20,2 m",
+        "20.2 m",
+        "20,2m",
+        "20.2m",
+        "20,23",
+        "20.23"
+      ],
+      "explanation": "Gọi $A$ là điểm quan sát dưới chân dốc, $B$ là gốc cây, $C$ là ngọn cây ($AB = 31\\text{ m}$).<br>• Góc tạo bởi sườn dốc và phương ngang là $10^\\circ$, góc nhìn đỉnh ngọn cây là $40^\\circ \\implies \\widehat{BAC} = 40^\\circ - 10^\\circ = 30^\\circ$.<br>• Vì cây mọc thẳng đứng vuông góc với phương nằm ngang, góc tạo bởi tia ngắm $AC$ và cây là $\\widehat{BCA} = 90^\\circ - 40^\\circ = 50^\\circ$.<br>• Áp dụng định lý Sin trong tam giác $ABC$:<br>$$\\dfrac{BC}{\\sin \\widehat{BAC}} = \\dfrac{AB}{\\sin \\widehat{BCA}} \\iff \\dfrac{BC}{\\sin 30^\\circ} = \\dfrac{31}{\\sin 50^\\circ}$$<br>$$\\implies BC = \\dfrac{31 \\cdot \\sin 30^\\circ}{\\sin 50^\\circ} = \\dfrac{15,5}{\\sin 50^\\circ} \\approx 20,23\\text{ m} \\approx 20,2\\text{ m}$$"
+    },
+    {
+      "id": 5,
+      "skill": "Kỹ năng vận dụng định lý Cosin giải bài toán thực tế tính khoảng cách giữa hai tàu chuyển động.",
+      "question": "Câu 5 (Vận dụng thực tế khoảng cách chuyển động). Hai tàu thủy cùng xuất phát từ một vị trí $A$, đi thẳng theo hai hướng tạo với nhau một góc $60^\\circ$. Tàu thứ nhất chạy với vận tốc $30\\text{ km/h}$, tàu thứ hai chạy với vận tốc $40\\text{ km/h}$. Hỏi sau $2$ giờ hai tàu cách nhau bao nhiêu ki-lô-mét?",
+      "answer_display": "20√13 km (xấp xỉ 72,1 km)",
+      "acceptable": [
+        "20\\sqrt{13}",
+        "20sqrt(13)",
+        "20 căn 13",
+        "20can13",
+        "\\sqrt{5200}",
+        "sqrt(5200)",
+        "can 5200",
+        "72,1",
+        "72.1",
+        "72,1 km",
+        "72.1 km",
+        "72,11",
+        "72.11"
+      ],
+      "explanation": "Gọi vị trí xuất phát là $A$, vị trí tàu 1 sau 2 giờ là $B$, vị trí tàu 2 sau 2 giờ là $C$.<br>• Quãng đường tàu thứ nhất: $AB = 30 \\cdot 2 = 60\\text{ km}$.<br>• Quãng đường tàu thứ hai: $AC = 40 \\cdot 2 = 80\\text{ km}$.<br>• Góc giữa hai hướng đi là $\\widehat{A} = 60^\\circ$.<br>Khoảng cách giữa hai tàu sau 2 giờ là độ dài đoạn thẳng $BC$, theo định lý Cosin:<br>$$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos 60^\\circ = 60^2 + 80^2 - 2 \\cdot 60 \\cdot 80 \\cdot 0,5$$<br>$$= 3600 + 6400 - 4800 = 5200$$<br>$$\\implies BC = \\sqrt{5200} = 20\\sqrt{13} \\approx 72,11\\text{ km} \\approx 72,1\\text{ km}$$"
+    }
+  ]
+};
+
+    let userAnswers = {
+      part1: {},
+      part2: {},
+      part3: {}
+    };
+
+    let isSubmitted = false;
+    let isSolutionsVisible = true; // Solution mode: BAT
+    let timerSeconds = 45 * 60;
+    let timerInterval = null;
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
+    // TIMER
+    function startTimer() {
+      const timerDisplay = document.getElementById('quizTimer');
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert('Hết giờ làm bài! Hệ thống sẽ tự động nộp bài.');
+          document.getElementById('btn-nop-bai').click();
+          return;
+        }
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerDisplay.textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    // RENDER QUIZ
+    function renderQuiz() {
+      // 1. Phần I: Trắc nghiệm 4 lựa chọn
+      const p1Container = document.getElementById('part1Container');
+      const palP1 = document.getElementById('palPart1');
+      p1Container.innerHTML = '';
+      palP1.innerHTML = '';
+
+      quiz.part1.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = `card-p1-${q.id}`;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="q-badge">Câu ${q.id}</span>
+              <span class="q-badge q-badge-score">0.3 điểm</span>
+            </div>
+            <span class="q-skill">${q.skill}</span>
+          </div>
+          <div class="q-title">${q.question}</div>
+          <div class="options-grid">
+            ${q.options.map(opt => `
+              <button class="option-btn" data-qid="${q.id}" data-key="${opt.key}">
+                <span class="option-key">${opt.key}</span>
+                <span class="option-text">${opt.text}</span>
+              </button>
+            `).join('')}
+          </div>
+          <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-p1-${q.id}">
+            <div class="sol-title">💡 Lời giải chi tiết & Đáp án: Phương án ${q.correct}</div>
+            <div class="sol-body">${q.explanation}</div>
+          </div>
+        `;
+        p1Container.appendChild(card);
+
+        // Palette item
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-p1-${q.id}`;
+        palBtn.textContent = q.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palP1.appendChild(palBtn);
+      });
+
+      // 2. Phần II: Đúng - Sai
+      const p2Container = document.getElementById('part2Container');
+      const palP2 = document.getElementById('palPart2');
+      p2Container.innerHTML = '';
+      palP2.innerHTML = '';
+
+      quiz.part2.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = `card-p2-${q.id}`;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="q-badge" style="background:#EEF2FB; color:#182A78; border-color:#CCD8F5;">Câu ${q.id} (Đúng/Sai)</span>
+              <span class="q-badge q-badge-score">Tối đa 1.0 điểm</span>
+            </div>
+            <span class="q-skill">${q.skill}</span>
+          </div>
+          <div class="q-title">${q.context}</div>
+          <table class="tf-table">
+            ${q.items.map(it => `
+              <tr class="tf-row">
+                <td class="tf-label">${it.label})</td>
+                <td class="tf-text">${it.text}</td>
+                <td class="tf-actions">
+                  <div class="tf-btn-group">
+                    <button class="tf-btn" id="tf-btn-${q.id}-${it.label}-true" data-qid="${q.id}" data-item="${it.label}" data-val="true">Đ</button>
+                    <button class="tf-btn" id="tf-btn-${q.id}-${it.label}-false" data-qid="${q.id}" data-item="${it.label}" data-val="false">S</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </table>
+          <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-p2-${q.id}">
+            <div class="sol-title">💡 Lời giải chi tiết Phần II - Câu ${q.id}:</div>
+            <div class="sol-body">
+              ${q.items.map(it => `
+                <div style="margin-bottom: 6px;">
+                  <b>${it.label}) [${it.correct ? '<span style="color:var(--success);">ĐÚNG</span>' : '<span style="color:var(--danger);">SAI</span>'}]:</b> ${it.explanation}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        p2Container.appendChild(card);
+
+        // Palette item
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-p2-${q.id}`;
+        palBtn.textContent = 'II.' + q.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palP2.appendChild(palBtn);
+      });
+
+      // 3. Phần III: Trả lời ngắn
+      const p3Container = document.getElementById('part3Container');
+      const palP3 = document.getElementById('palPart3');
+      p3Container.innerHTML = '';
+      palP3.innerHTML = '';
+
+      quiz.part3.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = `card-p3-${q.id}`;
+
+        card.innerHTML = `
+          <div class="q-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="q-badge" style="background:#FEF2F2; color:#B91C1C; border-color:#FECACA;">Câu ${q.id} (Trả lời ngắn)</span>
+              <span class="q-badge q-badge-score">0.6 điểm</span>
+            </div>
+            <span class="q-skill">${q.skill}</span>
+          </div>
+          <div class="q-title">${q.question}</div>
+          <div class="sa-box">
+            <label style="font-weight: 700; font-size: 13.5px;">Đáp số:</label>
+            <input type="text" class="sa-input" id="sa-input-${q.id}" placeholder="Nhập kết quả hoặc biểu thức..." data-qid="${q.id}">
+            <span class="sa-feedback" id="sa-fb-${q.id}"></span>
+          </div>
+          <div class="solution-box ${isSolutionsVisible ? '' : 'hide-sol'}" id="sol-p3-${q.id}">
+            <div class="sol-title">💡 Lời giải & Đáp số chuẩn: ${q.answer_display}</div>
+            <div class="sol-body">${q.explanation}</div>
+          </div>
+        `;
+        p3Container.appendChild(card);
+
+        // Palette item
+        const palBtn = document.createElement('button');
+        palBtn.className = 'pal-btn';
+        palBtn.id = `pal-btn-p3-${q.id}`;
+        palBtn.textContent = 'III.' + q.id;
+        palBtn.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth' });
+        });
+        palP3.appendChild(palBtn);
+      });
+
+      setupInteractions();
+      updateProgress();
+    }
+
+    // INTERACTION HANDLERS
+    function setupInteractions() {
+      // Part 1 Clicks
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (isSubmitted) return;
+          const qid = this.dataset.qid;
+          const key = this.dataset.key;
+
+          const card = document.getElementById(`card-p1-${qid}`);
+          card.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+
+          userAnswers.part1[qid] = key;
+          document.getElementById(`pal-btn-p1-${qid}`).classList.add('answered');
+          updateProgress();
+        });
+      });
+
+      // Part 2 Clicks
+      document.querySelectorAll('.tf-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (isSubmitted) return;
+          const qid = this.dataset.qid;
+          const item = this.dataset.item;
+          const val = this.dataset.val === 'true';
+
+          const btnT = document.getElementById(`tf-btn-${qid}-${item}-true`);
+          const btnF = document.getElementById(`tf-btn-${qid}-${item}-false`);
+
+          if (val) {
+            btnT.classList.add('selected-t');
+            btnF.classList.remove('selected-f');
+          } else {
+            btnF.classList.add('selected-f');
+            btnT.classList.remove('selected-t');
+          }
+
+          if (!userAnswers.part2[qid]) userAnswers.part2[qid] = {};
+          userAnswers.part2[qid][item] = val;
+
+          // Check if all 4 statements of question are answered
+          if (Object.keys(userAnswers.part2[qid]).length === 4) {
+            document.getElementById(`pal-btn-p2-${qid}`).classList.add('answered');
+          }
+          updateProgress();
+        });
+      });
+
+      // Part 3 Inputs
+      document.querySelectorAll('.sa-input').forEach(inp => {
+        inp.addEventListener('input', function() {
+          if (isSubmitted) return;
+          const qid = this.dataset.qid;
+          const val = this.value.trim();
+
+          userAnswers.part3[qid] = val;
+          const palBtn = document.getElementById(`pal-btn-p3-${qid}`);
+          if (val) {
+            palBtn.classList.add('answered');
+          } else {
+            palBtn.classList.remove('answered');
+          }
+          updateProgress();
+        });
+      });
+    }
+
+    // UPDATE PROGRESS BAR
+    function updateProgress() {
+      let answeredCount = 0;
+      const total = 10 + 4 + 5; // 19 questions
+
+      // Part 1
+      answeredCount += Object.keys(userAnswers.part1).length;
+      // Part 2
+      quiz.part2.forEach(q => {
+        if (userAnswers.part2[q.id] && Object.keys(userAnswers.part2[q.id]).length === 4) {
+          answeredCount++;
+        }
+      });
+      // Part 3
+      quiz.part3.forEach(q => {
+        if (userAnswers.part3[q.id] && userAnswers.part3[q.id].trim() !== '') {
+          answeredCount++;
+        }
+      });
+
+      const pct = Math.round((answeredCount / total) * 100);
+
+      document.getElementById('progressText').textContent = `${answeredCount}/${total}`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+    }
+
+    // CHẤM ĐIỂM
+    function normalizeStr(s) {
+      return (s || '').toLowerCase()
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.')
+        .replace(/độ|deg|°|m|mét|km|cm|cm\^2|cm2/g, '')
+        .replace(/\$/g, '')
+        .replace(/\\/g, '');
+    }
+
+    function chamDiemBaiThi() {
+      isSubmitted = true;
+      if (timerInterval) clearInterval(timerInterval);
+
+      let scoreP1 = 0;
+      let scoreP2 = 0;
+      let scoreP3 = 0;
+      mang_cau_sai = [];
+
+      // 1. Chấm Phần I (10 câu, mỗi câu 0.3đ)
+      quiz.part1.forEach(q => {
+        const userChoice = userAnswers.part1[q.id];
+        const palBtn = document.getElementById(`pal-btn-p1-${q.id}`);
+        const card = document.getElementById(`card-p1-${q.id}`);
+
+        card.querySelectorAll('.option-btn').forEach(btn => {
+          if (btn.dataset.key === q.correct) {
+            btn.classList.add('graded-correct');
+          } else if (btn.dataset.key === userChoice) {
+            btn.classList.add('graded-incorrect');
+          }
+        });
+
+        if (userChoice === q.correct) {
+          scoreP1 += 0.3;
+          palBtn.classList.add('correct');
+        } else {
+          palBtn.classList.add('incorrect');
+          mang_cau_sai.push(q.skill);
+        }
+      });
+
+      // 2. Chấm Phần II (4 câu, Đúng-Sai chuẩn: 1 ý 0.1đ, 2 ý 0.25đ, 3 ý 0.5đ, 4 ý 1.0đ)
+      const p2Weights = { 1: 0.1, 2: 0.25, 3: 0.5, 4: 1.0 };
+      quiz.part2.forEach(q => {
+        const userQ = userAnswers.part2[q.id] || {};
+        let correctCount = 0;
+        const palBtn = document.getElementById(`pal-btn-p2-${q.id}`);
+
+        q.items.forEach(it => {
+          const userVal = userQ[it.label];
+          const btnT = document.getElementById(`tf-btn-${q.id}-${it.label}-true`);
+          const btnF = document.getElementById(`tf-btn-${q.id}-${it.label}-false`);
+
+          if (it.correct === true) {
+            btnT.classList.add('graded-correct');
+            if (userVal === false) btnF.classList.add('graded-incorrect');
+          } else {
+            btnF.classList.add('graded-correct');
+            if (userVal === true) btnT.classList.add('graded-incorrect');
+          }
+
+          if (userVal === it.correct) {
+            correctCount++;
+          }
+        });
+
+        const qScore = p2Weights[correctCount] || 0;
+        scoreP2 += qScore;
+
+        if (correctCount === 4) {
+          palBtn.classList.add('correct');
+        } else {
+          palBtn.classList.add('incorrect');
+          mang_cau_sai.push(q.skill);
+        }
+      });
+
+      // 3. Chấm Phần III (5 câu, mỗi câu 0.6đ)
+      quiz.part3.forEach(q => {
+        const userVal = normalizeStr(userAnswers.part3[q.id]);
+        const palBtn = document.getElementById(`pal-btn-p3-${q.id}`);
+        const fb = document.getElementById(`sa-fb-${q.id}`);
+        const input = document.getElementById(`sa-input-${q.id}`);
+
+        const isCorrect = q.acceptable.some(acc => normalizeStr(acc) === userVal);
+
+        if (isCorrect) {
+          scoreP3 += 0.6;
+          palBtn.classList.add('correct');
+          fb.textContent = '✓ Chính xác (+0.6đ)';
+          fb.className = 'sa-feedback correct';
+          input.style.borderColor = 'var(--success)';
+        } else {
+          palBtn.classList.add('incorrect');
+          fb.textContent = `✗ Sai (Đáp án: ${q.answer_display})`;
+          fb.className = 'sa-feedback incorrect';
+          input.style.borderColor = 'var(--danger)';
+          mang_cau_sai.push(q.skill);
+        }
+      });
+
+      // Tổng điểm (thang 10)
+      diem_so = Math.round((scoreP1 + scoreP2 + scoreP3) * 10) / 10;
+
+      // Cập nhật UI Modal
+      document.getElementById('modalScore').textContent = diem_so.toFixed(1);
+      document.getElementById('scoreP1').textContent = `${scoreP1.toFixed(1)} / 3.0`;
+      document.getElementById('scoreP2').textContent = `${scoreP2.toFixed(2)} / 4.0`;
+      document.getElementById('scoreP3').textContent = `${scoreP3.toFixed(1)} / 3.0`;
+
+      let gradeTitle = "XUẤT SẮC!";
+      let gradeSub = "Kiến thức Hệ thức lượng trong tam giác rất vững vàng!";
+      if (diem_so < 5.0) {
+        gradeTitle = "CẦN CỐ GẮNG HƠN!";
+        gradeSub = "Em hãy xem lại các chuyên đề sai sót phía dưới và ôn lại các định lý Sin, Cosin nhé.";
+      } else if (diem_so < 8.0) {
+        gradeTitle = "KẾT QUẢ TỐT!";
+        gradeSub = "Cần cẩn thận hơn ở bài toán mô hình thực tế và biến đổi hệ thức lượng tam giác.";
+      }
+
+      const skillsBox = document.getElementById('modalSkillsMissed');
+      if (mang_cau_sai.length > 0) {
+        skillsBox.innerHTML = '<b>Kỹ năng cần ôn luyện thêm:</b><ul style="padding-left: 18px; margin-top: 4px;">' +
+          [...new Set(mang_cau_sai)].map(s => `<li>${s}</li>`).join('') + '</ul>';
+      } else {
+        skillsBox.innerHTML = '<b style="color: var(--success);">Đỉnh cao! Em không làm sai bất kỳ câu hỏi nào.</b>';
+      }
+
+      document.getElementById('modalGradeText').textContent = gradeTitle;
+      document.getElementById('modalSubText').textContent = gradeSub;
+      document.getElementById('scoreModal').classList.add('open');
+
+      toggleSolutions(true);
+    }
+
+    // TÍCH HỢP HỆ THỐNG CHẤM ĐIỂM TỰ ĐỘNG - N8N
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            chamDiemBaiThi();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        // LẤY THÊM MÃ HS VÀ LỚP
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
+        const tenBaiThi = document.title || "Bài kiểm tra Toán"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,   // Dữ liệu mới cho n8n
+            lop: lopNhom,       // Dữ liệu mới cho n8n
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                // Không cần đợi JSON trả về nữa, chỉ cần Webhook thành công
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    // Nút nộp bài trên Topbar
+    document.getElementById('btnSubmitTop').addEventListener('click', () => {
+      document.getElementById('btn-nop-bai').click();
+    });
+
+    // TOGGLE LỜI GIẢI
+    function toggleSolutions(forceState = null) {
+      if (forceState !== null) {
+        isSolutionsVisible = forceState;
+      } else {
+        isSolutionsVisible = !isSolutionsVisible;
+      }
+
+      const boxes = document.querySelectorAll('.solution-box');
+      boxes.forEach(b => {
+        if (isSolutionsVisible) b.classList.remove('hide-sol');
+        else b.classList.add('hide-sol');
+      });
+
+      const btn = document.getElementById('btnToggleSol');
+      if (btn) {
+        if (isSolutionsVisible) {
+          btn.classList.add('active');
+          btn.textContent = '🙈 Ẩn lời giải';
+        } else {
+          btn.classList.remove('active');
+          btn.textContent = '💡 Hiện lời giải';
+        }
+      }
+    }
+
+    function resetQuiz() {
+      if (!confirm('Bạn có chắc chắn muốn làm lại bài thi từ đầu?')) return;
+      location.reload();
+    }
+
+    // EVENT LISTENERS KHÁC
+    document.getElementById('btnToggleSol').addEventListener('click', () => toggleSolutions());
+    document.getElementById('btnResetQuiz').addEventListener('click', resetQuiz);
+    document.getElementById('btnCloseModal').addEventListener('click', () => {
+      document.getElementById('scoreModal').classList.remove('open');
+    });
+    document.getElementById('btnRetakeModal').addEventListener('click', () => {
+      document.getElementById('scoreModal').classList.remove('open');
+      location.reload();
+    });
+
+    function renderMath() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    // INIT
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+      startTimer();
+      setTimeout(renderMath, 200);
+      setTimeout(renderMath, 800);
+    });
+  </script>
+</body>
+</html>
