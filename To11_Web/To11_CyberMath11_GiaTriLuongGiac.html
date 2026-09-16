@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER MATH 11: Giá Trị Lượng Giác Level Up</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX for high performance math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0a0e17;
+            --card-bg: #121826;
+            --neon-cyan: #00f3ff;
+            --neon-magenta: #ff007f;
+            --neon-purple: #9d00ff;
+            --neon-yellow: #ffe600;
+            --text-color: #e2e8f0;
+            --text-dim: #94a3b8;
+            --success-color: #00ff66;
+            --error-color: #ff3333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(157, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.15) 0%, transparent 40%);
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 880px;
+            background: var(--card-bg);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.3), inset 0 0 15px rgba(0, 243, 255, 0.1);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cyberpunk Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed rgba(0, 243, 255, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        /* Player Profile / Student Info */
+        .player-profile-card {
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+        }
+
+        .profile-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--neon-cyan);
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-inputs-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .cyber-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .cyber-input-group label {
+            font-size: 11px;
+            color: var(--text-dim);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .cyber-input {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: var(--neon-cyan);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .cyber-input:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        }
+
+        /* Status & Level Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .level-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            color: var(--neon-yellow);
+            background: rgba(255, 230, 0, 0.1);
+            border: 1px solid var(--neon-yellow);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-shadow: 0 0 5px var(--neon-yellow);
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #1e293b;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+            box-shadow: 0 0 10px var(--neon-cyan);
+            transition: width 0.4s ease;
+        }
+
+        /* Question Box */
+        .question-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--neon-magenta);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 22px;
+        }
+
+        .question-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .tag-type-single {
+            background: rgba(0, 243, 255, 0.15);
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+        }
+
+        .tag-type-multiple {
+            background: rgba(255, 0, 127, 0.15);
+            color: var(--neon-magenta);
+            border: 1px solid var(--neon-magenta);
+        }
+
+        .tag-skill {
+            background: rgba(157, 0, 255, 0.15);
+            color: var(--neon-purple);
+            border: 1px solid var(--neon-purple);
+        }
+
+        .question-title {
+            font-size: 16px;
+            line-height: 1.65;
+            font-weight: 600;
+        }
+
+        /* Options */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .option-item {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 14px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 15px;
+        }
+
+        .option-item:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 243, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .option-item.selected {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+        }
+
+        .checkbox-custom {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--text-dim);
+            border-radius: 4px;
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: bold;
+            color: transparent;
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+        }
+
+        .option-item.selected .checkbox-custom {
+            border-color: var(--neon-cyan);
+            background: var(--neon-cyan);
+            color: #000;
+        }
+
+        /* Controls & Buttons */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-magenta));
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #00f3ff, #00ff66);
+            color: #000;
+            box-shadow: 0 0 18px rgba(0, 243, 255, 0.5);
+            font-weight: 800;
+        }
+
+        .btn-submit:hover {
+            box-shadow: 0 0 28px rgba(0, 255, 102, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Result View */
+        .result-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .score-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--neon-yellow);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 230, 0, 0.2);
+        }
+
+        .score-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 15px var(--neon-yellow);
+            margin: 10px 0;
+        }
+
+        .rank-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+        }
+
+        .diagnostic-card {
+            text-align: left;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--neon-cyan);
+        }
+
+        .diagnostic-card h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .diagnostic-card ul {
+            padding-left: 20px;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .review-section {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .review-item {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #334155;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .review-item.correct-border {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .review-item.incorrect-border {
+            border-left: 4px solid var(--error-color);
+        }
+
+        .review-explanation {
+            background: #0f172a;
+            padding: 14px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 13.5px;
+            color: var(--text-dim);
+            line-height: 1.65;
+            border: 1px solid #1e293b;
+        }
+
+        @media (max-width: 680px) {
+            .profile-inputs-grid {
+                grid-template-columns: 1fr;
+            }
+            .game-container {
+                padding: 18px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+            .status-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .progress-container {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Cyber Math 11: Level Up</h1>
+        <p>Chuyên đề: Giá Trị Lượng Giác Của Góc Lượng Giác (Mức độ Vận dụng)</p>
+    </div>
+
+    <!-- Student Profile Inputs (BẮT BUỘC 3 TRƯỜNG THEO QUY CHUẨN GEMINI.MD) -->
+    <div class="player-profile-card">
+        <div class="profile-header">
+            <span>⚡</span> PLAYER PROFILE // THÔNG TIN GAME THỦ
+        </div>
+        <div class="profile-inputs-grid">
+            <div class="cyber-input-group">
+                <label for="input-ten">Họ và tên game thủ:</label>
+                <input type="text" id="input-ten" class="cyber-input" placeholder="Nhập họ và tên...">
+            </div>
+            <div class="cyber-input-group">
+                <label for="input-ma-hs">Mã Học Sinh / ID:</label>
+                <input type="text" id="input-ma-hs" class="cyber-input" placeholder="VD: NTH26-001">
+            </div>
+            <div class="cyber-input-group">
+                <label for="input-lop">Lớp / Nhóm:</label>
+                <input type="text" id="input-lop" class="cyber-input" placeholder="VD: 11A1">
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Main Screen -->
+    <div id="quiz-screen">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="level-badge" id="level-badge">LVL 1: TÂN BINH</div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Tiến trình Level Up</span>
+                    <span id="progress-text">Câu 1 / 4</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+            <div style="font-family:'Orbitron'; font-size:13px; color:var(--neon-cyan);" id="xp-text">+0 XP</div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="question-card">
+            <div class="question-meta">
+                <span class="tag" id="tag-type">S-CHOICE</span>
+                <span class="tag tag-skill" id="tag-skill">Mô hình hóa</span>
+            </div>
+            <div class="question-title" id="question-text">Đang tải câu hỏi...</div>
+        </div>
+
+        <!-- Options List -->
+        <div class="options-list" id="options-container"></div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()" disabled>Quay lại</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                <button class="btn btn-submit" id="btn-nop-bai">🚀 Nộp Bài & Chấm Điểm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="result-screen">
+        <div class="score-box">
+            <div>KẾT QUẢ THI ĐẤU CYBER MATH</div>
+            <div class="score-num" id="final-score">0 / 10</div>
+            <div class="rank-title" id="final-rank">Xếp loại: ...</div>
+            <p id="final-stats" style="color: var(--text-dim); font-size: 14px;"></p>
+        </div>
+
+        <!-- Diagnostic Feedback -->
+        <div class="diagnostic-card">
+            <h3>Phân Tích Năng Lực & Khuyến Nghị Ôn Tập</h3>
+            <ul id="diagnostic-list"></ul>
+        </div>
+
+        <!-- Review Answers -->
+        <div class="review-section">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 15px; font-family:'Orbitron';">Chi Tiết Đáp Án & Lời Giải Hình Học</h3>
+            <div id="review-container"></div>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <button class="btn btn-primary" onclick="restartQuiz()">Chơi Lại (Reset Level)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Data Câu hỏi Trắc nghiệm Vận dụng (Đã sửa lỗi cú pháp correctAnswer)
+    const questions = [
+        {
+            id: 1,
+            type: "single",
+            level: "Vận dụng",
+            skill: "Mô hình hóa chuyển động quay",
+            question: "Bài toán 1: Cabin đu quay Sun Wheel có bán kính $R = 30\text{ m}$, tâm $O$ cao $32\text{ m}$ so với mặt đất. Đu quay quay ngược chiều kim đồng hồ. Khi cabin xuất phát từ điểm thấp nhất $A_0(0;-30)$ quay được một góc lượng giác $\alpha = \dfrac{7\pi}{6}\text{ rad}$, chiều cao $h$ của cabin so với mặt đất là bao nhiêu?",
+            options: [
+                "A. $h = 17\text{ m}$",
+                "B. $h = 15\text{ m}$",
+                "C. $h = 47\text{ m}$",
+                "D. $h = 17 + 15\sqrt{3}\text{ m}$"
+            ],
+            correctAnswer: 0,
+            explanation: "Tung độ của cabin trên đường tròn lượng giác gắn tại tâm $O$ là $y = R \cdot \sin\left(\dfrac{7\pi}{6}\right) = 30 \cdot \left(-\dfrac{1}{2}\right) = -15\text{ m}$. Do tâm $O$ cao $32\text{ m}$, chiều cao cabin so với mặt đất là $h = 32 + (-15) = 17\text{ m}$.",
+            reviewHint: "Ôn lại công thức biểu diễn tung độ điểm trên đường tròn lượng giác: $y = R \cdot \sin\alpha$."
+        },
+        {
+            id: 2,
+            type: "multiple",
+            level: "Vận dụng",
+            skill: "Xác định dấu & Hệ thức lượng giác",
+            question: "Bài toán 2: Cho góc lượng giác $\alpha$ thỏa mãn $\dfrac{\pi}{2} < \alpha < \pi$ (góc phần tư thứ II) và $\sin\alpha = \dfrac{3}{5}$. Chọn TẤT CẢ các khẳng định ĐÚNG.",
+            options: [
+                "A. $\cos\alpha = -\dfrac{4}{5}$",
+                "B. $\tan\alpha = -\dfrac{3}{4}$",
+                "C. $\cot\alpha = -\dfrac{4}{3}$",
+                "D. $\sin(\pi - \alpha) = -\dfrac{3}{5}$"
+            ],
+            correctAnswer: [0, 1, 2],
+            explanation: "Vì $\alpha \in \text{QII} \Rightarrow \cos\alpha < 0 \Rightarrow \cos\alpha = -\sqrt{1 - \sin^2\alpha} = -\dfrac{4}{5}$ (A ĐÚNG). Suy ra $\tan\alpha = -\dfrac{3}{4}$ (B ĐÚNG) và $\cot\alpha = -\dfrac{4}{3}$ (C ĐÚNG). Với D: $\sin(\pi - \alpha) = \sin\alpha = +\dfrac{3}{5} \neq -\dfrac{3}{5}$ (D SAI).",
+            reviewHint: "Ghi nhớ bảng dấu lượng giác từng góc phần tư và các công thức góc bù nhau."
+        },
+        {
+            id: 3,
+            type: "single",
+            level: "Vận dụng",
+            skill: "Ứng dụng guồng nước thực tế",
+            question: "Bài toán 3: Guồng nước hình tròn bán kính $R = 2,5\text{ m}$ có tâm $O$ cao hơn mặt nước $0,5\text{ m}$. Tia $OA$ nằm ngang song song mặt nước. Khi gáo nước $M$ ở góc quay lượng giác $\alpha = -\dfrac{\pi}{4}\text{ rad}$, vị trí gáo $M$ so với mặt nước là:",
+            options: [
+                "A. Chìm dưới mặt nước khoảng $1,27\text{ m}$",
+                "B. Nhô cao hơn mặt nước khoảng $1,27\text{ m}$",
+                "C. Chìm dưới mặt nước khoảng $2,27\text{ m}$",
+                "D. Nhô cao hơn mặt nước khoảng $2,27\text{ m}$"
+            ],
+            correctAnswer: 0,
+            explanation: "Tung độ $y_M = 2,5 \cdot \sin\left(-\dfrac{\pi}{4}\right) = 2,5 \cdot \left(-\dfrac{\sqrt{2}}{2}\right) \approx -1,768\text{ m}$. Độ cao so với mặt nước: $h = 0,5 + (-1,768) = -1,268\text{ m} \approx -1,27\text{ m}$ (chìm dưới mặt nước $1,27\text{ m}$).",
+            reviewHint: "Lưu ý chuyển đổi tung độ hình học sang khoảng cách so với mực nước gốc."
+        },
+        {
+            id: 4,
+            type: "multiple",
+            level: "Vận dụng",
+            skill: "Góc lượng giác số đo lớn",
+            question: "Bài toán 4: Xét góc lượng giác $\alpha = \dfrac{11\pi}{4}\text{ rad}$. Chọn TẤT CẢ các phát biểu ĐÚNG.",
+            options: [
+                "A. Điểm biểu diễn góc $\alpha$ thuộc góc phần tư thứ II.",
+                "B. $\cos\alpha = -\dfrac{\sqrt{2}}{2}$",
+                "C. $\tan\alpha = -1$",
+                "D. $\sin\alpha = -\dfrac{\sqrt{2}}{2}$"
+            ],
+            correctAnswer: [0, 1, 2],
+            explanation: "Ta có $\alpha = \dfrac{11\pi}{4} = 2\pi + \dfrac{3\pi}{4}$. Điểm biểu diễn trùng với $\dfrac{3\pi}{4}$ (Góc phần tư II) $\Rightarrow$ A ĐÚNG. $\cos\left(\dfrac{11\pi}{4}\right) = \cos\left(\dfrac{3\pi}{4}\right) = -\dfrac{\sqrt{2}}{2}$ $\Rightarrow$ B ĐÚNG. $\tan\left(\dfrac{11\pi}{4}\right) = -1 \Rightarrow$ C ĐÚNG. $\sin\left(\dfrac{11\pi}{4}\right) = +\dfrac{\sqrt{2}}{2} \neq -\dfrac{\sqrt{2}}{2} \Rightarrow$ D SAI.",
+            reviewHint: "Phân tích góc lớn $\alpha = k2\pi + \alpha_0$ để đưa về góc chuẩn trên đường tròn lượng giác."
+        }
+    ];
+
+    // State Variables
+    let currentQuestion = 0;
+    let userAnswers = {};
+    let isSubmitted = false;
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
+    // JS Logic kiểm tra so khớp mảng cho câu hỏi Multiple Choice
+    function checkMultipleAnswer(userArr, correctArr) {
+        if (!Array.isArray(userArr) || !Array.isArray(correctArr)) return false;
+        if (userArr.length !== correctArr.length) return false;
+        const sortedUser = [...userArr].map(Number).sort((a, b) => a - b);
+        const sortedCorrect = [...correctArr].map(Number).sort((a, b) => a - b);
+        return sortedUser.every((val, index) => val === sortedCorrect[index]);
+    }
+
+    // Render Math via KaTeX
+    function renderMath() {
+        if (window.renderMathInElement) {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });
+        }
+    }
+
+    // Render Question
+    function renderQuestion() {
+        const q = questions[currentQuestion];
+
+        // Progress & Level Badges
+        document.getElementById('progress-text').innerText = `Câu ${currentQuestion + 1} / ${questions.length}`;
+        document.getElementById('progress-fill').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+        document.getElementById('xp-text').innerText = `+${(currentQuestion) * 250} XP`;
+
+        const levelBadge = document.getElementById('level-badge');
+        if (currentQuestion < 2) levelBadge.innerText = "LVL 1: TÂN BINH";
+        else if (currentQuestion < 3) levelBadge.innerText = "LVL 2: CAO THỦ";
+        else levelBadge.innerText = "LVL 3: ĐẠI SƯ";
+
+        // Tags
+        const tagType = document.getElementById('tag-type');
+        if (q.type === 'single') {
+            tagType.innerText = "1 ĐÁP ÁN ĐÚNG";
+            tagType.className = "tag tag-type-single";
+        } else {
+            tagType.innerText = "NHIỀU ĐÁP ÁN ĐÚNG";
+            tagType.className = "tag tag-type-multiple";
+        }
+        document.getElementById('tag-skill').innerText = q.skill;
+
+        // Question Text
+        document.getElementById('question-text').innerHTML = q.question;
+
+        // Options
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+
+        const currentAns = userAnswers[currentQuestion];
+
+        q.options.forEach((optText, optIndex) => {
+            const isSelected = q.type === 'single'
+                ? currentAns === optIndex
+                : (Array.isArray(currentAns) && currentAns.includes(optIndex));
+
+            const div = document.createElement('div');
+            div.className = `option-item ${isSelected ? 'selected' : ''}`;
+            div.onclick = () => selectOption(optIndex);
+
+            const checkbox = document.createElement('div');
+            checkbox.className = 'checkbox-custom';
+            checkbox.innerText = isSelected ? '✓' : '';
+
+            const label = document.createElement('div');
+            label.innerHTML = optText;
+
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            container.appendChild(div);
+        });
+
+        // Prev/Next buttons
+        document.getElementById('btn-prev').disabled = (currentQuestion === 0);
+        const btnNext = document.getElementById('btn-next');
+        if (currentQuestion === questions.length - 1) {
+            btnNext.style.display = "none";
+        } else {
+            btnNext.style.display = "inline-flex";
+            btnNext.innerText = "Tiếp theo";
+        }
+
+        renderMath();
+    }
+
+    // Select Option
+    function selectOption(optIndex) {
+        if (isSubmitted) return;
+        const q = questions[currentQuestion];
+        if (q.type === 'single') {
+            userAnswers[currentQuestion] = optIndex;
+        } else {
+            if (!Array.isArray(userAnswers[currentQuestion])) {
+                userAnswers[currentQuestion] = [];
+            }
+            const idx = userAnswers[currentQuestion].indexOf(optIndex);
+            if (idx > -1) {
+                userAnswers[currentQuestion].splice(idx, 1);
+            } else {
+                userAnswers[currentQuestion].push(optIndex);
+            }
+        }
+        renderQuestion();
+    }
+
+    function nextQuestion() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            renderQuestion();
+        } else {
+            document.getElementById('btn-nop-bai').click();
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            renderQuestion();
+        }
+    }
+
+    // Submit & Grade Logic
+    function submitQuiz() {
+        isSubmitted = true;
+        let correctCount = 0;
+        mang_cau_sai = [];
+
+        questions.forEach((q, idx) => {
+            const uAns = userAnswers[idx];
+            let isCorrect = false;
+
+            if (q.type === 'single') {
+                isCorrect = (uAns === q.correctAnswer);
+            } else {
+                isCorrect = checkMultipleAnswer(uAns, q.correctAnswer);
+            }
+
+            if (isCorrect) {
+                correctCount++;
+            } else {
+                mang_cau_sai.push(q.skill);
+            }
+        });
+
+        diem_so = Math.round(((correctCount / questions.length) * 10) * 10) / 10;
+
+        // Hide Quiz, Show Results
+        document.getElementById('quiz-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+
+        document.getElementById('final-score').innerText = `${diem_so.toFixed(1)} / 10`;
+        document.getElementById('final-stats').innerText = `Đúng ${correctCount} / ${questions.length} câu (${(correctCount/questions.length*100).toFixed(0)}%) - Tổng XP nhận được: ${correctCount * 250} XP`;
+
+        // Rank Title
+        const rankEl = document.getElementById('final-rank');
+        if (diem_so >= 9) rankEl.innerText = "Xếp loại: XUẤT SẮC 🌟 (ĐẠI SƯ CYBER MATH)";
+        else if (diem_so >= 7) rankEl.innerText = "Xếp loại: TỐT ⚡ (CAO THỦ LƯỢNG GIÁC)";
+        else if (diem_so >= 5) rankEl.innerText = "Xếp loại: ĐẠT 👍 (TÂN BINH TIỀM NĂNG)";
+        else rankEl.innerText = "Xếp loại: CẦN ÔN TẬP THÊM ⚠️ (CẦN TĂNG CƯỜNG DẠNG VẬN DỤNG)";
+
+        // Diagnostics
+        const diagList = document.getElementById('diagnostic-list');
+        diagList.innerHTML = '';
+        if (mang_cau_sai.length === 0) {
+            diagList.innerHTML = `<li style="color: var(--success-color); font-weight: bold;">Chúc mừng! Bạn đã làm chủ hoàn hảo 100% kỹ năng Vận dụng Giá trị lượng giác!</li>`;
+        } else {
+            [...new Set(mang_cau_sai)].forEach(skill => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span style="color: var(--neon-magenta); font-weight: bold;">Cần củng cố:</span> ${skill}`;
+                diagList.appendChild(li);
+            });
+        }
+
+        // Detailed Review
+        const reviewContainer = document.getElementById('review-container');
+        reviewContainer.innerHTML = '';
+
+        questions.forEach((q, idx) => {
+            const uAns = userAnswers[idx];
+            let isCorrect = false;
+
+            if (q.type === 'single') isCorrect = (uAns === q.correctAnswer);
+            else isCorrect = checkMultipleAnswer(uAns, q.correctAnswer);
+
+            const item = document.createElement('div');
+            item.className = `review-item ${isCorrect ? 'correct-border' : 'incorrect-border'}`;
+
+            let userAnsStr = "";
+            if (q.type === 'single') {
+                userAnsStr = uAns !== undefined ? q.options[uAns] : "<i style='color:gray;'>Bỏ trống</i>";
+            } else {
+                userAnsStr = (Array.isArray(uAns) && uAns.length > 0)
+                    ? uAns.map(i => q.options[i]).join("; ")
+                    : "<i style='color:gray;'>Bỏ trống</i>";
+            }
+
+            let correctAnsStr = "";
+            if (q.type === 'single') {
+                correctAnsStr = q.options[q.correctAnswer];
+            } else {
+                correctAnsStr = q.correctAnswer.map(i => q.options[i]).join("; ");
+            }
+
+            item.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 8px;">
+                    ${isCorrect ? '<span style="color:var(--success-color);">[ĐÚNG]</span>' : '<span style="color:var(--error-color);">[SAI]</span>'} Câu ${idx + 1}: ${q.skill}
+                </div>
+                <div style="font-size: 14px; margin-bottom: 8px;">${q.question}</div>
+                <div style="font-size: 13px;"><strong>Lựa chọn của bạn:</strong> ${userAnsStr}</div>
+                <div style="font-size: 13px; color: var(--neon-cyan);"><strong>Đáp án chuẩn:</strong> ${correctAnsStr}</div>
+                <div class="review-explanation">
+                    <strong style="color:var(--text-color);">Lời giải bản chất hình học:</strong><br>${q.explanation}<br>
+                    <span style="color: var(--neon-yellow);">💡 Gợi ý ôn tập: ${q.reviewHint}</span>
+                </div>
+            `;
+            reviewContainer.appendChild(item);
+        });
+
+        renderMath();
+    }
+
+    function restartQuiz() {
+        currentQuestion = 0;
+        userAnswers = {};
+        isSubmitted = false;
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+        renderQuestion();
+    }
+
+    // INTEGRATE N8N WEBHOOK (BẮT BUỘC THEO GEMINI.MD)
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            submitQuiz();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
+        const tenBaiThi = document.title || "Cyber Math 11: Giá Trị Lượng Giác"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,
+            lop: lopNhom,
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    // Initialize Quiz on load
+    window.addEventListener('DOMContentLoaded', () => {
+        renderQuestion();
+        setTimeout(renderMath, 200);
+        setTimeout(renderMath, 800);
+    });
+</script>
+</body>
+</html>
