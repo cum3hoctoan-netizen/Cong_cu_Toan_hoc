@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHIẾU HỌC TẬP & WEB QUIZ TOÁN 11 V2.0: GIÁ TRỊ LƯỢNG GIÁC</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #182A78;
+      --primary-hover: #111e56;
+      --primary-light: #EEF2FB;
+      --primary-border: #CCD8F5;
+
+      --accent: #C62828;
+      --accent-hover: #A31D1D;
+      --accent-light: #FEF2F2;
+      --accent-border: #FECACA;
+
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-sub: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+
+      --success: #15803D;
+      --success-light: #DCFCE7;
+      --danger: #B91C1C;
+      --danger-light: #FEE2E2;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(24, 42, 120, 0.08);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 24px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Top Utility Bar */
+    .top-bar {
+      width: 100%;
+      max-width: 980px;
+      background: var(--bg-card);
+      border: 1px solid var(--primary-border);
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vip-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #FFF;
+      background: linear-gradient(135deg, var(--accent), #E53935);
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(198, 40, 40, 0.3);
+    }
+
+    .timer-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--primary-border);
+    }
+
+    .top-bar-right {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid var(--primary-border);
+      background: #FFF;
+      color: var(--primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-action.primary {
+      background: var(--primary);
+      color: #FFF;
+      border-color: var(--primary);
+    }
+
+    .btn-action.primary:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Main Quiz Canvas */
+    .quiz-container {
+      width: 100%;
+      max-width: 980px;
+      background: var(--bg-card);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 36px 44px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    /* Header */
+    .quiz-header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .quiz-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .quiz-subtitle {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Info Input (3 BẮT BUỘC THEO GEMINI.MD) */
+    .student-info-grid {
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary-border);
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .info-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-group label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .info-group input {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border: 1px solid var(--primary-border);
+      border-radius: 4px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .info-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(24, 42, 120, 0.15);
+    }
+
+    /* Section Divider Header */
+    .section-banner {
+      background: linear-gradient(90deg, var(--primary), #2A439B);
+      color: #FFF;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 28px 0 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-banner.accent {
+      background: linear-gradient(90deg, var(--accent), #D32F2F);
+    }
+
+    /* Question Cards */
+    .q-card {
+      background: #FFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .q-card:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .q-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .q-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .q-skill {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .q-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+
+    /* Two-col layout for diagram questions */
+    .q-layout-2col {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .geo-diagram-card {
+      background: #FAFAFA;
+      border: 1px solid var(--primary-border);
+      border-radius: 6px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .geo-svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* MCQ 4 Options */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 14px;
+      margin-bottom: 12px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: #FFF;
+      font-size: 14.5px;
+    }
+
+    .option-item:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .option-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 700;
+    }
+
+    .option-item.is-correct {
+      border-color: var(--success) !important;
+      background: var(--success-light) !important;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .option-item.is-wrong {
+      border-color: var(--danger) !important;
+      background: var(--danger-light) !important;
+      color: var(--danger);
+    }
+
+    /* True/False Table */
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 14.5px;
+    }
+
+    .tf-table th, .tf-table td {
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+    }
+
+    .tf-table th {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      text-align: center;
+      font-size: 12.5px;
+      text-transform: uppercase;
+    }
+
+    .tf-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: all 0.15s ease;
+      background: #FFF;
+      user-select: none;
+    }
+
+    .tf-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    .tf-btn.active {
+      background: var(--primary);
+      color: #FFF;
+      border-color: var(--primary);
+    }
+
+    .tf-btn.state-correct {
+      background: var(--success) !important;
+      color: #FFF !important;
+      border-color: var(--success) !important;
+    }
+
+    .tf-btn.state-wrong {
+      background: var(--danger) !important;
+      color: #FFF !important;
+      border-color: var(--danger) !important;
+    }
+
+    /* Short Answer Box */
+    .short-ans-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      padding: 10px 16px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .short-ans-input {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border: 1.5px solid var(--primary-border);
+      border-radius: 4px;
+      outline: none;
+      width: 180px;
+      color: var(--primary);
+    }
+
+    .short-ans-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(24, 42, 120, 0.2);
+    }
+
+    /* Solution Box */
+    .sol-card {
+      margin-top: 14px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      border-left: 4px solid var(--primary);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 14px;
+      display: block;
+    }
+
+    .sol-card.hide-sol {
+      display: none;
+    }
+
+    .sol-title {
+      font-weight: 700;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Bottom Action Bar */
+    .bottom-bar {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-submit {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #FFF;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Modal Kết Quả */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #FFFFFF;
+      width: 90%;
+      max-width: 540px;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .modal-score-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #FFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+      box-shadow: 0 4px 15px rgba(24, 42, 120, 0.3);
+    }
+
+    .modal-score-val {
+      font-size: 30px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1;
+    }
+
+    .modal-score-max {
+      font-size: 11px;
+      opacity: 0.8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .modal-skills {
+      text-align: left;
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 13px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    @media print {
+      body { background: #FFF !important; padding: 0 !important; }
+      .top-bar, .bottom-bar, .modal-overlay { display: none !important; }
+      .quiz-container { max-width: 100% !important; border: none !important; box-shadow: none !important; padding: 8mm 10mm !important; }
+      .sol-card { display: block !important; }
+    }
+
+    @media (max-width: 768px) {
+      .student-info-grid { grid-template-columns: 1fr; }
+      .options-grid { grid-template-columns: 1fr; }
+      .q-layout-2col { grid-template-columns: 1fr; }
+      .quiz-container { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Functional Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span class="vip-badge">VVIP ELITE EDITION</span>
+      <div class="timer-badge" id="quizTimer">45:00</div>
+    </div>
+    <div class="top-bar-right">
+      <button class="btn-action" id="btnToggleSol" onclick="toggleSolutions()">💡 Hiện/Ẩn Lời giải</button>
+      <button class="btn-action" onclick="window.print()">🖨️ In đề A4</button>
+      <button class="btn-action primary" onclick="document.getElementById('btn-nop-bai').click()">📝 Nộp bài</button>
+    </div>
+  </div>
+
+  <!-- Main Quiz Canvas -->
+  <main class="quiz-container">
+
+    <!-- Header Section -->
+    <header class="quiz-header">
+      <h1 class="quiz-title">PHIẾU HỌC TẬP & WEB QUIZ TOÁN 11 V2.0: GIÁ TRỊ LƯỢNG GIÁC</h1>
+      <h2 class="quiz-subtitle">Chuyên đề Nâng cao GDPT 2018 • Nhóm VVIP (100% Vận dụng & Vận dụng cao)</h2>
+    </header>
+
+    <!-- Student Info Inputs (BẮT BUỘC 3 TRƯỜNG THEO GEMINI.MD) -->
+    <section class="student-info-grid">
+      <div class="info-group">
+        <label for="input-ten">1. Họ và tên học sinh:</label>
+        <input type="text" id="input-ten" placeholder="Nhập họ và tên...">
+      </div>
+      <div class="info-group">
+        <label for="input-ma-hs">2. Mã Học Sinh:</label>
+        <input type="text" id="input-ma-hs" placeholder="VD: NTH26-001">
+      </div>
+      <div class="info-group">
+        <label for="input-lop">3. Lớp / Nhóm:</label>
+        <input type="text" id="input-lop" placeholder="VD: 11A1">
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN
+         ========================================== -->
+    <div class="section-banner">
+      <span>Phần I. Trắc nghiệm 4 lựa chọn (Mức độ Vận dụng - Vận dụng cao)</span>
+      <span style="font-size:12px; font-weight:600;">3.0 Điểm (1.5đ / câu)</span>
+    </div>
+
+    <!-- Câu 1 -->
+    <article class="q-card" id="q-card-1">
+      <div class="q-top-row">
+        <span class="q-badge">Câu 1 • 1.5 Điểm</span>
+        <span class="q-skill">Biến đổi góc lượng giác số đo lớn & tính giá trị biểu thức</span>
+      </div>
+      <div class="q-text">Câu 1. Tính giá trị của biểu thức $A = \cos\left(\dfrac{11\pi}{4}\right) + \tan(-675^\circ) - \sin\left(-\dfrac{7\pi}{6}\right)$.</div>
+      <div class="options-grid">
+        
+          <label class="option-item" id="opt-1-A">
+            <input type="radio" name="q1" value="A" onchange="selectMcq(1, 'A')" style="display:none;">
+            <b>A.</b> <span>$A = \dfrac{1 - \sqrt{2}}{2}$</span>
+          </label>
+        
+          <label class="option-item" id="opt-1-B">
+            <input type="radio" name="q1" value="B" onchange="selectMcq(1, 'B')" style="display:none;">
+            <b>B.</b> <span>$A = 1 + \dfrac{\sqrt{2}}{2}$</span>
+          </label>
+        
+          <label class="option-item" id="opt-1-C">
+            <input type="radio" name="q1" value="C" onchange="selectMcq(1, 'C')" style="display:none;">
+            <b>C.</b> <span>$A = -\dfrac{\sqrt{2}}{2}$</span>
+          </label>
+        
+          <label class="option-item" id="opt-1-D">
+            <input type="radio" name="q1" value="D" onchange="selectMcq(1, 'D')" style="display:none;">
+            <b>D.</b> <span>$A = \dfrac{1 + 2\sqrt{2}}{2}$</span>
+          </label>
+        
+      </div>
+      <div class="sol-card" id="sol-1">
+        <div class="sol-title">📖 Lời giải chi tiết câu 1:</div>
+        <div><b>Giải chi tiết Câu 1:</b><br>• $\cos\left(\dfrac{11\pi}{4}\right) = \cos\left(2\pi + \dfrac{3\pi}{4}\right) = \cos\left(\dfrac{3\pi}{4}\right) = \cos\left(\pi - \dfrac{\pi}{4}\right) = -\cos\left(\dfrac{\pi}{4}\right) = -\dfrac{\sqrt{2}}{2}$.<br>• $\tan(-675^\circ) = \tan(45^\circ - 2 \cdot 360^\circ) = \tan(45^\circ) = 1$.<br>• $\sin\left(-\dfrac{7\pi}{6}\right) = -\sin\left(\dfrac{7\pi}{6}\right) = -\sin\left(\pi + \dfrac{\pi}{6}\right) = -\left(-\sin\dfrac{\pi}{6}\right) = \dfrac{1}{2}$.<br>Thay vào biểu thức $A$:<br>$$A = -\frac{\sqrt{2}}{2} + 1 - \frac{1}{2} = \frac{1}{2} - \frac{\sqrt{2}}{2} = \frac{1 - \sqrt{2}}{2}.$$<br><b>Chọn đáp án A.</b></div>
+      </div>
+    </article>
+
+    <!-- Câu 2 -->
+    <article class="q-card" id="q-card-2">
+      <div class="q-top-row">
+        <span class="q-badge">Câu 2 • 1.5 Điểm</span>
+        <span class="q-skill">Sử dụng hệ thức lượng giác cơ bản kết hợp xác định dấu trong góc phần tư</span>
+      </div>
+      <div class="q-text">Câu 2. Cho góc lượng giác $\alpha$ thỏa mãn $\tan\alpha + \cot\alpha = -3$ và $\dfrac{\pi}{2} < \alpha < \pi$. Tính giá trị của biểu thức $P = \sin\alpha - \cos\alpha$.</div>
+      <div class="options-grid">
+        
+          <label class="option-item" id="opt-2-A">
+            <input type="radio" name="q2" value="A" onchange="selectMcq(2, 'A')" style="display:none;">
+            <b>A.</b> <span>$P = \sqrt{\dfrac{5}{3}}$</span>
+          </label>
+        
+          <label class="option-item" id="opt-2-B">
+            <input type="radio" name="q2" value="B" onchange="selectMcq(2, 'B')" style="display:none;">
+            <b>B.</b> <span>$P = -\sqrt{\dfrac{5}{3}}$</span>
+          </label>
+        
+          <label class="option-item" id="opt-2-C">
+            <input type="radio" name="q2" value="C" onchange="selectMcq(2, 'C')" style="display:none;">
+            <b>C.</b> <span>$P = \dfrac{\sqrt{3}}{3}$</span>
+          </label>
+        
+          <label class="option-item" id="opt-2-D">
+            <input type="radio" name="q2" value="D" onchange="selectMcq(2, 'D')" style="display:none;">
+            <b>D.</b> <span>$P = -\dfrac{\sqrt{15}}{3}$</span>
+          </label>
+        
+      </div>
+      <div class="sol-card" id="sol-2">
+        <div class="sol-title">📖 Lời giải chi tiết câu 2:</div>
+        <div><b>Giải chi tiết Câu 2:</b><br>Ta có biến đổi hệ thức cơ bản:<br>$$\tan\alpha + \cot\alpha = \frac{\sin\alpha}{\cos\alpha} + \frac{\cos\alpha}{\sin\alpha} = \frac{\sin^2\alpha + \cos^2\alpha}{\sin\alpha\cos\alpha} = \frac{1}{\sin\alpha\cos\alpha} = -3 \implies \sin\alpha\cos\alpha = -\frac{1}{3}.$$<br>Xét bình phương biểu thức $P$:<br>$$P^2 = (\sin\alpha - \cos\alpha)^2 = \sin^2\alpha + \cos^2\alpha - 2\sin\alpha\cos\alpha = 1 - 2\left(-\frac{1}{3}\right) = 1 + \frac{2}{3} = \frac{5}{3}.$$<br>Vì $\dfrac{\pi}{2} < \alpha < \pi$ (góc phần tư thứ II) nên $\sin\alpha > 0$ và $\cos\alpha < 0$.<br>Suy ra: $P = \sin\alpha - \cos\alpha > 0 \implies P = \sqrt{\dfrac{5}{3}} = \dfrac{\sqrt{15}}{3}$.<br><b>Chọn đáp án A.</b></div>
+      </div>
+    </article>
+
+    <!-- ==========================================
+         PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI
+         ========================================== -->
+    <div class="section-banner">
+      <span>Phần II. Trắc nghiệm Đúng / Sai (Phân tích hệ thống & Hình học Oxy)</span>
+      <span style="font-size:12px; font-weight:600;">2.5 Điểm</span>
+    </div>
+
+    <!-- Câu 3 -->
+    <article class="q-card" id="q-card-3">
+      <div class="q-top-row">
+        <span class="q-badge">Câu 3 • 2.5 Điểm</span>
+        <span class="q-skill">Phân tích toàn diện hệ thức lượng giác cơ bản và ý nghĩa hình học Oxy</span>
+      </div>
+      
+      <div class="q-layout-2col">
+        <div>
+          <div class="q-text">Câu 3. Cho góc lượng giác $\alpha$ thỏa mãn $\sin\alpha = \dfrac{3}{5}$ với $\dfrac{\pi}{2} < \alpha < \pi$. Xét tính đúng/sai của các phát biểu sau:</div>
+          <table class="tf-table">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Mệnh đề</th>
+                <th style="width:65px;">Đúng</th>
+                <th style="width:65px;">Sai</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td><b>a)</b> Điểm biểu diễn $M$ của góc $\alpha$ trên đường tròn lượng giác có hoành độ $x_M = -\dfrac{4}{5}$.</td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-a-D" onclick="selectTf('a', 'D')">Đ</span>
+                  </td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-a-S" onclick="selectTf('a', 'S')">S</span>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td><b>b)</b> Giá trị của $\tan\alpha = -\dfrac{3}{4}$ và $\cot\alpha = -\dfrac{4}{3}$.</td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-b-D" onclick="selectTf('b', 'D')">Đ</span>
+                  </td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-b-S" onclick="selectTf('b', 'S')">S</span>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td><b>c)</b> Giá trị biểu thức $T = \sin(\pi - \alpha) + \cos\left(\dfrac{\pi}{2} - \alpha\right) = \dfrac{6}{5}$.</td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-c-D" onclick="selectTf('c', 'D')">Đ</span>
+                  </td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-c-S" onclick="selectTf('c', 'S')">S</span>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td><b>d)</b> Diện tích tam giác $OHM$ vuông tại $H$ (với $H$ là hình chiếu vuông góc của $M$ lên trục $Ox$) bằng $\dfrac{12}{25}$.</td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-d-D" onclick="selectTf('d', 'D')">Đ</span>
+                  </td>
+                  <td style="text-align:center;">
+                    <span class="tf-btn" id="btn-tf-d-S" onclick="selectTf('d', 'S')">S</span>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+
+        <div class="geo-diagram-card">
+          
+<svg viewBox="0 0 320 250" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" class="geo-svg">
+  <defs>
+    <marker id="arrOxy" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#182A78"/>
+    </marker>
+  </defs>
+  <!-- Background -->
+  <rect width="320" height="250" fill="#FFF" rx="6" />
+
+  <!-- Circle Center (160, 125), R = 80 -->
+  <circle cx="160" cy="125" r="80" fill="#F8FAFC" stroke="#182A78" stroke-width="1.8"/>
+
+  <!-- Coordinate Axes Ox, Oy -->
+  <line x1="40" y1="125" x2="280" y2="125" stroke="#182A78" stroke-width="1.3" marker-end="url(#arrOxy)"/>
+  <line x1="160" y1="225" x2="160" y2="25" stroke="#182A78" stroke-width="1.3" marker-end="url(#arrOxy)"/>
+  <text x="284" y="129" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#182A78">x</text>
+  <text x="164" y="22" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#182A78">y</text>
+  <text x="146" y="139" font-family="'JetBrains Mono', monospace" font-size="11" font-style="italic" fill="#64748B">O</text>
+
+  <!-- Point A(1;0) -->
+  <circle cx="240" cy="125" r="3" fill="#182A78"/>
+  <text x="244" y="140" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#182A78">A(1;0)</text>
+
+  <!-- Point M in QII: cos = -4/5 = -0.8 => dx = -64 => x = 96. sin = 3/5 = 0.6 => dy = -48 => y = 77 -->
+  <!-- Triangle OHM -->
+  <polygon points="160,125 96,125 96,77" fill="rgba(198, 40, 40, 0.12)" stroke="#C62828" stroke-width="1.6"/>
+
+  <!-- Right angle square at H(96, 125) -->
+  <rect x="96" y="117" width="8" height="8" fill="none" stroke="#C62828" stroke-width="1"/>
+  <circle cx="100" cy="121" r="1" fill="#C62828"/>
+  <text x="86" y="142" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#C62828">H</text>
+
+  <!-- Hypotenuse OM -->
+  <line x1="160" y1="125" x2="96" y2="77" stroke="#182A78" stroke-width="2"/>
+  <circle cx="96" cy="77" r="4.5" fill="#C62828"/>
+  <text x="40" y="74" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#C62828">M(-4/5; 3/5)</text>
+
+  <!-- Angle arc alpha from Ox to OM -->
+  <path d="M 195 125 A 35 35 0 0 0 132 98" fill="none" stroke="#C62828" stroke-width="1.6" marker-end="url(#arrOxy)"/>
+  <text x="156" y="92" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#C62828">&alpha;</text>
+
+  <!-- Dimension labels -->
+  <text x="120" y="140" font-family="'JetBrains Mono', monospace" font-size="10" fill="#182A78">4/5</text>
+  <text x="74" y="104" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C62828">3/5</text>
+  <text x="134" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748B">R=1</text>
+</svg>
+
+          <div style="font-size:11px; font-style:italic; color:var(--text-muted); margin-top:4px;">Hình học Oxy: Điểm M & tam giác vuông OHM</div>
+        </div>
+      </div>
+
+      <div class="sol-card" id="sol-3">
+        <div class="sol-title">📖 Lời giải chi tiết câu 3:</div>
+        <div><b>Lời giải chi tiết Câu 3:</b><br>• a) <b>ĐÚNG</b>: $x_M = \cos\alpha = -\sqrt{1 - \sin^2\alpha} = -\frac{4}{5}$.<br>• b) <b>ĐÚNG</b>: $\tan\alpha = -\frac{3}{4}$, $\cot\alpha = -\frac{4}{3}$.<br>• c) <b>ĐÚNG</b>: $\sin(\pi - \alpha) = \sin\alpha = \frac{3}{5}$, $\cos(\frac{\pi}{2} - \alpha) = \sin\alpha = \frac{3}{5} \Rightarrow T = \frac{6}{5}$.<br>• d) <b>SAI</b>: $S_{\Delta OHM} = \frac{1}{2} \cdot OH \cdot HM = \frac{1}{2} \cdot \frac{4}{5} \cdot \frac{3}{5} = \frac{6}{25} \neq \frac{12}{25}$.</div>
+      </div>
+    </article>
+
+    <!-- ==========================================
+         PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ)
+         ========================================== -->
+    <div class="section-banner accent">
+      <span>Phần III. Trả lời ngắn (100% Bài toán thực tế Vận dụng cao)</span>
+      <span style="font-size:12px; font-weight:600;">4.5 Điểm (1.5đ / câu)</span>
+    </div>
+
+    <!-- Câu 4: Đu quay Sun Wheel -->
+    <article class="q-card" id="q-card-4">
+      <div class="q-top-row">
+        <span class="q-badge">Câu 4 • 1.5 Điểm</span>
+        <span class="q-skill">Mô hình hóa chuyển động quay của đu quay Sun Wheel trên đường tròn Oxy</span>
+      </div>
+      <div class="q-layout-2col">
+        <div>
+          <div class="q-text">Câu 4. Một cabin của đu quay Sun Wheel có bán kính $R = 30\text{ m}$ quay đều ngược chiều kim đồng hồ. Trục quay $O$ nằm ở độ cao $32\text{ m}$ so với mặt đất. Khi cabin ở vị trí góc lượng giác $\alpha = \dfrac{7\pi}{6}\text{ rad}$ trên đường tròn lượng giác gắn tại tâm $O$, chiều cao $h$ (theo đơn vị mét) của cabin so với mặt đất bằng bao nhiêu?</div>
+          <div class="short-ans-row">
+            <label for="input-q4" style="font-weight:700; font-size:13.5px; color:var(--primary);">Đáp số chiều cao $h$:</label>
+            <input type="text" class="short-ans-input" id="input-q4" placeholder="Nhập số mét..." autocomplete="off">
+            <span style="font-size:13px; color:var(--text-sub); font-weight:600;">mét</span>
+          </div>
+        </div>
+        <div class="geo-diagram-card">
+          
+<svg viewBox="0 0 280 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" class="geo-svg">
+  <defs>
+    <marker id="arrW" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#182A78"/>
+    </marker>
+  </defs>
+  <!-- Ground Plane -->
+  <rect x="15" y="195" width="250" height="4" fill="#64748B"/>
+  <text x="140" y="212" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">Mặt đất (h = 0)</text>
+
+  <!-- Center O(140, 95), R = 60 -->
+  <line x1="35" y1="195" x2="35" y2="95" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="30" y="148" font-family="'JetBrains Mono', monospace" font-size="10" fill="#475569" text-anchor="end">32 m</text>
+
+  <!-- Ferris Wheel Circle -->
+  <circle cx="140" cy="95" r="60" fill="#F8FAFC" stroke="#182A78" stroke-width="1.8"/>
+
+  <!-- Center Axes -->
+  <line x1="65" y1="95" x2="215" y2="95" stroke="#94A3B8" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="140" y1="165" x2="140" y2="25" stroke="#94A3B8" stroke-width="1" stroke-dasharray="2,2"/>
+  <circle cx="140" cy="95" r="3" fill="#182A78"/>
+  <text x="144" y="90" font-family="'JetBrains Mono', monospace" font-size="10" font-style="italic" fill="#182A78">O</text>
+
+  <!-- Angle alpha = 7pi/6 (210 deg): dx = 60*cos(210) = -51.9, dy = 60*sin(210) = -30 => screen y = 95 - (-30) = 125 -->
+  <line x1="140" y1="95" x2="88" y2="125" stroke="#C62828" stroke-width="2"/>
+  <circle cx="88" cy="125" r="4.5" fill="#C62828"/>
+  <text x="36" y="126" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#C62828">M(7&pi;/6)</text>
+
+  <!-- Height dimension from M to Ground: y=125 to y=195 (70px => 17m) -->
+  <line x1="88" y1="125" x2="88" y2="195" stroke="#C62828" stroke-width="1.4" stroke-dasharray="2,2"/>
+  <text x="94" y="165" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#C62828">h = 17m</text>
+
+  <!-- Rotation direction arrow -->
+  <path d="M 205 95 A 65 65 0 0 0 155 32" fill="none" stroke="#182A78" stroke-width="1.3" marker-end="url(#arrW)"/>
+</svg>
+
+          <div style="font-size:11px; font-style:italic; color:var(--text-muted); margin-top:4px;">Mô hình đu quay Sun Wheel góc 7π/6</div>
+        </div>
+      </div>
+      <div class="sol-card" id="sol-4">
+        <div class="sol-title">📖 Lời giải chi tiết câu 4:</div>
+        <div><b>Giải chi tiết Câu 4:</b><br>Tung độ điểm cabin $M$ trên đường tròn lượng giác gắn tại tâm $O(0;0)$ bán kính $R = 30\text{ m}$ ứng với góc lượng giác $\alpha = \dfrac{7\pi}{6}\text{ rad}$ là:<br>$$y_M = R \cdot \sin\left(\frac{7\pi}{6}\right) = 30 \cdot \sin\left(\pi + \frac{\pi}{6}\right) = 30 \cdot \left(-\sin\frac{\pi}{6}\right) = 30 \cdot \left(-\frac{1}{2}\right) = -15\text{ m}.$$<br>Do tâm đu quay $O$ nằm ở độ cao $32\text{ m}$ so với mặt đất, chiều cao $h$ của cabin so với mặt đất là:<br>$$h = 32 + y_M = 32 + (-15) = 17\text{ m}.$$<br><b>Đáp số: 17.</b></div>
+      </div>
+    </article>
+
+    <!-- Câu 5: Guồng nước -->
+    <article class="q-card" id="q-card-5">
+      <div class="q-top-row">
+        <span class="q-badge">Câu 5 • 1.5 Điểm</span>
+        <span class="q-skill">Mô hình hóa vị trí guồng nước chìm nổi so với mực nước gốc</span>
+      </div>
+      <div class="q-layout-2col">
+        <div>
+          <div class="q-text">Câu 5. Một guồng nước tròn bán kính $R = 2,5\text{ m}$ quay đều ngược chiều kim đồng hồ. Trục quay $O$ cao $0,5\text{ m}$ so với mặt nước. Một gáo múc nước $M$ trên vành guồng ứng với góc lượng giác $\alpha = -\dfrac{\pi}{4}\text{ rad}$ (tính từ tia gốc $OA$ song song mặt nước theo chiều dương $Ox$). Khoảng cách từ gáo $M$ đến mặt nước khi $M$ chìm dưới mặt nước là bao nhiêu mét (làm tròn kết quả đến hàng phần trăm)?</div>
+          <div class="short-ans-row">
+            <label for="input-q5" style="font-weight:700; font-size:13.5px; color:var(--primary);">Đáp số khoảng cách chìm:</label>
+            <input type="text" class="short-ans-input" id="input-q5" placeholder="Nhập số mét..." autocomplete="off">
+            <span style="font-size:13px; color:var(--text-sub); font-weight:600;">mét</span>
+          </div>
+        </div>
+        <div class="geo-diagram-card">
+          
+<svg viewBox="0 0 280 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" class="geo-svg">
+  <!-- River Water surface: y = 125 -->
+  <rect x="15" y="125" width="250" height="85" fill="rgba(3, 105, 161, 0.08)"/>
+  <line x1="15" y1="125" x2="265" y2="125" stroke="#0284C7" stroke-width="1.8"/>
+  <text x="260" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-style="italic" fill="#0284C7" text-anchor="end">Mặt nước (h = 0)</text>
+
+  <!-- Center O(135, 110), 0.5m higher than water (15px) -->
+  <!-- Wheel Circle: R = 65 (2.5m) -->
+  <circle cx="135" cy="110" r="65" fill="none" stroke="#182A78" stroke-width="1.8"/>
+  <line x1="60" y1="110" x2="210" y2="110" stroke="#94A3B8" stroke-width="1" stroke-dasharray="2,2"/>
+  <circle cx="135" cy="110" r="3" fill="#182A78"/>
+  <text x="138" y="105" font-family="'JetBrains Mono', monospace" font-size="10" fill="#182A78">O</text>
+
+  <!-- Point M at angle -pi/4 (-45 deg): dx = 65*cos(45)=46, dy = -65*sin(-45) = 46 => M(181, 156) -->
+  <line x1="135" y1="110" x2="181" y2="156" stroke="#C62828" stroke-width="1.8"/>
+  <circle cx="181" cy="156" r="4.5" fill="#C62828"/>
+  <text x="190" y="162" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#C62828">M(-&pi;/4)</text>
+
+  <!-- Submerged depth marker from water (y=125) to M (y=156) -->
+  <line x1="181" y1="125" x2="181" y2="156" stroke="#C62828" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="187" y="144" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#C62828">1,27 m</text>
+</svg>
+
+          <div style="font-size:11px; font-style:italic; color:var(--text-muted); margin-top:4px;">Guồng nước ven sông góc -π/4</div>
+        </div>
+      </div>
+      <div class="sol-card" id="sol-5">
+        <div class="sol-title">📖 Lời giải chi tiết câu 5:</div>
+        <div><b>Giải chi tiết Câu 5:</b><br>Tung độ của gáo nước $M$ so với trục quay $O$:<br>$$y_M = R \cdot \sin\left(-\frac{\pi}{4}\right) = 2,5 \cdot \left(-\frac{\sqrt{2}}{2}\right) \approx -1,7678\text{ m}.$$<br>Độ cao của gáo $M$ so với mặt nước (tâm $O$ cao $0,5\text{ m}$ so với mặt nước):<br>$$h_M = 0,5 + y_M = 0,5 + (-1,7678) = -1,2678\text{ m}.$$<br>Do $h_M < 0$, gáo $M$ chìm dưới mặt nước một khoảng là $|h_M| = 1,2678\text{ m} \approx 1,27\text{ m}$.<br><b>Đáp số: 1,27.</b></div>
+      </div>
+    </article>
+
+    <!-- Câu 6: Dòng khí hô hấp -->
+    <article class="q-card" id="q-card-6">
+      <div class="q-top-row">
+        <span class="q-badge">Câu 6 • 1.5 Điểm</span>
+        <span class="q-skill">Phân tích dao động tuần hoàn và giá trị cực đại của dòng khí hô hấp</span>
+      </div>
+      <div class="q-layout-2col">
+        <div>
+          <div class="q-text">Câu 6. Tốc độ dòng khí hô hấp tại thời điểm $t$ (giây) được cho bởi $v(t) = 0,85 \cdot \sin\left(\dfrac{\pi t}{3}\right)$ (lít/giây). Tốc độ hít vào cực đại của vận động viên trong 3 giây đầu tiên ($0 \le t \le 3\text{ s}$) bằng bao nhiêu lít/giây?</div>
+          <div class="short-ans-row">
+            <label for="input-q6" style="font-weight:700; font-size:13.5px; color:var(--primary);">Đáp số lưu lượng cực đại:</label>
+            <input type="text" class="short-ans-input" id="input-q6" placeholder="Nhập số lít/giây..." autocomplete="off">
+            <span style="font-size:13px; color:var(--text-sub); font-weight:600;">L/s</span>
+          </div>
+        </div>
+        <div class="geo-diagram-card">
+          
+<svg viewBox="0 0 280 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" class="geo-svg">
+  <defs>
+    <marker id="arrAir" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 2 L 7 5 L 0 8 z" fill="#182A78"/>
+    </marker>
+  </defs>
+  <!-- Axes Ot, Ov -->
+  <line x1="25" y1="120" x2="260" y2="120" stroke="#182A78" stroke-width="1.3" marker-end="url(#arrAir)"/>
+  <line x1="40" y1="200" x2="40" y2="30" stroke="#182A78" stroke-width="1.3" marker-end="url(#arrAir)"/>
+  <text x="262" y="124" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#182A78">t (s)</text>
+  <text x="44" y="32" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#182A78">v (L/s)</text>
+  <text x="28" y="132" font-family="'JetBrains Mono', monospace" font-size="10" fill="#182A78">O</text>
+
+  <!-- Sine wave for t in [0, 3]: start (40, 120), peak (100, 50), end (160, 120) -->
+  <path d="M 40 120 Q 70 50, 100 50 T 160 120" fill="none" stroke="#C62828" stroke-width="2.2"/>
+  <path d="M 160 120 Q 190 190, 220 190 T 250 120" fill="none" stroke="#94A3B8" stroke-width="1.4" stroke-dasharray="3,3"/>
+
+  <!-- Peak point at t=1.5s, v=0.85 -->
+  <circle cx="100" cy="50" r="4.5" fill="#C62828"/>
+  <line x1="100" y1="50" x2="100" y2="120" stroke="#C62828" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="100" y="135" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#C62828" text-anchor="middle">1.5</text>
+  <line x1="40" y1="50" x2="100" y2="50" stroke="#C62828" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="36" y="54" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#C62828" text-anchor="end">0.85</text>
+
+  <text x="160" y="135" font-family="'JetBrains Mono', monospace" font-size="9" fill="#182A78" text-anchor="middle">3</text>
+  <text x="100" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#C62828" text-anchor="middle">v_max = 0.85 L/s</text>
+</svg>
+
+          <div style="font-size:11px; font-style:italic; color:var(--text-muted); margin-top:4px;">Đồ thị dòng khí hô hấp v(t) cực đại</div>
+        </div>
+      </div>
+      <div class="sol-card" id="sol-6">
+        <div class="sol-title">📖 Lời giải chi tiết câu 6:</div>
+        <div><b>Giải chi tiết Câu 6:</b><br>Với $t \in [0; 3\text{ s}] \implies x = \frac{\pi t}{3} \in [0; \pi]$ (thuộc góc phần tư I và II trên đường tròn lượng giác).<br>Giá trị $\sin\left(\frac{\pi t}{3}\right)$ đạt giá trị cực đại bằng $1$ khi $\frac{\pi t}{3} = \frac{\pi}{2} \Leftrightarrow t = 1,5\text{ s}$.<br>Tốc độ hít vào cực đại của vận động viên là:<br>$$v_{\max} = 0,85 \cdot 1 = 0,85\text{ (lít/giây)}.$$<br><b>Đáp số: 0,85.</b></div>
+      </div>
+    </article>
+
+    <!-- Bottom Action Row -->
+    <footer class="bottom-bar">
+      <div style="font-size:13px; color:var(--text-muted); font-style:italic;">
+        Bản quyền chuyên đề Toán 11 GDPT 2018 • Nhóm VVIP
+      </div>
+      <button class="btn-submit" id="btn-nop-bai">
+        <span>🚀</span> Nộp bài & Chấm điểm VVIP
+      </button>
+    </footer>
+
+  </main>
+
+  <!-- Modal Kết Quả -->
+  <div class="modal-overlay" id="scoreModal">
+    <div class="modal-card">
+      <div class="modal-score-circle">
+        <div class="modal-score-val" id="modalScore">0.0</div>
+        <div class="modal-score-max">/ 10 ĐIỂM</div>
+      </div>
+      <h3 style="font-size:19px; font-weight:800; color:var(--primary); margin-bottom:4px;" id="modalRank">XẾP HẠNG VVIP</h3>
+      <p style="font-size:13.5px; color:var(--text-muted);" id="modalDetails">Chi tiết kết quả đánh giá năng lực</p>
+
+      <div class="modal-skills" id="modalSkills">
+        <!-- Chuyên đề cần củng cố -->
+      </div>
+
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button class="btn-action primary" onclick="document.getElementById('scoreModal').classList.remove('open')">Xem lại bài làm</button>
+        <button class="btn-action" onclick="location.reload()">Làm lại đề</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quiz = {
+  "title": "PHIẾU HỌC TẬP & WEB QUIZ TOÁN 11 V2.0: GIÁ TRỊ LƯỢNG GIÁC",
+  "subtitle": "Chuyên đề Nâng cao GDPT 2018 • Nhóm VVIP (100% Vận dụng & Vận dụng cao)",
+  "badge": "VVIP ELITE EDITION",
+  "timeLimit": 45,
+  "p1": [
+    {
+      "id": 1,
+      "skill": "Biến đổi góc lượng giác số đo lớn & tính giá trị biểu thức",
+      "level": "Vận dụng",
+      "score": 1.5,
+      "question": "Câu 1. Tính giá trị của biểu thức $A = \\cos\\left(\\dfrac{11\\pi}{4}\\right) + \\tan(-675^\\circ) - \\sin\\left(-\\dfrac{7\\pi}{6}\\right)$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$A = \\dfrac{1 - \\sqrt{2}}{2}$"
+        },
+        {
+          "key": "B",
+          "text": "$A = 1 + \\dfrac{\\sqrt{2}}{2}$"
+        },
+        {
+          "key": "C",
+          "text": "$A = -\\dfrac{\\sqrt{2}}{2}$"
+        },
+        {
+          "key": "D",
+          "text": "$A = \\dfrac{1 + 2\\sqrt{2}}{2}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "<b>Giải chi tiết Câu 1:</b><br>• $\\cos\\left(\\dfrac{11\\pi}{4}\\right) = \\cos\\left(2\\pi + \\dfrac{3\\pi}{4}\\right) = \\cos\\left(\\dfrac{3\\pi}{4}\\right) = \\cos\\left(\\pi - \\dfrac{\\pi}{4}\\right) = -\\cos\\left(\\dfrac{\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$.<br>• $\\tan(-675^\\circ) = \\tan(45^\\circ - 2 \\cdot 360^\\circ) = \\tan(45^\\circ) = 1$.<br>• $\\sin\\left(-\\dfrac{7\\pi}{6}\\right) = -\\sin\\left(\\dfrac{7\\pi}{6}\\right) = -\\sin\\left(\\pi + \\dfrac{\\pi}{6}\\right) = -\\left(-\\sin\\dfrac{\\pi}{6}\\right) = \\dfrac{1}{2}$.<br>Thay vào biểu thức $A$:<br>$$A = -\\frac{\\sqrt{2}}{2} + 1 - \\frac{1}{2} = \\frac{1}{2} - \\frac{\\sqrt{2}}{2} = \\frac{1 - \\sqrt{2}}{2}.$$<br><b>Chọn đáp án A.</b>"
+    },
+    {
+      "id": 2,
+      "skill": "Sử dụng hệ thức lượng giác cơ bản kết hợp xác định dấu trong góc phần tư",
+      "level": "Vận dụng cao",
+      "score": 1.5,
+      "question": "Câu 2. Cho góc lượng giác $\\alpha$ thỏa mãn $\\tan\\alpha + \\cot\\alpha = -3$ và $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Tính giá trị của biểu thức $P = \\sin\\alpha - \\cos\\alpha$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "$P = \\sqrt{\\dfrac{5}{3}}$"
+        },
+        {
+          "key": "B",
+          "text": "$P = -\\sqrt{\\dfrac{5}{3}}$"
+        },
+        {
+          "key": "C",
+          "text": "$P = \\dfrac{\\sqrt{3}}{3}$"
+        },
+        {
+          "key": "D",
+          "text": "$P = -\\dfrac{\\sqrt{15}}{3}$"
+        }
+      ],
+      "correct": "A",
+      "explanation": "<b>Giải chi tiết Câu 2:</b><br>Ta có biến đổi hệ thức cơ bản:<br>$$\\tan\\alpha + \\cot\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha} + \\frac{\\cos\\alpha}{\\sin\\alpha} = \\frac{\\sin^2\\alpha + \\cos^2\\alpha}{\\sin\\alpha\\cos\\alpha} = \\frac{1}{\\sin\\alpha\\cos\\alpha} = -3 \\implies \\sin\\alpha\\cos\\alpha = -\\frac{1}{3}.$$<br>Xét bình phương biểu thức $P$:<br>$$P^2 = (\\sin\\alpha - \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha - 2\\sin\\alpha\\cos\\alpha = 1 - 2\\left(-\\frac{1}{3}\\right) = 1 + \\frac{2}{3} = \\frac{5}{3}.$$<br>Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ (góc phần tư thứ II) nên $\\sin\\alpha > 0$ và $\\cos\\alpha < 0$.<br>Suy ra: $P = \\sin\\alpha - \\cos\\alpha > 0 \\implies P = \\sqrt{\\dfrac{5}{3}} = \\dfrac{\\sqrt{15}}{3}$.<br><b>Chọn đáp án A.</b>"
+    }
+  ],
+  "p2": [
+    {
+      "id": 3,
+      "skill": "Phân tích toàn diện hệ thức lượng giác cơ bản và ý nghĩa hình học Oxy",
+      "level": "Vận dụng cao",
+      "score": 2.5,
+      "question": "Câu 3. Cho góc lượng giác $\\alpha$ thỏa mãn $\\sin\\alpha = \\dfrac{3}{5}$ với $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Xét tính đúng/sai của các phát biểu sau:",
+      "statements": [
+        {
+          "id": "a",
+          "text": "Điểm biểu diễn $M$ của góc $\\alpha$ trên đường tròn lượng giác có hoành độ $x_M = -\\dfrac{4}{5}$.",
+          "correct": "D",
+          "expl": "Vì góc phần tư II nên $\\cos\\alpha < 0 \\Rightarrow x_M = \\cos\\alpha = -\\sqrt{1 - (3/5)^2} = -4/5$ (ĐÚNG)."
+        },
+        {
+          "id": "b",
+          "text": "Giá trị của $\\tan\\alpha = -\\dfrac{3}{4}$ và $\\cot\\alpha = -\\dfrac{4}{3}$.",
+          "correct": "D",
+          "expl": "$\\tan\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha} = \\frac{3/5}{-4/5} = -\\frac{3}{4}$; $\\cot\\alpha = \\frac{1}{\\tan\\alpha} = -\\frac{4}{3}$ (ĐÚNG)."
+        },
+        {
+          "id": "c",
+          "text": "Giá trị biểu thức $T = \\sin(\\pi - \\alpha) + \\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\dfrac{6}{5}$.",
+          "correct": "D",
+          "expl": "Ta có $\\sin(\\pi-\\alpha) = \\sin\\alpha = 3/5$ và $\\cos(\\pi/2-\\alpha) = \\sin\\alpha = 3/5$. Do đó $T = 3/5 + 3/5 = 6/5$ (ĐÚNG)."
+        },
+        {
+          "id": "d",
+          "text": "Diện tích tam giác $OHM$ vuông tại $H$ (với $H$ là hình chiếu vuông góc của $M$ lên trục $Ox$) bằng $\\dfrac{12}{25}$.",
+          "correct": "S",
+          "expl": "Độ dài cạnh $OH = |x_M| = 4/5$, cạnh $HM = |y_M| = 3/5$. Diện tích tam giác vuông: $S = \\frac{1}{2} \\cdot \\frac{4}{5} \\cdot \\frac{3}{5} = \\frac{6}{25} \\neq \\frac{12}{25}$ (SAI do quên chia 2)."
+        }
+      ],
+      "explanation": "<b>Lời giải chi tiết Câu 3:</b><br>• a) <b>ĐÚNG</b>: $x_M = \\cos\\alpha = -\\sqrt{1 - \\sin^2\\alpha} = -\\frac{4}{5}$.<br>• b) <b>ĐÚNG</b>: $\\tan\\alpha = -\\frac{3}{4}$, $\\cot\\alpha = -\\frac{4}{3}$.<br>• c) <b>ĐÚNG</b>: $\\sin(\\pi - \\alpha) = \\sin\\alpha = \\frac{3}{5}$, $\\cos(\\frac{\\pi}{2} - \\alpha) = \\sin\\alpha = \\frac{3}{5} \\Rightarrow T = \\frac{6}{5}$.<br>• d) <b>SAI</b>: $S_{\\Delta OHM} = \\frac{1}{2} \\cdot OH \\cdot HM = \\frac{1}{2} \\cdot \\frac{4}{5} \\cdot \\frac{3}{5} = \\frac{6}{25} \\neq \\frac{12}{25}$."
+    }
+  ],
+  "p3": [
+    {
+      "id": 4,
+      "skill": "Mô hình hóa chuyển động quay của đu quay Sun Wheel trên đường tròn Oxy",
+      "level": "Vận dụng cao",
+      "score": 1.5,
+      "question": "Câu 4. Một cabin của đu quay Sun Wheel có bán kính $R = 30\\text{ m}$ quay đều ngược chiều kim đồng hồ. Trục quay $O$ nằm ở độ cao $32\\text{ m}$ so với mặt đất. Khi cabin ở vị trí góc lượng giác $\\alpha = \\dfrac{7\\pi}{6}\\text{ rad}$ trên đường tròn lượng giác gắn tại tâm $O$, chiều cao $h$ (theo đơn vị mét) của cabin so với mặt đất bằng bao nhiêu?",
+      "acceptableAnswers": [
+        "17",
+        "17m",
+        "17 m",
+        "17 mét",
+        "h=17",
+        "h = 17"
+      ],
+      "displayAnswer": "17",
+      "explanation": "<b>Giải chi tiết Câu 4:</b><br>Tung độ điểm cabin $M$ trên đường tròn lượng giác gắn tại tâm $O(0;0)$ bán kính $R = 30\\text{ m}$ ứng với góc lượng giác $\\alpha = \\dfrac{7\\pi}{6}\\text{ rad}$ là:<br>$$y_M = R \\cdot \\sin\\left(\\frac{7\\pi}{6}\\right) = 30 \\cdot \\sin\\left(\\pi + \\frac{\\pi}{6}\\right) = 30 \\cdot \\left(-\\sin\\frac{\\pi}{6}\\right) = 30 \\cdot \\left(-\\frac{1}{2}\\right) = -15\\text{ m}.$$<br>Do tâm đu quay $O$ nằm ở độ cao $32\\text{ m}$ so với mặt đất, chiều cao $h$ của cabin so với mặt đất là:<br>$$h = 32 + y_M = 32 + (-15) = 17\\text{ m}.$$<br><b>Đáp số: 17.</b>"
+    },
+    {
+      "id": 5,
+      "skill": "Mô hình hóa vị trí guồng nước chìm nổi so với mực nước gốc",
+      "level": "Vận dụng cao",
+      "score": 1.5,
+      "question": "Câu 5. Một guồng nước tròn bán kính $R = 2,5\\text{ m}$ quay đều ngược chiều kim đồng hồ. Trục quay $O$ cao $0,5\\text{ m}$ so với mặt nước. Một gáo múc nước $M$ trên vành guồng ứng với góc lượng giác $\\alpha = -\\dfrac{\\pi}{4}\\text{ rad}$ (tính từ tia gốc $OA$ song song mặt nước theo chiều dương $Ox$). Khoảng cách từ gáo $M$ đến mặt nước khi $M$ chìm dưới mặt nước là bao nhiêu mét (làm tròn kết quả đến hàng phần trăm)?",
+      "acceptableAnswers": [
+        "1.27",
+        "1,27",
+        "1.27m",
+        "1,27m",
+        "1.268",
+        "1,268",
+        "1.27 m",
+        "1,27 m"
+      ],
+      "displayAnswer": "1,27",
+      "explanation": "<b>Giải chi tiết Câu 5:</b><br>Tung độ của gáo nước $M$ so với trục quay $O$:<br>$$y_M = R \\cdot \\sin\\left(-\\frac{\\pi}{4}\\right) = 2,5 \\cdot \\left(-\\frac{\\sqrt{2}}{2}\\right) \\approx -1,7678\\text{ m}.$$<br>Độ cao của gáo $M$ so với mặt nước (tâm $O$ cao $0,5\\text{ m}$ so với mặt nước):<br>$$h_M = 0,5 + y_M = 0,5 + (-1,7678) = -1,2678\\text{ m}.$$<br>Do $h_M < 0$, gáo $M$ chìm dưới mặt nước một khoảng là $|h_M| = 1,2678\\text{ m} \\approx 1,27\\text{ m}$.<br><b>Đáp số: 1,27.</b>"
+    },
+    {
+      "id": 6,
+      "skill": "Phân tích dao động tuần hoàn và giá trị cực đại của dòng khí hô hấp",
+      "level": "Vận dụng cao",
+      "score": 1.5,
+      "question": "Câu 6. Tốc độ dòng khí hô hấp tại thời điểm $t$ (giây) được cho bởi $v(t) = 0,85 \\cdot \\sin\\left(\\dfrac{\\pi t}{3}\\right)$ (lít/giây). Tốc độ hít vào cực đại của vận động viên trong 3 giây đầu tiên ($0 \\le t \\le 3\\text{ s}$) bằng bao nhiêu lít/giây?",
+      "acceptableAnswers": [
+        "0.85",
+        "0,85",
+        "0.85l/s",
+        "0,85l/s",
+        "0.85 lít/giây",
+        "0,85 lít/giây"
+      ],
+      "displayAnswer": "0,85",
+      "explanation": "<b>Giải chi tiết Câu 6:</b><br>Với $t \\in [0; 3\\text{ s}] \\implies x = \\frac{\\pi t}{3} \\in [0; \\pi]$ (thuộc góc phần tư I và II trên đường tròn lượng giác).<br>Giá trị $\\sin\\left(\\frac{\\pi t}{3}\\right)$ đạt giá trị cực đại bằng $1$ khi $\\frac{\\pi t}{3} = \\frac{\\pi}{2} \\Leftrightarrow t = 1,5\\text{ s}$.<br>Tốc độ hít vào cực đại của vận động viên là:<br>$$v_{\\max} = 0,85 \\cdot 1 = 0,85\\text{ (lít/giây)}.$$<br><b>Đáp số: 0,85.</b>"
+    }
+  ]
+};
+
+    let userAnswers = {
+      q1: null,
+      q2: null,
+      q3: { a: null, b: null, c: null, d: null },
+      q4: "",
+      q5: "",
+      q6: ""
+    };
+
+    let isSubmitted = false;
+    let isSolVisible = true;
+    let timerSeconds = 45 * 60;
+    let timerInterval = null;
+
+    let diem_so = 0;
+    let mang_cau_sai = [];
+
+    // Timer
+    function startTimer() {
+      const timerEl = document.getElementById('quizTimer');
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert('Hết giờ làm bài! Hệ thống tự động nộp bài.');
+          document.getElementById('btn-nop-bai').click();
+          return;
+        }
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerEl.textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    // MCQ Selection
+    function selectMcq(qId, key) {
+      if (isSubmitted) return;
+      userAnswers['q' + qId] = key;
+      document.querySelectorAll(`#q-card-${qId} .option-item`).forEach(lbl => {
+        lbl.classList.remove('selected');
+      });
+      const selectedLabel = document.getElementById(`opt-${qId}-${key}`);
+      if (selectedLabel) selectedLabel.classList.add('selected');
+    }
+
+    // True/False Selection
+    function selectTf(stmtId, choice) {
+      if (isSubmitted) return;
+      userAnswers.q3[stmtId] = choice;
+      const btnD = document.getElementById(`btn-tf-${stmtId}-D`);
+      const btnS = document.getElementById(`btn-tf-${stmtId}-S`);
+      if (choice === 'D') {
+        btnD.classList.add('active');
+        btnS.classList.remove('active');
+      } else {
+        btnS.classList.add('active');
+        btnD.classList.remove('active');
+      }
+    }
+
+    // Toggle Solutions
+    function toggleSolutions(forceState = null) {
+      if (forceState !== null) isSolVisible = forceState;
+      else isSolVisible = !isSolVisible;
+
+      document.querySelectorAll('.sol-card').forEach(sc => {
+        if (isSolVisible) sc.classList.remove('hide-sol');
+        else sc.classList.add('hide-sol');
+      });
+
+      const btn = document.getElementById('btnToggleSol');
+      if (btn) btn.textContent = isSolVisible ? '🙈 Ẩn Lời giải' : '💡 Hiện Lời giải';
+    }
+
+    // Grading Logic
+    function chamDiem() {
+      isSubmitted = true;
+      clearInterval(timerInterval);
+
+      diem_so = 0;
+      mang_cau_sai = [];
+
+      // Câu 1: MCQ (1.5đ)
+      if (userAnswers.q1 === quiz.p1[0].correct) {
+        diem_so += 1.5;
+        document.getElementById(`opt-1-${quiz.p1[0].correct}`).classList.add('is-correct');
+      } else {
+        mang_cau_sai.push(quiz.p1[0].skill);
+        if (userAnswers.q1) document.getElementById(`opt-1-${userAnswers.q1}`).classList.add('is-wrong');
+        document.getElementById(`opt-1-${quiz.p1[0].correct}`).classList.add('is-correct');
+      }
+
+      // Câu 2: MCQ (1.5đ)
+      if (userAnswers.q2 === quiz.p1[1].correct) {
+        diem_so += 1.5;
+        document.getElementById(`opt-2-${quiz.p1[1].correct}`).classList.add('is-correct');
+      } else {
+        mang_cau_sai.push(quiz.p1[1].skill);
+        if (userAnswers.q2) document.getElementById(`opt-2-${userAnswers.q2}`).classList.add('is-wrong');
+        document.getElementById(`opt-2-${quiz.p1[1].correct}`).classList.add('is-correct');
+      }
+
+      // Câu 3: Đúng / Sai (2.5đ: 4 ý. 1 đúng: 0.25đ, 2 đúng: 0.75đ, 3 đúng: 1.5đ, 4 đúng: 2.5đ)
+      let q3Correct = 0;
+      quiz.p2[0].statements.forEach(st => {
+        const uVal = userAnswers.q3[st.id];
+        const btnChosen = document.getElementById(`btn-tf-${st.id}-${uVal}`);
+        const btnCorrect = document.getElementById(`btn-tf-${st.id}-${st.correct}`);
+
+        if (uVal === st.correct) {
+          q3Correct++;
+          if (btnChosen) btnChosen.classList.add('state-correct');
+        } else {
+          if (btnChosen) btnChosen.classList.add('state-wrong');
+          if (btnCorrect) btnCorrect.classList.add('state-correct');
+        }
+      });
+      if (q3Correct === 1) diem_so += 0.25;
+      else if (q3Correct === 2) diem_so += 0.75;
+      else if (q3Correct === 3) diem_so += 1.5;
+      else if (q3Correct === 4) diem_so += 2.5;
+
+      if (q3Correct < 4) mang_cau_sai.push(quiz.p2[0].skill);
+
+      // Câu 4: Short Answer Sun Wheel (1.5đ)
+      const inputQ4 = (document.getElementById('input-q4').value || '').trim().toLowerCase().replace(',', '.');
+      const isQ4Ok = quiz.p3[0].acceptableAnswers.some(ans => inputQ4.includes(ans.toLowerCase()));
+      if (isQ4Ok) {
+        diem_so += 1.5;
+        document.getElementById('input-q4').style.borderColor = '#15803D';
+        document.getElementById('input-q4').style.backgroundColor = '#DCFCE7';
+      } else {
+        mang_cau_sai.push(quiz.p3[0].skill);
+        document.getElementById('input-q4').style.borderColor = '#B91C1C';
+        document.getElementById('input-q4').style.backgroundColor = '#FEE2E2';
+      }
+
+      // Câu 5: Short Answer Water Wheel (1.5đ)
+      const inputQ5 = (document.getElementById('input-q5').value || '').trim().toLowerCase().replace(',', '.');
+      const isQ5Ok = quiz.p3[1].acceptableAnswers.some(ans => inputQ5.includes(ans.toLowerCase()));
+      if (isQ5Ok) {
+        diem_so += 1.5;
+        document.getElementById('input-q5').style.borderColor = '#15803D';
+        document.getElementById('input-q5').style.backgroundColor = '#DCFCE7';
+      } else {
+        mang_cau_sai.push(quiz.p3[1].skill);
+        document.getElementById('input-q5').style.borderColor = '#B91C1C';
+        document.getElementById('input-q5').style.backgroundColor = '#FEE2E2';
+      }
+
+      // Câu 6: Short Answer Airflow (1.5đ)
+      const inputQ6 = (document.getElementById('input-q6').value || '').trim().toLowerCase().replace(',', '.');
+      const isQ6Ok = quiz.p3[2].acceptableAnswers.some(ans => inputQ6.includes(ans.toLowerCase()));
+      if (isQ6Ok) {
+        diem_so += 1.5;
+        document.getElementById('input-q6').style.borderColor = '#15803D';
+        document.getElementById('input-q6').style.backgroundColor = '#DCFCE7';
+      } else {
+        mang_cau_sai.push(quiz.p3[2].skill);
+        document.getElementById('input-q6').style.borderColor = '#B91C1C';
+        document.getElementById('input-q6').style.backgroundColor = '#FEE2E2';
+      }
+
+      diem_so = Math.round(diem_so * 10) / 10;
+
+      // Update Modal
+      document.getElementById('modalScore').textContent = diem_so.toFixed(1);
+      const rankEl = document.getElementById('modalRank');
+      if (diem_so >= 9.0) rankEl.textContent = "🏆 XUẤT SẮC - VVIP DIAMOND";
+      else if (diem_so >= 7.0) rankEl.textContent = "⚡ GIỎI - VVIP GOLD";
+      else if (diem_so >= 5.0) rankEl.textContent = "👍 ĐẠT - VVIP SILVER";
+      else rankEl.textContent = "⚠️ CẦN RÈN LUYỆN THÊM";
+
+      const skillsBox = document.getElementById('modalSkills');
+      if (mang_cau_sai.length > 0) {
+        skillsBox.innerHTML = '<b>Các kỹ năng / bài toán cần rèn luyện thêm:</b><ul style="padding-left:18px; margin-top:4px;">' +
+          [...new Set(mang_cau_sai)].map(s => `<li>${s}</li>`).join('') + '</ul>';
+      } else {
+        skillsBox.innerHTML = '<b style="color:var(--success);">Hoàn hảo! Em đạt điểm tuyệt đối 10/10 trên đề thi VVIP!</b>';
+      }
+
+      document.getElementById('scoreModal').classList.add('open');
+      toggleSolutions(true);
+    }
+
+    // INTEGRATE N8N WEBHOOK (BẮT BUỘC THEO GEMINI.MD)
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            chamDiem();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
+        const tenBaiThi = document.title || "Phiếu Học Tập & Web Quiz Toán 11 V2.0"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,
+            lop: lopNhom,
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    // KaTeX Renderer
+    function renderMath() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      startTimer();
+      renderMath();
+      setTimeout(renderMath, 200);
+      setTimeout(renderMath, 800);
+    });
+  </script>
+</body>
+</html>
