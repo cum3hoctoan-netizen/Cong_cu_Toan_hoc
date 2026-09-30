@@ -25,15 +25,16 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \rfoot{\footnotesize\color{subgray}Trang \thepage}
-\lfoot{\footnotesize\color{subgray}Chuyên đề Toán 10 -- Mệnh đề \& Tập hợp (GDPT 2018)}
+\lfoot{\footnotesize\color{subgray}Phiếu học tập Toán 10 -- Giá trị lượng giác của một góc từ $0^\circ$ đến $180^\circ$ (GDPT 2018)}
 
 % Định nghĩa bảng màu Infographic học thuật
 \definecolor{primaryred}{HTML}{C62828}   % Đỏ son cho tiêu đề
 \definecolor{inkblue}{HTML}{182A78}      % Xanh mực cho đường nét & khung
 \definecolor{subgray}{HTML}{424242}      % Xám cho thông tin phụ
+\definecolor{boxbg}{HTML}{F0F4FA}        % Nền xanh nhạt
 
 % ------------------------------------------------------------------------------
-% ĐỊNH NGHĨA CÁC MÔI TRƯỜNG & LỆNH TƯƠNG THÍCH CHUẨN GÓI ex_test
+% ĐỊNH NGHĨA CÁC MÔI TRƯỜNG & LỆNH TƯƠNG THÍCH CHUẨN GÓI ex_test & compile-dual
 % ------------------------------------------------------------------------------
 \newcounter{ex}
 \newenvironment{ex}[1][]{%
@@ -111,7 +112,7 @@
 
 % Định dạng tiêu đề các phân phần
 \newcommand{\sectionheader}[2]{%
-	\vspace{0.35cm}
+	\vspace{0.3cm}
 	\noindent
 	\begin{tikzpicture}
 		\node[fill=primaryred!10, draw=primaryred, rounded corners=3pt, inner sep=4pt, text width=\linewidth-8pt] {
@@ -119,7 +120,7 @@
 			\footnotesize\textit{\color{subgray}#2}
 		};
 	\end{tikzpicture}
-	\par\vspace{0.15cm}
+	\par\vspace{0.12cm}
 }
 
 \begin{document}
@@ -129,8 +130,8 @@
 	% TIÊU ĐỀ BÀI HỌC VÀ THÔNG TIN HỌC SINH
 	% ------------------------------------------------------------------------------
 	\begin{center}
-		{\large \textbf{\color{primaryred}PHIẾU HỌC TẬP INFOGRAPHIC: TẬP HỢP VÀ CÁC PHÉP TOÁN TẬP HỢP}}\\[1.5mm]
-		{\small \textbf{\color{inkblue}Chuyên đề Toán 10 -- Chương I: Mệnh đề và Tập hợp (GDPT 2018)}}\\[2mm]
+		{\large \textbf{\color{primaryred}PHIẾU HỌC TẬP: GIÁ TRỊ LƯỢNG GIÁC CỦA MỘT GÓC TỪ $0^\circ$ ĐẾN $180^\circ$}}\\[1.5mm]
+		{\small \textbf{\color{inkblue}Chuyên đề Toán 10 -- Nâng cao \& Vận dụng cao (Nhóm VVIP -- GDPT 2018)}}\\[2mm]
 		\noindent
 		\begin{tikzpicture}
 			\draw[color=inkblue!40, line width=0.8pt] (0,0) -- (\linewidth,0);
@@ -140,102 +141,116 @@
 			\textbf{Ngày:} \dots\dots/\dots\dots/20\dots\dots}
 	\end{center}
 	
+	% KHUNG MỤC TIÊU HỌC TẬP
+	\vspace{-0.1cm}
+	\noindent
+	\begin{tikzpicture}
+		\node[fill=boxbg, draw=inkblue!30, rounded corners=4pt, inner sep=5pt, text width=\linewidth-10pt] {
+			\textbf{\color{inkblue}Mục tiêu bài học:}\\[1pt]
+			\footnotesize $\bullet$ Nắm vững định nghĩa, dấu và các hằng đẳng thức lượng giác cơ bản cho góc từ $0^\circ$ đến $180^\circ$.\\
+			\footnotesize $\bullet$ Vận dụng quan hệ giữa hai góc phụ nhau, bù nhau để rút gọn biểu thức và tính chuỗi lượng giác.\\
+			\footnotesize $\bullet$ Ứng dụng giá trị lượng giác giải bài toán thực tế chuyển động tròn, cánh tay robot và tổng hợp lực.
+		};
+	\end{tikzpicture}
+	\par\vspace{0.15cm}
+	
 	% ==============================================================================
-	% PHẦN I: TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU - CHIA 2 CỘT)
+	% PHẦN I: TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU)
 	% ==============================================================================
 	\sectionheader{PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (10 CÂU)}{Khoanh tròn vào chữ cái A, B, C hoặc D trước phương án trả lời đúng nhất.}
 	
+	\setcounter{ex}{0}
 	\setlength{\columnsep}{18pt}
 	\begin{multicols}{2}
 		
 		\begin{ex}
-			Cho tập hợp $A = \{x \in \mathbb{R} \mid (x^2 - 4)(x - 1) = 0\}$. Khẳng định nào sau đây là đúng?
+			Cho góc $\alpha$ thỏa mãn $90^\circ < \alpha < 180^\circ$ và $\sin \alpha + \cos \alpha = \dfrac{1}{5}$. Tính giá trị của biểu thức $P = \tan \alpha - \cot \alpha$.
 			\choice
-			{\True $A = \{-2, 1, 2\}$}
-			{$A = \{1, 2\}$}
-			{$A = \{-2, 2\}$}
-			{$A = \{-1, 1, 2\}$}
+			{\True $P = -\dfrac{7}{12}$}
+			{$P = \dfrac{7}{12}$}
+			{$P = -\dfrac{35}{12}$}
+			{$P = \dfrac{35}{12}$}
 		\end{ex}
 		
 		\begin{ex}
-			Ký hiệu nào sau đây thể hiện đúng phát biểu: ``Số $2$ là một số tự nhiên''?
+			Cho góc $\alpha$ thỏa mãn $0^\circ < \alpha < 180^\circ, \alpha \neq 90^\circ$ và $\tan \alpha + \cot \alpha = -3$. Tính giá trị của biểu thức $Q = \tan^3 \alpha + \cot^3 \alpha$.
 			\choice
-			{\True $2 \in \mathbb{N}$}
-			{$2 \subset \mathbb{N}$}
-			{$\{2\} \in \mathbb{N}$}
-			{$2 = \mathbb{N}$}
+			{\True $Q = -18$}
+			{$Q = -36$}
+			{$Q = 18$}
+			{$Q = -27$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho hai tập hợp $A = \{1, 2, 3, 4, 5\}$ và $B = \{2, 4, 6, 8\}$. Tìm tập hợp $A \cap B$.
+			Cho góc $\alpha$ thỏa mãn $\tan \alpha = 2$. Tính giá trị của biểu thức $M = \dfrac{3\sin \alpha - 2\cos \alpha}{4\sin \alpha + 5\cos \alpha}$.
 			\choice
-			{\True $\{2, 4\}$}
-			{$\{1, 2, 3, 4, 5, 6, 8\}$}
-			{$\{1, 3, 5\}$}
-			{$\{6, 8\}$}
+			{\True $M = \dfrac{4}{13}$}
+			{$M = \dfrac{2}{13}$}
+			{$M = \dfrac{8}{13}$}
+			{$M = -\dfrac{4}{13}$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho hai tập hợp $A = \{-1, 0, 1, 2\}$ và $B = \{0, 2, 4\}$. Tìm tập hợp hiệu $A \setminus B$.
+			Cho góc $\alpha$ ($0^\circ \le \alpha \le 180^\circ, \alpha \neq 90^\circ$) thỏa mãn $\sin \alpha \cos \alpha = \dfrac{2}{5}$. Tính giá trị của biểu thức $E = \tan^2 \alpha + \cot^2 \alpha$.
 			\choice
-			{\True $\{-1, 1\}$}
-			{$\{0, 2\}$}
-			{$\{4\}$}
-			{$\{-1, 0, 1, 2, 4\}$}
+			{\True $E = \dfrac{17}{4}$}
+			{$E = \dfrac{21}{4}$}
+			{$E = \dfrac{25}{4}$}
+			{$E = \dfrac{9}{4}$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho tập hợp $A = (-2; 3]$ và $B = (1; 5)$. Tìm tập hợp $A \cup B$.
+			Tính giá trị của biểu thức $A = \cos^2 10^\circ + \cos^2 20^\circ + \cos^2 30^\circ + \dots + \cos^2 180^\circ$.
 			\choice
-			{\True $(-2; 5)$}
-			{$(1; 3]$}
-			{$[-2; 5]$}
-			{$(-2; 1)$}
+			{\True $A = 9$}
+			{$A = 8$}
+			{$A = 8{,}5$}
+			{$A = 9{,}5$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho tập hợp $A = [-1; 4]$. Tìm phần bù $C_{\mathbb{R}} A$.
+			Biết $\sin x + \sin(180^\circ - x) = \sqrt{2}$ với $0^\circ \le x \le 180^\circ$. Giá trị của $x$ là:
 			\choice
-			{\True $(-\infty; -1) \cup (4; +\infty)$}
-			{$(-\infty; -1] \cup [4; +\infty)$}
-			{$(-\infty; 4)$}
-			{$(4; +\infty)$}
+			{\True $x = 45^\circ$ hoặc $x = 135^\circ$}
+			{$x = 45^\circ$}
+			{$x = 135^\circ$}
+			{$x = 60^\circ$ hoặc $x = 120^\circ$}
 		\end{ex}
 		
 		\begin{ex}
-			Tập hợp $A = \{a, b, c\}$ có tất cả bao nhiêu tập hợp con?
+			Cho tam giác $ABC$ không vuông. Giá trị của biểu thức $T = \tan A + \tan(B+C)$ bằng:
 			\choice
-			{\True $8$}
-			{$6$}
-			{$7$}
-			{$9$}
+			{\True $T = 0$}
+			{$T = 1$}
+			{$T = 2\tan A$}
+			{$T = -1$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho hai khoảng $A = (-\infty; m)$ và $B = (3; +\infty)$. Tìm điều kiện của tham số $m$ để $A \cap B = \emptyset$.
+			Cho góc $\alpha$ thỏa mãn $\cos \alpha = -\dfrac{2}{3}$. Giá trị của biểu thức $P = 3\sin^2 \alpha + 2\cos^2 \alpha$ bằng:
 			\choice
-			{\True $m \le 3$}
-			{$m < 3$}
-			{$m > 3$}
-			{$m \ge 3$}
+			{\True $P = \dfrac{23}{9}$}
+			{$P = \dfrac{19}{9}$}
+			{$P = \dfrac{25}{9}$}
+			{$P = \dfrac{17}{9}$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho hai tập hợp $A = [m-1; m+3]$ và $B = (-2; 5)$. Tìm tất cả các giá trị của $m$ để $A \subset B$.
+			Cho $0^\circ < \alpha < 90^\circ$ và $90^\circ < \beta < 180^\circ$. Khẳng định nào sau đây ĐÚNG?
 			\choice
-			{\True $-1 < m < 2$}
-			{$-1 \le m \le 2$}
-			{$m > -1$}
-			{$m < 2$}
+			{\True $\sin \alpha \cdot \cos \beta < 0$}
+			{$\cos \alpha \cdot \cos \beta > 0$}
+			{$\tan \alpha \cdot \tan \beta > 0$}
+			{$\sin \alpha \cdot \sin \beta < 0$}
 		\end{ex}
 		
 		\begin{ex}
-			Lớp 10A có 42 học sinh, trong đó có 25 học sinh thích môn Toán, 18 học sinh thích môn Tiếng Anh và 8 học sinh không thích môn nào trong hai môn này. Hỏi có bao nhiêu học sinh thích cả hai môn Toán và Tiếng Anh?
+			Giá trị lớn nhất của biểu thức $F(\alpha) = 2\sin \alpha - 3\cos^2 \alpha + 1$ với $0^\circ \le \alpha \le 180^\circ$ bằng:
 			\choice
-			{\True $9$}
-			{$7$}
-			{$11$}
-			{$5$}
+			{\True $\max F = 3$}
+			{$\max F = 4$}
+			{$\max F = 2$}
+			{$\max F = \dfrac{11}{3}$}
 		\end{ex}
 		
 	\end{multicols}
@@ -243,72 +258,89 @@
 	% ==============================================================================
 	% PHẦN II: TRẮC NGHIỆM ĐÚNG - SAI (4 CÂU)
 	% ==============================================================================
-	\sectionheader{PHẦN II. TRẮC NGHIỆM ĐÚNG -- SAI (4 CÂU)}{Học sinh ghi chữ Đ (Đúng) hoặc S (Sai) vào ô trống tương ứng trước mỗi nhận định.}
+	\sectionheader{PHẦN II. TRẮC NGHIỆM ĐÚNG -- SAI (4 CÂU -- MỖI CÂU GỒM 4 Ý a, b, c, d)}{Học sinh xác định mỗi khẳng định là Đúng (Đ) hoặc Sai (S) và đánh dấu vào ô tương ứng.}
+	
+	\setcounter{ex}{0}
 	
 	\begin{ex}
-		Cho hai tập hợp $A = \{x \in \mathbb{R} \mid x^2 - 5x + 6 = 0\}$ và $B = \{x \in \mathbb{Z} \mid -1 \le x \le 3\}$:
+		Cho góc $\alpha$ thỏa mãn $90^\circ < \alpha < 180^\circ$ và $\sin \alpha = \dfrac{3}{5}$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Viết tập hợp $A$ dưới dạng liệt kê phần tử ta được $A = \{2, 3\}$.}
-		{Số phần tử của tập hợp $B$ là $4$ phần tử.}
-		{\True Giao của hai tập hợp là $A \cap B = \{2, 3\}$.}
-		{Tập hợp $A$ không phải là tập con của tập hợp $B$ ($A \not\subset B$).}
+		{$\cos \alpha = \dfrac{4}{5}$.}
+		{\True $\tan \alpha = -\dfrac{3}{4}$.}
+		{Giá trị của biểu thức $P = \dfrac{\tan \alpha + \cot \alpha}{1 + \tan^2 \alpha}$ bằng $-\dfrac{3}{5}$.}
+		{$\sin(180^\circ - \alpha) + \cos(180^\circ - \alpha) = -\dfrac{1}{5}$.}
 	\end{ex}
 	
 	\begin{ex}
-		Cho hai tập hợp $A = [-3; 2)$ và $B = (0; 5]$ trên tập số thực $\mathbb{R}$:
+		Cho hai biểu thức $A(x) = \sin^4 x + \cos^4 x + 2\sin^2 x \cos^2 x$ và $B(x) = \sin^6 x + \cos^6 x + 3\sin^2 x \cos^2 x$ với $0^\circ \le x \le 180^\circ$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Hợp của hai tập hợp là $A \cup B = [-3; 5]$.}
-		{\True Giao của hai tập hợp là $A \cap B = (0; 2)$.}
-		{\True Hiệu của hai tập hợp là $A \setminus B = [-3; 0]$.}
-		{\True Phần bù của $A$ trong $\mathbb{R}$ là $C_{\mathbb{R}} A = (-\infty; -3) \cup [2; +\infty)$.}
+		{\True Giá trị của $A(x)$ không phụ thuộc vào biến $x$ và bằng $1$.}
+		{\True Biểu thức $B(x)$ rút gọn bằng $1$ với mọi $x$.}
+		{\True Với $x = 120^\circ$, giá trị của $A(120^\circ) + B(120^\circ) = 2$.}
+		{\True Giá trị lớn nhất của $C(x) = \sin^4 x + \cos^4 x$ trên $[0^\circ, 180^\circ]$ bằng $1$.}
 	\end{ex}
 	
 	\begin{ex}
-		Xét quan hệ bao hàm giữa các tập hợp số $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ và tập số vô tỉ $\mathbb{I}$:
+		Cho góc $\alpha$ thỏa mãn $\tan \alpha + \cot \alpha = 3$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Tập hợp các số tự nhiên $\mathbb{N}$ là tập con của tập hợp các số nguyên $\mathbb{Z}$ ($\mathbb{N} \subset \mathbb{Z}$).}
-		{\True Phép giao $\mathbb{Z} \cap \mathbb{Q} = \mathbb{Z}$.}
-		{\True Phép hiệu $\mathbb{R} \setminus \mathbb{Q}$ là tập hợp các số vô tỉ $\mathbb{I}$.}
-		{Phần bù $C_{\mathbb{R}} \mathbb{N} = (0; +\infty)$.}
+		{\True Cả $\sin \alpha$ và $\cos \alpha$ bắt buộc phải cùng dấu.}
+		{\True $\tan^2 \alpha + \cot^2 \alpha = 7$.}
+		{\True $|\tan \alpha - \cot \alpha| = \sqrt{5}$.}
+		{Nếu $0^\circ < \alpha < 45^\circ$ thì $\tan^3 \alpha - \cot^3 \alpha = 7\sqrt{5}$.}
 	\end{ex}
 	
 	\begin{ex}
-		Cho hai tập hợp phụ thuộc tham số $m$: $A = (1; m+1]$ và $B = (2; 6)$:
+		Một chất điểm chịu tác dụng của hai lực $\vec{F}_1$ và $\vec{F}_2$ có độ lớn lần lượt là $F_1 = 10\text{ N}$ và $F_2 = 10\sqrt{3}\text{ N}$. Góc giữa hai lực $\vec{F}_1$ và $\vec{F}_2$ là $\theta$ ($0^\circ \le \theta \le 180^\circ$). Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Điều kiện để tập hợp $A$ khác rỗng ($A \neq \emptyset$) là $m > 0$.}
-		{Khi $m = 4$, tập hợp $A = (1; 5]$ và $A \cap B = (2; 5]$.}
-		{\True Điều kiện của $m$ để $A \cap B = \emptyset$ là $m \le 1$.}
-		{\True Điều kiện của $m$ để $B \subset A$ là $m \ge 5$.}
+		{\True Nếu $\theta = 90^\circ$, độ lớn lực tổng hợp $\vec{F} = \vec{F}_1 + \vec{F}_2$ bằng $20\text{ N}$.}
+		{Nếu $\theta = 120^\circ$, độ lớn lực tổng hợp $F = 10\text{ N}$.}
+		{\True Độ lớn lực tổng hợp $F$ đạt giá trị lớn nhất bằng $10(1+\sqrt{3})\text{ N}$ khi $\theta = 0^\circ$.}
+		{Khi $\theta = 150^\circ$, công sinh ra bởi lực tổng hợp $\vec{F}$ làm dịch chuyển vật một đoạn $d = 5\text{ m}$ theo hướng của $\vec{F}_1$ là $25\text{ J}$.}
 	\end{ex}
 	
 	% ==============================================================================
 	% PHẦN III: CÂU HỎI TRẢ LỜI NGẮN (5 CÂU)
 	% ==============================================================================
-	\sectionheader{PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU)}{Học sinh viết đáp số hoặc câu trả lời ngắn gọn vào khoảng trống bên dưới mỗi câu hỏi.}
+	\sectionheader{PHẦN III. CÂU HỎI TRẢ LỜI NGẮN (5 CÂU)}{Học sinh viết đáp số hoặc câu trả lời ngắn gọn vào ô trống tương ứng.}
+	
+	\setcounter{ex}{0}
 	
 	\begin{ex}
-		Cho tập hợp $A = \{x \in \mathbb{R} \mid (x^2 - 9)(x^2 - 4x + 3) = 0\}$. Hỏi tập hợp $A$ có tất cả bao nhiêu tập hợp con?
-		\shortans{$8$}
+		Một cabin của vòng quay mặt trời bán kính $R = 50\text{ m}$ quay đều quanh tâm $O$. Tại thời điểm ban đầu, cabin ở vị trí thấp nhất $A$. Sau một thời gian quay, góc quay của bán kính nối cabin $\widehat{AOM} = \alpha = 150^\circ$. Hỏi độ cao của cabin ở vị trí $M$ so với vị trí thấp nhất $A$ bằng bao nhiêu mét (làm tròn kết quả đến hàng phần mười)?
+		\shortans{93,3 m}
 	\end{ex}
 	
 	\begin{ex}
-		Cho hai khoảng $A = [-2; 4]$ và $B = (m; m+3)$. Tìm tất cả các giá trị thực của tham số $m$ để $B \subset A$.
-		\shortans{$-2 \le m \le 1$}
+		Một cánh tay robot dài $1{,}2\text{ m}$ gắp vật từ vị trí điểm $A$ nằm ngang bên phải tâm quay $O$. Robot quay một góc $\alpha = 135^\circ$ quanh tâm $O$ đến vị trí điểm $B$ rồi thả vật. Khoảng cách giữa vị trí đầu $A$ và vị trí thả $B$ bằng bao nhiêu mét (làm tròn kết quả đến hàng phần trăm)?
+		\shortans{2,22 m}
 	\end{ex}
 	
 	\begin{ex}
-		Cho hai tập hợp $A = (-\infty; m+1]$ và $B = (2; +\infty)$. Tìm tất cả các giá trị thực của tham số $m$ để $A \cap B = \emptyset$.
-		\shortans{$m \le 1$}
+		Cho góc $\alpha$ thỏa mãn $90^\circ < \alpha < 180^\circ$ và $\tan \alpha + \cot \alpha = -\dfrac{25}{12}$. Tính giá trị của biểu thức $\sin \alpha + \cos \alpha$.
+		\shortans{-0,2}
 	\end{ex}
 	
 	\begin{ex}
-		Một công ty phỏng vấn 100 khách hàng về việc sử dụng hai sản phẩm A và B. Kết quả có 65 người dùng sản phẩm A, 45 người dùng sản phẩm B và 15 người không dùng sản phẩm nào. Hỏi có bao nhiêu người dùng CẢ HAI sản phẩm A và B?
-		\shortans{$25$}
+		Cho góc $\alpha$ thỏa mãn $\sin \alpha = \dfrac{1}{3}$. Tính giá trị của biểu thức $P = \dfrac{\sin(180^\circ - \alpha) + 2\cos(90^\circ - \alpha)}{\tan(180^\circ - \alpha) \cdot \cot \alpha}$.
+		\shortans{-1}
 	\end{ex}
 	
 	\begin{ex}
-		\textbf{(Vận dụng thực tế)} Lớp 10B có 40 học sinh. Trong kỳ thi học sinh giỏi cấp trường, có 22 học sinh thi môn Toán, 18 học sinh thi môn Vật lý và 10 học sinh không thi môn nào. Trường quyết định trao thưởng cho các học sinh thi CHỈ MỘT môn. Hỏi có bao nhiêu học sinh lớp 10B được trao thưởng?
-		\shortans{$20$}
+		Tính giá trị của biểu thức $S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 180^\circ$.
+		\shortans{9}
 	\end{ex}
+	
+	% ------------------------------------------------------------------------------
+	% FOOTER - TỰ ĐÁNH GIÁ CỦA HỌC SINH
+	% ------------------------------------------------------------------------------
+	\vspace{0.3cm}
+	\noindent
+	\begin{tikzpicture}
+		\node[fill=boxbg, draw=inkblue!20, rounded corners=4pt, inner sep=4pt, text width=\linewidth-8pt] {
+			\footnotesize \textbf{Tự đánh giá mức độ hiểu bài:} \quad 
+			$\square$ Cần cố gắng \quad $\square$ Đã hiểu \quad $\square$ Hoàn thành tốt \quad $\square$ Rất tự tin\\[2pt]
+			\footnotesize \textbf{Điều em còn thắc mắc:} \dotfill
+		};
+	\end{tikzpicture}
 	
 \end{document}

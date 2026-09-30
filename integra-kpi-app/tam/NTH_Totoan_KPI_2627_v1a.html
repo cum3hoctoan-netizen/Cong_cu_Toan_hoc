@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integra KPI - Đánh Giá Năng Lực</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f0fdf4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .radio-btn:checked + span { background-color: #2563eb; color: white; border-color: #2563eb; }
+        .radio-btn-danger:checked + span { background-color: #ef4444; color: white; border-color: #ef4444; }
+        .radio-btn-warn:checked + span { background-color: #f59e0b; color: white; border-color: #f59e0b; }
+        .role-check:checked + div { background-color: #dbeafe; border-color: #3b82f6; }
+    </style>
+</head>
+<body class="p-2 md:p-8 text-gray-800">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        
+        <!-- HEADER VÀ MENU CHỌN TÊN -->
+        <div class="bg-blue-700 p-6 text-white text-center">
+            <h1 class="text-2xl md:text-3xl font-bold">INTEGRA KPI - QUÝ III/2026</h1>
+            
+            <div class="mt-4 flex flex-col md:flex-row items-center justify-center gap-3">
+                <label for="gv-select" class="font-semibold text-blue-100 uppercase text-sm tracking-wider">Người đánh giá:</label>
+                <select id="gv-select" class="p-2 w-full md:w-64 border-2 border-blue-400 rounded-lg font-bold text-blue-900 bg-white focus:outline-none focus:border-yellow-400 shadow-sm cursor-pointer">
+                    <!-- Tự động điền -->
+                </select>
+            </div>
+        </div>
+
+        <!-- BẢNG ĐIỀU KHIỂN CHỨC VỤ -->
+        <div class="p-4 bg-gray-50 border-b">
+            <p class="font-bold text-gray-700 mb-3 text-center uppercase text-sm">Xác nhận chức vụ & Kiêm nhiệm của thầy/cô trong Quý III</p>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <label class="cursor-pointer">
+                    <input type="checkbox" id="role_ttcm" class="hidden role-check" onchange="loadTasks()">
+                    <div class="border rounded p-2 text-center text-xs font-semibold text-gray-600 hover:bg-gray-100 transition">Tổ trưởng / Tổ phó</div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="checkbox" id="role_gvcn" class="hidden role-check" onchange="loadTasks()">
+                    <div class="border rounded p-2 text-center text-xs font-semibold text-gray-600 hover:bg-gray-100 transition">Giáo viên Chủ nhiệm</div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="checkbox" id="role_nk" class="hidden role-check" onchange="loadTasks()">
+                    <div class="border rounded p-2 text-center text-xs font-semibold text-gray-600 hover:bg-gray-100 transition">Dạy Năng khiếu / HSG</div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="checkbox" id="role_dang" class="hidden role-check" onchange="loadTasks()">
+                    <div class="border rounded p-2 text-center text-xs font-semibold text-gray-600 hover:bg-gray-100 transition">Đảng viên / Chi ủy</div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="checkbox" id="role_doan" class="hidden role-check" onchange="loadTasks()">
+                    <div class="border rounded p-2 text-center text-xs font-semibold text-gray-600 hover:bg-gray-100 transition">Công đoàn / Đoàn TN / TTND</div>
+                </label>
+            </div>
+        </div>
+
+        <!-- DASHBOARD KẾT QUẢ -->
+        <div class="flex flex-wrap border-b">
+            <div class="w-full md:w-1/3 p-4 text-center border-r bg-white">
+                <p class="text-sm font-semibold text-gray-500 uppercase">Tiêu chí chung</p>
+                <p class="text-3xl font-bold text-blue-600" id="score-chung">30/30</p>
+            </div>
+            <div class="w-full md:w-1/3 p-4 text-center border-r bg-white">
+                <p class="text-sm font-semibold text-gray-500 uppercase">KPI Chuyên môn</p>
+                <p class="text-3xl font-bold text-blue-600" id="score-chuyenmon">0/70</p>
+            </div>
+            <div class="w-full md:w-1/3 p-4 text-center bg-white">
+                <p class="text-sm font-semibold text-gray-500 uppercase">Tỷ lệ Vượt mức (X)</p>
+                <p class="text-3xl font-bold text-gray-400" id="kpi-ratio">0%</p>
+            </div>
+        </div>
+        
+        <div class="bg-blue-50 p-3 text-center border-b">
+            <p class="font-bold text-lg" id="final-rating">Tổng điểm: <span class="text-2xl text-blue-700">0</span> - Xếp loại: Đang tính toán...</p>
+        </div>
+
+        <div class="p-4 md:p-6 space-y-6">
+            <!-- TIÊU CHÍ CHUNG -->
+            <div class="border rounded-lg p-4 bg-white shadow-sm">
+                <h2 class="text-lg font-bold text-gray-700 border-b pb-2 mb-3">I. Nhóm Tiêu Chí Chung (30 điểm)</h2>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded">
+                    <input type="checkbox" id="check-tieuchi" checked class="mt-1 w-5 h-5 text-blue-600" onchange="calculateScore()">
+                    <span class="text-sm">Tôi cam kết <b>Đảm bảo 100%</b> các tiêu chí về Phẩm chất chính trị, Đạo đức lối sống, Tự phê bình và Khát vọng cống hiến (Theo Mẫu 01-B).</span>
+                </label>
+            </div>
+
+            <!-- NHIỆM VỤ CHUYÊN MÔN -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-700 border-b pb-2 mb-4 flex justify-between items-center">
+                    II. Đánh Giá Nhiệm Vụ 
+                    <span class="text-sm text-blue-600 font-normal bg-blue-100 px-2 py-1 rounded" id="task-counter">0 nhiệm vụ</span>
+                </h2>
+                <div id="tasks-container" class="space-y-4">
+                </div>
+            </div>
+
+            <button id="btn-submit" onclick="submitKPI()" class="w-full bg-blue-600 text-white font-bold py-4 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md text-lg">
+                XÁC NHẬN & NỘP KPI
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // CẤU HÌNH DANH SÁCH & DATABASE LOCAL
+        const danhSachToToan = ["Đinh Thị Mai Chi", "Trần Đức Ngọc", "Đặng Thị Chi Lan", "Trần Thị Minh", "Thọ Chế Quốc Ân", "Nguyễn Duyên An", "Nguyễn Trần Tú Toàn", "Nguyễn Phương Nam", "Phan Nguyễn Hoài An", "Nguyễn Trần Đức", "Thái Doãn Hùng", "Trần Gia Huy", "Trần Phong", "Huỳnh Tấn Phát", "Nguyễn Văn Đức", "Hà Quốc Vũ", "Võ Quang Phú"];
+        
+        // Link gửi dữ liệu
+        const SUBMIT_URL = "http://localhost:5678/webhook/nhan-kpi";
+
+        // Toàn bộ 51 nhiệm vụ được nhúng trực tiếp vào đây
+        const MASTER_DB = [
+            {"Task_ID":"T1_01","Truc":1,"Task_Name":"Thực hiện dạy học theo kế hoạch dạy học","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T1_02","Truc":1,"Task_Name":"Đổi mới dạy học, sinh hoạt NCKH, tiết dạy ngoài không gian lớp","Diem_Chuan":10,"He_So_Do_Kho":1.1,"Required_Roles":["GV_CHUYEN"]},
+            {"Task_ID":"T1_04","Truc":1,"Task_Name":"Công tác giáo dục mũi nhọn - Bồi dưỡng Học sinh năng khiếu","Diem_Chuan":10,"He_So_Do_Kho":1.2,"Required_Roles":["GV_CHUYEN"]},
+            {"Task_ID":"T1_06","Truc":1,"Task_Name":"Thực hiện bồi dưỡng thường xuyên","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T1_07","Truc":1,"Task_Name":"Chấp hành giờ giấc lên lớp (Không đi trễ/ về sớm, không vắng tiết)","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T1_08","Truc":1,"Task_Name":"Chấm thi chọn học sinh vào lớp năng khiếu toán 10","Diem_Chuan":10,"He_So_Do_Kho":1.1,"Required_Roles":["GV_CHUYEN"]},
+            {"Task_ID":"T1_09","Truc":1,"Task_Name":"Thực hiện tập huấn SGK năm 2026","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T1_11","Truc":1,"Task_Name":"Tham gia chấm thi/Đánh giá do cấp trên điều động (Khảo sát diện rộng)","Diem_Chuan":10,"He_So_Do_Kho":1.2,"Required_Roles":["TU_CHON_HOAC_PHAN_CONG"]},
+            {"Task_ID":"T2_01","Truc":2,"Task_Name":"Công tác tổ trưởng, tổ phó (Thực hiện chức năng, thống nhất ma trận, họp...)","Diem_Chuan":10,"He_So_Do_Kho":1.2,"Required_Roles":["TO_TRUONG"]},
+            {"Task_ID":"T2_02","Truc":2,"Task_Name":"Công tác GVCN (Sinh hoạt lớp, hồ sơ, chức năng nhiệm vụ)","Diem_Chuan":10,"He_So_Do_Kho":1.2,"Required_Roles":["GVCN"]},
+            {"Task_ID":"T2_04","Truc":2,"Task_Name":"Tham gia họp Sở, HĐSP, họp tổ, học chính trị, tập huấn cấp trường","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T3_01","Truc":3,"Task_Name":"Ứng dụng AI trong giảng dạy","Diem_Chuan":10,"He_So_Do_Kho":1.1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T3_02","Truc":3,"Task_Name":"Đưa bài lên hệ thống dạy học trực tuyến; Thực hiện học liệu số","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T3_03","Truc":3,"Task_Name":"Chuẩn hóa, làm sạch và cập nhật các cơ sở dữ liệu cá nhân","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T3_04","Truc":3,"Task_Name":"Nâng cao trình độ chuyên môn, nghiệp vụ (Hoàn thành khóa học/bồi dưỡng)","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["GV_CHUYEN"]},
+            {"Task_ID":"T3_06","Truc":3,"Task_Name":"Bảo đảm an toàn thông tin, bảo vệ dữ liệu cá nhân","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T3_08","Truc":3,"Task_Name":"Thực hiện cập nhật thông tin cá nhân, hồ sơ điện tử","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T4_01","Truc":4,"Task_Name":"Công tác Đảng (Thực hiện nhiệm vụ Đảng viên / Cấp ủy)","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["DANG_UY"]},
+            {"Task_ID":"T4_02","Truc":4,"Task_Name":"Công tác công đoàn, đoàn thanh niên, kiêm nhiệm khác","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["DOAN_THE"]},
+            {"Task_ID":"T4_03","Truc":4,"Task_Name":"Thực hiện đoàn kết nội bộ, chống tham nhũng, tiết kiệm điện nước","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T5_01","Truc":5,"Task_Name":"Thực hiện quy tắc ứng xử trong nhà trường","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T5_05","Truc":5,"Task_Name":"Thực hiện công dân học tập khi có triển khai","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["DANG_UY"]},
+            {"Task_ID":"T6_03","Truc":6,"Task_Name":"Tham gia xây dựng trường học hạnh phúc","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            {"Task_ID":"T6_04","Truc":6,"Task_Name":"Công tác phối hợp giữa gia đình - nhà trường - xã hội","Diem_Chuan":10,"He_So_Do_Kho":1,"Required_Roles":["ALL_GV"]},
+            // Các nhiệm vụ có thể tự điền (Diem_Chuan = null trong DB cũ, ta gán mặc định để thành Form)
+            {"Task_ID":"T1_XX","Truc":1,"Task_Name":"","Diem_Chuan":12,"He_So_Do_Kho":1.0,"Required_Roles":["ALL_GV"], "Is_Editable": true},
+            {"Task_ID":"T2_XX","Truc":2,"Task_Name":"","Diem_Chuan":12,"He_So_Do_Kho":1.0,"Required_Roles":["TO_TRUONG"], "Is_Editable": true},
+            {"Task_ID":"T3_XX","Truc":3,"Task_Name":"","Diem_Chuan":12,"He_So_Do_Kho":1.0,"Required_Roles":["TU_CHON_HOAC_PHAN_CONG"], "Is_Editable": true}
+        ];
+
+        let taskData = []; 
+
+        function initApp() {
+            const select = document.getElementById('gv-select');
+            danhSachToToan.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.innerText = name;
+                if (name === "Trần Đức Ngọc") option.selected = true;
+                select.appendChild(option);
+            });
+            loadTasks(); // Load lần đầu
+        }
+
+        // HÀM LỌC CÔNG VIỆC DỰA TRÊN CHECKBOX CHỨC VỤ
+        function loadTasks() {
+            let activeRoles = ['ALL_GV', 'TU_CHON_HOAC_PHAN_CONG'];
+            if(document.getElementById('role_ttcm').checked) activeRoles.push('TO_TRUONG');
+            if(document.getElementById('role_gvcn').checked) activeRoles.push('GVCN');
+            if(document.getElementById('role_nk').checked) activeRoles.push('GV_CHUYEN');
+            if(document.getElementById('role_dang').checked) activeRoles.push('DANG_UY');
+            if(document.getElementById('role_doan').checked) activeRoles.push('DOAN_THE');
+
+            // Lọc Database
+            taskData = MASTER_DB.filter(t => t.Required_Roles.some(r => activeRoles.includes(r)))
+                                .map(t => ({...t, Diem_Quy_Doi_Toi_Da: t.Diem_Chuan * t.He_So_Do_Kho, tiendo: 100, chatluong: 100, isX: false }));
+            
+            document.getElementById('task-counter').innerText = `${taskData.length} nhiệm vụ`;
+            renderTasks();
+            calculateScore();
+        }
+
+        function renderTasks() {
+            const container = document.getElementById('tasks-container');
+            container.innerHTML = ''; 
+
+            taskData.forEach((task, index) => {
+                const card = document.createElement('div');
+                card.className = "p-4 border border-gray-200 rounded-lg bg-white hover:shadow-md transition";
+                
+                let taskHeaderHTML = '';
+                if (task.Is_Editable) {
+                    taskHeaderHTML = `
+                        <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2 py-1 rounded">Trục ${task.Truc} - NHIỆM VỤ PHÁT SINH/TỰ CHỌN</span>
+                        <div class="mt-2 space-y-2">
+                            <input type="text" placeholder="Nhập tên nhiệm vụ (nếu có làm)..." class="w-full border p-2 rounded text-sm font-bold text-gray-800 bg-amber-50" oninput="updateCustomTask(${index}, 'Task_Name', this.value)">
+                            <div class="flex gap-2">
+                                <div class="w-1/2">
+                                    <label class="text-xs text-gray-500">Điểm chuẩn (thường 12)</label>
+                                    <input type="number" value="${task.Diem_Chuan}" class="w-full border p-1 rounded text-sm bg-amber-50" oninput="updateCustomTask(${index}, 'Diem_Chuan', this.value)">
+                                </div>
+                                <div class="w-1/2">
+                                    <label class="text-xs text-gray-500">Hệ số độ khó (1.0 - 1.2)</label>
+                                    <input type="number" step="0.1" value="${task.He_So_Do_Kho}" class="w-full border p-1 rounded text-sm bg-amber-50" oninput="updateCustomTask(${index}, 'He_So_Do_Kho', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    taskHeaderHTML = `
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">Trục ${task.Truc}</span>
+                        <h3 class="font-bold text-gray-800 mt-2">${task.Task_Name}</h3>
+                        <p class="text-sm text-gray-500 mt-1">Hệ số: <span class="font-semibold text-blue-600">${task.He_So_Do_Kho}</span> | Quy đổi tối đa: <span class="font-semibold text-blue-600">${task.Diem_Quy_Doi_Toi_Da.toFixed(1)}đ</span></p>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row justify-between gap-4">
+                        <div class="flex-1">
+                            ${taskHeaderHTML}
+                            <div class="mt-3">
+                                <p class="text-xs font-bold text-gray-600 mb-1">TIẾN ĐỘ (30%):</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="100" class="hidden radio-btn" checked onchange="updateTask(${index}, 'tiendo', 100)"><span class="px-2 py-1 border rounded text-xs">Sớm/Đúng (100%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="80" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'tiendo', 80)"><span class="px-2 py-1 border rounded text-xs">Chậm 1-3 ngày</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="60" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'tiendo', 60)"><span class="px-2 py-1 border rounded text-xs">Chậm 4-5 ngày</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="0" class="hidden radio-btn-danger" onchange="updateTask(${index}, 'tiendo', 0)"><span class="px-2 py-1 border rounded text-xs">Trễ hạn (0%)</span></label>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p class="text-xs font-bold text-gray-600 mb-1">CHẤT LƯỢNG (70%):</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="100" class="hidden radio-btn" checked onchange="updateTask(${index}, 'chatluong', 100)"><span class="px-2 py-1 border rounded text-xs">Đạt yêu cầu (100%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="80" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'chatluong', 80)"><span class="px-2 py-1 border rounded text-xs">Cần sửa nhẹ (80%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="60" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'chatluong', 60)"><span class="px-2 py-1 border rounded text-xs">Cơ bản (60%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="0" class="hidden radio-btn-danger" onchange="updateTask(${index}, 'chatluong', 0)"><span class="px-2 py-1 border rounded text-xs">Không đạt (0%)</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-32 flex flex-col items-center justify-center p-3 bg-blue-50 rounded border border-blue-100">
+                            <label class="cursor-pointer flex flex-col items-center gap-2">
+                                <input type="checkbox" id="x_${index}" class="w-6 h-6 text-blue-600" onchange="updateTask(${index}, 'isX', this.checked)">
+                                <span class="text-sm font-bold text-blue-800 text-center">Vượt mức (X)</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateCustomTask(index, field, value) {
+            if (field === 'Task_Name') {
+                taskData[index].Task_Name = value;
+            } else {
+                taskData[index][field] = parseFloat(value) || 0;
+                taskData[index].Diem_Quy_Doi_Toi_Da = taskData[index].Diem_Chuan * taskData[index].He_So_Do_Kho;
+            }
+            calculateScore();
+        }
+
+        function updateTask(index, field, value) {
+            taskData[index][field] = value;
+            const cbX = document.getElementById(`x_${index}`);
+            if(taskData[index].tiendo < 100 || taskData[index].chatluong < 100) {
+                cbX.checked = false;
+                taskData[index].isX = false;
+                cbX.disabled = true;
+                cbX.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                cbX.disabled = false;
+                cbX.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+            calculateScore();
+        }
+
+        function calculateScore() {
+            const isChungOK = document.getElementById('check-tieuchi').checked;
+            const diemChung = isChungOK ? 30 : 0;
+            document.getElementById('score-chung').innerText = `${diemChung}/30`;
+
+            let totalA = 0; let totalB = 0; let countX = 0;
+            // Chỉ đếm những công việc Hợp lệ (Có tên, Điểm chuẩn > 0)
+            let validTasks = taskData.filter(t => !t.Is_Editable || (t.Is_Editable && t.Task_Name.trim() !== ""));
+
+            validTasks.forEach(t => {
+                totalA += t.Diem_Quy_Doi_Toi_Da;
+                let diemThucHien = t.Diem_Chuan * ((0.3 * t.tiendo/100) + (0.7 * t.chatluong/100));
+                totalB += diemThucHien * t.He_So_Do_Kho;
+                if (t.isX) countX++;
+            });
+
+            let kpiChuyenMon = totalA > 0 ? (totalB / totalA) * 70 : 0;
+            if (kpiChuyenMon > 70) kpiChuyenMon = 70;
+            
+            document.getElementById('score-chuyenmon').innerText = `${kpiChuyenMon.toFixed(1)}/70`;
+
+            let ratioX = validTasks.length > 0 ? (countX / validTasks.length) * 100 : 0;
+            const ratioEl = document.getElementById('kpi-ratio');
+            ratioEl.innerText = `${ratioX.toFixed(1)}%`;
+            ratioEl.className = ratioX >= 30 ? "text-3xl font-bold text-green-500" : "text-3xl font-bold text-gray-400";
+
+            let tongDiem = diemChung + kpiChuyenMon;
+            let xepLoai = "Không Hoàn Thành";
+            
+            if (tongDiem >= 90 && ratioX >= 30) {
+                xepLoai = "<span class='text-green-600 font-bold uppercase'>Hoàn thành Xuất sắc</span> 🏆";
+            } else if (tongDiem >= 70) {
+                xepLoai = "<span class='text-blue-600 font-bold uppercase'>Hoàn thành Tốt</span>";
+            } else if (tongDiem >= 50) {
+                xepLoai = "Hoàn thành Nhiệm vụ";
+            }
+            document.getElementById('final-rating').innerHTML = `Tổng điểm: <span class="text-2xl text-blue-700 font-bold">${tongDiem.toFixed(1)}</span>/100 - Xếp loại: ${xepLoai}`;
+        }
+
+        async function submitKPI() {
+            const btn = document.getElementById('btn-submit');
+            btn.innerText = "ĐANG ĐỒNG BỘ DỮ LIỆU...";
+            btn.disabled = true;
+
+            const selectedTeacher = document.getElementById('gv-select').value;
+            let validTasksCount = taskData.filter(t => !t.Is_Editable || (t.Is_Editable && t.Task_Name.trim() !== "")).length;
+
+            const payload = {
+                ThoiGianNop: new Date().toLocaleString("vi-VN"),
+                TenGiaoVien: selectedTeacher,
+                TongSoNhiemVu: validTasksCount,
+                NhiemVuVuotMuc: taskData.filter(t => t.isX).length,
+                TyLePhanTram: document.getElementById('kpi-ratio').innerText,
+                DeXuatXepLoai: document.getElementById('final-rating').innerText.split('Xếp loại: ')[1].replace(/(<([^>]+)>)/gi, "").replace(' 🏆','') 
+            };
+
+            try {
+                const response = await fetch(SUBMIT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                alert(`🎉 Nộp KPI thành công cho GV: ${selectedTeacher}! Dữ liệu đã ghi vào Google Sheets.`);
+                btn.innerText = "ĐÃ NỘP THÀNH CÔNG";
+                btn.classList.replace("bg-blue-600", "bg-green-600");
+            } catch (error) {
+                alert("Lỗi mạng! Không thể kết nối tới máy chủ n8n.");
+                btn.innerText = "XÁC NHẬN & NỘP KPI";
+                btn.disabled = false;
+            }
+        }
+
+        // Khởi động
+        window.onload = initApp;
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+[
+  {
+    "Task_ID": "NV_KT_01",
+    "Truc": 1,
+    "Task_Name": "Lập dự toán, quản lý và thực hiện thanh quyết toán ngân sách nhà nước, các quỹ học phí, thu nhập tăng thêm trong Quý",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "KE_TOAN"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Kế toán",
+    "Minh_Chung_Mac_Dinh": "Báo cáo dự toán/thanh quyết toán Quý III được Hiệu trưởng phê duyệt; Bảng thanh toán lương, thu nhập tăng thêm đầy đủ chứng từ KBNN."
+  },
+  {
+    "Task_ID": "NV_KT_02",
+    "Truc": 1,
+    "Task_Name": "Quản lý tài sản công, thực hiện kiểm kê, theo dõi khấu hao và cập nhật CSDL tài sản công của Nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "KE_TOAN"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Kế toán / Quản lý tài sản",
+    "Minh_Chung_Mac_Dinh": "Sổ theo dõi tài sản công, Biên bản kiểm kê tài sản Quý III, Báo cáo cập nhật CSDL tài sản công ngành ngày 15/09/2026."
+  },
+  {
+    "Task_ID": "NV_KT_03",
+    "Truc": 1,
+    "Task_Name": "Thực hiện công tác thu-chi quỹ tiền mặt, kiểm kê quỹ và mở sổ theo dõi thu chi tiền mặt/tiền gửi ngân hàng",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "KE_TOAN",
+      "THU_QUY"
+    ],
+    "Ghi_Chu_Goc": "Thủ quỹ / Kế toán tiền mặt",
+    "Minh_Chung_Mac_Dinh": "Sổ quỹ tiền mặt, Biên bản kiểm kê quỹ cuối tháng/quý; Phiếu thu/chi có đủ chữ ký hợp lệ hoàn thành trong quý."
+  },
+  {
+    "Task_ID": "NV_VT_01",
+    "Truc": 2,
+    "Task_Name": "Quản lý công văn đi, công văn đến, số hóa tài liệu và vận hành hệ thống Quản lý văn bản điều hành (e-Office/iCPV)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "VAN_THU"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Văn thư",
+    "Minh_Chung_Mac_Dinh": "Sổ công văn đi/đến điện tử trên e-Office; 100% văn bản được luân chuyển, phát hành đúng thẩm quyền và thời hạn."
+  },
+  {
+    "Task_ID": "NV_VT_02",
+    "Truc": 2,
+    "Task_Name": "Quản lý, sử dụng con dấu của Nhà trường đúng quy định; lưu trữ hồ sơ, chứng từ và phục vụ khai thác tài liệu lưu trữ",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "VAN_THU"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Văn thư - Lưu trữ",
+    "Minh_Chung_Mac_Dinh": "Sổ theo dõi đăng ký đóng dấu; Danh mục hồ sơ lưu trữ năm/quý được đóng tập ngăn nắp, bảo đảm an toàn con dấu tuyệt đối."
+  },
+  {
+    "Task_ID": "NV_TV_01",
+    "Truc": 5,
+    "Task_Name": "Quản lý thư viện, xử lý kỹ thuật sách báo, cho mượn/trả sách, tài liệu học tập và xây dựng Thư viện số/Thư viện thân thiện",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "THU_VIEN"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Thư viện",
+    "Minh_Chung_Mac_Dinh": "Sổ đăng ký cá biệt, Sổ theo dõi mượn/trả sách; Báo cáo thống kê lượt đọc/mượn thư viện Quý III đạt chỉ tiêu."
+  },
+  {
+    "Task_ID": "NV_GV_01",
+    "Truc": 1,
+    "Task_Name": "Quản lý Cơ sở dữ liệu ngành về học sinh, quản lý sổ điểm điện tử, hồ sơ chuyển trường, rút hồ sơ học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GIAO_VU"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Giáo vụ / Học vụ",
+    "Minh_Chung_Mac_Dinh": "Báo cáo trích xuất 100% CSDL học sinh chuẩn hóa trên phần mềm ngành; Hồ sơ học sinh được lưu trữ khoa học, chính xác."
+  },
+  {
+    "Task_ID": "NV_GV_02",
+    "Truc": 1,
+    "Task_Name": "In ấn, quản lý, phân phát đề thi, bài thi kiểm tra định kỳ; tổng hợp dữ liệu điểm số và xếp loại học tập học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "GIAO_VU"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Giáo vụ",
+    "Minh_Chung_Mac_Dinh": "Biên bản bàn giao đề thi/bài thi bảo mật; Bảng tổng hợp thống kê kết quả học tập định kỳ được BGH phê duyệt."
+  },
+  {
+    "Task_ID": "NV_GT_01",
+    "Truc": 4,
+    "Task_Name": "Theo dõi, quản lý nếp sống, kỷ luật, đồng phục, chuyên cần của học sinh và phối hợp với GVCN giải quyết các vụ việc học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "GIAM_THI",
+      "GIAO_VU"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Giám thị",
+    "Minh_Chung_Mac_Dinh": "Sổ theo dõi thi đua nếp sống hàng tuần/tháng; Báo cáo tổng hợp vi phạm nếp sống học sinh Quý III đầy đủ."
+  },
+  {
+    "Task_ID": "NV_YT_01",
+    "Truc": 5,
+    "Task_Name": "Quản lý tủ thuốc, sơ cấp cứu ban đầu cho học sinh/GVNV, theo dõi sức khỏe học sinh và tổ chức khám sức khỏe định kỳ",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "Y_TE"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Y tế trường học",
+    "Minh_Chung_Mac_Dinh": "Sổ nhật ký theo dõi sơ cấp cứu y tế Quý III; Kế hoạch & Biên bản kiểm kê tủ thuốc y tế định kỳ đạt chuẩn an toàn."
+  },
+  {
+    "Task_ID": "NV_YT_02",
+    "Truc": 5,
+    "Task_Name": "Tuyên truyền phòng chống dịch bệnh, giám sát an toàn vệ sinh thực phẩm căn tin/bếp ăn và mua BHYT học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "Y_TE"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Y tế trường học",
+    "Minh_Chung_Mac_Dinh": "Biên bản kiểm tra an toàn vệ sinh thực phẩm căn tin hàng tháng; Báo cáo tỷ lệ tham gia BHYT học sinh đạt 100%."
+  },
+  {
+    "Task_ID": "NV_TL_01",
+    "Truc": 5,
+    "Task_Name": "Tổ chức tư vấn tâm lý học đường cá nhân/nhóm học sinh, tham vấn tâm lý tuổi học trò và hỗ trợ phòng chống bạo lực học đường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TAM_LY_HOC_DUONG"
+    ],
+    "Ghi_Chu_Goc": "Cán bộ/Nhân viên Tư vấn Tâm lý",
+    "Minh_Chung_Mac_Dinh": "Sổ nhật ký tham vấn tâm lý (bảo mật); Kế hoạch & Báo cáo chuyên đề tư vấn tâm lý kỹ năng sống Quý III."
+  },
+  {
+    "Task_ID": "NV_BV_01",
+    "Truc": 6,
+    "Task_Name": "Trực ca 24/7, đảm bảo an ninh trật tự, an toàn tài sản cơ quan và hướng dẫn học sinh/khách ra vào trường đúng quy định",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "BAO_VE"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Bảo vệ",
+    "Minh_Chung_Mac_Dinh": "Lịch phân công trực ca và Sổ giao ban bảo vệ hàng ngày; Không xảy ra sự cố mất mát tài sản hay an ninh trật tự."
+  },
+  {
+    "Task_ID": "NV_BV_02",
+    "Truc": 6,
+    "Task_Name": "Kiểm tra hệ thống PCCC, điện nước, đóng mở cổng trường đúng giờ và tham gia diễn tập/bảo vệ các sự kiện của Nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "BAO_VE"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Bảo vệ - PCCC",
+    "Minh_Chung_Mac_Dinh": "Biên bản kiểm tra thiết bị PCCC định kỳ Quý III; Sổ ghi chép kiểm tra an toàn điện nước trước khi ra về."
+  },
+  {
+    "Task_ID": "NV_LC_01",
+    "Truc": 5,
+    "Task_Name": "Thực hiện vệ sinh khuôn viên trường, khu vực vệ sinh học sinh/GVNV, thu gom rác thải và giữ gìn môi trường xanh-sạch-đẹp",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "LAO_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Lao công - Phục vụ",
+    "Minh_Chung_Mac_Dinh": "Bảng kiểm tra vệ sinh hàng ngày được Ban đời sống/Tổ trưởng hành chính nghiệm thu đạt yêu cầu cleanliness."
+  },
+  {
+    "Task_ID": "NV_LC_02",
+    "Truc": 5,
+    "Task_Name": "Phục vụ nước uống, hội họp, chuẩn bị cơ sở vật chất cho các kỳ thi, lễ hội và hoạt động lớn của Nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "LAO_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhân viên Phục vụ - Khánh tiết",
+    "Minh_Chung_Mac_Dinh": "Biên bản nghiệm thu công tác chuẩn bị khánh tiết/phục vụ hội nghị, lễ kỷ niệm và các kỳ thi trong quý."
+  },
+  {
+    "Task_ID": "NV_CHUNG_01",
+    "Truc": 4,
+    "Task_Name": "Tham gia các buổi họp HĐSP, học tập Nghị quyết, bồi dưỡng chính trị, tập huấn kỹ năng số và hoạt động đoàn thể",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_NV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả Nhân viên khối Văn phòng - Hỗ trợ",
+    "Minh_Chung_Mac_Dinh": "Sổ điểm danh họp HĐSP/Đoàn thể; Giấy xác nhận hoàn thành tập huấn chính trị hè/kỹ năng số Quý III/2026."
+  },
+  {
+    "Task_ID": "NV_DX_01",
+    "Truc": 1,
+    "Task_Name": "Thực hiện nhiệm vụ đột xuất hỗ trợ các sự kiện lớn, công tác kiểm tra/khảo sát của Sở GD&ĐT hoặc BGH phân công",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 14.4,
+    "Required_Roles": [
+      "ALL_NV"
+    ],
+    "Ghi_Chu_Goc": "Nhiệm vụ đột xuất do BGH giao",
+    "Minh_Chung_Mac_Dinh": "Quyết định / Văn bản phân công đột xuất của BGH; Báo cáo nghiệm thu kết quả hoàn thành sớm trước tiến độ."
+  }
+]

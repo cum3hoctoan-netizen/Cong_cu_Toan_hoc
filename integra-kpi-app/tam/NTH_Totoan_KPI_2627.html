@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integra KPI - Đánh Giá Năng Lực</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f0fdf4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .radio-btn:checked + span { background-color: #2563eb; color: white; border-color: #2563eb; }
+        .radio-btn-danger:checked + span { background-color: #ef4444; color: white; border-color: #ef4444; }
+        .radio-btn-warn:checked + span { background-color: #f59e0b; color: white; border-color: #f59e0b; }
+    </style>
+</head>
+<body class="p-2 md:p-8 text-gray-800">
+    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        
+        <!-- HEADER -->
+        <div class="bg-blue-700 p-6 text-white text-center">
+            <h1 class="text-2xl md:text-3xl font-bold">INTEGRA KPI - QUÝ III/2026</h1>
+            <p class="mt-2 text-blue-100" id="teacher-info">Đang tải dữ liệu...</p>
+        </div>
+
+        <!-- DASHBOARD KẾT QUẢ TRỰC TIẾP -->
+        <div class="flex flex-wrap border-b">
+            <div class="w-full md:w-1/3 p-4 text-center border-r bg-gray-50">
+                <p class="text-sm font-semibold text-gray-500 uppercase">Tiêu chí chung</p>
+                <p class="text-3xl font-bold text-blue-600" id="score-chung">30/30</p>
+            </div>
+            <div class="w-full md:w-1/3 p-4 text-center border-r bg-gray-50">
+                <p class="text-sm font-semibold text-gray-500 uppercase">KPI Chuyên môn</p>
+                <p class="text-3xl font-bold text-blue-600" id="score-chuyenmon">0/70</p>
+            </div>
+            <div class="w-full md:w-1/3 p-4 text-center bg-gray-50">
+                <p class="text-sm font-semibold text-gray-500 uppercase">Tỷ lệ Vượt mức (X)</p>
+                <p class="text-3xl font-bold text-gray-400" id="kpi-ratio">0%</p>
+            </div>
+        </div>
+        
+        <!-- KẾT LUẬN XẾP LOẠI -->
+        <div class="bg-blue-50 p-3 text-center border-b">
+            <p class="font-bold text-lg" id="final-rating">Tổng điểm: <span class="text-2xl text-blue-700">0</span> - Xếp loại: Đang tính toán...</p>
+        </div>
+
+        <div class="p-4 md:p-6 space-y-6">
+            
+            <!-- PHẦN 1: TIÊU CHÍ CHUNG (MẪU 1B) -->
+            <div class="border rounded-lg p-4 bg-white shadow-sm">
+                <h2 class="text-lg font-bold text-gray-700 border-b pb-2 mb-3">I. Nhóm Tiêu Chí Chung (30 điểm)</h2>
+                <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded">
+                    <input type="checkbox" id="check-tieuchi" checked class="mt-1 w-5 h-5 text-blue-600" onchange="calculateScore()">
+                    <span class="text-sm">Tôi cam kết <b>Đảm bảo 100%</b> các tiêu chí về Phẩm chất chính trị, Đạo đức lối sống, Tự phê bình và Khát vọng cống hiến (Theo Mẫu 01-B).</span>
+                </label>
+            </div>
+
+            <!-- PHẦN 2: NHIỆM VỤ CHUYÊN MÔN -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-700 border-b pb-2 mb-4">II. Đánh Giá Nhiệm Vụ (Phụ lục 6)</h2>
+                <div id="tasks-container" class="space-y-4">
+                    <p class="text-center text-gray-400 animate-pulse">Đang nạp dữ liệu nhiệm vụ...</p>
+                </div>
+            </div>
+
+            <!-- NÚT NỘP -->
+            <button id="btn-submit" onclick="submitKPI()" class="w-full bg-blue-600 text-white font-bold py-4 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md hidden text-lg">
+                XÁC NHẬN & NỘP KPI
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // LINK WEBHOOK LẤY DỮ LIỆU
+        const WEBHOOK_URL = "http://localhost:5678/webhook/get-kpi-tasks";
+        // LINK WEBHOOK NỘP DỮ LIỆU
+        const SUBMIT_URL = "http://localhost:5678/webhook/nhan-kpi";
+        
+        let taskData = []; // Lưu trữ dữ liệu động
+
+        async function fetchTasks() {
+            try {
+                // Tải dữ liệu từ n8n (Hoặc dùng Mock Data nếu lỗi kết nối)
+                let data;
+                try {
+                    const response = await fetch(WEBHOOK_URL);
+                    data = await response.json();
+                } catch (e) {
+                    console.log("Dùng dữ liệu mẫu do chạy local file");
+                    data = {
+                        gian_vien: "Trần Đức Ngọc",
+                        chuc_danh: "Tiến sĩ Toán, Tổ phó chuyên môn",
+                        tong_so_nhiem_vu: 3,
+                        danh_sach_nhiem_vu: [
+                            { Task_ID: "T1_04", Truc: 1, Task_Name: "Bồi dưỡng Học sinh năng khiếu", Diem_Chuan: 10, He_So_Do_Kho: 1.2, Diem_Quy_Doi_Toi_Da: 12 },
+                            { Task_ID: "T2_01", Truc: 2, Task_Name: "Thực hiện chức năng, nhiệm vụ của tổ phó", Diem_Chuan: 10, He_So_Do_Kho: 1.2, Diem_Quy_Doi_Toi_Da: 12 },
+                            { Task_ID: "T3_02", Truc: 3, Task_Name: "Thực hiện học liệu số (Ứng dụng AI, Python, LaTeX)", Diem_Chuan: 10, He_So_Do_Kho: 1.1, Diem_Quy_Doi_Toi_Da: 11 }
+                        ]
+                    };
+                }
+                
+                document.getElementById('teacher-info').innerText = `GV: ${data.gian_vien} | ${data.chuc_danh}`;
+                taskData = data.danh_sach_nhiem_vu.map(t => ({ ...t, tiendo: 100, chatluong: 100, isX: false }));
+                renderTasks();
+                calculateScore();
+
+                document.getElementById('btn-submit').classList.remove('hidden');
+
+            } catch (error) {
+                document.getElementById('tasks-container').innerHTML = '<p class="text-red-500 text-center">Lỗi hệ thống.</p>';
+            }
+        }
+
+        function renderTasks() {
+            const container = document.getElementById('tasks-container');
+            container.innerHTML = ''; 
+
+            taskData.forEach((task, index) => {
+                const card = document.createElement('div');
+                card.className = "p-4 border border-gray-200 rounded-lg bg-white hover:shadow-md transition";
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row justify-between gap-4">
+                        <div class="flex-1">
+                            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">Trục ${task.Truc}</span>
+                            <h3 class="font-bold text-gray-800 mt-2">${task.Task_Name}</h3>
+                            <p class="text-sm text-gray-500 mt-1">Hệ số: ${task.He_So_Do_Kho} | Quy đổi tối đa: ${task.Diem_Quy_Doi_Toi_Da}đ</p>
+                            
+                            <!-- Tiến độ -->
+                            <div class="mt-3">
+                                <p class="text-xs font-bold text-gray-600 mb-1">TIẾN ĐỘ (30%):</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="100" class="hidden radio-btn" checked onchange="updateTask(${index}, 'tiendo', 100)"><span class="px-2 py-1 border rounded text-xs">Sớm/Đúng (100%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="80" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'tiendo', 80)"><span class="px-2 py-1 border rounded text-xs">Chậm 1-3 ngày (80%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="60" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'tiendo', 60)"><span class="px-2 py-1 border rounded text-xs">Chậm 4-5 ngày (60%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="0" class="hidden radio-btn-danger" onchange="updateTask(${index}, 'tiendo', 0)"><span class="px-2 py-1 border rounded text-xs">Trễ hạn (0%)</span></label>
+                                </div>
+                            </div>
+                            
+                            <!-- Chất lượng -->
+                            <div class="mt-3">
+                                <p class="text-xs font-bold text-gray-600 mb-1">CHẤT LƯỢNG (70%):</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="100" class="hidden radio-btn" checked onchange="updateTask(${index}, 'chatluong', 100)"><span class="px-2 py-1 border rounded text-xs">Đạt yêu cầu (100%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="80" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'chatluong', 80)"><span class="px-2 py-1 border rounded text-xs">Cần sửa nhẹ (80%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="60" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'chatluong', 60)"><span class="px-2 py-1 border rounded text-xs">Cơ bản (60%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="0" class="hidden radio-btn-danger" onchange="updateTask(${index}, 'chatluong', 0)"><span class="px-2 py-1 border rounded text-xs">Không đạt (0%)</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Khối Vượt Mức X -->
+                        <div class="w-full md:w-32 flex flex-col items-center justify-center p-3 bg-blue-50 rounded border border-blue-100">
+                            <label class="cursor-pointer flex flex-col items-center gap-2">
+                                <input type="checkbox" id="x_${index}" class="w-6 h-6 text-blue-600" onchange="updateTask(${index}, 'isX', this.checked)">
+                                <span class="text-sm font-bold text-blue-800 text-center">Vượt mức (X)</span>
+                            </label>
+                            <span id="warn_${index}" class="text-[10px] text-red-500 text-center mt-2 hidden">Phải đạt 100% Tiến độ & CL</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateTask(index, field, value) {
+            taskData[index][field] = value;
+            
+            // Logic Mở/Khóa nút X
+            const cbX = document.getElementById(`x_${index}`);
+            const warnX = document.getElementById(`warn_${index}`);
+            
+            if(taskData[index].tiendo < 100 || taskData[index].chatluong < 100) {
+                cbX.checked = false;
+                taskData[index].isX = false;
+                cbX.disabled = true;
+                cbX.classList.add('opacity-50', 'cursor-not-allowed');
+                warnX.classList.remove('hidden');
+            } else {
+                cbX.disabled = false;
+                cbX.classList.remove('opacity-50', 'cursor-not-allowed');
+                warnX.classList.add('hidden');
+            }
+            
+            calculateScore();
+        }
+
+        function calculateScore() {
+            // 1. Điểm tiêu chí chung
+            const isChungOK = document.getElementById('check-tieuchi').checked;
+            const diemChung = isChungOK ? 30 : 0;
+            document.getElementById('score-chung').innerText = `${diemChung}/30`;
+
+            // 2. Tính toán KPI Chuyên môn theo đúng Công thức Phụ lục 6
+            let totalA = 0; // Tổng điểm quy đổi tối đa
+            let totalB = 0; // Tổng điểm quy đổi thực tế
+            let countX = 0;
+
+            taskData.forEach(t => {
+                totalA += t.Diem_Quy_Doi_Toi_Da;
+                
+                // Điểm thực hiện = Điểm chuẩn * (30%*Tiến độ + 70%*Kết quả)
+                let diemThucHien = t.Diem_Chuan * ((0.3 * t.tiendo/100) + (0.7 * t.chatluong/100));
+                
+                // Điểm quy đổi = Điểm thực hiện * Hệ số
+                let diemQuyDoi = diemThucHien * t.He_So_Do_Kho;
+                totalB += diemQuyDoi;
+
+                if (t.isX) countX++;
+            });
+
+            // KPI Chuyên môn = (B/A) * 70
+            let kpiChuyenMon = (totalB / totalA) * 70;
+            if (kpiChuyenMon > 70) kpiChuyenMon = 70;
+            
+            document.getElementById('score-chuyenmon').innerText = `${kpiChuyenMon.toFixed(1)}/70`;
+
+            // 3. Tỷ lệ X
+            let ratioX = (countX / taskData.length) * 100;
+            const ratioEl = document.getElementById('kpi-ratio');
+            ratioEl.innerText = `${ratioX.toFixed(1)}%`;
+            ratioEl.className = ratioX >= 30 ? "text-3xl font-bold text-green-500" : "text-3xl font-bold text-gray-400";
+
+            // 4. Tổng kết
+            let tongDiem = diemChung + kpiChuyenMon;
+            let xepLoai = "Không Hoàn Thành";
+            
+            if (tongDiem >= 90 && ratioX >= 30) {
+                xepLoai = "<span class='text-green-600 font-bold uppercase'>Hoàn thành Xuất sắc</span> 🏆";
+            } else if (tongDiem >= 70) {
+                xepLoai = "<span class='text-blue-600 font-bold uppercase'>Hoàn thành Tốt</span>";
+            } else if (tongDiem >= 50) {
+                xepLoai = "Hoàn thành Nhiệm vụ";
+            }
+
+            document.getElementById('final-rating').innerHTML = `Tổng điểm: <span class="text-2xl text-blue-700 font-bold">${tongDiem.toFixed(1)}</span>/100 - Xếp loại: ${xepLoai}`;
+        }
+
+        async function submitKPI() {
+            const btn = document.getElementById('btn-submit');
+            btn.innerText = "ĐANG ĐỒNG BỘ DỮ LIỆU...";
+            btn.disabled = true;
+
+            const payload = {
+                ThoiGianNop: new Date().toLocaleString("vi-VN"),
+                TenGiaoVien: document.getElementById('teacher-info').innerText.split('|')[0].replace('GV: ','').trim(),
+                TongSoNhiemVu: taskData.length,
+                NhiemVuVuotMuc: taskData.filter(t => t.isX).length,
+                TyLePhanTram: document.getElementById('kpi-ratio').innerText,
+                DeXuatXepLoai: document.getElementById('final-rating').innerText.split('Xếp loại: ')[1].replace(/(<([^>]+)>)/gi, "").replace(' 🏆','') // Lấy text xếp loại
+            };
+
+            try {
+                const response = await fetch(SUBMIT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                alert("🎉 Nộp KPI thành công! Dữ liệu đã ghi vào hệ thống.");
+                btn.innerText = "ĐÃ NỘP THÀNH CÔNG";
+                btn.classList.replace("bg-blue-600", "bg-green-600");
+            } catch (error) {
+                alert("Có lỗi mạng, vui lòng thử lại!");
+                btn.innerText = "XÁC NHẬN & NỘP KPI";
+                btn.disabled = false;
+            }
+        }
+
+        fetchTasks();
+        function renderTasks() {
+            const container = document.getElementById('tasks-container');
+            container.innerHTML = ''; 
+
+            taskData.forEach((task, index) => {
+                const card = document.createElement('div');
+                card.className = "p-4 border border-gray-200 rounded-lg bg-white hover:shadow-md transition";
+                
+                // KIỂM TRA: Nếu là công việc tự điền (Is_Editable = true) thì hiển thị ô Input
+                let taskHeaderHTML = '';
+                if (task.Is_Editable) {
+                    taskHeaderHTML = `
+                        <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2 py-1 rounded">Trục ${task.Truc} - NHIỆM VỤ PHÁT SINH</span>
+                        <div class="mt-2 space-y-2">
+                            <input type="text" placeholder="Nhập tên nhiệm vụ phát sinh..." class="w-full border p-2 rounded text-sm font-bold text-gray-800 bg-amber-50" oninput="updateCustomTask(${index}, 'Task_Name', this.value)">
+                            <div class="flex gap-2">
+                                <div class="w-1/2">
+                                    <label class="text-xs text-gray-500">Điểm chuẩn (thường là 12)</label>
+                                    <input type="number" value="${task.Diem_Chuan}" class="w-full border p-1 rounded text-sm" oninput="updateCustomTask(${index}, 'Diem_Chuan', this.value)">
+                                </div>
+                                <div class="w-1/2">
+                                    <label class="text-xs text-gray-500">Hệ số độ khó (1.0, 1.1, 1.2)</label>
+                                    <input type="number" step="0.1" value="${task.He_So_Do_Kho}" class="w-full border p-1 rounded text-sm" oninput="updateCustomTask(${index}, 'He_So_Do_Kho', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Nếu là việc cố định thì in ra bình thường
+                    taskHeaderHTML = `
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">Trục ${task.Truc}</span>
+                        <h3 class="font-bold text-gray-800 mt-2">${task.Task_Name}</h3>
+                        <p class="text-sm text-gray-500 mt-1">Hệ số: <span class="font-semibold text-blue-600">${task.He_So_Do_Kho}</span> | Quy đổi tối đa: <span class="font-semibold text-blue-600">${task.Diem_Quy_Doi_Toi_Da}đ</span></p>
+                    `;
+                }
+
+                // Phần giao diện nút bấm Tiến độ - Chất lượng (Giữ nguyên)
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row justify-between gap-4">
+                        <div class="flex-1">
+                            ${taskHeaderHTML}
+                            
+                            <!-- Tiến độ -->
+                            <div class="mt-3">
+                                <p class="text-xs font-bold text-gray-600 mb-1">TIẾN ĐỘ (30%):</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="100" class="hidden radio-btn" checked onchange="updateTask(${index}, 'tiendo', 100)"><span class="px-2 py-1 border rounded text-xs">Sớm/Đúng (100%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="80" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'tiendo', 80)"><span class="px-2 py-1 border rounded text-xs">Chậm 1-3 ngày (80%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="60" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'tiendo', 60)"><span class="px-2 py-1 border rounded text-xs">Chậm 4-5 ngày (60%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="td_${index}" value="0" class="hidden radio-btn-danger" onchange="updateTask(${index}, 'tiendo', 0)"><span class="px-2 py-1 border rounded text-xs">Trễ hạn (0%)</span></label>
+                                </div>
+                            </div>
+                            
+                            <!-- Chất lượng -->
+                            <div class="mt-3">
+                                <p class="text-xs font-bold text-gray-600 mb-1">CHẤT LƯỢNG (70%):</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="100" class="hidden radio-btn" checked onchange="updateTask(${index}, 'chatluong', 100)"><span class="px-2 py-1 border rounded text-xs">Đạt yêu cầu (100%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="80" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'chatluong', 80)"><span class="px-2 py-1 border rounded text-xs">Cần sửa nhẹ (80%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="60" class="hidden radio-btn-warn" onchange="updateTask(${index}, 'chatluong', 60)"><span class="px-2 py-1 border rounded text-xs">Cơ bản (60%)</span></label>
+                                    <label class="cursor-pointer"><input type="radio" name="cl_${index}" value="0" class="hidden radio-btn-danger" onchange="updateTask(${index}, 'chatluong', 0)"><span class="px-2 py-1 border rounded text-xs">Không đạt (0%)</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Khối Vượt Mức X -->
+                        <div class="w-full md:w-32 flex flex-col items-center justify-center p-3 bg-blue-50 rounded border border-blue-100">
+                            <label class="cursor-pointer flex flex-col items-center gap-2">
+                                <input type="checkbox" id="x_${index}" class="w-6 h-6 text-blue-600" onchange="updateTask(${index}, 'isX', this.checked)">
+                                <span class="text-sm font-bold text-blue-800 text-center">Vượt mức (X)</span>
+                            </label>
+                            <span id="warn_${index}" class="text-[10px] text-red-500 text-center mt-2 hidden">Phải đạt 100%</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // HÀM MỚI: Cập nhật dữ liệu khi GV tự gõ thông tin
+        function updateCustomTask(index, field, value) {
+            if (field === 'Task_Name') {
+                taskData[index].Task_Name = value;
+            } else {
+                taskData[index][field] = parseFloat(value) || 0;
+                // Tự động tính lại Điểm Quy Đổi Tối Đa
+                taskData[index].Diem_Quy_Doi_Toi_Da = taskData[index].Diem_Chuan * taskData[index].He_So_Do_Kho;
+            }
+            // Gọi hàm tính lại tổng điểm
+            calculateScore();
+        }
+    </script>
+</body>
+</html>

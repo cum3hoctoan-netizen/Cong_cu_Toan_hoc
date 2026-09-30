@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integra KPI - Tự Đánh Giá</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f3f4f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6">
+        <!-- Phần Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-blue-700">INTEGRA KPI</h1>
+            <p class="text-gray-500" id="teacher-info">Đang tải dữ liệu giáo viên...</p>
+        </div>
+
+        <!-- Bộ đếm KPI 30% -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-center">
+            <p class="font-semibold text-gray-700">Tiến độ vượt mức (Điều kiện HTXS: ≥ 30%)</p>
+            <div class="text-3xl font-bold mt-2" id="kpi-ratio">0%</div>
+            <p class="text-sm mt-1" id="kpi-status">Đã đánh dấu X: <span id="count-x">0</span> / <span id="total-tasks">0</span> nhiệm vụ</p>
+        </div>
+
+        <!-- Danh sách công việc -->
+        <div id="tasks-container" class="space-y-4">
+            <p class="text-center text-gray-400 animate-pulse">Đang kết nối hệ thống Integra...</p>
+        </div>
+
+        <!-- Nút Nộp -->
+        <button id="btn-submit" onclick="submitKPI()" class="w-full mt-8 bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition duration-300 hidden">
+            XÁC NHẬN & NỘP KPI
+        </button>
+    </div>
+
+    <script>
+        // === LINK WEBHOOK N8N ===
+        const WEBHOOK_GET_URL = "http://localhost:5678/webhook/get-kpi-tasks";
+        const WEBHOOK_POST_URL = "http://localhost:5678/webhook/nhan-kpi";
+        
+        let totalTasks = 0;
+        let checkedTasks = 0;
+        let teacherName = ""; // Biến lưu tên giáo viên tự động
+
+        // 1. Hàm tải dữ liệu danh sách nhiệm vụ
+        async function fetchTasks() {
+            try {
+                const response = await fetch(WEBHOOK_GET_URL);
+                const data = await response.json();
+                
+                // Hiển thị thông tin & Lưu tên giáo viên
+                teacherName = data.gian_vien;
+                document.getElementById('teacher-info').innerText = `Giáo viên: ${teacherName} | ${data.chuc_danh}`;
+                
+                totalTasks = data.tong_so_nhiem_vu;
+                document.getElementById('total-tasks').innerText = totalTasks;
+                
+                // Render danh sách công việc
+                const container = document.getElementById('tasks-container');
+                container.innerHTML = ''; 
+
+                data.danh_sach_nhiem_vu.forEach((task, index) => {
+                    const card = document.createElement('div');
+                    card.className = "p-4 border rounded-lg hover:shadow-md transition bg-gray-50";
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">Trục ${task.Truc}</span>
+                                <h3 class="font-semibold text-gray-800 mt-2">${task.Task_Name}</h3>
+                                <p class="text-sm text-gray-500 mt-1">Điểm tối đa: ${task.Diem_Quy_Doi_Toi_Da} đ</p>
+                            </div>
+                            <div class="flex items-center">
+                                <label class="cursor-pointer flex flex-col items-center gap-1">
+                                    <input type="checkbox" class="w-6 h-6 text-blue-600 task-checkbox" onchange="updateKPI()">
+                                    <span class="text-xs font-bold text-gray-600">Vượt mức (X)</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                document.getElementById('btn-submit').classList.remove('hidden');
+
+            } catch (error) {
+                console.warn("Không thể kết nối n8n (localhost). Đang tải dữ liệu giả lập để xem trước...", error);
+                
+                // --- DỮ LIỆU GIẢ LẬP ĐỂ XEM TRƯỚC GIAO DIỆN ---
+                const mockData = {
+                    gian_vien: "Trần Đức Ngọc (Chế độ Xem trước)",
+                    chuc_danh: "Tổ phó, Dạy chuyên",
+                    tong_so_nhiem_vu: 5,
+                    danh_sach_nhiem_vu: [
+                        { Truc: 1, Task_Name: "Thực hiện dạy học theo kế hoạch dạy học", Diem_Quy_Doi_Toi_Da: 10 },
+                        { Truc: 1, Task_Name: "Công tác giáo dục mũi nhọn | Bồi dưỡng Học sinh năng khiếu", Diem_Quy_Doi_Toi_Da: 12 },
+                        { Truc: 2, Task_Name: "Công tác tổ trưởng, tổ phó", Diem_Quy_Doi_Toi_Da: 12 },
+                        { Truc: 3, Task_Name: "Ứng dụng AI trong giảng dạy", Diem_Quy_Doi_Toi_Da: 11 },
+                        { Truc: 6, Task_Name: "Tham gia xây dựng trường học hạnh phúc", Diem_Quy_Doi_Toi_Da: 10 }
+                    ]
+                };
+                
+                // Hiển thị dữ liệu giả lập
+                teacherName = mockData.gian_vien;
+                document.getElementById('teacher-info').innerText = `Giáo viên: ${teacherName} | ${mockData.chuc_danh}`;
+                
+                totalTasks = mockData.tong_so_nhiem_vu;
+                document.getElementById('total-tasks').innerText = totalTasks;
+                
+                const container = document.getElementById('tasks-container');
+                container.innerHTML = ''; 
+
+                mockData.danh_sach_nhiem_vu.forEach((task, index) => {
+                    const card = document.createElement('div');
+                    card.className = "p-4 border rounded-lg hover:shadow-md transition bg-gray-50";
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">Trục ${task.Truc}</span>
+                                <h3 class="font-semibold text-gray-800 mt-2">${task.Task_Name}</h3>
+                                <p class="text-sm text-gray-500 mt-1">Điểm tối đa: ${task.Diem_Quy_Doi_Toi_Da} đ</p>
+                            </div>
+                            <div class="flex items-center">
+                                <label class="cursor-pointer flex flex-col items-center gap-1">
+                                    <input type="checkbox" class="w-6 h-6 text-blue-600 task-checkbox" onchange="updateKPI()">
+                                    <span class="text-xs font-bold text-gray-600">Vượt mức (X)</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                document.getElementById('btn-submit').classList.remove('hidden');
+            }
+        }
+
+        // 2. Hàm cập nhật % mỗi khi tích chọn
+        function updateKPI() {
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            checkedTasks = Array.from(checkboxes).filter(cb => cb.checked).length;
+            
+            document.getElementById('count-x').innerText = checkedTasks;
+            
+            let ratio = (checkedTasks / totalTasks) * 100;
+            const ratioElement = document.getElementById('kpi-ratio');
+            const statusElement = document.getElementById('kpi-status');
+            
+            ratioElement.innerText = ratio.toFixed(1) + '%';
+            
+            // Đổi màu nếu đạt 30%
+            if (ratio >= 30) {
+                ratioElement.className = "text-3xl font-bold mt-2 text-green-600";
+                statusElement.className = "text-sm mt-1 text-green-700 font-semibold";
+                statusElement.innerHTML = `Đã đánh dấu X: ${checkedTasks} / ${totalTasks} nhiệm vụ. <br>Đủ điều kiện xét Hoàn thành Xuất sắc!`;
+            } else {
+                ratioElement.className = "text-3xl font-bold mt-2 text-red-500";
+                statusElement.className = "text-sm mt-1 text-gray-600";
+                statusElement.innerHTML = `Đã đánh dấu X: ${checkedTasks} / ${totalTasks} nhiệm vụ`;
+            }
+        }
+
+        // 3. Hàm gửi dữ liệu lên máy chủ n8n (POST)
+        async function submitKPI() {
+            const btn = document.getElementById('btn-submit');
+            btn.innerText = "ĐANG XỬ LÝ...";
+            btn.disabled = true;
+
+            // Đóng gói dữ liệu kết quả chuẩn khớp với Google Sheets
+            const ratio = (checkedTasks / totalTasks) * 100;
+            const payload = {
+                ThoiGianNop: new Date().toLocaleString("vi-VN"),
+                TenGiaoVien: teacherName,
+                TongSoNhiemVu: totalTasks,
+                NhiemVuVuotMuc: checkedTasks,
+                TyLePhanTram: ratio.toFixed(1) + "%",
+                DeXuatXepLoai: (ratio >= 30) ? "Hoàn thành Xuất sắc" : "Hoàn thành Tốt"
+            };
+
+            try {
+                const response = await fetch(WEBHOOK_POST_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if(response.ok) {
+                    alert("🎉 Tuyệt vời! Phiếu KPI của thầy đã được lưu thành công vào Google Sheets.");
+                    btn.innerText = "ĐÃ NỘP THÀNH CÔNG";
+                    btn.classList.replace("bg-blue-600", "bg-green-600");
+                    btn.classList.replace("hover:bg-blue-700", "hover:bg-green-700");
+                } else {
+                    throw new Error("Phản hồi từ server bị lỗi");
+                }
+
+            } catch (error) {
+                console.warn("Lỗi POST:", error);
+                alert("🎉 (Chế độ xem trước): Thao tác nộp KPI thành công! \n\nLưu ý: Vì đang ở môi trường Preview không hỗ trợ localhost, dữ liệu này chưa được gửi thật vào n8n. Hãy mở file HTML trực tiếp trên máy để test kết nối thật.");
+                
+                btn.innerText = "ĐÃ NỘP (CHẾ ĐỘ XEM TRƯỚC)";
+                btn.classList.replace("bg-blue-600", "bg-green-600");
+                btn.classList.replace("hover:bg-blue-700", "hover:bg-green-700");
+                btn.disabled = true;
+            }
+        }
+
+        // Khởi động chạy hàm khi mở trang web
+        fetchTasks();
+    </script>
+</body>
+</html>

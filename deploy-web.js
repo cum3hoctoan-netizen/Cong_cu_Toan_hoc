@@ -35,7 +35,7 @@ function deployQuiz(htmlInput, folderName, fileName) {
         } catch (e) {
             console.log("Lưu ý khi git pull:", e.message);
         }
-        execSync('git add .', { stdio: 'inherit' });
+        execSync(`git add "${filePath}"`, { stdio: 'inherit' });
         try {
             execSync(`git commit -m "Auto-deploy: Thêm bài ${cleanFileName}"`, { stdio: 'inherit' });
         } catch (e) {

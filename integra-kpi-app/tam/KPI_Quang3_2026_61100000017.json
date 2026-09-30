@@ -1,0 +1,303 @@
+{
+  "fullname": "Trần Đức Ngọc",
+  "subject": "Toán",
+  "workUnit": "Tổ Toán - Trường THPT Nguyễn Thường Hiền",
+  "userCode": "61100000017",
+  "dob": "30/10/1979",
+  "partyRole": "Đảng viên",
+  "govRole": "Giáo viên",
+  "unionRole": "Công đoàn viên",
+  "ttcmName": "",
+  "selectedRoles": [
+    "ALL_GV"
+  ],
+  "taskInputs": {
+    "T1_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy & Minh chứng hoàn thành tiến độ chương trình môn đảm nhận được phê duyệt."
+    },
+    "T1_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "KH đổi mới phương pháp dạy học: Tích hợp dạy offline và online qua hệ thống link web chia sẻ kiến thức (hàng tuần)"
+    },
+    "T1_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Công tác giám sát kì KT đầu vào toán 10 tại trường THPT NTH, tham gia chấm chuyên cấp SGD và chấm diện rộng cấp quốc gia (KH Trường, SGD, Cục khảo thí - BGD)"
+    },
+    "T1_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Tham gia khóa học khởi nghiệp đợt 1 nhà trường tổ chức; BD HSG môn Toán MTCT, Toán TST TPHCM, Toán NK HSG TP (KH tổ toán)"
+    },
+    "T1_06": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Giấy chứng nhận / Kết quả hoàn thành các Mô-đun Bồi dưỡng thường xuyên trên hệ thống."
+    },
+    "T1_07": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ đầu bài điện tử, Bảng tổng hợp thi đua tác phong giờ giấc của BGH/Tổ chuyên môn đạt 100% đúng giờ."
+    },
+    "T1_08": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Quyết định phân công chấm thi của BGH/Sở GD&ĐT; Biên bản bàn giao bài chấm hoàn thành đúng/sớm tiến độ."
+    },
+    "T1_09": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Giấy xác nhận / Báo cáo thu hoạch hoàn thành chương trình Tập huấn SGK mới."
+    },
+    "T1_10": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Quyết định cử tham dự & Giấy chứng nhận hoàn thành khóa bồi dưỡng chuyên sâu."
+    },
+    "T1_11": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Tham gia tập huấn Ứng dụng AI vào chuyên môn (có sản phẩm phổ biến cho HS, đồng nghiệp)"
+    },
+    "T1_12": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Biên bản điểm danh & Báo cáo kết quả tập huấn chuyên môn hè do BGH xác nhận."
+    },
+    "T1_13_TICHHOP": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ kế hoạch giảng dạy Lớp Tích hợp; Bộ ma trận, đặc tả & Đề kiểm tra riêng cho chương trình Tích hợp được phê duyệt."
+    },
+    "T1_14_TT05_HSG": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "BD HSG dạy năng khiếu dạy nhiều tiết hơn phân công (online, offline). Theo phiếu ghi nhận nhà trường và sản phẩm giảng dạy online"
+    },
+    "T2_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ Kế hoạch Tổ chuyên môn; Biên bản các buổi sinh hoạt tổ định kỳ; Hồ sơ quản lý tổ được BGH nghiệm thu."
+    },
+    "T2_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ Chủ nhiệm điện tử; Hồ sơ theo dõi học sinh; Biên bản họp PHHS & Báo cáo đánh giá nếp sống lớp."
+    },
+    "T2_03": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch & Biên bản kiểm tra nội bộ hồ sơ sổ sách giáo viên trong tổ được BGH phê duyệt."
+    },
+    "T2_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ ghi chép hội họp HĐSP; Bảng điểm danh các buổi học tập chính trị & Sự kiện nhà trường đạt 100% chuyên cần."
+    },
+    "T2_07_THUKYHD": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Tập Biên bản các cuộc họp HĐNT/HĐSP; Dự thảo Nghị quyết & Báo cáo tổng hợp được Hiệu trưởng phê duyệt."
+    },
+    "T2_08_TROLYTN": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Quyết định phân công BGH; Kế hoạch & Báo cáo tổng kết phong trào Đoàn/CLB học sinh hoàn thành sớm tiến độ."
+    },
+    "T3_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Sản phẩm Kế hoạch bài dạy / Bài giảng có ứng dụng công cụ AI (ChatGPT, Canva, Quizizz...) được nghiệm thu."
+    },
+    "T3_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Báo cáo trích xuất dữ liệu kho bài giảng & ngân hàng câu hỏi kiểm tra đã tải lên hệ thống LMS trường."
+    },
+    "T3_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Báo cáo dữ liệu cá nhân trên hệ thống CSDL ngành đã được chuẩn hóa, khớp đúng 100%."
+    },
+    "T3_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Nâng cao trình độ chuyên môn (Tiến sĩ toán Giải tích)"
+    },
+    "T3_05": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Cải tiến đánh giá KPI qua hệ thống link web KPI, in sẵn bản báo cáo cá nhân."
+    },
+    "T3_06": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Biên bản tự kiểm tra an toàn thông tin thiết bị cá nhân & Chấp hành quy định bảo mật dữ liệu."
+    },
+    "T3_08": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ viên chức điện tử được hoàn thiện và xác nhận lưu trữ trên phần mềm quản lý."
+    },
+    "T3_09": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Giấy xác nhận tham gia tập huấn NCKH / Đổi mới sáng tạo / Dạy học ngoại ngữ do cấp có thẩm quyền cấp."
+    },
+    "T3_12_CLB_STEM": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ Kế hoạch hoạt động CLB STEM/NCKH; Báo cáo sản phẩm STEM & Dự án thi KHKT học sinh được nghiệm thu."
+    },
+    "T4_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Bản tự kiểm điểm Đảng viên; Báo cáo kết quả thực hiện nhiệm vụ do Chi bộ đánh giá Hoàn thành tốt trở lên."
+    },
+    "T4_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Báo cáo tổng kết công tác Đoàn thể / Kiêm nhiệm; Kết quả đánh giá thi đua cán bộ Công đoàn/Đoàn thanh niên."
+    },
+    "T4_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Bản cam kết thi đua; Đạt 100% quy định về thực hành tiết kiệm, chống lãng phí và đoàn kết nội bộ."
+    },
+    "T5_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kết quả đánh giá tác phong sư phạm & Quy tắc ứng xử văn hóa đạt chuẩn do Công đoàn/Nhà trường ghi nhận."
+    },
+    "T5_02": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch & Báo cáo hình ảnh/sản phẩm tham gia hỗ trợ các hoạt động Hội thao, Văn nghệ, Hướng nghiệp."
+    },
+    "T5_03": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ / Báo cáo rà soát thực hiện đúng quy chế chế độ chính sách đối với GV-NV."
+    },
+    "T5_04": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Danh sách & Hồ sơ xác nhận học sinh được hưởng chế độ miễn giảm, học bổng theo quy định."
+    },
+    "T5_05": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Bản đăng ký & Kết quả đạt chuẩn Công dân học tập trên hệ thống trực tuyến."
+    },
+    "T6_02": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Lịch trực tuần & Báo cáo công tác đảm bảo an ninh trật tự, an toàn trường học."
+    },
+    "T6_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sản phẩm đổi mới không gian lớp học / Hoạt động gắn kết học sinh xây dựng lớp học hạnh phúc."
+    },
+    "T6_04": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Sổ liên lạc điện tử; Biên bản làm việc phối hợp với PHHS và chính quyền địa phương trong giáo dục học sinh."
+    },
+    "T6_05": {
+      "status": "KHONG_PHAN_CONG",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ phối hợp theo dõi sức khỏe, tiêm chủng và khám sức khỏe định kỳ cho học sinh."
+    },
+    "T6_06": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Phát triển kỹ năng tin học: Tự động hóa trong công tác nghiệp vụ GV; Chứng nhận FSEL tiếng anh"
+    }
+  }
+}

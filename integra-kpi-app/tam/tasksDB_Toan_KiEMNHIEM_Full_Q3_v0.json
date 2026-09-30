@@ -1,0 +1,710 @@
+[
+  {
+    "Task_ID": "T1_01",
+    "Truc": 1,
+    "Task_Name": "Thực hiện dạy học theo kế hoạch dạy học",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T1_02",
+    "Truc": 1,
+    "Task_Name": "Thực hiện có hiệu quả đổi mới dạy học | - Thực hiện sinh hoạt nghiên cứu bài học cấp Cụm, cấp trường | - Thực hiện tiết dạy ngoài không gian lớp học | - Thực hiện phương pháp dạy học mới có hiệu quả hoặc có báo cáo/chuyên đề được cấp Tổ trở lên áp dụng",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "GV_CHUYEN",
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Thầy cô dạy lớp 10 có đưa HS ra ngoài lớp học đo đạc thực tế"
+  },
+  {
+    "Task_ID": "T1_03",
+    "Truc": 1,
+    "Task_Name": "Đổi mới công tác kiểm tra đánh giá tại trường | - Tham gia chấm thi, đánh giá do cấp trên điều động",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "GV có thì để - không có thì xóa"
+  },
+  {
+    "Task_ID": "T1_04",
+    "Truc": 1,
+    "Task_Name": "Công tác giáo dục mũi nhọn | - Bồi dưỡng Học sinh năng khiếu | - Hướng dẫn nghiên cứu khoa học, ý tưởng khởi nghiệp | - Tham gia, hướng dẫn học sinh tham gia các Hội thi",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_CHUYEN",
+      "GV_HSG"
+    ],
+    "Ghi_Chu_Goc": "GV dạy chuyên - năng khiếu"
+  },
+  {
+    "Task_ID": "T1_05",
+    "Truc": 1,
+    "Task_Name": "Sử dụng Thiết bị dạy học | - Bài thực hành tại phòng thực hành Vật lí, Hoá học, Sinh học | - Môn GDTC | - Môn QPAN | - Phòng Tin học",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "REMOVE"
+    ],
+    "Ghi_Chu_Goc": "Tổ Toán không có - Xóa dòng này"
+  },
+  {
+    "Task_ID": "T1_06",
+    "Truc": 1,
+    "Task_Name": "Thực hiện bồi dưỡng thường xuyên",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T1_07",
+    "Truc": 1,
+    "Task_Name": "Chấp hành giờ giấc lên lớp (Không đi trễ/ về sớm tiết dạy, giờ làm, không vắng tiết/ nghỉ ngoài quy định)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T1_08",
+    "Truc": 1,
+    "Task_Name": "Chấm thi chọn học sinh vào lớp năng khiếu toán 10",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "GV_CHUYEN"
+    ],
+    "Ghi_Chu_Goc": "Phân công chấm thi lớp năng khiếu"
+  },
+  {
+    "Task_ID": "T1_09",
+    "Truc": 1,
+    "Task_Name": "Thực hiện tập huấn SGK năm 2026",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T1_10",
+    "Truc": 1,
+    "Task_Name": "Đăng ký tham dự Trường hè Toán học và Khoá bồi dưỡng giáo viên THPT chuyên Toán",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_CHUYEN"
+    ],
+    "Ghi_Chu_Goc": "GV dạy chuyên Toán"
+  },
+  {
+    "Task_ID": "T1_11",
+    "Truc": 1,
+    "Task_Name": "Cử giáo viên công tác chuyên môn Cụm, Thành phố",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "GV được phân công"
+  },
+  {
+    "Task_ID": "T1_12",
+    "Truc": 1,
+    "Task_Name": "Tập huấn CM hè ngày 5/8/2026 tại trường Lê Hồng Phong",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV"
+  },
+  {
+    "Task_ID": "T1_13_TICHHOP",
+    "Truc": 1,
+    "Task_Name": "Giảng dạy & Xây dựng ma trận, đặc tả, đề kiểm tra riêng cho các lớp Toán Tích hợp",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_TICHHOP"
+    ],
+    "Ghi_Chu_Goc": "Chương trình Tích hợp có thu phí PHHS, kiểm tra riêng không theo khối đại trà"
+  },
+  {
+    "Task_ID": "T1_14_TT05_HSG",
+    "Truc": 1,
+    "Task_Name": "Bồi dưỡng HSG thi Thành phố & dạy Năng khiếu quy đổi 1 tiết = 2 tiết theo Thông tư 05 (Không nhận tiền bồi dưỡng)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_HSG_TT05"
+    ],
+    "Ghi_Chu_Goc": "Quy đổi tiết dạy theo TT05/BGDĐT, không nhận tiền bồi dưỡng thỉnh giảng riêng"
+  },
+  {
+    "Task_ID": "T2_01",
+    "Truc": 2,
+    "Task_Name": "Công tác tổ trưởng, tổ phó | - Thực hiện sinh hoạt tổ đúng quy định | - Thống nhất và công khai ma trận kiểm tra đánh giá định kỳ | - Tham gia họp, tập huấn | - Xây dựng tập thể tổ đoàn kết | - Thực hiện chức năng, nhiệm vụ của tổ trưởng, tổ phó",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TO_TRUONG",
+      "TO_PHO"
+    ],
+    "Ghi_Chu_Goc": "Tổ trưởng & Tổ phó chuyên môn"
+  },
+  {
+    "Task_ID": "T2_02",
+    "Truc": 2,
+    "Task_Name": "Công tác GVCN: | - Tham dự chào cờ, các buổi sinh hoạt lớp, họp về công tác chủ nhiệm | - Đầy đủ hồ sơ chủ nhiệm | - Thực hiện chức năng, nhiệm vụ của GVCN",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GVCN"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên chủ nhiệm lớp"
+  },
+  {
+    "Task_ID": "T2_03",
+    "Truc": 2,
+    "Task_Name": "Công tác kiểm tra nội bộ, hồ sơ giáo viên Tổ Toán",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TO_TRUONG",
+      "TO_PHO"
+    ],
+    "Ghi_Chu_Goc": "Kiểm tra hồ sơ chuyên môn Tổ Toán"
+  },
+  {
+    "Task_ID": "T2_04",
+    "Truc": 2,
+    "Task_Name": "Tham gia họp Sở, HĐSP, họp tổ, học chính trị - quán triệt nghị quyết, tập huấn cấp trường, các buổi lễ, hoạt động giáo dục cấp trường trở lên...được phân công",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T2_05",
+    "Truc": 2,
+    "Task_Name": "(tiếp tục cập nhật các nhiệm vụ, yêu cầu phát sinh trong Quý...)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 14.4,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhiệm vụ đột xuất Trục 2"
+  },
+  {
+    "Task_ID": "T2_06",
+    "Truc": 2,
+    "Task_Name": "Thầy cô Tổ trưởng tự thêm nội dung, điểm chuẩn và điểm quy đổi tối đa",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TO_TRUONG"
+    ],
+    "Ghi_Chu_Goc": "Mục mở rộng cho Tổ trưởng"
+  },
+  {
+    "Task_ID": "T2_07_THUKYHD",
+    "Truc": 2,
+    "Task_Name": "Công tác Thư ký Hội đồng nhà trường: Lập kế hoạch, ghi biên bản họp HĐNT/HĐSP, tổng hợp báo cáo & dự thảo Nghị quyết HĐNT",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "THU_KY_HDNT"
+    ],
+    "Ghi_Chu_Goc": "Thư ký Hội đồng nhà trường thực hiện"
+  },
+  {
+    "Task_ID": "T2_08_TROLYTN",
+    "Truc": 2,
+    "Task_Name": "Công tác Trợ lý Thanh niên: Chỉ đạo phong trào Đoàn, quản lý 12 CLB Học sinh & Tổ chức Hoạt động trải nghiệm, kỹ năng sống",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TRO_LY_THANH_NIEN"
+    ],
+    "Ghi_Chu_Goc": "Trợ lý Thanh niên / Bí thư Đoàn trường thực hiện"
+  },
+  {
+    "Task_ID": "T3_01",
+    "Truc": 3,
+    "Task_Name": "Ứng dụng AI trong giảng dạy - Trong: https://taphuan.csdl.edu.vn/",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T3_02",
+    "Truc": 3,
+    "Task_Name": "Đưa bài lên hệ thống dạy học trực tuyến; Thực hiện học liệu số",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T3_03",
+    "Truc": 3,
+    "Task_Name": "Chuẩn hóa, làm sạch và cập nhật các cơ sở dữ liệu cá nhân và các dữ liệu được giao",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T3_04",
+    "Truc": 3,
+    "Task_Name": "Nâng cao trình độ chuyên môn, nghiệp vụ | + Hoàn thành các khoá học nâng cao chuyên môn | + Hoàn thành các khoá bồi dưỡng nghiệp vụ (do nhà trường cử tham gia bồi dưỡng)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T3_05",
+    "Truc": 3,
+    "Task_Name": "Thực hiện sáng kiến, giải pháp cải tiến phương pháp lãnh đạo, điều hành, phương pháp giảng dạy",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_CHUYEN",
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "GV có sáng kiến/giải pháp"
+  },
+  {
+    "Task_ID": "T3_06",
+    "Truc": 3,
+    "Task_Name": "Bảo đảm an toàn thông tin, bảo vệ dữ liệu cá nhân",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T3_07",
+    "Truc": 3,
+    "Task_Name": "Thực hiện giảng dạy trí tuệ nhân tạo, Tin học chuẩn quốc tế | + Nội dung cốt lõi, Tin học chuẩn Quốc tế: giáo viên tổ Tin học",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "REMOVE"
+    ],
+    "Ghi_Chu_Goc": "Tổ Toán không có - Xóa"
+  },
+  {
+    "Task_ID": "T3_08",
+    "Truc": 3,
+    "Task_Name": "Thực hiện cập nhật thông tin cá nhân, cơ sở dữ liệu cá nhân, thủ tục hành chính theo số hoá, hồ sơ điện tử",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T3_09",
+    "Truc": 3,
+    "Task_Name": "Tập huấn (khởi nghiệp, đổi mới sáng tạo, NCKH, dạy học bằng TA...)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "GV tham gia tập huấn"
+  },
+  {
+    "Task_ID": "T3_10",
+    "Truc": 3,
+    "Task_Name": "(tiếp tục cập nhật các nhiệm vụ, yêu cầu phát sinh trong Quý khi có triển khai hoặc được phân công)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 14.4,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhiệm vụ đột xuất Trục 3"
+  },
+  {
+    "Task_ID": "T3_11",
+    "Truc": 3,
+    "Task_Name": "Thầy cô Tổ trưởng tự thêm nội dung, điểm chuẩn và điểm quy đổi tối đa",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TO_TRUONG"
+    ],
+    "Ghi_Chu_Goc": "Mục mở rộng"
+  },
+  {
+    "Task_ID": "T3_12_CLB_STEM",
+    "Truc": 3,
+    "Task_Name": "Quản lý, điều hành hoạt động CLB STEM / NCKH / Máy tính cầm tay Tổ Toán & Hướng dẫn học sinh tham gia Cuộc thi KHKT",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "PHU_TRACH_CLB_STEM"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên phụ trách CLB STEM / NCKH Tổ Toán"
+  },
+  {
+    "Task_ID": "T4_01",
+    "Truc": 4,
+    "Task_Name": "Công tác Đảng | - Thực hiện đúng phân công nhiệm vụ của thành viên cấp uỷ | - Thực hiện nhiệm vụ Đảng viên do chi bộ phân công",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "DANG_UY",
+      "CHI_UY_VIEN"
+    ],
+    "Ghi_Chu_Goc": "Đảng viên / Chi ủy viên thực hiện"
+  },
+  {
+    "Task_ID": "T4_02",
+    "Truc": 4,
+    "Task_Name": "Công tác công đoàn, đoàn thanh niên, kiêm nhiệm khác: thực hiện đúng chức năng, nhiệm vụ được phân công",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "DOAN_THE"
+    ],
+    "Ghi_Chu_Goc": "GV tham gia các đoàn thể"
+  },
+  {
+    "Task_ID": "T4_03",
+    "Truc": 4,
+    "Task_Name": "Thực hiện đoàn kết nội bộ, chống tham nhũng, lãng phí, tiêu cực | - Không gây mất đoàn kết trong tổ, trong trường | - Tiết kiệm điện, nước trong nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T4_04",
+    "Truc": 4,
+    "Task_Name": "(tiếp tục cập nhật các nhiệm vụ, yêu cầu phát sinh trong Quý khi có triển khai hoặc được phân công)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 14.4,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhiệm vụ đột xuất Trục 4"
+  },
+  {
+    "Task_ID": "T4_05",
+    "Truc": 4,
+    "Task_Name": "Thầy cô Tổ trưởng tự thêm nội dung, điểm chuẩn và điểm quy đổi tối đa",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TO_TRUONG"
+    ],
+    "Ghi_Chu_Goc": "Mục mở rộng"
+  },
+  {
+    "Task_ID": "T5_01",
+    "Truc": 5,
+    "Task_Name": "Thực hiện quy tắc ứng xử trong nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T5_02",
+    "Truc": 5,
+    "Task_Name": "Hoạt động câu lạc bộ | Hội thao | Văn nghệ | Hướng nghiệp học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "GV được phân công"
+  },
+  {
+    "Task_ID": "T5_03",
+    "Truc": 5,
+    "Task_Name": "Thực hiện chế độ chính sách đối với giáo viên, nhân viên theo quy chế",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "GV thực hiện"
+  },
+  {
+    "Task_ID": "T5_04",
+    "Truc": 5,
+    "Task_Name": "Thực hiện thông tin, chế độ chính sách đối với học sinh | - Miễn, giảm các khoản thu của học sinh | - Học bổng dành cho học sinh | - Chính sách đối với học dân tộc thiểu số",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "GVCN"
+    ],
+    "Ghi_Chu_Goc": "GVCN thực hiện"
+  },
+  {
+    "Task_ID": "T5_05",
+    "Truc": 5,
+    "Task_Name": "Thực hiện công dân học tập khi có triển khai",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "DANG_UY"
+    ],
+    "Ghi_Chu_Goc": "Đảng viên thực hiện"
+  },
+  {
+    "Task_ID": "T5_06",
+    "Truc": 5,
+    "Task_Name": "(tiếp tục cập nhật các nhiệm vụ, yêu cầu phát sinh trong Quý...)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 14.4,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhiệm vụ đột xuất Trục 5"
+  },
+  {
+    "Task_ID": "T5_07",
+    "Truc": 5,
+    "Task_Name": "Thầy cô Tổ trưởng tự thêm nội dung, điểm chuẩn và điểm quy đổi tối đa",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TO_TRUONG"
+    ],
+    "Ghi_Chu_Goc": "Mục mở rộng"
+  },
+  {
+    "Task_ID": "T6_01",
+    "Truc": 6,
+    "Task_Name": "Tham gia và thực hiện nhiệm vụ dân quân tự vệ của nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "REMOVE"
+    ],
+    "Ghi_Chu_Goc": "Tổ Toán không có - Xóa"
+  },
+  {
+    "Task_ID": "T6_02",
+    "Truc": 6,
+    "Task_Name": "Tham gia Công tác an ninh trật tự, An toàn trường học",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "GV tham gia các hoạt động"
+  },
+  {
+    "Task_ID": "T6_03",
+    "Truc": 6,
+    "Task_Name": "Tham gia xây dựng trường học hạnh phúc",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T6_04",
+    "Truc": 6,
+    "Task_Name": "Công tác phối hợp giữa gia đình - nhà trường - xã hội để giáo dục học sinh đạt hiệu quả",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T6_05",
+    "Truc": 6,
+    "Task_Name": "Công tác y tế học đường: phối hợp, kết hợp với công tác y tế trong quá trình thực hiện nhiệm vụ tại trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T6_06",
+    "Truc": 6,
+    "Task_Name": "Tham gia học tập suốt đời, phát triển các kỹ năng (ngoại ngữ, Tin học,...) để tham gia hội nhập quốc tế",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ"
+  },
+  {
+    "Task_ID": "T6_07",
+    "Truc": 6,
+    "Task_Name": "Tham gia hoạt động đối ngoại và hoạt động có yếu tố nước ngoài",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "REMOVE"
+    ],
+    "Ghi_Chu_Goc": "Xóa"
+  },
+  {
+    "Task_ID": "T6_08",
+    "Truc": 6,
+    "Task_Name": "(Tiếp tục cập nhật các nhiệm vụ, yêu cầu phát sinh trong Quý...)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 12,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 14.4,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Nhiệm vụ đột xuất Trục 6"
+  }
+]

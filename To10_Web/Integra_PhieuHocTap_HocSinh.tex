@@ -25,7 +25,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \rfoot{\footnotesize\color{subgray}Trang \thepage}
-\lfoot{\footnotesize\color{subgray}Phiếu học tập Toán 10 -- Giá trị lượng giác của một góc từ $0^\circ$ đến $180^\circ$ (GDPT 2018)}
+\lfoot{\footnotesize\color{subgray}Phiếu học tập Toán 10 -- Hệ thức lượng trong tam giác (GDPT 2018)}
 
 % Định nghĩa bảng màu Infographic học thuật
 \definecolor{primaryred}{HTML}{C62828}   % Đỏ son cho tiêu đề
@@ -129,8 +129,8 @@
 	% TIÊU ĐỀ BÀI HỌC VÀ THÔNG TIN HỌC SINH
 	% ------------------------------------------------------------------------------
 	\begin{center}
-		{\large \textbf{\color{primaryred}PHIẾU HỌC TẬP: GIÁ TRỊ LƯỢNG GIÁC CỦA MỘT GÓC TỪ $0^\circ$ ĐẾN $180^\circ$}}\\[1.5mm]
-		{\small \textbf{\color{inkblue}Chuyên đề Toán 10 -- Nâng cao \& Vận dụng cao (Nhóm VVIP -- GDPT 2018)}}\\[2mm]
+		{\large \textbf{\color{primaryred}PHIẾU HỌC TẬP: HỆ THỨC LƯỢNG TRONG TAM GIÁC}}\\[1.5mm]
+		{\small \textbf{\color{inkblue}Chương trình Toán 10 -- Khám phá kiến thức \& Luyện tập (GDPT 2018)}}\\[2mm]
 		\noindent
 		\begin{tikzpicture}
 			\draw[color=inkblue!40, line width=0.8pt] (0,0) -- (\linewidth,0);
@@ -146,9 +146,9 @@
 	\begin{tikzpicture}
 		\node[fill=boxbg, draw=inkblue!30, rounded corners=4pt, inner sep=5pt, text width=\linewidth-10pt] {
 			\textbf{\color{inkblue}Mục tiêu bài học:}\\[1pt]
-			\footnotesize $\bullet$ Nắm vững định nghĩa, dấu và các hằng đẳng thức lượng giác cơ bản cho góc từ $0^\circ$ đến $180^\circ$.\\
-			\footnotesize $\bullet$ Vận dụng quan hệ giữa hai góc phụ nhau, bù nhau để rút gọn biểu thức và tính chuỗi lượng giác.\\
-			\footnotesize $\bullet$ Ứng dụng giá trị lượng giác giải bài toán thực tế chuyển động tròn, cánh tay robot và tổng hợp lực.
+			\footnotesize $\bullet$ Vận dụng thành thạo Định lý Côsin, Định lý Sin để tính các cạnh và góc trong tam giác.\\
+			\footnotesize $\bullet$ Sử dụng linh hoạt các công thức tính diện tích tam giác $S$ và bán kính ngoại tiếp $R$, nội tiếp $r$.\\
+			\footnotesize $\bullet$ Giải quyết bài toán mô hình hóa thực tế đo khoảng cách và chiều cao.
 		};
 	\end{tikzpicture}
 	\par\vspace{0.15cm}
@@ -163,93 +163,93 @@
 	\begin{multicols}{2}
 		
 		\begin{ex}
-			Cho góc $\alpha$ thỏa mãn $90^\circ < \alpha < 180^\circ$ và $\sin \alpha + \cos \alpha = \dfrac{1}{5}$. Tính giá trị của biểu thức $P = \tan \alpha - \cot \alpha$.
+			Cho tam giác $ABC$ có $b = 8$, $c = 5$ và $\widehat{A} = 60^\circ$. Độ dài cạnh $a$ bằng bao nhiêu?
 			\choice
-			{\True $P = -\dfrac{7}{12}$}
-			{$P = \dfrac{7}{12}$}
-			{$P = -\dfrac{35}{12}$}
-			{$P = \dfrac{35}{12}$}
+			{\True $a = 7$}
+			{$a = 49$}
+			{$a = \sqrt{129}$}
+			{$a = 39$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho góc $\alpha$ thỏa mãn $0^\circ < \alpha < 180^\circ, \alpha \neq 90^\circ$ và $\tan \alpha + \cot \alpha = -3$. Tính giá trị của biểu thức $Q = \tan^3 \alpha + \cot^3 \alpha$.
+			Cho tam giác $ABC$ có độ dài ba cạnh $a = 6$, $b = 8$, $c = 10$. Số đo góc $\widehat{C}$ của tam giác bằng:
 			\choice
-			{\True $Q = -18$}
-			{$Q = -36$}
-			{$Q = 18$}
-			{$Q = -27$}
+			{$30^\circ$}
+			{$45^\circ$}
+			{$60^\circ$}
+			{\True $90^\circ$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho góc $\alpha$ thỏa mãn $\tan \alpha = 2$. Tính giá trị của biểu thức $M = \dfrac{3\sin \alpha - 2\cos \alpha}{4\sin \alpha + 5\cos \alpha}$.
+			Cho tam giác $ABC$ có $a = 10$ và $\widehat{A} = 30^\circ$. Bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ bằng:
 			\choice
-			{\True $M = \dfrac{4}{13}$}
-			{$M = \dfrac{2}{13}$}
-			{$M = \dfrac{8}{13}$}
-			{$M = -\dfrac{4}{13}$}
+			{$R = 5$}
+			{\True $R = 10$}
+			{$R = 20$}
+			{$R = 10\sqrt{3}$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho góc $\alpha$ ($0^\circ \le \alpha \le 180^\circ, \alpha \neq 90^\circ$) thỏa mãn $\sin \alpha \cos \alpha = \dfrac{2}{5}$. Tính giá trị của biểu thức $E = \tan^2 \alpha + \cot^2 \alpha$.
+			Công thức nào sau đây tính đúng diện tích $S$ của tam giác $ABC$ theo hai cạnh $b, c$ và góc xen giữa $\widehat{A}$?
 			\choice
-			{\True $E = \dfrac{17}{4}$}
-			{$E = \dfrac{21}{4}$}
-			{$E = \dfrac{25}{4}$}
-			{$E = \dfrac{9}{4}$}
+			{$S = bc \sin A$}
+			{$S = \frac{1}{2} bc \cos A$}
+			{\True $S = \frac{1}{2} bc \sin A$}
+			{$S = \frac{1}{2} bc \tan A$}
 		\end{ex}
 		
 		\begin{ex}
-			Tính giá trị của biểu thức $A = \cos^2 10^\circ + \cos^2 20^\circ + \cos^2 30^\circ + \dots + \cos^2 180^\circ$.
+			Cho tam giác $ABC$ có độ dài ba cạnh $a = 13$, $b = 14$, $c = 15$. Diện tích $S$ của tam giác $ABC$ bằng:
 			\choice
-			{\True $A = 9$}
-			{$A = 8$}
-			{$A = 8{,}5$}
-			{$A = 9{,}5$}
+			{\True $S = 84$}
+			{$S = 42$}
+			{$S = 168$}
+			{$S = 21$}
 		\end{ex}
 		
 		\begin{ex}
-			Biết $\sin x + \sin(180^\circ - x) = \sqrt{2}$ với $0^\circ \le x \le 180^\circ$. Giá trị của $x$ là:
+			Cho tam giác $ABC$ có độ dài ba cạnh $a = 13$, $b = 14$, $c = 15$. Bán kính đường tròn nội tiếp $r$ của tam giác $ABC$ bằng:
 			\choice
-			{\True $x = 45^\circ$ hoặc $x = 135^\circ$}
-			{$x = 45^\circ$}
-			{$x = 135^\circ$}
-			{$x = 60^\circ$ hoặc $x = 120^\circ$}
+			{$r = 8$}
+			{$r = 6$}
+			{\True $r = 4$}
+			{$r = 2$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho tam giác $ABC$ không vuông. Giá trị của biểu thức $T = \tan A + \tan(B+C)$ bằng:
+			Cho tam giác $ABC$ có $b = 7$, $c = 5$ và $\cos A = \frac{3}{5}$. Diện tích $S$ của tam giác $ABC$ bằng:
 			\choice
-			{\True $T = 0$}
-			{$T = 1$}
-			{$T = 2\tan A$}
-			{$T = -1$}
+			{$S = 21$}
+			{\True $S = 14$}
+			{$S = 28$}
+			{$S = 10{,}5$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho góc $\alpha$ thỏa mãn $\cos \alpha = -\dfrac{2}{3}$. Giá trị của biểu thức $P = 3\sin^2 \alpha + 2\cos^2 \alpha$ bằng:
+			Cho tam giác $ABC$ vuông tại $A$ có $a = 10$, $b = 6$, $c = 8$. Độ dài đường cao $h_a$ kẻ từ đỉnh $A$ bằng:
 			\choice
-			{\True $P = \dfrac{23}{9}$}
-			{$P = \dfrac{19}{9}$}
-			{$P = \dfrac{25}{9}$}
-			{$P = \dfrac{17}{9}$}
+			{\True $h_a = 4{,}8$}
+			{$h_a = 2{,}4$}
+			{$h_a = 5$}
+			{$h_a = 9{,}6$}
 		\end{ex}
 		
 		\begin{ex}
-			Cho $0^\circ < \alpha < 90^\circ$ và $90^\circ < \beta < 180^\circ$. Khẳng định nào sau đây ĐÚNG?
+			Cho tam giác $ABC$ có $c = 6$, $\widehat{A} = 45^\circ$, $\widehat{B} = 75^\circ$. Bán kính đường tròn ngoại tiếp $R$ của tam giác $ABC$ bằng:
 			\choice
-			{\True $\sin \alpha \cdot \cos \beta < 0$}
-			{$\cos \alpha \cdot \cos \beta > 0$}
-			{$\tan \alpha \cdot \tan \beta > 0$}
-			{$\sin \alpha \cdot \sin \beta < 0$}
+			{\True $R = 2\sqrt{3}$}
+			{$R = 4\sqrt{3}$}
+			{$R = 6$}
+			{$R = 3\sqrt{2}$}
 		\end{ex}
 		
 		\begin{ex}
-			Giá trị lớn nhất của biểu thức $F(\alpha) = 2\sin \alpha - 3\cos^2 \alpha + 1$ với $0^\circ \le \alpha \le 180^\circ$ bằng:
+			Cho tam giác $ABC$ có $b = 10$, $c = 6$ và $\widehat{A} = 120^\circ$. Độ dài cạnh $a$ bằng:
 			\choice
-			{\True $\max F = 3$}
-			{$\max F = 4$}
-			{$\max F = 2$}
-			{$\max F = \dfrac{11}{3}$}
+			{\True $a = 14$}
+			{$a = 2\sqrt{19}$}
+			{$a = 16$}
+			{$a = \sqrt{76}$}
 		\end{ex}
 		
 	\end{multicols}
@@ -262,39 +262,39 @@
 	\setcounter{ex}{0}
 	
 	\begin{ex}
-		Cho góc $\alpha$ thỏa mãn $90^\circ < \alpha < 180^\circ$ và $\sin \alpha = \dfrac{3}{5}$. Xét tính đúng/sai của các khẳng định sau:
+		Cho tam giác $ABC$ có độ dài ba cạnh lần lượt là $a = 7$, $b = 8$, $c = 5$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{$\cos \alpha = \dfrac{4}{5}$.}
-		{\True $\tan \alpha = -\dfrac{3}{4}$.}
-		{Giá trị của biểu thức $P = \dfrac{\tan \alpha + \cot \alpha}{1 + \tan^2 \alpha}$ bằng $-\dfrac{3}{5}$.}
-		{$\sin(180^\circ - \alpha) + \cos(180^\circ - \alpha) = -\dfrac{1}{5}$.}
+		{\True Nửa chu vi của tam giác $ABC$ là $p = 10$.}
+		{\True Diện tích của tam giác $ABC$ là $S = 10\sqrt{3}$.}
+		{\True Bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R = \dfrac{7\sqrt{3}}{3}$.}
+		{Bán kính đường tròn nội tiếp tam giác $ABC$ là $r = 2\sqrt{3}$.}
 	\end{ex}
 	
 	\begin{ex}
-		Cho hai biểu thức $A(x) = \sin^4 x + \cos^4 x + 2\sin^2 x \cos^2 x$ và $B(x) = \sin^6 x + \cos^6 x + 3\sin^2 x \cos^2 x$ với $0^\circ \le x \le 180^\circ$. Xét tính đúng/sai của các khẳng định sau:
+		Cho tam giác $ABC$ có hai cạnh $b = 6$, $c = 8$ và góc $\widehat{A} = 60^\circ$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Giá trị của $A(x)$ không phụ thuộc vào biến $x$ và bằng $1$.}
-		{\True Biểu thức $B(x)$ rút gọn bằng $1$ với mọi $x$.}
-		{\True Với $x = 120^\circ$, giá trị của $A(120^\circ) + B(120^\circ) = 2$.}
-		{\True Giá trị lớn nhất của $C(x) = \sin^4 x + \cos^4 x$ trên $[0^\circ, 180^\circ]$ bằng $1$.}
+		{\True Độ dài cạnh $a = 2\sqrt{13}$.}
+		{\True Giá trị $\cos B = \dfrac{5\sqrt{13}}{26}$.}
+		{\True Diện tích tam giác $ABC$ bằng $12\sqrt{3}$.}
+		{Góc $\widehat{B}$ là góc tù.}
 	\end{ex}
 	
 	\begin{ex}
-		Cho góc $\alpha$ thỏa mãn $\tan \alpha + \cot \alpha = 3$. Xét tính đúng/sai của các khẳng định sau:
+		Cho tam giác $ABC$ có cạnh $c = 12$, $\widehat{A} = 45^\circ$ và $\widehat{C} = 30^\circ$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Cả $\sin \alpha$ và $\cos \alpha$ bắt buộc phải cùng dấu.}
-		{\True $\tan^2 \alpha + \cot^2 \alpha = 7$.}
-		{\True $|\tan \alpha - \cot \alpha| = \sqrt{5}$.}
-		{Nếu $0^\circ < \alpha < 45^\circ$ thì $\tan^3 \alpha - \cot^3 \alpha = 7\sqrt{5}$.}
+		{\True Số đo góc $\widehat{B} = 105^\circ$.}
+		{\True Độ dài cạnh $a = 12\sqrt{2}$.}
+		{\True Bán kính đường tròn ngoại tiếp $R = 12$.}
+		{\True Diện tích tam giác $ABC$ bằng $36(\sqrt{3} + 1)$.}
 	\end{ex}
 	
 	\begin{ex}
-		Một chất điểm chịu tác dụng của hai lực $\vec{F}_1$ và $\vec{F}_2$ có độ lớn lần lượt là $F_1 = 10\text{ N}$ và $F_2 = 10\sqrt{3}\text{ N}$. Góc giữa hai lực $\vec{F}_1$ và $\vec{F}_2$ là $\theta$ ($0^\circ \le \theta \le 180^\circ$). Xét tính đúng/sai của các khẳng định sau:
+		Hai tàu cá cùng xuất phát từ bến $A$, đi thẳng theo hai hướng tạo với nhau một góc $60^\circ$. Tàu thứ nhất chạy với tốc độ $30\text{ km/h}$, tàu thứ hai chạy với tốc độ $40\text{ km/h}$. Xét tính đúng/sai của các khẳng định sau:
 		\choiceTF
-		{\True Nếu $\theta = 90^\circ$, độ lớn lực tổng hợp $\vec{F} = \vec{F}_1 + \vec{F}_2$ bằng $20\text{ N}$.}
-		{Nếu $\theta = 120^\circ$, độ lớn lực tổng hợp $F = 10\text{ N}$.}
-		{\True Độ lớn lực tổng hợp $F$ đạt giá trị lớn nhất bằng $10(1+\sqrt{3})\text{ N}$ khi $\theta = 0^\circ$.}
-		{Khi $\theta = 150^\circ$, công sinh ra bởi lực tổng hợp $\vec{F}$ làm dịch chuyển vật một đoạn $d = 5\text{ m}$ theo hướng của $\vec{F}_1$ là $25\text{ J}$.}
+		{\True Quãng đường tàu thứ nhất đi được sau $2\text{ giờ}$ là $60\text{ km}$.}
+		{\True Quãng đường tàu thứ hai đi được sau $2\text{ giờ}$ là $80\text{ km}$.}
+		{\True Khoảng cách giữa hai tàu sau $2\text{ giờ}$ là $20\sqrt{13}\text{ km}$.}
+		{Sau $2\text{ giờ}$, khoảng cách giữa hai tàu lớn hơn $80\text{ km}$.}
 	\end{ex}
 	
 	% ==============================================================================
@@ -305,28 +305,28 @@
 	\setcounter{ex}{0}
 	
 	\begin{ex}
-		Một cabin của vòng quay mặt trời bán kính $R = 50\text{ m}$ quay đều quanh tâm $O$. Tại thời điểm ban đầu, cabin ở vị trí thấp nhất $A$. Sau một thời gian quay, góc quay của bán kính nối cabin $\widehat{AOM} = \alpha = 150^\circ$. Hỏi độ cao của cabin ở vị trí $M$ so với vị trí thấp nhất $A$ bằng bao nhiêu mét (làm tròn kết quả đến hàng phần mười)?
-		\shortans{93,3 m}
+		Cho tam giác $ABC$ có $a = 13$, $b = 14$, $c = 15$. Tính độ dài đường cao $h_a$ kẻ từ đỉnh $A$.
+		\shortans{}
 	\end{ex}
 	
 	\begin{ex}
-		Một cánh tay robot dài $1{,}2\text{ m}$ gắp vật từ vị trí điểm $A$ nằm ngang bên phải tâm quay $O$. Robot quay một góc $\alpha = 135^\circ$ quanh tâm $O$ đến vị trí điểm $B$ rồi thả vật. Khoảng cách giữa vị trí đầu $A$ và vị trí thả $B$ bằng bao nhiêu mét (làm tròn kết quả đến hàng phần trăm)?
-		\shortans{2,22 m}
+		Cho tam giác $ABC$ có $a = 7$, $b = 5$, $c = 8$. Tính số đo góc $\widehat{A}$ (theo đơn vị độ).
+		\shortans{}
 	\end{ex}
 	
 	\begin{ex}
-		Cho góc $\alpha$ thỏa mãn $90^\circ < \alpha < 180^\circ$ và $\tan \alpha + \cot \alpha = -\dfrac{25}{12}$. Tính giá trị của biểu thức $\sin \alpha + \cos \alpha$.
-		\shortans{-0,2}
+		Cho tam giác $ABC$ có $b = 10$, $\widehat{B} = 30^\circ$. Tính độ dài bán kính đường tròn ngoại tiếp $R$ của tam giác $ABC$.
+		\shortans{}
 	\end{ex}
 	
 	\begin{ex}
-		Cho góc $\alpha$ thỏa mãn $\sin \alpha = \dfrac{1}{3}$. Tính giá trị của biểu thức $P = \dfrac{\sin(180^\circ - \alpha) + 2\cos(90^\circ - \alpha)}{\tan(180^\circ - \alpha) \cdot \cot \alpha}$.
-		\shortans{-1}
+		Cho tam giác $ABC$ có $a = 4$, $b = 6$ và $\widehat{C} = 30^\circ$. Tính diện tích $S$ của tam giác $ABC$.
+		\shortans{}
 	\end{ex}
 	
 	\begin{ex}
-		Tính giá trị của biểu thức $S = \sin^2 10^\circ + \sin^2 20^\circ + \sin^2 30^\circ + \dots + \sin^2 180^\circ$.
-		\shortans{9}
+		Từ hai vị trí $A$ và $B$ trên mặt đất cách nhau $100\text{ m}$, người ta cùng nhìn thấy đỉnh $C$ của một tháp truyền hình dưới các góc nâng lần lượt là $30^\circ$ và $45^\circ$ ($A, B$ và chân tháp $H$ thẳng hàng trên mặt đất phẳng, $B$ nằm giữa $A$ và $H$). Tính chiều cao $CH$ của tháp truyền hình (làm tròn kết quả đến hàng phần mười theo đơn vị mét).
+		\shortans{}
 	\end{ex}
 	
 	% ------------------------------------------------------------------------------

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Đánh Giá KPI Quý III/2026 - Đa Môn / Toàn Trường (Phiên Bản v7 - Đầy Đủ In & Xuất PDF/JSON)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js CDN for Direct PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); }
+        
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background-color: white !important; font-size: 11pt; color: black; margin: 0; padding: 0; }
+            .page-break { page-break-before: always; }
+            table { width: 100% !important; border-collapse: collapse !important; margin-top: 8px; margin-bottom: 8px; page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            th, td { border: 1px solid black !important; padding: 4px 6px !important; text-align: left; font-size: 9.5pt; }
+            th { background-color: #f3f4f6 !important; text-align: center; font-weight: bold; }
+        }
+        .print-only { display: none; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased bg-slate-50 min-h-screen">
+
+    <!-- Header Section -->
+    <header class="no-print bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-blue-600/50 rounded-xl border border-blue-400/30">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-yellow-400"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight">HỆ THỐNG ĐÁNH GIÁ KPI QUÝ III/2026</h1>
+                    <p class="text-xs text-blue-200 font-medium">TRƯỜNG THPT NGUYỄN THƯỜNG HIỀN - ÁP DỤNG ĐA MÔN & TOÀN TRƯỜNG (v7 Standard)</p>
+                </div>
+            </div>
+            
+            <!-- Tool Buttons -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Group Mẫu 01B -->
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button onclick="printForm('MAU01B')" title="Xem trước và In Mẫu 01B" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-l-lg border-r border-emerald-700 flex items-center gap-1">
+                        <i class="fa-solid fa-print"></i> In 01B
+                    </button>
+                    <button onclick="exportPDF('MAU01B')" title="Tải trực tiếp file PDF Mẫu 01B" class="px-2.5 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold rounded-r-lg flex items-center gap-1">
+                        <i class="fa-solid fa-file-pdf"></i> Tải PDF 01B
+                    </button>
+                </div>
+
+                <!-- Group Phụ Lục 4 -->
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button onclick="printForm('PL4')" title="Xem trước và In Phụ lục 4" class="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-l-lg border-r border-blue-700 flex items-center gap-1">
+                        <i class="fa-solid fa-print"></i> In PL4
+                    </button>
+                    <button onclick="exportPDF('PL4')" title="Tải trực tiếp file PDF Phụ lục 4" class="px-2.5 py-1.5 bg-blue-700 hover:bg-blue-600 text-white text-xs font-semibold rounded-r-lg flex items-center gap-1">
+                        <i class="fa-solid fa-file-pdf"></i> Tải PDF PL4
+                    </button>
+                </div>
+
+                <!-- Group Phụ Lục 6 -->
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button onclick="printForm('PL6')" title="Xem trước và In Phụ lục 6" class="px-2.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-l-lg border-r border-indigo-700 flex items-center gap-1">
+                        <i class="fa-solid fa-print"></i> In PL6
+                    </button>
+                    <button onclick="exportPDF('PL6')" title="Tải trực tiếp file PDF Phụ lục 6" class="px-2.5 py-1.5 bg-indigo-700 hover:bg-indigo-600 text-white text-xs font-semibold rounded-r-lg flex items-center gap-1">
+                        <i class="fa-solid fa-file-pdf"></i> Tải PDF PL6
+                    </button>
+                </div>
+
+                <!-- Export JSON -->
+                <button onclick="exportData()" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-code"></i> Xuất JSON
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="no-print max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-6">
+
+        <!-- User Metadata Card -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-200 lg:col-span-2 space-y-4">
+                <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+                    <i class="fa-solid fa-id-card text-blue-600"></i>
+                    <h2 class="font-bold text-slate-800 text-base">Thông Tin Cá Nhân & Phân Quyền Vai Trò Kiêm Nhiệm</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Họ và tên Giáo viên:</label>
+                        <input type="text" id="user_fullname" value="Nguyễn Văn A" onchange="updateUserInfo()" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Môn Giảng Dạy:</label>
+                        <input type="text" id="user_subject" placeholder="VD: Ngữ văn, Toán, Anh..." value="Ngữ văn" onchange="updateUserInfo()" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Tổ Chuyên Môn:</label>
+                        <input type="text" id="user_department" placeholder="VD: Ngữ văn, Toán..." value="Ngữ văn" onchange="updateUserInfo()" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Mã Viên Chức / Cán Bộ:</label>
+                        <input type="text" id="user_code" value="GV01234" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Họ tên Tổ trưởng CM (TTCM):</label>
+                        <input type="text" id="ttcm_fullname" placeholder="(Để trống nếu chưa có)" value="" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Ngày sinh (cho Mẫu 01B):</label>
+                        <input type="text" id="user_dob" value="15/08/1985" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-2 text-xs">Tích chọn các chức danh / vai trò kiêm nhiệm thực tế trong Quý:</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="ALL_GV" checked disabled class="rounded text-blue-600">
+                            <span class="font-medium text-slate-700">GV Bộ môn (Chuẩn)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="GVCN" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700">GV Chủ nhiệm (GVCN)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="TO_TRUONG" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700">Tổ trưởng / Tổ phó CM</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="GV_CHUYEN" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700">GV dạy Chuyên / Bồi dưỡng HSG</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="GV_TICHHOP" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700 font-semibold text-indigo-700">GV dạy lớp Tích hợp</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="GV_HSG_TT05" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700 font-semibold text-indigo-700">GV dạy HSG/NK (TT 05)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="THU_KY_HDNT" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700 font-semibold text-indigo-700">Thư ký Hội đồng NT</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="TRO_LY_THANH_NIEN" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700 font-semibold text-indigo-700">Trợ lý Thanh niên / Đoàn</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="PHU_TRACH_CLB_STEM" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700 font-semibold text-indigo-700">Phụ trách CLB STEM/NCKH</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" value="CHI_UY_VIEN" onchange="filterAndRender()" class="role-checkbox rounded text-blue-600">
+                            <span class="text-slate-700 font-semibold text-red-700">Chi ủy viên Chi bộ</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Score Dashboard Card -->
+            <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-5 card-shadow flex flex-col justify-between space-y-4">
+                <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 class="text-xs uppercase tracking-wider text-slate-400 font-bold">Tổng Điểm Tự Đánh Giá KPI</h3>
+                        <p class="text-xs text-blue-300">Công thức: A + B + C (Trần 100đ)</p>
+                    </div>
+                    <span id="badge_xeploai" class="px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold rounded-full">
+                        Đang tính...
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 my-1">
+                    <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/50">
+                        <span class="text-[11px] text-slate-400 block">A. Tiêu chí chung (30đ):</span>
+                        <input type="number" id="score_partA" min="0" max="30" value="30" onchange="recalculateTotal()" class="w-full bg-transparent text-lg font-bold text-yellow-400 focus:outline-none">
+                    </div>
+                    <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/50">
+                        <span class="text-[11px] text-slate-400 block">B. KPI Chuyên môn (70đ):</span>
+                        <span id="score_partB" class="text-lg font-bold text-cyan-400 block">0.00</span>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-900/60 p-2.5 rounded-xl border border-indigo-500/30 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-indigo-200 font-medium block">C. Điểm Thưởng Thi Đua (5%):</span>
+                        <span class="text-[10px] text-indigo-300">Tự động cộng từ CV Đột xuất vượt tiến độ</span>
+                    </div>
+                    <span id="score_partC" class="text-base font-bold text-emerald-400">+0.00</span>
+                </div>
+
+                <div class="pt-2 border-t border-slate-800 flex justify-between items-end">
+                    <div>
+                        <span class="text-xs text-slate-400 block">TỔNG ĐIỂM CHUNG:</span>
+                        <span id="final_total_score" class="text-3xl font-black text-white">30.00</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[11px] text-slate-400 block">Tỷ lệ Vượt mức (X):</span>
+                        <span id="ratio_vuot_muc" class="text-sm font-bold text-emerald-400">0.0% (0/0)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Table / List -->
+        <div class="bg-white rounded-2xl card-shadow border border-slate-200 overflow-hidden">
+            <div class="p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-blue-600"></i>
+                    <h2 class="font-bold text-slate-800 text-sm sm:text-base">Danh Mục Công Việc Chuẩn Hóa (Phụ Lục 4 & Phụ Lục 6)</h2>
+                    <span id="task_count_badge" class="px-2 py-0.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">0 công việc</span>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input type="text" id="search_task" onkeyup="filterAndRender()" placeholder="Tìm kiếm công việc..." class="text-xs p-2 border border-slate-300 rounded-lg w-full sm:w-64 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider border-b border-slate-200">
+                            <th class="p-3 w-10 text-center">STT</th>
+                            <th class="p-3 min-w-[280px]">Nhiệm Vụ / Công Việc & Minh Chứng (Cột 9 - PL4)</th>
+                            <th class="p-3 w-28 text-center">Tình Trạng PC</th>
+                            <th class="p-3 w-16 text-center">Điểm Chuẩn</th>
+                            <th class="p-3 w-16 text-center">Hệ Số</th>
+                            <th class="p-3 w-20 text-center">Tối Đa (A)</th>
+                            <th class="p-3 w-28 text-center">Tiến Độ (%)</th>
+                            <th class="p-3 w-28 text-center">Chất Lượng (%)</th>
+                            <th class="p-3 w-20 text-center">Vượt Mức (X)</th>
+                            <th class="p-3 w-24 text-center">Điểm Thực Tế (B)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="task_tbody" class="divide-y divide-slate-200 bg-white">
+                        <!-- Dynamic Rows Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Hidden Print/PDF Render Container -->
+    <div id="print_container" class="print-only p-8 bg-white text-black"></div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const MASTER_DB = [
+  {
+    "Task_ID": "T1_01",
+    "Truc": 1,
+    "Task_Name": "Thực hiện dạy học theo kế hoạch dạy học môn đảm nhận",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Hồ sơ, Kế hoạch bài dạy & Minh chứng hoàn thành tiến độ chương trình môn đảm nhận được phê duyệt."
+  },
+  {
+    "Task_ID": "T1_02",
+    "Truc": 1,
+    "Task_Name": "Thực hiện có hiệu quả đổi mới phương pháp dạy học, sinh hoạt chuyên môn nghiên cứu bài học, tiết dạy ngoài không gian lớp học",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "GV_CHUYEN",
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên thực hiện đổi mới PPDH hoặc sinh hoạt NCBH",
+    "Minh_Chung_Mac_Dinh": "Kế hoạch bài dạy đổi mới PPDH, Biên bản sinh hoạt chuyên môn NCBH cấp Tổ/Trường; Báo cáo tiết dạy không gian mở được nghiệm thu."
+  },
+  {
+    "Task_ID": "T1_03",
+    "Truc": 1,
+    "Task_Name": "Đổi mới công tác kiểm tra đánh giá; tham gia chấm thi, đánh giá do cấp trên điều động",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên tham gia kiểm tra đánh giá định kỳ / khảo sát",
+    "Minh_Chung_Mac_Dinh": "Bộ ma trận, đặc tả, đề kiểm tra định kỳ; Quyết định điều động chấm thi/đánh giá của Sở/Trường."
+  },
+  {
+    "Task_ID": "T1_04",
+    "Truc": 1,
+    "Task_Name": "Công tác giáo dục mũi nhọn, bồi dưỡng học sinh năng khiếu, hướng dẫn nghiên cứu khoa học, ý tưởng khởi nghiệp",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_CHUYEN",
+      "GV_HSG"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên dạy chuyên, bồi dưỡng HSG, NCKH",
+    "Minh_Chung_Mac_Dinh": "Kế hoạch Bồi dưỡng HSG; Danh sách học sinh đạt giải cấp Cụm/Thành phố; Dự án NCKH/Khởi nghiệp được nghiệm thu."
+  },
+  {
+    "Task_ID": "T1_06",
+    "Truc": 1,
+    "Task_Name": "Thực hiện bồi dưỡng thường xuyên theo quy định",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Giấy chứng nhận / Kết quả hoàn thành các Mô-đun Bồi dưỡng thường xuyên trên hệ thống."
+  },
+  {
+    "Task_ID": "T1_07",
+    "Truc": 1,
+    "Task_Name": "Chấp hành giờ giấc lên lớp, không đi trễ, về sớm, không vắng tiết ngoài quy định",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Sổ đầu bài điện tử, Bảng tổng hợp thi đua tác phong giờ giấc của BGH/Tổ chuyên môn đạt 100% đúng giờ."
+  },
+  {
+    "Task_ID": "T1_08",
+    "Truc": 1,
+    "Task_Name": "Tham gia chấm thi tuyển sinh / chọn học sinh vào lớp năng khiếu, lớp chuyên",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "GV_CHUYEN"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên được cử chấm thi tuyển sinh",
+    "Minh_Chung_Mac_Dinh": "Quyết định phân công chấm thi của BGH/Sở GD&ĐT; Biên bản bàn giao bài chấm hoàn thành đúng/sớm tiến độ."
+  },
+  {
+    "Task_ID": "T1_09",
+    "Truc": 1,
+    "Task_Name": "Thực hiện tập huấn Sách giáo khoa theo kế hoạch",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Giấy xác nhận / Báo cáo thu hoạch hoàn thành chương trình Tập huấn SGK mới."
+  },
+  {
+    "Task_ID": "T1_10",
+    "Truc": 1,
+    "Task_Name": "Đăng ký tham dự các chương trình, khóa bồi dưỡng chuyên sâu cho giáo viên",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_CHUYEN"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên tham gia bồi dưỡng chuyên sâu",
+    "Minh_Chung_Mac_Dinh": "Quyết định cử tham dự & Giấy chứng nhận hoàn thành khóa bồi dưỡng chuyên sâu."
+  },
+  {
+    "Task_ID": "T1_11",
+    "Truc": 1,
+    "Task_Name": "Giáo viên được cử tham gia công tác chuyên môn cấp Cụm, Thành phố",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên được phân công công tác Cụm/Thành phố",
+    "Minh_Chung_Mac_Dinh": "Quyết định/Công văn cử đi công tác chuyên môn của Sở/Cụm; Báo cáo kết quả hoàn thành nhiệm vụ."
+  },
+  {
+    "Task_ID": "T1_12",
+    "Truc": 1,
+    "Task_Name": "Tham gia tập huấn chuyên môn hè theo phân công của nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Biên bản điểm danh & Báo cáo kết quả tập huấn chuyên môn hè do BGH xác nhận."
+  },
+  {
+    "Task_ID": "T1_13_TICHHOP",
+    "Truc": 1,
+    "Task_Name": "Giảng dạy & xây dựng ma trận, đặc tả, đề kiểm tra riêng cho các lớp Tích hợp",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_TICHHOP"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên giảng dạy lớp Tích hợp",
+    "Minh_Chung_Mac_Dinh": "Sổ kế hoạch giảng dạy Lớp Tích hợp; Bộ ma trận, đặc tả & Đề kiểm tra riêng cho chương trình Tích hợp được phê duyệt."
+  },
+  {
+    "Task_ID": "T1_14_TT05_HSG",
+    "Truc": 1,
+    "Task_Name": "Bồi dưỡng HSG thi cấp Thành phố & dạy Năng khiếu quy đổi 1 tiết = 2 tiết theo Thông tư 05 (Không nhận tiền bồi dưỡng)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_HSG_TT05"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên dạy HSG/Năng khiếu theo TT 05",
+    "Minh_Chung_Mac_Dinh": "Quyết định phân công BGH; Sổ ghi giảng dạy quy đổi 1 tiết = 2 tiết theo TT 05/BGDĐT; Báo cáo kết quả đội tuyển HSG."
+  },
+  {
+    "Task_ID": "T2_01",
+    "Truc": 2,
+    "Task_Name": "Công tác Tổ trưởng, Tổ phó chuyên môn (Sinh hoạt tổ, thống nhất ma trận kiểm tra, tham gia họp, chỉ đạo tổ)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TO_TRUONG",
+      "TO_PHO"
+    ],
+    "Ghi_Chu_Goc": "Tổ trưởng và Tổ phó chuyên môn",
+    "Minh_Chung_Mac_Dinh": "Sổ Kế hoạch Tổ chuyên môn; Biên bản các buổi sinh hoạt tổ định kỳ; Hồ sơ quản lý tổ được BGH nghiệm thu."
+  },
+  {
+    "Task_ID": "T2_02",
+    "Truc": 2,
+    "Task_Name": "Công tác Giáo viên chủ nhiệm (Tham dự sinh hoạt lớp, chào cờ, hoàn thiện hồ sơ chủ nhiệm)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GVCN"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên chủ nhiệm",
+    "Minh_Chung_Mac_Dinh": "Sổ Chủ nhiệm điện tử; Hồ sơ theo dõi học sinh; Biên bản họp PHHS & Báo cáo đánh giá nếp sống lớp."
+  },
+  {
+    "Task_ID": "T2_03",
+    "Truc": 2,
+    "Task_Name": "Công tác kiểm tra nội bộ, kiểm tra hồ sơ giáo viên trong tổ chuyên môn",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TO_TRUONG",
+      "TO_PHO"
+    ],
+    "Ghi_Chu_Goc": "Cán bộ kiểm tra nội bộ tổ",
+    "Minh_Chung_Mac_Dinh": "Kế hoạch & Biên bản kiểm tra nội bộ hồ sơ sổ sách giáo viên trong tổ được BGH phê duyệt."
+  },
+  {
+    "Task_ID": "T2_04",
+    "Truc": 2,
+    "Task_Name": "Tham gia họp Sở, HĐSP, họp tổ, học chính trị - quán triệt nghị quyết, tập huấn cấp trường và các sự kiện được phân công",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Sổ ghi chép hội họp HĐSP; Bảng điểm danh các buổi học tập chính trị & Sự kiện nhà trường đạt 100% chuyên cần."
+  },
+  {
+    "Task_ID": "T2_07_THUKYHD",
+    "Truc": 2,
+    "Task_Name": "Công tác Thư ký Hội đồng nhà trường (Lập kế hoạch, ghi biên bản họp HĐNT/HĐSP, tổng hợp báo cáo)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "THU_KY_HDNT"
+    ],
+    "Ghi_Chu_Goc": "Thư ký Hội đồng nhà trường",
+    "Minh_Chung_Mac_Dinh": "Tập Biên bản các cuộc họp HĐNT/HĐSP; Dự thảo Nghị quyết & Báo cáo tổng hợp được Hiệu trưởng phê duyệt."
+  },
+  {
+    "Task_ID": "T2_08_TROLYTN",
+    "Truc": 2,
+    "Task_Name": "Công tác Trợ lý Thanh niên / Bí thư Đoàn trường (Chỉ đạo phong trào Đoàn, quản lý các CLB học sinh & tổ chức Hoạt động trải nghiệm)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "TRO_LY_THANH_NIEN"
+    ],
+    "Ghi_Chu_Goc": "Trợ lý Thanh niên / Bí thư Đoàn trường",
+    "Minh_Chung_Mac_Dinh": "Quyết định phân công BGH; Kế hoạch & Báo cáo tổng kết phong trào Đoàn/CLB học sinh hoàn thành sớm tiến độ."
+  },
+  {
+    "Task_ID": "T3_01",
+    "Truc": 3,
+    "Task_Name": "Ứng dụng trí tuệ nhân tạo (AI) và công nghệ số trong giảng dạy",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Sản phẩm Kế hoạch bài dạy / Bài giảng có ứng dụng công cụ AI (ChatGPT, Canva, Quizizz...) được nghiệm thu."
+  },
+  {
+    "Task_ID": "T3_02",
+    "Truc": 3,
+    "Task_Name": "Đưa bài giảng, đề thi lên hệ thống dạy học trực tuyến (LMS); xây dựng học liệu số",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Báo cáo trích xuất dữ liệu kho bài giảng & ngân hàng câu hỏi kiểm tra đã tải lên hệ thống LMS trường."
+  },
+  {
+    "Task_ID": "T3_03",
+    "Truc": 3,
+    "Task_Name": "Chuẩn hóa, làm sạch và cập nhật cơ sở dữ liệu cá nhân và các dữ liệu được giao",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Báo cáo dữ liệu cá nhân trên hệ thống CSDL ngành đã được chuẩn hóa, khớp đúng 100%."
+  },
+  {
+    "Task_ID": "T3_04",
+    "Truc": 3,
+    "Task_Name": "Nâng cao trình độ chuyên môn, nghiệp vụ; hoàn thành các khóa bồi dưỡng do nhà trường/Sở cử tham gia",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Giấy chứng nhận hoàn thành khóa đào tạo / bồi dưỡng nghiệp vụ chuyên môn."
+  },
+  {
+    "Task_ID": "T3_05",
+    "Truc": 3,
+    "Task_Name": "Thực hiện sáng kiến, giải pháp cải tiến phương pháp giảng dạy và quản lý",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "GV_CHUYEN",
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên có đăng ký sáng kiến",
+    "Minh_Chung_Mac_Dinh": "Văn bản Sáng kiến / Giải pháp cải tiến được Hội đồng khoa học nhà trường công nhận và áp dụng."
+  },
+  {
+    "Task_ID": "T3_06",
+    "Truc": 3,
+    "Task_Name": "Bảo đảm an toàn thông tin, bảo vệ dữ liệu cá nhân theo quy định",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Biên bản tự kiểm tra an toàn thông tin thiết bị cá nhân & Chấp hành quy định bảo mật dữ liệu."
+  },
+  {
+    "Task_ID": "T3_08",
+    "Truc": 3,
+    "Task_Name": "Cập nhật thông tin cá nhân, hồ sơ điện tử và thực hiện thủ tục hành chính số hóa",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Hồ sơ viên chức điện tử được hoàn thiện và xác nhận lưu trữ trên phần mềm quản lý."
+  },
+  {
+    "Task_ID": "T3_09",
+    "Truc": 3,
+    "Task_Name": "Tham gia tập huấn (khởi nghiệp, đổi mới sáng tạo, NCKH, dạy học bằng ngoại ngữ...)",
+    "Loai_Cong_Viec": "Đột xuất",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.1,
+    "Diem_Quy_Doi_Toi_Da": 11.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên tham gia tập huấn",
+    "Minh_Chung_Mac_Dinh": "Giấy xác nhận tham gia tập huấn NCKH / Đổi mới sáng tạo / Dạy học ngoại ngữ do cấp có thẩm quyền cấp."
+  },
+  {
+    "Task_ID": "T3_12_CLB_STEM",
+    "Truc": 3,
+    "Task_Name": "Quản lý, điều hành hoạt động CLB STEM / NCKH / CLB Học thuật & hướng dẫn học sinh tham gia Cuộc thi KHKT",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.2,
+    "Diem_Quy_Doi_Toi_Da": 12.0,
+    "Required_Roles": [
+      "PHU_TRACH_CLB_STEM"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên phụ trách CLB STEM / NCKH",
+    "Minh_Chung_Mac_Dinh": "Sổ Kế hoạch hoạt động CLB STEM/NCKH; Báo cáo sản phẩm STEM & Dự án thi KHKT học sinh được nghiệm thu."
+  },
+  {
+    "Task_ID": "T4_01",
+    "Truc": 4,
+    "Task_Name": "Công tác Đảng (Thực hiện nhiệm vụ Chi ủy viên / Đảng viên do Chi bộ phân công)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "DANG_UY",
+      "CHI_UY_VIEN"
+    ],
+    "Ghi_Chu_Goc": "Cấp ủy viên / Đảng viên",
+    "Minh_Chung_Mac_Dinh": "Bản tự kiểm điểm Đảng viên; Báo cáo kết quả thực hiện nhiệm vụ do Chi bộ đánh giá Hoàn thành tốt trở lên."
+  },
+  {
+    "Task_ID": "T4_02",
+    "Truc": 4,
+    "Task_Name": "Công tác Đoàn thể (Công đoàn, Đoàn thanh niên, Thanh tra nhân dân hoặc kiêm nhiệm khác)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "DOAN_THE"
+    ],
+    "Ghi_Chu_Goc": "Cán bộ Công đoàn / Đoàn thanh niên",
+    "Minh_Chung_Mac_Dinh": "Báo cáo tổng kết công tác Đoàn thể / Kiêm nhiệm; Kết quả đánh giá thi đua cán bộ Công đoàn/Đoàn thanh niên."
+  },
+  {
+    "Task_ID": "T4_03",
+    "Truc": 4,
+    "Task_Name": "Thực hiện đoàn kết nội bộ, phòng chống tham nhũng, lãng phí, tiết kiệm điện nước",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Bản cam kết thi đua; Đạt 100% quy định về thực hành tiết kiệm, chống lãng phí và đoàn kết nội bộ."
+  },
+  {
+    "Task_ID": "T5_01",
+    "Truc": 5,
+    "Task_Name": "Thực hiện Quy tắc ứng xử văn hóa trong nhà trường",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong tổ",
+    "Minh_Chung_Mac_Dinh": "Kết quả đánh giá tác phong sư phạm & Quy tắc ứng xử văn hóa đạt chuẩn do Công đoàn/Nhà trường ghi nhận."
+  },
+  {
+    "Task_ID": "T5_02",
+    "Truc": 5,
+    "Task_Name": "Tham gia, tổ chức hoạt động Câu lạc bộ, Hội thao, Văn nghệ, Hướng nghiệp học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên tham gia hỗ trợ phòng trào",
+    "Minh_Chung_Mac_Dinh": "Kế hoạch & Báo cáo hình ảnh/sản phẩm tham gia hỗ trợ các hoạt động Hội thao, Văn nghệ, Hướng nghiệp."
+  },
+  {
+    "Task_ID": "T5_03",
+    "Truc": 5,
+    "Task_Name": "Thực hiện chế độ chính sách đối với giáo viên, nhân viên theo quy chế",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên tham gia công tác chính sách",
+    "Minh_Chung_Mac_Dinh": "Hồ sơ / Báo cáo rà soát thực hiện đúng quy chế chế độ chính sách đối với GV-NV."
+  },
+  {
+    "Task_ID": "T5_04",
+    "Truc": 5,
+    "Task_Name": "Thực hiện thông tin và chế độ chính sách đối với học sinh (Miễn giảm thu, học bổng, dân tộc thiểu số)",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG",
+      "GVCN"
+    ],
+    "Ghi_Chu_Goc": "GVCN / Cán bộ chính sách học sinh",
+    "Minh_Chung_Mac_Dinh": "Danh sách & Hồ sơ xác nhận học sinh được hưởng chế độ miễn giảm, học bổng theo quy định."
+  },
+  {
+    "Task_ID": "T5_05",
+    "Truc": 5,
+    "Task_Name": "Thực hiện phong trào Công dân học tập khi có triển khai",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "DANG_UY"
+    ],
+    "Ghi_Chu_Goc": "Đảng viên thực hiện",
+    "Minh_Chung_Mac_Dinh": "Bản đăng ký & Kết quả đạt chuẩn Công dân học tập trên hệ thống trực tuyến."
+  },
+  {
+    "Task_ID": "T6_02",
+    "Truc": 6,
+    "Task_Name": "Tham gia công tác an ninh trật tự, an toàn trường học",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "TU_CHON_HOAC_PHAN_CONG"
+    ],
+    "Ghi_Chu_Goc": "Giáo viên trực tuần / an ninh",
+    "Minh_Chung_Mac_Dinh": "Lịch trực tuần & Báo cáo công tác đảm bảo an ninh trật tự, an toàn trường học."
+  },
+  {
+    "Task_ID": "T6_03",
+    "Truc": 6,
+    "Task_Name": "Tham gia xây dựng Trường học hạnh phúc",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong trường",
+    "Minh_Chung_Mac_Dinh": "Sản phẩm đổi mới không gian lớp học / Hoạt động gắn kết học sinh xây dựng lớp học hạnh phúc."
+  },
+  {
+    "Task_ID": "T6_04",
+    "Truc": 6,
+    "Task_Name": "Công tác phối hợp giữa Gia đình - Nhà trường - Xã hội trong giáo dục học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong trường",
+    "Minh_Chung_Mac_Dinh": "Sổ liên lạc điện tử; Biên bản làm việc phối hợp với PHHS và chính quyền địa phương trong giáo dục học sinh."
+  },
+  {
+    "Task_ID": "T6_05",
+    "Truc": 6,
+    "Task_Name": "Công tác y tế học đường, phối hợp chăm sóc sức khỏe học sinh",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong trường",
+    "Minh_Chung_Mac_Dinh": "Hồ sơ phối hợp theo dõi sức khỏe, tiêm chủng và khám sức khỏe định kỳ cho học sinh."
+  },
+  {
+    "Task_ID": "T6_06",
+    "Truc": 6,
+    "Task_Name": "Tham gia học tập suốt đời, phát triển kỹ năng ngoại ngữ, tin học để hội nhập",
+    "Loai_Cong_Viec": "Thường xuyên",
+    "Diem_Chuan": 10,
+    "He_So_Do_Kho": 1.0,
+    "Diem_Quy_Doi_Toi_Da": 10.0,
+    "Required_Roles": [
+      "ALL_GV"
+    ],
+    "Ghi_Chu_Goc": "Tất cả GV trong trường",
+    "Minh_Chung_Mac_Dinh": "Chứng chỉ / Minh chứng tham gia các khóa học nâng cao trình độ ngoại ngữ, ứng dụng công nghệ thông tin."
+  }
+];
+
+        let userState = {
+            fullname: "Nguyễn Văn A",
+            subject: "Ngữ văn",
+            department: "Ngữ văn",
+            userCode: "GV01234",
+            dob: "15/08/1985",
+            ttcmName: "",
+            selectedRoles: ["ALL_GV"],
+            taskInputs: {}
+        };
+
+        window.addEventListener("DOMContentLoaded", () => {
+            initUserState();
+            filterAndRender();
+        });
+
+        function updateUserInfo() {
+            userState.fullname = document.getElementById("user_fullname").value || "Nguyễn Văn A";
+            userState.subject = document.getElementById("user_subject").value || "Ngữ văn";
+            userState.department = document.getElementById("user_department").value || userState.subject;
+            userState.userCode = document.getElementById("user_code").value || "GV01234";
+            userState.dob = document.getElementById("user_dob").value || "15/08/1985";
+            userState.ttcmName = document.getElementById("ttcm_fullname").value || "";
+        }
+
+        function initUserState() {
+            MASTER_DB.forEach(t => {
+                if (!userState.taskInputs[t.Task_ID]) {
+                    userState.taskInputs[t.Task_ID] = {
+                        status: "THUC_HIEN",
+                        tiendo: 100,
+                        chatluong: 100,
+                        isX: false,
+                        minhChung: t.Minh_Chung_Mac_Dinh || ""
+                    };
+                }
+            });
+        }
+
+        function getActiveRoles() {
+            const roles = ["ALL_GV"];
+            document.querySelectorAll(".role-checkbox:checked").forEach(cb => {
+                roles.push(cb.value);
+            });
+            return roles;
+        }
+
+        function filterAndRender() {
+            updateUserInfo();
+            const activeRoles = getActiveRoles();
+            const searchText = document.getElementById("search_task").value.toLowerCase();
+            const tbody = document.getElementById("task_tbody");
+            tbody.innerHTML = "";
+
+            let filteredTasks = MASTER_DB.filter(t => {
+                if (t.Required_Roles.includes("REMOVE")) return false;
+                const hasRole = t.Required_Roles.some(r => activeRoles.includes(r) || r === "ALL_GV" || r === "TU_CHON_HOAC_PHAN_CONG");
+                if (!hasRole) return false;
+
+                if (searchText) {
+                    const matchName = t.Task_Name.toLowerCase().includes(searchText);
+                    const matchID = t.Task_ID.toLowerCase().includes(searchText);
+                    return matchName || matchID;
+                }
+                return true;
+            });
+
+            document.getElementById("task_count_badge").innerText = `${filteredTasks.length} công việc`;
+
+            let idx = 1;
+            filteredTasks.forEach(t => {
+                const inputState = userState.taskInputs[t.Task_ID] || { status: "THUC_HIEN", tiendo: 100, chatluong: 100, isX: false, minhChung: t.Minh_Chung_Mac_Dinh };
+                
+                let diemB = 0;
+                if (inputState.status === "THUC_HIEN") {
+                    const diemTH = t.Diem_Chuan * ((0.3 * (inputState.tiendo / 100)) + (0.7 * (inputState.chatluong / 100)));
+                    diemB = diemTH * t.He_So_Do_Kho;
+                }
+
+                const tr = document.createElement("tr");
+                tr.className = "hover:bg-slate-50/80 transition border-b border-slate-100";
+
+                tr.innerHTML = `
+                    <td class="p-2.5 text-center font-bold text-slate-500">${idx++}</td>
+                    <td class="p-2.5">
+                        <div class="font-bold text-slate-800 text-xs mb-1">${t.Task_Name}</div>
+                        <div class="text-[10px] text-slate-500 mb-1 font-mono">Mã: ${t.Task_ID} | Loại: ${t.Loai_Cong_Viec}</div>
+                        
+                        <div class="mt-1">
+                            <input type="text" 
+                                class="w-full text-xs p-1.5 border border-slate-300 rounded bg-slate-50 focus:bg-white focus:ring-1 focus:ring-indigo-500 outline-none"
+                                placeholder="Nhập minh chứng / mốc ngày hoàn thành..." 
+                                value="${escapeHtml(inputState.minhChung || t.Minh_Chung_Mac_Dinh)}"
+                                onchange="updateMinhChung('${t.Task_ID}', this.value)">
+                        </div>
+                    </td>
+                    <td class="p-2.5 text-center">
+                        <select onchange="updateStatus('${t.Task_ID}', this.value)" class="p-1 border border-slate-300 rounded text-xs font-semibold text-slate-700 bg-white">
+                            <option value="THUC_HIEN" ${inputState.status == 'THUC_HIEN' ? 'selected' : ''}>100% Hoàn thành</option>
+                            <option value="KHONG_PHAN_CONG" ${inputState.status == 'KHONG_PHAN_CONG' ? 'selected' : ''}>❌ Không thuộc diện PC</option>
+                            <option value="KHONG_THUC_HIEN" ${inputState.status == 'KHONG_THUC_HIEN' ? 'selected' : ''}>0% Không làm</option>
+                        </select>
+                    </td>
+                    <td class="p-2.5 text-center font-semibold text-slate-700">${t.Diem_Chuan}</td>
+                    <td class="p-2.5 text-center font-semibold text-slate-700">${(t.He_So_Do_Kho * 100).toFixed(0)}%</td>
+                    <td class="p-2.5 text-center font-bold text-blue-800">${inputState.status === 'KHONG_PHAN_CONG' ? '0.00' : t.Diem_Quy_Doi_Toi_Da.toFixed(2)}</td>
+                    <td class="p-2.5 text-center">
+                        <select ${inputState.status !== 'THUC_HIEN' ? 'disabled' : ''} onchange="updateTiendo('${t.Task_ID}', this.value)" class="p-1 border border-slate-300 rounded text-xs bg-white disabled:opacity-30">
+                            <option value="100" ${inputState.tiendo == 100 ? 'selected' : ''}>100% (Đúng/Sớm)</option>
+                            <option value="80" ${inputState.tiendo == 80 ? 'selected' : ''}>80% (Chậm < 5d)</option>
+                            <option value="60" ${inputState.tiendo == 60 ? 'selected' : ''}>60% (Chậm ≥ 5d)</option>
+                            <option value="0" ${inputState.tiendo == 0 ? 'selected' : ''}>0% (Không làm)</option>
+                        </select>
+                    </td>
+                    <td class="p-2.5 text-center">
+                        <select ${inputState.status !== 'THUC_HIEN' ? 'disabled' : ''} onchange="updateChatluong('${t.Task_ID}', this.value)" class="p-1 border border-slate-300 rounded text-xs bg-white disabled:opacity-30">
+                            <option value="100" ${inputState.chatluong == 100 ? 'selected' : ''}>100% (Đạt xuất sắc)</option>
+                            <option value="80" ${inputState.chatluong == 80 ? 'selected' : ''}>80% (Sửa nhẹ)</option>
+                            <option value="60" ${inputState.chatluong == 60 ? 'selected' : ''}>60% (Sửa nhiều)</option>
+                            <option value="0" ${inputState.chatluong == 0 ? 'selected' : ''}>0% (Không đạt)</option>
+                        </select>
+                    </td>
+                    <td class="p-2.5 text-center">
+                        <input type="checkbox" 
+                            ${(inputState.status !== 'THUC_HIEN' || inputState.tiendo < 100 || inputState.chatluong < 100) ? 'disabled' : ''}
+                            ${inputState.isX ? 'checked' : ''} 
+                            onchange="updateIsX('${t.Task_ID}', this.checked)"
+                            class="w-4 h-4 text-emerald-600 rounded cursor-pointer disabled:opacity-30">
+                    </td>
+                    <td class="p-2.5 text-center font-extrabold text-emerald-700 bg-emerald-50/50">${diemB.toFixed(2)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            recalculateTotal();
+        }
+
+        function updateMinhChung(id, val) { userState.taskInputs[id].minhChung = val; }
+        function updateStatus(id, val) {
+            userState.taskInputs[id].status = val;
+            if (val !== 'THUC_HIEN') userState.taskInputs[id].isX = false;
+            filterAndRender();
+        }
+        function updateTiendo(id, val) {
+            userState.taskInputs[id].tiendo = parseFloat(val);
+            if (parseFloat(val) < 100) userState.taskInputs[id].isX = false;
+            filterAndRender();
+        }
+        function updateChatluong(id, val) {
+            userState.taskInputs[id].chatluong = parseFloat(val);
+            if (parseFloat(val) < 100) userState.taskInputs[id].isX = false;
+            filterAndRender();
+        }
+        function updateIsX(id, checked) {
+            userState.taskInputs[id].isX = checked;
+            recalculateTotal();
+        }
+
+        function recalculateTotal() {
+            updateUserInfo();
+            const activeRoles = getActiveRoles();
+            let totalA = 0;
+            let totalB = 0;
+            let countX = 0;
+            let totalTasks = 0;
+            let bonusFromAdHoc = 0;
+
+            MASTER_DB.forEach(t => {
+                if (t.Required_Roles.includes("REMOVE")) return;
+                const hasRole = t.Required_Roles.some(r => activeRoles.includes(r) || r === "ALL_GV" || r === "TU_CHON_HOAC_PHAN_CONG");
+                if (!hasRole) return;
+
+                const inp = userState.taskInputs[t.Task_ID] || { status: "THUC_HIEN", tiendo: 100, chatluong: 100, isX: false };
+                if (inp.status !== "KHONG_PHAN_CONG") {
+                    totalTasks++;
+                    totalA += t.Diem_Quy_Doi_Toi_Da;
+
+                    let diemB = 0;
+                    if (inp.status === "THUC_HIEN") {
+                        const diemTH = t.Diem_Chuan * ((0.3 * (inp.tiendo / 100)) + (0.7 * (inp.chatluong / 100)));
+                        diemB = diemTH * t.He_So_Do_Kho;
+                    }
+                    totalB += diemB;
+
+                    if (inp.isX && inp.status === "THUC_HIEN" && inp.tiendo === 100 && inp.chatluong === 100) {
+                        countX++;
+                        if (t.Loai_Cong_Viec === "Đột xuất" || t.Diem_Chuan === 12) {
+                            const taskKPIScore = (diemB / (totalA || 1)) * 70;
+                            bonusFromAdHoc += (0.05 * taskKPIScore);
+                        }
+                    }
+                }
+            });
+
+            const scorePartA = parseFloat(document.getElementById("score_partA").value) || 0;
+            let kpiChuyenMon = totalA > 0 ? (totalB / totalA) * 70 : 0;
+            if (kpiChuyenMon > 70) kpiChuyenMon = 70;
+            document.getElementById("score_partB").innerText = kpiChuyenMon.toFixed(2);
+
+            let bonusScore = bonusFromAdHoc;
+            if (bonusScore > 7) bonusScore = 7;
+            document.getElementById("score_partC").innerText = "+" + bonusScore.toFixed(2);
+
+            let finalScore = scorePartA + kpiChuyenMon + bonusScore;
+            if (finalScore > 100) finalScore = 100;
+            document.getElementById("final_total_score").innerText = finalScore.toFixed(2);
+
+            const ratioX = totalTasks > 0 ? (countX / totalTasks) * 100 : 0;
+            document.getElementById("ratio_vuot_muc").innerText = `${ratioX.toFixed(1)}% (${countX}/${totalTasks})`;
+
+            const badge = document.getElementById("badge_xeploai");
+            if (finalScore >= 90 && ratioX >= 30) {
+                badge.innerText = "Hoàn Thành Xuất Sắc";
+                badge.className = "px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold rounded-full";
+            } else if (finalScore >= 70) {
+                badge.innerText = "Hoàn Thành Tốt";
+                badge.className = "px-2.5 py-1 bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold rounded-full";
+            } else if (finalScore >= 50) {
+                badge.innerText = "Hoàn Thành Nhiệm Vụ";
+                badge.className = "px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold rounded-full";
+            } else {
+                badge.innerText = "Không Hoàn Thành";
+                badge.className = "px-2.5 py-1 bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold rounded-full";
+            }
+        }
+
+        // BUILD HTML REPORT ELEMENT FOR PRINT / PDF
+        function buildReportHTML(type) {
+            updateUserInfo();
+            recalculateTotal();
+
+            const activeRoles = getActiveRoles();
+            const scorePartA = parseFloat(document.getElementById("score_partA").value) || 30;
+            const scorePartB = document.getElementById("score_partB").innerText;
+            const scorePartC = document.getElementById("score_partC").innerText;
+            const finalTotal = document.getElementById("final_total_score").innerText;
+            const ratioXStr = document.getElementById("ratio_vuot_muc").innerText;
+            const xepLoaiStr = document.getElementById("badge_xeploai").innerText;
+
+            const validTasks = MASTER_DB.filter(t => {
+                if (t.Required_Roles.includes("REMOVE")) return false;
+                const hasRole = t.Required_Roles.some(r => activeRoles.includes(r) || r === "ALL_GV" || r === "TU_CHON_HOAC_PHAN_CONG");
+                if (!hasRole) return false;
+                const inp = userState.taskInputs[t.Task_ID] || { status: "THUC_HIEN" };
+                return inp.status !== "KHONG_PHAN_CONG";
+            });
+
+            const ttcmDisplay = userState.ttcmName.trim() ? userState.ttcmName.trim() : "....................................";
+
+            if (type === 'MAU01B') {
+                return `
+                    <div style="font-family: 'Times New Roman', Times, serif; color: black; line-height: 1.4; padding: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                            <div style="text-align: center; width: 45%;">
+                                <div style="font-size: 10pt;">SỞ GIÁO DỤC VÀ ĐÀO TẠO TPHCM</div>
+                                <div style="font-size: 11pt; font-weight: bold;">TRƯỜNG THPT NGUYỄN THƯỜNG HIỀN</div>
+                                <div style="font-size: 10pt; font-style: italic;">******</div>
+                            </div>
+                            <div style="text-align: center; width: 50%;">
+                                <div style="font-size: 11pt; font-weight: bold;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+                                <div style="font-size: 10pt; font-weight: bold;">Độc lập - Tự do - Hạnh phúc</div>
+                                <div style="font-size: 10pt; font-style: italic; margin-top: 5px;">Thành phố Hồ Chí Minh, ngày .... tháng 9 năm 2026</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 15px; margin-bottom: 15px;">
+                            <div style="font-size: 14pt; font-weight: bold;">BẢN TỰ ĐÁNH GIÁ, XẾP LOẠI CỦA CÁ NHÂN</div>
+                            <div style="font-size: 12pt; font-weight: bold;">Quý 3, Năm 2026</div>
+                        </div>
+
+                        <div style="font-size: 11pt; margin-bottom: 10px; line-height: 1.6;">
+                            <div><b>Họ và tên:</b> ${userState.fullname} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Ngày sinh:</b> ${userState.dob}</div>
+                            <div><b>Môn giảng dạy:</b> ${userState.subject} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Đơn vị công tác:</b> Tổ ${userState.department} - Trường THPT Nguyễn Thường Hiền</div>
+                        </div>
+
+                        <div style="font-size: 11pt; font-weight: bold; margin-top: 10px; margin-bottom: 5px;">I. Tự đánh giá kết quả thực hiện nhiệm vụ</div>
+                        <div style="font-size: 10pt; font-style: italic; margin-bottom: 5px;">Trên cơ sở nhiệm vụ được giao, cá nhân tự đánh giá về kết quả thực hiện nhiệm vụ theo quý như sau:</div>
+
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+                            <thead>
+                                <tr style="background-color: #f3f4f6;">
+                                    <th style="border: 1px solid black; padding: 6px; text-align: center; font-weight: bold; width: 60%;">NHÓM TIÊU CHÍ CHUNG (30 ĐIỂM)</th>
+                                    <th style="border: 1px solid black; padding: 6px; text-align: center; font-weight: bold; width: 20%;">Điểm tối đa</th>
+                                    <th style="border: 1px solid black; padding: 6px; text-align: center; font-weight: bold; width: 20%;">Điểm tự chấm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 6px;">1. Về phẩm chất chính trị, đạo đức, lối sống, thực hiện trách nhiệm nêu gương</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">18</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">18</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 6px;">2. Tư duy đổi mới, chiến lược, khát vọng cống hiến, dám nghĩ dám làm</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">4</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">4</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 6px;">3. Về tự phê bình và phê bình, tự soi, tự sửa, khắc phục hạn chế, khuyết điểm</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">8</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">8</td>
+                                </tr>
+                                <tr style="font-weight: bold; background-color: #f9fafb;">
+                                    <td style="border: 1px solid black; padding: 6px; text-align: right;">TỔNG (A) =</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">30</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">${scorePartA}</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 6px; font-weight: bold;">B. KẾT QUẢ THỰC HIỆN NHIỆM VỤ ĐƯỢC GIAO (70 ĐIỂM)</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center; font-weight: bold;">70</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center; font-weight: bold;">${scorePartB}</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 6px; font-weight: bold;">C. ĐIỂM THƯỞNG (nếu có)</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center;">--</td>
+                                    <td style="border: 1px solid black; padding: 6px; text-align: center; font-weight: bold;">${scorePartC}</td>
+                                </tr>
+                                <tr style="font-weight: bold; font-size: 11pt; background-color: #f3f4f6;">
+                                    <td style="border: 1px solid black; padding: 8px; text-align: right;">TỔNG (A + B + điểm thưởng) =</td>
+                                    <td style="border: 1px solid black; padding: 8px; text-align: center;">100</td>
+                                    <td style="border: 1px solid black; padding: 8px; text-align: center; font-size: 12pt; color: #1e3a8a;">${finalTotal}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="font-size: 11pt; margin-bottom: 15px; line-height: 1.6;">
+                            <b>II. Tự đề xuất xếp loại mức chất lượng:</b> Tỷ lệ nhiệm vụ vượt mức/tiến độ: <b>${ratioXStr}</b>. Đề xuất xếp loại: <b>${xepLoaiStr}</b>.
+                        </div>
+
+                        <div style="font-size: 11pt; margin-bottom: 15px; line-height: 1.6;">
+                            <b>III. Nhận xét, đánh giá của cấp có thẩm quyền:</b><br>
+                            - Chấm điểm: ...........................................................................................................................................<br>
+                            - Đề xuất xếp loại: ...................................................................................................................................
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 30px; text-align: center;">
+                            <div style="width: 48%;">
+                                <div style="font-weight: bold; font-size: 11pt;">XÁC NHẬN CỦA LÃNH ĐẠO ĐƠN VỊ</div>
+                                <div style="font-size: 9pt; font-style: italic;">(Xác lập thời điểm, ký, ghi rõ họ tên và đóng dấu)</div>
+                                <br><br><br>
+                                <div style="font-weight: bold; font-size: 11pt;">${ttcmDisplay}</div>
+                            </div>
+                            <div style="width: 48%;">
+                                <div style="font-weight: bold; font-size: 11pt;">CÁ NHÂN TỰ ĐÁNH GIÁ</div>
+                                <div style="font-size: 9pt; font-style: italic;">(Ký, ghi rõ họ tên)</div>
+                                <br><br><br>
+                                <div style="font-weight: bold; font-size: 11pt;">${userState.fullname}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'PL4') {
+                let tableRows = '';
+                let idx = 1;
+                validTasks.forEach(t => {
+                    const inp = userState.taskInputs[t.Task_ID] || { minhChung: t.Minh_Chung_Mac_Dinh };
+                    tableRows += `
+                        <tr>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${idx++}</td>
+                            <td style="border: 1px solid black; padding: 4px;">${t.Task_Name}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">Sản phẩm / Báo cáo</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">Trong quý</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${t.Loai_Cong_Viec}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${t.Diem_Chuan}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${(t.He_So_Do_Kho * 100).toFixed(0)}%</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center; font-weight: bold;">${t.Diem_Quy_Doi_Toi_Da.toFixed(2)}</td>
+                            <td style="border: 1px solid black; padding: 4px;">${escapeHtml(inp.minhChung || t.Minh_Chung_Mac_Dinh)}</td>
+                        </tr>
+                    `;
+                });
+
+                return `
+                    <div style="font-family: 'Times New Roman', Times, serif; color: black; line-height: 1.3; padding: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                            <div style="text-align: center; width: 45%;">
+                                <div style="font-size: 9pt;">SỞ GIÁO DỤC VÀ ĐÀO TẠO TPHCM</div>
+                                <div style="font-size: 10pt; font-weight: bold;">TRƯỜNG THPT NGUYỄN THƯỜNG HIỀN</div>
+                            </div>
+                            <div style="text-align: center; width: 50%;">
+                                <div style="font-size: 10pt; font-weight: bold;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+                                <div style="font-size: 9pt; font-weight: bold;">Độc lập - Tự do - Hạnh phúc</div>
+                                <div style="font-size: 9pt; font-style: italic;">Thành phố Hồ Chí Minh, ngày .... tháng 9 năm 2026</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+                            <div style="font-size: 12pt; font-weight: bold;">BẢNG DANH MỤC SẢN PHẨM CÔNG VIỆC CHUẨN - Phụ lục 4</div>
+                            <div style="font-size: 10pt; font-style: italic;">(Kèm theo Báo cáo đánh giá KPI Quý III/2026)</div>
+                        </div>
+
+                        <div style="font-size: 10pt; margin-bottom: 8px;">
+                            <b>Họ và tên:</b> ${userState.fullname} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Môn:</b> ${userState.subject} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Tổ chuyên môn:</b> ${userState.department}
+                        </div>
+
+                        <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
+                            <thead>
+                                <tr style="background-color: #f3f4f6; text-align: center; font-weight: bold;">
+                                    <th style="border: 1px solid black; padding: 4px; width: 4%;">TT</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 28%;">Tên công việc (2)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 10%;">Kết quả đầu ra (3)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Thời hạn (4)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Loại CV (5)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 6%;">Điểm chuẩn (6)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 6%;">Hệ số (7)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Điểm tối đa (8)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 22%;">Minh chứng / Tiến độ (9)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${tableRows}
+                            </tbody>
+                        </table>
+
+                        <div style="margin-top: 10px; font-size: 9.5pt; line-height: 1.5;">
+                            <div><b>- Tổng số nhiệm vụ thực hiện trong quý:</b> ${validTasks.length} công việc</div>
+                            <div><b>- Tổng số nhiệm vụ vượt tiến độ/chất lượng:</b> ${ratioXStr}</div>
+                            <div><b>- Tổng số điểm thưởng đề xuất:</b> ${scorePartC} điểm</div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 25px; text-align: center; font-size: 10pt;">
+                            <div style="width: 48%;">
+                                <div style="font-weight: bold;">XÁC NHẬN CỦA LÃNH ĐẠO, ĐƠN VỊ</div>
+                                <div style="font-size: 8.5pt; font-style: italic;">(Ký, ghi rõ họ và tên)</div>
+                                <br><br><br>
+                                <div style="font-weight: bold;">${ttcmDisplay}</div>
+                            </div>
+                            <div style="width: 48%;">
+                                <div style="font-weight: bold;">CÁ NHÂN LẬP DANH MỤC SẢN PHẨM CÔNG VIỆC</div>
+                                <div style="font-size: 8.5pt; font-style: italic;">(Ký, ghi rõ họ và tên)</div>
+                                <br><br><br>
+                                <div style="font-weight: bold;">${userState.fullname}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'PL6') {
+                let tableRows = '';
+                let idx = 1;
+                let sumA = 0;
+                let sumB = 0;
+
+                validTasks.forEach(t => {
+                    const inp = userState.taskInputs[t.Task_ID] || { status: "THUC_HIEN", tiendo: 100, chatluong: 100, isX: false };
+                    let diemB = 0;
+                    if (inp.status === "THUC_HIEN") {
+                        const diemTH = t.Diem_Chuan * ((0.3 * (inp.tiendo / 100)) + (0.7 * (inp.chatluong / 100)));
+                        diemB = diemTH * t.He_So_Do_Kho;
+                    }
+                    sumA += t.Diem_Quy_Doi_Toi_Da;
+                    sumB += diemB;
+
+                    tableRows += `
+                        <tr>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${idx++}</td>
+                            <td style="border: 1px solid black; padding: 4px;">${t.Task_Name}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${t.Diem_Chuan}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${(t.He_So_Do_Kho * 100).toFixed(0)}%</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center; font-weight: bold;">${t.Diem_Quy_Doi_Toi_Da.toFixed(2)}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${inp.status === 'THUC_HIEN' ? inp.tiendo + '%' : '0%'}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${inp.status === 'THUC_HIEN' ? inp.chatluong + '%' : '0%'}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center;">${inp.status === 'THUC_HIEN' ? (t.Diem_Chuan * ((0.3*inp.tiendo/100)+(0.7*inp.chatluong/100))).toFixed(2) : '0.00'}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center; font-weight: bold;">${diemB.toFixed(2)}</td>
+                            <td style="border: 1px solid black; padding: 4px; text-align: center; font-weight: bold; color: green;">${inp.isX ? 'X' : ''}</td>
+                        </tr>
+                    `;
+                });
+
+                return `
+                    <div style="font-family: 'Times New Roman', Times, serif; color: black; line-height: 1.3; padding: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                            <div style="text-align: center; width: 45%;">
+                                <div style="font-size: 9pt;">SỞ GIÁO DỤC VÀ ĐÀO TẠO TPHCM</div>
+                                <div style="font-size: 10pt; font-weight: bold;">TRƯỜNG THPT NGUYỄN THƯỜNG HIỀN</div>
+                            </div>
+                            <div style="text-align: center; width: 50%;">
+                                <div style="font-size: 10pt; font-weight: bold;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+                                <div style="font-size: 9pt; font-weight: bold;">Độc lập - Tự do - Hạnh phúc</div>
+                                <div style="font-size: 9pt; font-style: italic;">Thành phố Hồ Chí Minh, ngày .... tháng 9 năm 2026</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+                            <div style="font-size: 12pt; font-weight: bold;">BẢNG TÍNH ĐIỂM KPI - Bảng 1 – Phụ lục 6</div>
+                        </div>
+
+                        <div style="font-size: 10pt; margin-bottom: 8px;">
+                            <b>Họ và tên:</b> ${userState.fullname} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Môn:</b> ${userState.subject} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Tổ:</b> ${userState.department}
+                        </div>
+
+                        <table style="width: 100%; border-collapse: collapse; font-size: 8pt;">
+                            <thead>
+                                <tr style="background-color: #f3f4f6; text-align: center; font-weight: bold;">
+                                    <th style="border: 1px solid black; padding: 4px; width: 4%;">Stt</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 32%;">Tên công việc</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 6%;">Điểm chuẩn</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 6%;">Hệ số</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Điểm tối đa (A)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Tiến độ %</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Kết quả %</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 8%;">Điểm thực hiện</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 10%;">Điểm thực tế (B)</th>
+                                    <th style="border: 1px solid black; padding: 4px; width: 10%;">Vượt yêu cầu (X)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${tableRows}
+                                <tr style="font-weight: bold; background-color: #f9fafb;">
+                                    <td colspan="4" style="border: 1px solid black; padding: 5px; text-align: right;">TỔNG GIÁ TRỊ:</td>
+                                    <td style="border: 1px solid black; padding: 5px; text-align: center;">A: ${sumA.toFixed(2)}</td>
+                                    <td colspan="3" style="border: 1px solid black; padding: 5px; text-align: right;">B:</td>
+                                    <td style="border: 1px solid black; padding: 5px; text-align: center;">${sumB.toFixed(2)}</td>
+                                    <td style="border: 1px solid black; padding: 5px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="margin-top: 10px; font-size: 9.5pt; line-height: 1.5;">
+                            <div><b>* KPI % (Chuyên môn) = (B / A) * 70 điểm =</b> <span style="font-size: 11pt; color: #1e3a8a; font-weight: bold;">${scorePartB} điểm</span></div>
+                            <div><b>* Tổng số công việc vượt tiến độ và đạt yêu cầu chất lượng:</b> ${ratioXStr}</div>
+                            <div><b>* Tổng số điểm thưởng đề xuất:</b> ${scorePartC} điểm</div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 25px; text-align: center; font-size: 10pt;">
+                            <div style="width: 48%;">
+                                <div style="font-weight: bold;">XÁC NHẬN CỦA LÃNH ĐẠO ĐƠN VỊ</div>
+                                <div style="font-size: 8.5pt; font-style: italic;">(Ký, ghi rõ họ và tên)</div>
+                                <br><br><br>
+                                <div style="font-weight: bold;">${ttcmDisplay}</div>
+                            </div>
+                            <div style="width: 48%;">
+                                <div style="font-weight: bold;">CÁ NHÂN TỰ ĐÁNH GIÁ</div>
+                                <div style="font-size: 8.5pt; font-style: italic;">(Ký, ghi rõ họ và tên)</div>
+                                <br><br><br>
+                                <div style="font-weight: bold;">${userState.fullname}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            return '';
+        }
+
+        // PRINT FUNCTION VIA BROWSER
+        function printForm(type) {
+            const htmlContent = buildReportHTML(type);
+            const container = document.getElementById("print_container");
+            container.innerHTML = htmlContent;
+            window.print();
+        }
+
+        // DIRECT PDF EXPORT VIA HTML2PDF.JS (NO BROWSER PRINT DIALOG NEEDED)
+        function exportPDF(type) {
+            updateUserInfo();
+            const htmlContent = buildReportHTML(type);
+            const tempDiv = document.createElement("div");
+            tempDiv.style.padding = "10px";
+            tempDiv.style.backgroundColor = "white";
+            tempDiv.innerHTML = htmlContent;
+
+            let fileName = `Mau_01B_KPI_2026_${userState.userCode}.pdf`;
+            let orientation = 'portrait';
+            if (type === 'PL4') {
+                fileName = `Phu_Luc_4_KPI_2026_${userState.userCode}.pdf`;
+                orientation = 'landscape';
+            } else if (type === 'PL6') {
+                fileName = `Phu_Luc_6_KPI_2026_${userState.userCode}.pdf`;
+                orientation = 'landscape';
+            }
+
+            const opt = {
+                margin: 8,
+                filename: fileName,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: orientation }
+            };
+
+            if (typeof html2pdf !== 'undefined') {
+                html2pdf().set(opt).from(tempDiv).save();
+            } else {
+                alert("Đang tải thư viện PDF, vui lòng thử lại sau 2 giây hoặc sử dụng nút In!");
+            }
+        }
+
+        function exportData() {
+            updateUserInfo();
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(userState, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", `KPI_Quang3_2026_${userState.userCode}.json`);
+            dlAnchorElem.click();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+    </script>
+</body>
+</html>

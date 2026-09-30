@@ -1,0 +1,322 @@
+{
+  "fullname": "Trần Đức Ngọc",
+  "subject": "Toán học",
+  "ttcmFullname": "Đinh Thị Mai Chi",
+  "taskInputs": {
+    "T1_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_05": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_06": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_07": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_08": {
+      "status": "KHONG_THUOC_DIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch giao việc đột xuất môn Toán ngày 05/09/2026; Tệp sản phẩm nghiệm thu ngày 12/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    },
+    "T1_09": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T1_10": {
+      "status": "KHONG_THUOC_DIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch giao việc đột xuất môn Toán ngày 05/09/2026; Tệp sản phẩm nghiệm thu ngày 12/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    },
+    "T1_11": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Kế hoạch giao việc đột xuất môn Toán ngày 05/09/2026; Tệp sản phẩm nghiệm thu ngày 12/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    },
+    "T1_12": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch giao việc đột xuất môn Toán ngày 05/09/2026; Tệp sản phẩm nghiệm thu ngày 12/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    },
+    "T1_13_TICHHOP": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Quyết định phân công BGH; Sổ kế hoạch Tích hợp môn Toán Quý III; Bộ ma trận & đề kiểm tra riêng ngày 15/09/2026."
+    },
+    "T1_14_TT05_HSG": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Quyết định BGH; Sổ ghi giảng dạy quy đổi 1 tiết = 2 tiết theo TT 05/BGDĐT môn Toán; Báo cáo đội tuyển ngày 20/09/2026."
+    },
+    "T2_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T2_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T2_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T2_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T2_07_THUKYHD": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T2_08_TROLYTN": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Quyết định số 22/QĐ-TTH ngày 01/09/2026; Báo cáo tổng kết hoàn thành ngày 10/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    },
+    "T3_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_05": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": true,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_06": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_07": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_08": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T3_09": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch giao việc đột xuất môn Toán ngày 05/09/2026; Tệp sản phẩm nghiệm thu ngày 12/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    },
+    "T3_12_CLB_STEM": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T4_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T4_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T4_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T5_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T5_02": {
+      "status": "KHONG_THUOC_DIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T5_03": {
+      "status": "KHONG_THUOC_DIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T5_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T5_05": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_01": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_02": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_03": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_04": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_05": {
+      "status": "KHONG_THUOC_DIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_06": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Hồ sơ, Kế hoạch bài dạy môn Toán & Minh chứng hoàn thành công việc được duyệt ngày 15/09/2026."
+    },
+    "T6_07": {
+      "status": "THUC_HIEN",
+      "tiendo": 100,
+      "chatluong": 100,
+      "isX": false,
+      "minhChung": "Kế hoạch giao việc đột xuất môn Toán ngày 05/09/2026; Tệp sản phẩm nghiệm thu ngày 12/09/2026 (sớm 50% tiến độ) - Đề xuất thưởng 5%."
+    }
+  }
+}
