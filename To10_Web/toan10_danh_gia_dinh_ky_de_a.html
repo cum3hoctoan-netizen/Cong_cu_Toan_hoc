@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ĐỀ KIỂM TRA ĐÁNH GIÁ ĐỊNH KỲ MÔN TOÁN LỚP 10 -- ĐỀ A</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#1e1b4b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}], throwOnError: false});"></script>
+
+  <style>
+    .katex { font-size: 1.05em; }
+    input[type="radio"] { accent-color: #4f46e5; }
+    .correct-choice {
+      background-color: #ecfdf5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+    }
+    .wrong-choice {
+      background-color: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white py-8 px-4 sm:px-8">
+
+  <div class="max-w-4xl mx-auto space-y-6">
+
+    <!-- THÔNG TIN TƯ VẤN ĐẦU RA TỪ AI / INTEGRA -->
+    <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-2xl shadow-sm">
+      <h2 class="font-bold text-blue-900 text-base md:text-lg flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/></svg>
+        Hệ thống Kiểm tra & Đánh giá Năng lực Toán học Integra
+      </h2>
+      <p class="text-slate-700 mt-2 text-sm leading-relaxed">
+        Đề thi được khởi tạo tự động theo chuẩn cấu trúc <strong>Đề kiểm tra định kỳ Toán 10 (GDPT 2018)</strong>. Hệ thống tích hợp sẵn thư viện KaTeX hiển thị công thức chuẩn toán học, tự động chấm điểm nội bộ theo thang điểm 10, phân tích các chuyên đề/kỹ năng học sinh làm sai và đồng bộ dữ liệu tức thời qua Webhook về máy chủ Integra & Google Apps Script.
+      </p>
+    </div>
+
+    <!-- HEADER ĐỀ THI -->
+    <header class="bg-white rounded-2xl shadow-sm p-6 md:p-8 text-center border border-slate-200">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 mb-2 uppercase tracking-wider">
+        TOÁN 10 -- KIỂM TRA ĐÁNH GIÁ ĐỊNH KỲ (45 PHÚT)
+      </span>
+      <h1 id="exam-title" class="text-2xl md:text-3xl font-extrabold text-slate-900 uppercase tracking-tight">
+        ĐỀ KIỂM TRA ĐÁNH GIÁ ĐỊNH KỲ MÔN TOÁN LỚP 10 -- ĐỀ A
+      </h1>
+      <p class="text-slate-600 font-medium mt-2">Chủ đề: Hệ thức lượng trong tam giác và Hệ bất phương trình bậc nhất hai ẩn</p>
+      <p class="text-slate-500 text-sm mt-1 italic">(Thời gian làm bài: 45 phút -- Đề thi gồm 14 câu trắc nghiệm và 02 câu tự luận)</p>
+    </header>
+
+    <!-- FORM NHẬP THÔNG TIN HS (BẮT BUỘC 3 TRƯỜNG THEO QUY CHUẨN) -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+      <h2 class="text-base font-bold text-slate-800 mb-4 pb-2 border-b flex items-center gap-2">
+        <svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>
+        Thông tin học sinh dự thi
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="input-ten" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Họ và tên học sinh <span class="text-rose-500">*</span>
+          </label>
+          <input type="text" id="input-ten" placeholder="VD: Nguyễn Văn A"
+            class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+        </div>
+        <div>
+          <label for="input-ma-hs" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Mã Học Sinh (Mã HS) <span class="text-rose-500">*</span>
+          </label>
+          <input type="text" id="input-ma-hs" placeholder="VD: NTH26-001"
+            class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+        </div>
+        <div>
+          <label for="input-lop" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Lớp / Nhóm học tập
+          </label>
+          <input type="text" id="input-lop" placeholder="VD: 10A1"
+            class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+        </div>
+      </div>
+    </section>
+
+    <!-- BẢNG KẾT QUẢ (ẨN BAN ĐẦU, HIỆN SAU KHI NỘP) -->
+    <div id="result-box" class="hidden p-6 rounded-2xl bg-gradient-to-r from-brand-50 via-indigo-50 to-blue-50 border border-brand-200 shadow-sm transition-all">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-600 text-white">HOÀN THÀNH</span>
+            <h2 class="text-xl font-bold text-slate-800">KẾT QUẢ BÀI THI</h2>
+          </div>
+          <p id="result-summary" class="text-slate-600 text-sm mt-1.5"></p>
+          <p id="result-skills" class="text-rose-600 font-semibold text-sm mt-1.5"></p>
+        </div>
+        <div class="text-center bg-white px-7 py-4 rounded-xl shadow border border-brand-100 min-w-[160px]">
+          <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Điểm tổng kết</span>
+          <div id="score-display" class="text-4xl font-black text-brand-600 my-0.5">0.0</div>
+          <span class="text-xs text-slate-400 font-medium">/ 10.0 điểm</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KHU VỰC LÀM BÀI -->
+    <form id="examForm" class="space-y-6">
+
+      <!-- ==================== PHẦN I ==================== -->
+      <div class="bg-brand-900 text-white px-5 py-3.5 rounded-xl font-bold text-sm md:text-base flex items-center justify-between shadow-sm">
+        <span>I. PHẦN TRẮC NGHIỆM NHIỀU LỰA CHỌN</span>
+        <span class="text-xs bg-brand-800 px-3 py-1 rounded-full text-brand-100 font-semibold tracking-wide">14 Câu (7,0 Điểm - 0,5đ/câu)</span>
+      </div>
+
+      <!-- Câu 1 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q1" data-type="mcq" data-correct="B" data-skill="Định lý Côsin">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 1</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Định lý Côsin</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có độ dài các cạnh $BC = a, CA = b, AB = c$. Khẳng định nào sau đây <strong>đúng</strong>?
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q1" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $a^2 = b^2 + c^2 + 2bc \cos A$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q1" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $a^2 = b^2 + c^2 - 2bc \cos A$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q1" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $a^2 = b^2 + c^2 - bc \cos A$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q1" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $a^2 = b^2 + c^2 - 2bc \sin A$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Theo Định lý Côsin trong tam giác $ABC$, bình phương một cạnh bằng tổng bình phương hai cạnh còn lại trừ hai lần tích của chúng với côsin góc xen giữa: $a^2 = b^2 + c^2 - 2bc \cos A$.<br>
+          <strong>Đáp án đúng: B.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 2 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q2" data-type="mcq" data-correct="B" data-skill="Định lý Sin">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 2</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Định lý Sin</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có bán kính đường tròn ngoại tiếp bằng $R$. Khẳng định nào sau đây <strong>đúng</strong>?
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q2" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $\dfrac{a}{\sin A} = R$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q2" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $\dfrac{a}{\sin A} = 2R$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q2" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $\dfrac{a}{\sin A} = \dfrac{1}{2R}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q2" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $\dfrac{a}{\cos A} = 2R$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Theo Định lý Sin trong tam giác $ABC$, tỉ số giữa mỗi cạnh và sin của góc đối diện luôn bằng đường kính của đường tròn ngoại tiếp: $\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C} = 2R$.<br>
+          <strong>Đáp án đúng: B.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 3 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q3" data-type="mcq" data-correct="A" data-skill="Công thức diện tích tam giác">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 3</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Công thức diện tích tam giác</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có cạnh $b = 6$, $c = 8$ và góc $\widehat{A} = 30^\circ$. Diện tích $S$ của tam giác $ABC$ bằng:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q3" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $S = 12$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q3" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $S = 24$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q3" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $S = 12\sqrt{3}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q3" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $S = 24\sqrt{3}$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Áp dụng công thức tính diện tích qua hai cạnh và góc xen giữa:
+          $$S = \dfrac{1}{2}bc \sin A = \dfrac{1}{2} \cdot 6 \cdot 8 \cdot \sin 30^\circ = 24 \cdot \dfrac{1}{2} = 12.$$
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 4 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q4" data-type="mcq" data-correct="A" data-skill="Bán kính đường tròn nội tiếp">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 4</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Bán kính đường tròn nội tiếp</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có độ dài ba cạnh $a = 5, b = 6, c = 7$. Bán kính $r$ của đường tròn nội tiếp tam giác $ABC$ bằng:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q4" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $r = \dfrac{2\sqrt{6}}{3}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q4" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $r = \dfrac{\sqrt{6}}{3}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q4" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $r = 2\sqrt{6}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q4" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $r = \dfrac{3\sqrt{6}}{2}$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong><br>
+          Nửa chu vi tam giác: $p = \dfrac{5 + 6 + 7}{2} = 9$.<br>
+          Diện tích theo công thức Heron:
+          $$S = \sqrt{p(p-a)(p-b)(p-c)} = \sqrt{9(9-5)(9-6)(9-7)} = \sqrt{9 \cdot 4 \cdot 3 \cdot 2} = \sqrt{216} = 6\sqrt{6}.$$
+          Mặt khác, $S = pr \Rightarrow r = \dfrac{S}{p} = \dfrac{6\sqrt{6}}{9} = \dfrac{2\sqrt{6}}{3}$.<br>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 5 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q5" data-type="mcq" data-correct="A" data-skill="Độ dài đường trung tuyến tam giác">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 5</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Độ dài đường trung tuyến tam giác</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có các cạnh $a = 8, b = 7, c = 5$. Độ dài đường trung tuyến $m_a$ kẻ từ đỉnh $A$ bằng:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q5" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $m_a = \sqrt{21}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q5" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $m_a = 21$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q5" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $m_a = \sqrt{42}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q5" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $m_a = 5$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Áp dụng công thức đường trung tuyến trong tam giác $ABC$:
+          $$m_a^2 = \dfrac{2(b^2 + c^2) - a^2}{4} = \dfrac{2(7^2 + 5^2) - 8^2}{4} = \dfrac{2(49 + 25) - 64}{4} = \dfrac{148 - 64}{4} = \dfrac{84}{4} = 21 \Rightarrow m_a = \sqrt{21}.$$
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 6 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q6" data-type="mcq" data-correct="B" data-skill="Tính góc trong tam giác">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 6</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Tính góc trong tam giác</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có độ dài ba cạnh $a = 7, b = 5, c = 3$. Số đo của góc $\widehat{A}$ bằng:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q6" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $\widehat{A} = 60^\circ$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q6" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $\widehat{A} = 120^\circ$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q6" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $\widehat{A} = 150^\circ$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q6" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $\widehat{A} = 135^\circ$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Theo hệ quả của Định lý Côsin:
+          $$\cos A = \dfrac{b^2 + c^2 - a^2}{2bc} = \dfrac{5^2 + 3^2 - 7^2}{2 \cdot 5 \cdot 3} = \dfrac{25 + 9 - 49}{30} = \dfrac{-15}{30} = -\dfrac{1}{2}.$$
+          Vì $0^\circ < \widehat{A} < 180^\circ$ nên $\widehat{A} = 120^\circ$.<br>
+          <strong>Đáp án đúng: B.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 7 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q7" data-type="mcq" data-correct="A" data-skill="Bán kính đường tròn ngoại tiếp">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 7</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Bán kính đường tròn ngoại tiếp</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cho tam giác $ABC$ có cạnh $a = 10$ và góc $\widehat{A} = 45^\circ$. Bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ bằng:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q7" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $R = 5\sqrt{2}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q7" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $R = 10\sqrt{2}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q7" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $R = 5$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q7" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $R = 10$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Áp dụng định lý Sin:
+          $$2R = \dfrac{a}{\sin A} = \dfrac{10}{\sin 45^\circ} = \dfrac{10}{\frac{\sqrt{2}}{2}} = 10\sqrt{2} \Rightarrow R = 5\sqrt{2}.$$
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 8 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q8" data-type="mcq" data-correct="A" data-skill="Nhận biết bất phương trình bậc nhất hai ẩn">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 8</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Nhận biết bất phương trình bậc nhất hai ẩn</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Trong các bất phương trình sau, bất phương trình nào là <strong>bất phương trình bậc nhất hai ẩn</strong>?
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q8" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $2x + 3y > 5$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q8" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $2x^2 + 3y \le 1$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q8" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $xy - 2y \ge 3$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q8" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $x + 3y^2 < 0$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Bất phương trình bậc nhất hai ẩn $x, y$ có dạng tổng quát $ax + by < c$ (hoặc $\le, >, \ge$), trong đó $a, b$ không đồng thời bằng $0$, bậc cao nhất của $x$ và $y$ đều bằng 1 và không có tích $xy$. Do đó chỉ có phương án A thỏa mãn.<br>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 9 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q9" data-type="mcq" data-correct="A" data-skill="Điểm thuộc miền nghiệm bất phương trình">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 9</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Điểm thuộc miền nghiệm bất phương trình</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Điểm nào sau đây <strong>thuộc</strong> miền nghiệm của bất phương trình $2x - 3y + 6 > 0$?
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q9" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $(0; 0)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q9" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $(0; 3)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q9" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $(-4; 0)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q9" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $(-3; 1)$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Thay tọa độ từng điểm vào vế trái $f(x; y) = 2x - 3y + 6$:
+          <ul class="list-disc list-inside mt-1 space-y-1">
+            <li>Với $(0; 0)$: $f(0; 0) = 2(0) - 3(0) + 6 = 6 > 0$ (thỏa mãn).</li>
+            <li>Với $(0; 3)$: $f(0; 3) = 2(0) - 3(3) + 6 = -3 < 0$ (loại).</li>
+            <li>Với $(-4; 0)$: $f(-4; 0) = 2(-4) - 3(0) + 6 = -2 < 0$ (loại).</li>
+            <li>Với $(-3; 1)$: $f(-3; 1) = 2(-3) - 3(1) + 6 = -3 < 0$ (loại).</li>
+          </ul>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 10 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q10" data-type="mcq" data-correct="A" data-skill="Biểu diễn miền nghiệm trên mặt phẳng tọa độ">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 10</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Biểu diễn miền nghiệm trên mặt phẳng tọa độ</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Miền nghiệm của bất phương trình $x + y \le 2$ là nửa mặt phẳng (kể cả bờ là đường thẳng $d: x + y = 2$):
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q10" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> Chứa gốc tọa độ $O(0; 0)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q10" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> Không chứa gốc tọa độ $O(0; 0)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q10" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> Không kể bờ là đường thẳng $d: x + y = 2$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q10" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> Chứa điểm $M(2; 2)$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Xét gốc tọa độ $O(0; 0)$, ta có: $0 + 0 = 0 \le 2$ (mệnh đề đúng). Do đó miền nghiệm của bất phương trình $x + y \le 2$ là nửa mặt phẳng có bờ là đường thẳng $x + y = 2$ và chứa gốc tọa độ $O(0; 0)$.<br>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 11 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q11" data-type="mcq" data-correct="A" data-skill="Nghiệm của hệ bất phương trình">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 11</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Nghiệm của hệ bất phương trình</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Cặp số $(x; y)$ nào sau đây là một nghiệm của hệ bất phương trình $\begin{cases} x - y \le 1 \\ 2x + y > 3 \end{cases}$?
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q11" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $(2; 1)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q11" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $(1; 1)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q11" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $(0; 0)$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q11" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $(4; 1)$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Kiểm tra từng cặp số:
+          <ul class="list-disc list-inside mt-1 space-y-1">
+            <li>Với $(2; 1)$: $2 - 1 = 1 \le 1$ (đúng) và $2(2) + 1 = 5 > 3$ (đúng). Vậy $(2; 1)$ là nghiệm của hệ.</li>
+            <li>Với $(1; 1)$: $2(1) + 1 = 3 > 3$ (sai).</li>
+            <li>Với $(0; 0)$: $2(0) + 0 = 0 > 3$ (sai).</li>
+            <li>Với $(4; 1)$: $4 - 1 = 3 \le 1$ (sai).</li>
+          </ul>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 12 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q12" data-type="mcq" data-correct="A" data-skill="Miền nghiệm của hệ bất phương trình">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 12</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Miền nghiệm của hệ bất phương trình</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Miền nghiệm của hệ bất phương trình $\begin{cases} x \ge 0 \\ y \ge 0 \\ x + y \le 4 \end{cases}$ trên mặt phẳng tọa độ $Oxy$ là:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q12" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> Một miền tam giác</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q12" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> Một miền tứ giác</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q12" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> Một nửa mặt phẳng</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q12" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> Một miền ngũ giác</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Miền nghiệm của hệ được giới hạn bởi trục tung ($x = 0$), trục hoành ($y = 0$) và đường thẳng $x + y = 4$. Giao điểm của ba đường này tạo thành ba đỉnh $O(0; 0), A(4; 0), B(0; 4)$, do đó miền nghiệm là tam giác vuông cân $OAB$ (kể cả bờ).<br>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 13 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q13" data-type="mcq" data-correct="A" data-skill="Giá trị lớn nhất nhỏ nhất trên miền nghiệm">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 13</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Giá trị lớn nhất nhỏ nhất trên miền nghiệm</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Giá trị lớn nhất của biểu thức $F(x; y) = 2x + 3y$ trên miền đa giác xác định bởi hệ bất phương trình $\begin{cases} 0 \le x \le 3 \\ 0 \le y \le 2 \end{cases}$ là:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q13" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $12$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q13" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $6$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q13" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $10$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q13" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $15$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong> Miền nghiệm là hình chữ nhật $OABC$ với các đỉnh $O(0; 0), A(3; 0), B(3; 2), C(0; 2)$.<br>
+          Tính giá trị của $F(x; y) = 2x + 3y$ tại các đỉnh:
+          <ul class="list-disc list-inside mt-1 space-y-1">
+            <li>$F(0; 0) = 0$</li>
+            <li>$F(3; 0) = 2(3) + 3(0) = 6$</li>
+            <li>$F(3; 2) = 2(3) + 3(2) = 12$</li>
+            <li>$F(0; 2) = 2(0) + 3(2) = 6$</li>
+          </ul>
+          Vậy giá trị lớn nhất của $F(x; y)$ bằng $12$ khi $(x; y) = (3; 2)$.<br>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- Câu 14 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q14" data-type="mcq" data-correct="A" data-skill="Quy hoạch tuyến tính - Tối ưu hóa thực tế">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg text-sm">Câu 14</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Quy hoạch tuyến tính - Tối ưu hóa thực tế</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-4">
+          Một xưởng sản xuất hai loại sản phẩm $I$ và $II$. Để sản xuất mỗi kilôgam sản phẩm loại $I$ cần $2\text{ kg}$ nguyên liệu và $30\text{ giờ}$ làm việc. Để sản xuất mỗi kilôgam sản phẩm loại $II$ cần $4\text{ kg}$ nguyên liệu và $15\text{ giờ}$ làm việc. Xưởng có tối đa $24\text{ kg}$ nguyên liệu và $180\text{ giờ}$ làm việc. Mỗi kilôgam sản phẩm loại $I$ mang lại lợi nhuận $50\text{ nghìn đồng}$, mỗi kilôgam sản phẩm loại $II$ mang lại lợi nhuận $40\text{ nghìn đồng}$. Tiền lãi lớn nhất mà xưởng có thể thu được là:
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q14" value="A" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>A.</strong> $360\text{ nghìn đồng}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q14" value="B" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>B.</strong> $300\text{ nghìn đồng}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q14" value="C" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>C.</strong> $400\text{ nghìn đồng}$</span>
+          </label>
+          <label class="choice-option flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="q14" value="D" class="w-4 h-4 text-brand-600">
+            <span class="text-sm"><strong>D.</strong> $320\text{ nghìn đồng}$</span>
+          </label>
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong>Lời giải chi tiết:</strong><br>
+          Gọi $x, y$ lần lượt là số kilôgam sản phẩm loại $I$ và loại $II$ cần sản xuất ($x \ge 0, y \ge 0$).<br>
+          Điều kiện nguyên liệu và thời gian:
+          $$\begin{cases} 2x + 4y \le 24 \Leftrightarrow x + 2y \le 12 \\ 30x + 15y \le 180 \Leftrightarrow 2x + y \le 12 \\ x \ge 0, y \ge 0 \end{cases}$$
+          Miền nghiệm là miền tứ giác $OABC$ với $O(0; 0), A(6; 0), B(4; 4), C(0; 6)$.<br>
+          Hàm mục tiêu lợi nhuận: $F(x; y) = 50x + 40y$ (nghìn đồng).<br>
+          - $F(0; 0) = 0$<br>
+          - $F(6; 0) = 50 \cdot 6 = 300\text{ nghìn đồng}$<br>
+          - $F(0; 6) = 40 \cdot 6 = 240\text{ nghìn đồng}$<br>
+          - $F(4; 4) = 50(4) + 40(4) = 200 + 160 = 360\text{ nghìn đồng}$.<br>
+          Vậy tiền lãi lớn nhất xưởng thu được là $360\text{ nghìn đồng}$ khi sản xuất $4\text{ kg}$ loại $I$ và $4\text{ kg}$ loại $II$.<br>
+          <strong>Đáp án đúng: A.</strong>
+        </div>
+      </div>
+
+      <!-- ==================== PHẦN II ==================== -->
+      <div class="bg-indigo-900 text-white px-5 py-3.5 rounded-xl font-bold text-sm md:text-base flex items-center justify-between shadow-sm mt-8">
+        <span>II. PHẦN TỰ LUẬN / TRẢ LỜI NGẮN</span>
+        <span class="text-xs bg-indigo-800 px-3 py-1 rounded-full text-indigo-100 font-semibold tracking-wide">02 Câu (3,0 Điểm - 1,5đ/câu)</span>
+      </div>
+
+      <!-- Câu 15 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q15" data-type="shortans" data-correct="BC = 77.3, CD = 24.6" data-skill="Ứng dụng hệ thức lượng đo khoảng cách thực tế">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-lg text-sm">Câu 15 (1,5 điểm)</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Ứng dụng hệ thức lượng đo khoảng cách thực tế</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-3">
+          Để xác định chiều cao $CD$ của một tháp hải đăng đặt trên đỉnh ngọn đồi (với chân đồi là điểm $H$), người ta dựng hai điểm quan sát $A$ và $B$ trên mặt đất nằm ngang cách nhau $20\text{ m}$ cùng thẳng hàng với chân tháp. Góc nâng ngắm từ $A$ nhìn lên đỉnh $C$ là $30^\circ$, góc nhìn từ $B$ lên đỉnh $C$ theo góc nâng $45^\circ$ so với phương ngang (biết góc $\widehat{ABC} = 135^\circ$ và góc $\widehat{ACB} = 15^\circ$). Chiều cao của ngọn đồi đo được là $HD = 30\text{ m}$.
+          <br><br>
+          <strong>a)</strong> Tính khoảng cách $BC$ (làm tròn đến 1 chữ số thập phân).<br>
+          <strong>b)</strong> Tính chiều cao $CD$ của tháp hải đăng (làm tròn đến 1 chữ số thập phân).
+        </div>
+        <div class="mt-4">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Nhập kết quả ngắn gọn (VD: BC = 77.3; CD = 24.6):
+          </label>
+          <input type="text" name="q15" placeholder="Ví dụ: BC = 77.3, CD = 24.6"
+            class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong class="text-emerald-800 font-bold">Đáp án chuẩn:</strong> $BC \approx 77{,}3\text{ m}; \quad CD \approx 24{,}6\text{ m}$<br><br>
+          <strong>Lời giải chi tiết:</strong><br>
+          a) Trong tam giác $ABC$, áp dụng Định lý Sin:
+          $$\dfrac{BC}{\sin \widehat{BAC}} = \dfrac{AB}{\sin \widehat{ACB}} \Rightarrow BC = \dfrac{20 \cdot \sin 30^\circ}{\sin 15^\circ} = \dfrac{10}{\sin 15^\circ} \approx 77{,}27\text{ m} \approx 77{,}3\text{ m}.$$
+          b) Tam giác $BHC$ vuông tại $H$ có góc nâng $\widehat{CBH} = 45^\circ$, do đó:
+          $$CH = BC \cdot \sin 45^\circ \approx 77{,}27 \cdot \dfrac{\sqrt{2}}{2} \approx 54{,}64\text{ m}.$$
+          Chiều cao của tháp hải đăng là:
+          $$CD = CH - HD = 54{,}64 - 30 = 24{,}64\text{ m} \approx 24{,}6\text{ m}.$$
+        </div>
+      </div>
+
+      <!-- Câu 16 -->
+      <div class="question-block bg-white rounded-2xl shadow-sm p-6 border border-slate-200 transition hover:shadow-md"
+           data-id="q16" data-type="shortans" data-correct="3 hộp A, 4 hộp B, lãi 320000" data-skill="Tối ưu hóa bài toán kinh tế dược phẩm">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-lg text-sm">Câu 16 (1,5 điểm)</div>
+          <span class="text-xs text-slate-400 font-medium italic">Kỹ năng: Tối ưu hóa bài toán kinh tế dược phẩm</span>
+        </div>
+        <div class="text-slate-800 text-base leading-relaxed mb-3">
+          Một công ty dược phẩm dự định sản xuất hai loại thuốc viên $A$ và $B$. Để sản xuất một hộp thuốc $A$ cần $2\text{ g}$ dược chất $X$ và $1\text{ g}$ dược chất $Y$. Để sản xuất một hộp thuốc $B$ cần $1\text{ g}$ dược chất $X$ và $2\text{ g}$ dược chất $Y$. Kho dược liệu dự trữ có tối đa $10\text{ g}$ dược chất $X$ và $11\text{ g}$ dược chất $Y$. Mỗi hộp thuốc $A$ mang lại lợi nhuận $40.000\text{ đồng}$, mỗi hộp thuốc $B$ mang lại lợi nhuận $50.000\text{ đồng}$.
+          <br><br>
+          Xác định số lượng hộp thuốc mỗi loại cần sản xuất để công ty thu được lợi nhuận lớn nhất và tính số tiền lãi lớn nhất đó.
+        </div>
+        <div class="mt-4">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Nhập kết quả ngắn gọn (VD: 3 hộp A, 4 hộp B, 320000 đồng):
+          </label>
+          <input type="text" name="q16" placeholder="Ví dụ: 3 hộp A, 4 hộp B, lãi 320.000 đồng"
+            class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+        </div>
+        <div class="explanation hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 text-sm leading-relaxed">
+          <strong class="text-emerald-800 font-bold">Đáp án chuẩn:</strong> $3\text{ hộp A}, 4\text{ hộp B}$; Lợi nhuận lớn nhất: $320.000\text{ đồng}$.<br><br>
+          <strong>Lời giải chi tiết:</strong><br>
+          Gọi $x, y$ lần lượt là số hộp thuốc loại $A$ và loại $B$ cần sản xuất ($x, y \in \mathbb{N}$).<br>
+          Ta có hệ bất phương trình điều kiện nguyên liệu:
+          $$\begin{cases} 2x + y \le 10 \\ x + 2y \le 11 \\ x \ge 0, y \ge 0 \end{cases}$$
+          Miền nghiệm là miền đa giác $OABC$ với các đỉnh:
+          $O(0; 0), A(5; 0), B(3; 4), C(0; 5.5)$.<br>
+          Hàm mục tiêu lợi nhuận: $F(x; y) = 40.000x + 50.000y$ (đồng).<br>
+          - $F(0; 0) = 0$<br>
+          - $F(5; 0) = 40.000 \cdot 5 = 200.000\text{ đồng}$<br>
+          - $F(0; 5) = 50.000 \cdot 5 = 250.000\text{ đồng}$<br>
+          - $F(3; 4) = 40.000 \cdot 3 + 50.000 \cdot 4 = 120.000 + 200.000 = 320.000\text{ đồng}$.<br>
+          Biểu thức $F(x; y)$ đạt giá trị lớn nhất tại đỉnh $B(3; 4)$. Do đó công ty cần sản xuất $3\text{ hộp thuốc A}$ và $4\text{ hộp thuốc B}$ để đạt lợi nhuận cực đại $320.000\text{ đồng}$.
+        </div>
+      </div>
+
+      <!-- NÚT NỘP BÀI (ID: btn-nop-bai THEO QUY CHUẨN) -->
+      <div class="pt-4">
+        <button type="button" id="btn-nop-bai"
+          class="w-full py-4 px-8 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Nộp Bài & Xem Điểm Chi Tiết
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- SCRIPT XỬ LÝ CHẤM ĐIỂM & ĐỒNG BỘ WEBHOOK -->
+  <script>
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+    const GOOGLE_APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwFjkENCxOPVJcFo8OmXuLad5kcMEC9_Uu48hF045AO0yC8-TnHivEI0ohfUHZkJQlN/exec";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+      const tenHocSinh = document.getElementById('input-ten') && document.getElementById('input-ten').value.trim() ? document.getElementById('input-ten').value.trim() : "Ẩn danh";
+      const maHocSinh = document.getElementById('input-ma-hs') && document.getElementById('input-ma-hs').value.trim() ? document.getElementById('input-ma-hs').value.trim() : "Trống";
+      const lopNhom = document.getElementById('input-lop') && document.getElementById('input-lop').value.trim() ? document.getElementById('input-lop').value.trim() : "Trống";
+
+      if (tenHocSinh === "Ẩn danh" && maHocSinh === "Trống") {
+        const xacNhan = confirm("Em chưa nhập Tên và Mã Học Sinh. Em có muốn tiếp tục nộp bài ẩn danh không?");
+        if (!xacNhan) {
+          document.getElementById('input-ten').focus();
+          return;
+        }
+      }
+
+      const btn = document.getElementById('btn-nop-bai');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Đang xử lý & Đồng bộ dữ liệu...
+      `;
+      btn.disabled = true;
+
+      let diem_so = 0;
+      let mang_cau_sai = [];
+      const questions = document.querySelectorAll('.question-block');
+
+      questions.forEach(q => {
+        const type = q.getAttribute('data-type');
+        const qId = q.getAttribute('data-id');
+        const skill = q.getAttribute('data-skill') || "Chủ đề Toán 10";
+
+        if (type === 'mcq') {
+          const correctAns = q.getAttribute('data-correct');
+          const selected = q.querySelector(`input[name="${qId}"]:checked`);
+          const userVal = selected ? selected.value : null;
+
+          // Tô màu trực quan lựa chọn đúng/sai
+          q.querySelectorAll('.choice-option').forEach(opt => {
+            const radio = opt.querySelector('input');
+            if (radio.value === correctAns) {
+              opt.classList.add('correct-choice');
+            } else if (radio.checked && radio.value !== correctAns) {
+              opt.classList.add('wrong-choice');
+            }
+          });
+
+          if (userVal === correctAns) {
+            diem_so += 0.5;
+          } else {
+            mang_cau_sai.push(skill);
+          }
+        } else if (type === 'shortans') {
+          const inputEl = q.querySelector(`input[name="${qId}"]`);
+          const userVal = inputEl ? inputEl.value.trim().toLowerCase().replace(/,/g, '.') : "";
+
+          let isCorrect = false;
+          if (qId === 'q15') {
+            // Cần có 77.3 hoặc 77.27 và 24.6 hoặc 24.64
+            const hasBC = userVal.includes('77.3') || userVal.includes('77.27');
+            const hasCD = userVal.includes('24.6') || userVal.includes('24.64');
+            if (hasBC && hasCD) {
+              isCorrect = true;
+            }
+          } else if (qId === 'q16') {
+            // Cần có 3 và 4 và 320 hoặc 320000
+            const hasA = userVal.includes('3');
+            const hasB = userVal.includes('4');
+            const hasProfit = userVal.includes('320') || userVal.includes('320000');
+            if (hasA && hasB && hasProfit) {
+              isCorrect = true;
+            }
+          }
+
+          if (isCorrect) {
+            diem_so += 1.5;
+            if (inputEl) inputEl.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-800');
+          } else {
+            mang_cau_sai.push(skill);
+            if (inputEl) inputEl.classList.add('border-rose-400', 'bg-rose-50', 'text-rose-800');
+          }
+        }
+      });
+
+      // Làm tròn 1 chữ số thập phân
+      diem_so = Math.min(10, Math.round(diem_so * 10) / 10);
+      const uniqueSkills = Array.from(new Set(mang_cau_sai));
+
+      // Khóa tất cả các ô nhập liệu
+      document.querySelectorAll('#examForm input').forEach(input => input.disabled = true);
+
+      // Hiển thị lời giải chi tiết
+      document.querySelectorAll('.explanation').forEach(exp => exp.classList.remove('hidden'));
+
+      // Render lại KaTeX cho phần lời giải vừa hiển thị
+      if (typeof renderMathInElement === "function") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      }
+
+      // Cập nhật giao diện kết quả
+      const resultBox = document.getElementById('result-box');
+      document.getElementById('score-display').innerText = diem_so.toFixed(1);
+      document.getElementById('result-summary').innerText = `Học sinh: ${tenHocSinh} -- Lớp: ${lopNhom} (Mã HS: ${maHocSinh})`;
+      document.getElementById('result-skills').innerText = uniqueSkills.length > 0
+        ? `⚠️ Các chuyên đề/kỹ năng cần ôn tập thêm: ${uniqueSkills.join(', ')}`
+        : `🎉 Xuất sắc! Em đã trả lời chính xác tất cả các câu hỏi trong đề thi!`;
+      resultBox.classList.remove('hidden');
+
+      // Cuộn lên đầu trang mượt mà
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Đóng gói Payload theo đúng chuẩn
+      const tenBaiThi = document.title || "Đề kiểm tra Toán 10 - Đề A";
+      const payload = {
+        hoc_sinh: tenHocSinh,
+        ma_hs: maHocSinh,
+        lop: lopNhom,
+        bai_thi: tenBaiThi,
+        diem: diem_so,
+        thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+        ky_nang_sai: uniqueSkills
+      };
+
+      let webhookSuccess = false;
+
+      // 1. Gửi về n8n máy chủ Integra
+      try {
+        const responseN8n = await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (responseN8n.ok) webhookSuccess = true;
+      } catch (err) {
+        console.warn("Không thể kết nối đến máy chủ n8n local:", err);
+      }
+
+      // 2. Gửi dự phòng về Google Apps Script Webhook
+      try {
+        await fetch(GOOGLE_APP_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: "submit_test",
+            data: {
+              Student_ID: maHocSinh,
+              Task_ID: "TOAN10_DEA",
+              Diem_So: diem_so,
+              Thoi_Gian_Lam: 45,
+              Chi_Tiet_Phan_Hoi: JSON.stringify(payload)
+            }
+          })
+        });
+        webhookSuccess = true;
+      } catch (err) {
+        console.warn("Lỗi GAS webhook:", err);
+      }
+
+      if (webhookSuccess) {
+        alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so} / 10.0\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+      } else {
+        alert("Đã ghi nhận điểm: " + diem_so + " / 10.0. (Không thể kết nối đến máy chủ Integra).");
+      }
+
+      btn.innerHTML = `ĐÃ NỘP BÀI - ĐIỂM SỐ: ${diem_so}/10.0`;
+      btn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
+      btn.classList.add('bg-slate-500', 'cursor-not-allowed');
+    });
+  </script>
+</body>
+</html>
