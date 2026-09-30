@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ĐỀ KIỂM TRA CHỦ ĐỀ CÔNG THỨC LƯỢNG GIÁC - TOÁN 11</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #182A78;
+      --primary-hover: #111e56;
+      --primary-light: #EEF2FB;
+      --primary-border: #CCD8F5;
+
+      --accent: #C62828;
+      --accent-hover: #A31D1D;
+      --accent-light: #FEF2F2;
+      --accent-border: #FECACA;
+
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-sub: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+
+      --success: #15803D;
+      --success-light: #DCFCE7;
+      --danger: #B91C1C;
+      --danger-light: #FEE2F2;
+      --warning: #B45309;
+      --warning-light: #FEF3C7;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 14px rgba(24, 42, 120, 0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 24px 12px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Top Utility Bar */
+    .top-bar {
+      width: 100%;
+      max-width: 980px;
+      background: var(--bg-card);
+      border: 1px solid var(--primary-border);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #FFF;
+      background: linear-gradient(135deg, var(--primary), #2D4BB3);
+      padding: 5px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .timer-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 5px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--primary-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-sub);
+      background: #F1F5F9;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Main Quiz Canvas */
+    .quiz-container {
+      width: 100%;
+      max-width: 980px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    @media (max-width: 640px) {
+      .quiz-container {
+        padding: 22px 16px;
+      }
+      .top-bar {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+    }
+
+    /* Header */
+    .quiz-header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .quiz-tagline {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .quiz-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .quiz-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Student Info Input (3 BẮT BUỘC THEO GEMINI.MD) */
+    .student-info-grid {
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary-border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .student-info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    .info-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .info-group label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-group input {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border: 1px solid var(--primary-border);
+      border-radius: 6px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .info-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.12);
+    }
+
+    /* Section Banner */
+    .section-banner {
+      background: linear-gradient(90deg, var(--primary), #2D4BB3);
+      color: #FFF;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 30px 0 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-banner.accent {
+      background: linear-gradient(90deg, #D97706, #B45309);
+    }
+
+    /* Question Cards */
+    .q-card {
+      background: #FFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .q-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .q-badge-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .q-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .q-badge.accent {
+      background: var(--warning-light);
+      color: var(--warning);
+    }
+
+    .q-points {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .q-skill {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-sub);
+      background: #F1F5F9;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-align: right;
+    }
+
+    .q-prompt {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    /* Options Grid (MCQ) */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .opt-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+      background: #FFF;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-main);
+      transition: all 0.15s ease;
+    }
+
+    .opt-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #F8FAFC;
+    }
+
+    .opt-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .opt-btn.correct {
+      border-color: var(--success) !important;
+      background: var(--success-light) !important;
+      color: #064E3B !important;
+      font-weight: 700;
+    }
+
+    .opt-btn.wrong {
+      border-color: var(--danger) !important;
+      background: var(--danger-light) !important;
+      color: #7F1D1D !important;
+      font-weight: 700;
+    }
+
+    .opt-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: var(--text-sub);
+      font-size: 12.5px;
+      font-weight: 800;
+      flex-shrink: 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .opt-btn.selected .opt-key {
+      background: var(--primary);
+      color: #FFF;
+      border-color: var(--primary);
+    }
+
+    .opt-text {
+      flex: 1;
+      padding-top: 2px;
+    }
+
+    /* Short Answer Textarea */
+    .short-ans-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .short-ans-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .short-ans-textarea {
+      width: 100%;
+      min-height: 70px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-color);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-main);
+      background: #FFF;
+      outline: none;
+      resize: vertical;
+      transition: all 0.2s ease;
+    }
+
+    .short-ans-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(24, 42, 120, 0.12);
+    }
+
+    /* Solution Box */
+    .solution-box {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      font-size: 14px;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .solution-box.is-wrong {
+      background: #FEF2F2;
+      border-color: #FECACA;
+    }
+
+    .solution-title {
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .solution-box .sol-green { color: var(--success); }
+    .solution-box .sol-red { color: var(--danger); }
+
+    /* Result Modal / Score Box */
+    .score-banner {
+      background: #FFF;
+      border: 2px solid var(--success);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 26px;
+      display: none;
+      box-shadow: 0 6px 20px rgba(21, 128, 61, 0.12);
+    }
+
+    .score-banner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+
+    .score-big {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--success);
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .score-eval {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .wrong-skills-box {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: #991B1B;
+    }
+
+    .wrong-skills-box ul {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+
+    /* Submit Button Wrapper */
+    .submit-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 36px 0 20px 0;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary), #2D4BB3);
+      color: #FFF;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 14px 44px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(24, 42, 120, 0.28);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: linear-gradient(135deg, #111e56, #243c96);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(24, 42, 120, 0.35);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-scroll-top {
+      background: #F1F5F9;
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      margin-top: 14px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-scroll-top:hover {
+      background: #E2E8F0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span class="badge-tag">Toán 11 • KNTT & GDPT 2018</span>
+      <span class="timer-badge" id="timerDisplay">⏱️ Thời gian: 45:00</span>
+    </div>
+    <div>
+      <span class="progress-counter" id="progressDisplay">Đã làm: 0/16 câu</span>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="quiz-container">
+    <!-- Header -->
+    <div class="quiz-header">
+      <span class="quiz-tagline">KHẢO SÁT CHẤT LƯỢNG TRỰC TUYẾN</span>
+      <h1 class="quiz-title">ĐỀ KIỂM TRA CHỦ ĐỀ CÔNG THỨC LƯỢNG GIÁC - TOÁN 11</h1>
+      <p class="quiz-subtitle">Chương I: Hàm số lượng giác và phương trình lượng giác (GDPT 2018) • Thời gian: 45 phút • 14 câu Trắc nghiệm (7,0đ) & 2 câu Tự luận / Điền đáp số (3,0đ)</p>
+    </div>
+
+    <!-- Student Info Grid (3 BẮT BUỘC THEO GEMINI.MD) -->
+    <div class="student-info-grid">
+      <div class="info-group">
+        <label for="input-ten">Họ và tên thí sinh <span style="color:var(--accent);">*</span></label>
+        <input type="text" id="input-ten" placeholder="VD: Nguyễn Văn An" autocomplete="name">
+      </div>
+      <div class="info-group">
+        <label for="input-ma-hs">Mã học sinh</label>
+        <input type="text" id="input-ma-hs" placeholder="VD: NTH26-001" autocomplete="off">
+      </div>
+      <div class="info-group">
+        <label for="input-lop">Lớp / Nhóm học</label>
+        <input type="text" id="input-lop" placeholder="VD: 11A1" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Score Banner (Hiện sau khi nộp bài) -->
+    <div class="score-banner" id="scoreBanner">
+      <div class="score-banner-header">
+        <div>
+          <h2 style="font-size: 18px; font-weight: 800; color: var(--primary);">KẾT QUẢ BÀI KIỂM TRA</h2>
+          <p id="studentSummaryText" style="font-size: 13.5px; color: var(--text-sub); margin-top: 4px;"></p>
+          <div class="score-eval" id="scoreRankText"></div>
+        </div>
+        <div style="text-align: right;">
+          <div class="score-label">Tổng Điểm Đạt Được</div>
+          <div class="score-big"><span id="scoreValueText">0.0</span> <span style="font-size:20px; color:var(--text-muted);">/ 10</span></div>
+        </div>
+      </div>
+      <div class="wrong-skills-box" id="wrongSkillsBox"></div>
+      <div style="text-align: right; margin-top: 12px;">
+        <button type="button" class="btn-scroll-top" onclick="window.scrollTo({top: 500, behavior: 'smooth'})">🔍 Xem chi tiết bài làm bên dưới</button>
+      </div>
+    </div>
+
+    <!-- PHẦN I: TRẮC NGHIỆM (14 CÂU) -->
+    <div class="section-banner">
+      <span>Phần I. Trắc Nghiệm Nhiều Lựa Chọn (14 câu x 0.5đ = 7.0 điểm)</span>
+      <span style="font-size: 12px; font-weight: 600; opacity: 0.9;">Chọn 01 đáp án đúng</span>
+    </div>
+    <div id="part1Container"></div>
+
+    <!-- PHẦN II: TỰ LUẬN & ĐIỀN ĐÁP SỐ (2 CÂU) -->
+    <div class="section-banner accent">
+      <span>Phần II. Tự Luận & Điền Đáp Số (2 câu x 1.5đ = 3.0 điểm)</span>
+      <span style="font-size: 12px; font-weight: 600; opacity: 0.9;">Ghi vắn tắt đáp số ý a, b</span>
+    </div>
+    <div id="part2Container"></div>
+
+    <!-- Submit Action Area -->
+    <div class="submit-wrap">
+      <button type="button" id="btn-nop-bai" class="btn-submit">
+        <span>🚀 NỘP BÀI KIỂM TRA</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // DỮ LIỆU ĐỀ THI ĐƯỢC ĐỒNG BỘ NGUYÊN BẢN
+    const EXAM_QUESTIONS = [
+  {
+    "id": 1,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Định nghĩa giá trị lượng giác trên đường tròn lượng giác",
+    "prompt": "Trên mặt phẳng tọa độ $Oxy$, cho đường tròn lượng giác tâm $O$ bán kính $R=1$ và điểm $M(x_M; y_M)$ là điểm biểu diễn của góc lượng giác $\\alpha$. Khẳng định nào sau đây đúng?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\sin\\alpha = x_M$"
+      },
+      {
+        "id": "B",
+        "text": "$\\cos\\alpha = y_M$"
+      },
+      {
+        "id": "C",
+        "text": "$\\sin\\alpha = y_M$"
+      },
+      {
+        "id": "D",
+        "text": "$\\tan\\alpha = \\dfrac{x_M}{y_M}$"
+      }
+    ],
+    "correctAnswer": "C",
+    "solution": "Theo định nghĩa giá trị lượng giác của góc lượng giác trên đường tròn lượng giác $Oxy$, hoành độ $x_M$ của điểm $M$ là $\\cos\\alpha$ ($x_M = \\cos\\alpha$), và tung độ $y_M$ của điểm $M$ là $\\sin\\alpha$ ($y_M = \\sin\\alpha$)."
+  },
+  {
+    "id": 2,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Hệ thức lượng giác cơ bản & Xét dấu giá trị lượng giác",
+    "prompt": "Cho góc lượng giác $\\alpha$ thỏa mãn $\\dfrac{\\pi}{2} < \\alpha < \\pi$ và $\\sin\\alpha = \\dfrac{3}{5}$. Giá trị của $\\cos\\alpha$ bằng:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{4}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$-\\dfrac{4}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$-\\dfrac{16}{25}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{16}{25}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "solution": "Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên điểm $M$ biểu diễn góc $\\alpha$ nằm ở góc phần tư thứ II trên đường tròn lượng giác, do đó hoành độ $x_M = \\cos\\alpha < 0$.<br>Áp dụng đẳng thức $\\sin^2\\alpha + \\cos^2\\alpha = 1$, ta có:<br>$$\\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - \\left(\\dfrac{3}{5}\\right)^2 = \\dfrac{16}{25}$$<br>Vì $\\cos\\alpha < 0$ nên $\\cos\\alpha = -\\sqrt{\\dfrac{16}{25}} = -\\dfrac{4}{5}$."
+  },
+  {
+    "id": 3,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Công thức cộng lượng giác cơ bản",
+    "prompt": "Trong các đẳng thức sau, đẳng thức nào đúng với mọi góc lượng giác $a, b$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\cos(a-b) = \\cos a \\cos b - \\sin a \\sin b$"
+      },
+      {
+        "id": "B",
+        "text": "$\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$"
+      },
+      {
+        "id": "C",
+        "text": "$\\sin(a-b) = \\sin a \\cos b + \\cos a \\sin b$"
+      },
+      {
+        "id": "D",
+        "text": "$\\sin(a+b) = \\sin a \\cos b - \\cos a \\sin b$"
+      }
+    ],
+    "correctAnswer": "B",
+    "solution": "Theo công thức cộng đối với cosin của một hiệu: $\\cos(a-b) = \\cos a \\cos b + \\sin a \\sin b$."
+  },
+  {
+    "id": 4,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Công thức nhân đôi",
+    "prompt": "Khẳng định nào sau đây **sai** về công thức nhân đôi?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\sin 2a = 2\\sin a \\cos a$"
+      },
+      {
+        "id": "B",
+        "text": "$\\cos 2a = \\cos^2 a - \\sin^2 a$"
+      },
+      {
+        "id": "C",
+        "text": "$\\cos 2a = 1 - 2\\sin^2 a$"
+      },
+      {
+        "id": "D",
+        "text": "$\\cos 2a = 1 - 2\\cos^2 a$"
+      }
+    ],
+    "correctAnswer": "D",
+    "solution": "Công thức nhân đôi đúng của cosin là $\\cos 2a = \\cos^2 a - \\sin^2 a = 2\\cos^2 a - 1 = 1 - 2\\sin^2 a$. Do đó khẳng định $\\cos 2a = 1 - 2\\cos^2 a$ là sai."
+  },
+  {
+    "id": 5,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Công thức biến đổi tích thành tổng",
+    "prompt": "Khẳng định nào sau đây đúng về công thức biến đổi tích thành tổng?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\cos a \\cos b = \\dfrac{1}{2}[\\cos(a-b) + \\cos(a+b)]$"
+      },
+      {
+        "id": "B",
+        "text": "$\\cos a \\cos b = \\dfrac{1}{2}[\\cos(a-b) - \\cos(a+b)]$"
+      },
+      {
+        "id": "C",
+        "text": "$\\sin a \\sin b = \\dfrac{1}{2}[\\cos(a-b) + \\cos(a+b)]$"
+      },
+      {
+        "id": "D",
+        "text": "$\\sin a \\cos b = \\dfrac{1}{2}[\\cos(a-b) + \\cos(a+b)]$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Theo công thức biến đổi tích thành tổng: $\\cos a \\cos b = \\dfrac{1}{2}[\\cos(a-b) + \\cos(a+b)]$."
+  },
+  {
+    "id": 6,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Rút gọn biểu thức bằng công thức cộng",
+    "prompt": "Rút gọn biểu thức $M = \\cos(a+b)\\cos(a-b) - \\sin(a+b)\\sin(a-b)$ ta được:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$M = \\cos 2a$"
+      },
+      {
+        "id": "B",
+        "text": "$M = \\sin 2a$"
+      },
+      {
+        "id": "C",
+        "text": "$M = \\cos 2b$"
+      },
+      {
+        "id": "D",
+        "text": "$M = 1 - 2\\sin^2 b$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Áp dụng công thức cộng $\\cos u \\cos v - \\sin u \\sin v = \\cos(u+v)$ với $u = a+b$ và $v = a-b$:<br>$$M = \\cos[(a+b) + (a-b)] = \\cos(2a)$$"
+  },
+  {
+    "id": 7,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Tính giá trị lượng giác góc nhân đôi",
+    "prompt": "Biết $\\cos a = -\\dfrac{1}{3}$ với $\\dfrac{\\pi}{2} < a < \\pi$. Giá trị của $\\sin 2a$ bằng:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{4\\sqrt{2}}{9}$"
+      },
+      {
+        "id": "B",
+        "text": "$-\\dfrac{4\\sqrt{2}}{9}$"
+      },
+      {
+        "id": "C",
+        "text": "$-\\dfrac{7}{9}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{7}{9}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "solution": "Vì $\\dfrac{\\pi}{2} < a < \\pi$ nên điểm biểu diễn góc $a$ thuộc góc phần tư II $\\Rightarrow \\sin a > 0$.<br>$$\\sin a = \\sqrt{1 - \\cos^2 a} = \\sqrt{1 - \\left(-\\dfrac{1}{3}\\right)^2} = \\sqrt{\\dfrac{8}{9}} = \\dfrac{2\\sqrt{2}}{3}$$<br>Áp dụng công thức nhân đôi:<br>$$\\sin 2a = 2\\sin a \\cos a = 2 \\cdot \\dfrac{2\\sqrt{2}}{3} \\cdot \\left(-\\dfrac{1}{3}\\right) = -\\dfrac{4\\sqrt{2}}{9}$$"
+  },
+  {
+    "id": 8,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Tính giá trị lượng giác bằng biến đổi tích thành tổng",
+    "prompt": "Không dùng máy tính cầm tay, tính giá trị của biểu thức $P = \\cos 75^\\circ \\cos 15^\\circ$.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{\\sqrt{3}}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{\\sqrt{3}}{2}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "solution": "Áp dụng công thức biến đổi tích thành tổng:<br>$$P = \\dfrac{1}{2}[\\cos(75^\\circ - 15^\\circ) + \\cos(75^\\circ + 15^\\circ)] = \\dfrac{1}{2}[\\cos 60^\\circ + \\cos 90^\\circ] = \\dfrac{1}{2}\\left(\\dfrac{1}{2} + 0\\right) = \\dfrac{1}{4}$$"
+  },
+  {
+    "id": 9,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Rút gọn phân thức bằng công thức biến đổi tổng thành tích",
+    "prompt": "Cho biểu thức $A = \\dfrac{\\sin a + \\sin 3a}{\\cos a + \\cos 3a}$ (với điều kiện biểu thức có nghĩa). Rút gọn $A$ ta được:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$A = \\tan a$"
+      },
+      {
+        "id": "B",
+        "text": "$A = \\tan 2a$"
+      },
+      {
+        "id": "C",
+        "text": "$A = \\tan 3a$"
+      },
+      {
+        "id": "D",
+        "text": "$A = \\cot 2a$"
+      }
+    ],
+    "correctAnswer": "B",
+    "solution": "Áp dụng công thức biến đổi tổng thành tích cho tử số và mẫu số:<br>$$\\sin a + \\sin 3a = 2\\sin\\left(\\dfrac{3a+a}{2}\\right)\\cos\\left(\\dfrac{3a-a}{2}\\right) = 2\\sin 2a \\cos a$$<br>$$\\cos a + \\cos 3a = 2\\cos\\left(\\dfrac{3a+a}{2}\\right)\\cos\\left(\\dfrac{3a-a}{2}\\right) = 2\\cos 2a \\cos a$$<br>Do đó:<br>$$A = \\dfrac{2\\sin 2a \\cos a}{2\\cos 2a \\cos a} = \\dfrac{\\sin 2a}{\\cos 2a} = \\tan 2a$$"
+  },
+  {
+    "id": 10,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Tính giá trị biểu thức lượng giác theo tan",
+    "prompt": "Cho $\\tan a = 2$. Giá trị của biểu thức $N = \\dfrac{\\sin 2a + 2\\cos 2a}{1 + 3\\cos^2 a}$ bằng:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$-\\dfrac{1}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$-\\dfrac{1}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3}{8}$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Biểu diễn các giá trị lượng giác qua $\\tan a$:<br>$$\\sin 2a = \\dfrac{2\\tan a}{1+\\tan^2 a} = \\dfrac{2 \\cdot 2}{1 + 2^2} = \\dfrac{4}{5}$$<br>$$\\cos 2a = \\dfrac{1-\\tan^2 a}{1+\\tan^2 a} = \\dfrac{1 - 2^2}{1 + 2^2} = -\\dfrac{3}{5}$$<br>$$\\cos^2 a = \\dfrac{1}{1+\\tan^2 a} = \\dfrac{1}{1 + 2^2} = \\dfrac{1}{5} \\Rightarrow 1 + 3\\cos^2 a = 1 + 3 \\cdot \\dfrac{1}{5} = \\dfrac{8}{5}$$<br>Thay vào biểu thức $N$:<br>$$N = \\dfrac{\\dfrac{4}{5} + 2\\left(-\\dfrac{3}{5}\\right)}{\\dfrac{8}{5}} = \\dfrac{-\\dfrac{2}{5}}{\\dfrac{8}{5}} = -\\dfrac{1}{4}$$"
+  },
+  {
+    "id": 11,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Hệ thức đối xứng chứa sin x và cos x",
+    "prompt": "Cho $\\sin x + \\cos x = \\dfrac{1}{2}$ với $-\\dfrac{\\pi}{4} < x < \\dfrac{\\pi}{4}$. Giá trị của biểu thức $Q = \\sin^3 x - \\cos^3 x$ bằng:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$-\\dfrac{5\\sqrt{7}}{16}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{5\\sqrt{7}}{16}$"
+      },
+      {
+        "id": "C",
+        "text": "$-\\dfrac{11\\sqrt{7}}{16}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{11\\sqrt{7}}{16}$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Bình phương hai vế: $(\\sin x + \\cos x)^2 = \\dfrac{1}{4} \\Leftrightarrow 1 + 2\\sin x \\cos x = \\dfrac{1}{4} \\Rightarrow \\sin x \\cos x = -\\dfrac{3}{8}$.<br>Vì $-\\dfrac{\\pi}{4} < x < \\dfrac{\\pi}{4} \\Rightarrow \\cos x > 0$. Do $\\sin x \\cos x < 0$ nên $\\sin x < 0$.<br>Xét $(\\sin x - \\cos x)^2 = 1 - 2\\sin x \\cos x = 1 - 2\\left(-\\dfrac{3}{8}\\right) = \\dfrac{7}{4}$.<br>Do $\\sin x < 0$ và $\\cos x > 0$ nên $\\sin x - \\cos x = -\\dfrac{\\sqrt{7}}{2}$.<br>Do đó: $Q = (\\sin x - \\cos x)(1 + \\sin x \\cos x) = \\left(-\\dfrac{\\sqrt{7}}{2}\\right)\\left(1 - \\dfrac{3}{8}\\right) = -\\dfrac{5\\sqrt{7}}{16}$."
+  },
+  {
+    "id": 12,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Ứng dụng chuyển động tròn đều và chu kỳ hàm lượng giác",
+    "prompt": "Một cánh quạt máy quay đều quanh trục tâm $O$. Vị trí điểm $P$ trên đầu cánh quạt được mô hình hóa bởi góc quay lượng giác $\\alpha(t) = \\dfrac{\\pi}{3} + 100\\pi t$ (radian), trong đó $t$ là thời gian tính bằng giây ($t \\ge 0$). Trong khoảng thời gian $1$ giây đầu tiên ($0 \\le t \\le 1$), điểm $P$ đạt vị trí có tung độ cực đại bao nhiêu lần?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$50$"
+      },
+      {
+        "id": "B",
+        "text": "$49$"
+      },
+      {
+        "id": "C",
+        "text": "$100$"
+      },
+      {
+        "id": "D",
+        "text": "$51$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Tung độ đạt cực đại khi: $\\sin\\left(\\dfrac{\\pi}{3} + 100\\pi t\\right) = 1 \\Leftrightarrow \\dfrac{\\pi}{3} + 100\\pi t = \\dfrac{\\pi}{2} + k2\\pi$<br>$$\\Leftrightarrow 100\\pi t = \\dfrac{\\pi}{6} + k2\\pi \\Leftrightarrow t = \\dfrac{1}{600} + \\dfrac{k}{50}$$<br>Do $0 \\le t \\le 1 \\Rightarrow 0 \\le \\dfrac{1}{600} + \\dfrac{k}{50} \\le 1 \\Leftrightarrow -\\dfrac{1}{12} \\le k \\le \\dfrac{599}{12} \\approx 49,91$.<br>Vì $k \\in \\mathbb{Z}$ nên $k \\in \\{0; 1; \\dots; 49\\}$. Tập này có đúng $50$ giá trị nguyên."
+  },
+  {
+    "id": 13,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Tổng hợp sóng điều hòa & góc phụ pha",
+    "prompt": "Một thiết bị kĩ thuật nhận hai tín hiệu âm thanh đầu vào cùng tần số $f_1(t) = 5\\sin t$ và $f_2(t) = 5\\cos t$ ($t$ là thời gian tính bằng giây). Âm kết hợp là một sóng âm tổng hợp $f(t) = f_1(t) + f_2(t) = A\\sin(t + \\varphi)$ với $A > 0$ và $-\\pi \\le \\varphi \\le \\pi$. Biên độ âm $A$ và pha ban đầu $\\varphi$ bằng:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$A = 5\\sqrt{2}, \\varphi = \\dfrac{\\pi}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$A = 10, \\varphi = \\dfrac{\\pi}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$A = 5\\sqrt{2}, \\varphi = -\\dfrac{\\pi}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$A = 5, \\varphi = \\dfrac{\\pi}{2}$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Sóng âm tổng hợp:<br>$$f(t) = 5\\sin t + 5\\cos t = 5\\sqrt{2}\\left(\\dfrac{1}{\\sqrt{2}}\\sin t + \\dfrac{1}{\\sqrt{2}}\\cos t\\right) = 5\\sqrt{2}\\sin\\left(t + \\dfrac{\\pi}{4}\\right)$$<br>Đối chiếu dạng $A\\sin(t+\\varphi) \\Rightarrow A = 5\\sqrt{2}$ và $\\varphi = \\dfrac{\\pi}{4}$."
+  },
+  {
+    "id": 14,
+    "part": "I",
+    "type": "CHOICE",
+    "points": 0.5,
+    "skill": "Bài toán thực tế cực trị diện tích bằng công thức nhân đôi",
+    "prompt": "Mặt cắt ngang của một thanh xà gỗ hình chữ nhật $ABCD$ có chiều dài đường chéo $BD = 30\\text{ cm}$ và góc $\\theta = \\widehat{ABD}$ ($0 < \\theta < \\dfrac{\\pi}{2}$). Kích thước mặt cắt là $AB = 30\\cos\\theta$ và $BC = 30\\sin\\theta$ (cm). Diện tích mặt cắt ngang $S$ đạt giá trị lớn nhất khi góc $\\theta$ bằng:",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\theta = 45^\\circ$"
+      },
+      {
+        "id": "B",
+        "text": "$\\theta = 30^\\circ$"
+      },
+      {
+        "id": "C",
+        "text": "$\\theta = 60^\\circ$"
+      },
+      {
+        "id": "D",
+        "text": "$\\theta = 15^\\circ$"
+      }
+    ],
+    "correctAnswer": "A",
+    "solution": "Diện tích mặt cắt: $S = AB \\cdot BC = 900\\sin\\theta\\cos\\theta = 450\\sin 2\\theta$ (cm$^2$).<br>Vì $0 < \\theta < \\dfrac{\\pi}{2} \\Rightarrow 0 < 2\\theta < \\pi \\Rightarrow \\sin 2\\theta \\le 1$.<br>Diện tích lớn nhất khi $\\sin 2\\theta = 1 \\Leftrightarrow 2\\theta = 90^\\circ \\Leftrightarrow \\theta = 45^\\circ$."
+  },
+  {
+    "id": 15,
+    "part": "II",
+    "type": "SHORT_ANS",
+    "points": 1.5,
+    "skill": "Vận dụng hệ thức lượng giác cơ bản & công thức nhân đôi, công thức cộng",
+    "prompt": "Cho góc $x$ thỏa mãn $\\sin x = -\\dfrac{1}{3}$ và $\\pi < x < \\dfrac{3\\pi}{2}$.<br><br><b>a)</b> Tính giá trị của $\\cos x$ và $\\sin 2x$.<br><br><b>b)</b> Tính giá trị của biểu thức $P = \\cos\\left(2x - \\dfrac{\\pi}{3}\\right)$.",
+    "correctAnswer": "(7+4sqrt(6))/18",
+    "acceptableKeywords": [
+      "sqrt",
+      "18",
+      "7+4",
+      "4sqrt6",
+      "0.933",
+      "0,933"
+    ],
+    "solution": "<b>a) Tính $\\cos x$ và $\\sin 2x$ (0,75 điểm):</b><br>- Vì $\\pi < x < \\dfrac{3\\pi}{2} \\Rightarrow \\cos x < 0$.<br>$$\\cos^2 x = 1 - \\sin^2 x = 1 - \\left(-\\dfrac{1}{3}\\right)^2 = \\dfrac{8}{9} \\Rightarrow \\cos x = -\\dfrac{2\\sqrt{2}}{3}$$<br>- Ta có: $\\sin 2x = 2\\sin x \\cos x = 2\\left(-\\dfrac{1}{3}\\right)\\left(-\\dfrac{2\\sqrt{2}}{3}\\right) = \\dfrac{4\\sqrt{2}}{9}$.<br><br><b>b) Tính $P = \\cos\\left(2x - \\dfrac{\\pi}{3}\\right)$ (0,75 điểm):</b><br>- $\\cos 2x = 1 - 2\\sin^2 x = 1 - 2\\left(-\\dfrac{1}{3}\\right)^2 = \\dfrac{7}{9}$.<br>- $P = \\cos 2x \\cos\\dfrac{\\pi}{3} + \\sin 2x \\sin\\dfrac{\\pi}{3} = \\dfrac{7}{9} \\cdot \\dfrac{1}{2} + \\dfrac{4\\sqrt{2}}{9} \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{7 + 4\\sqrt{6}}{18}$."
+  },
+  {
+    "id": 16,
+    "part": "II",
+    "type": "SHORT_ANS",
+    "points": 1.5,
+    "skill": "Mô hình hóa lượng giác thực tế chiếc guồng nước",
+    "prompt": "Một chiếc guồng nước có dạng hình tròn bán kính $R = 2,5\\text{ m}$; trục của nó đặt cách mặt nước $2\\text{ m}$. Khi guồng quay đều, khoảng cách $h$ (mét) từ một chiếc gáo gắn tại điểm $A$ trên guồng đến mặt nước được mô hình hóa bởi $h = |y|$, trong đó:<br>$$y = 2 + 2,5\\sin 2\\pi\\left(x - \\dfrac{1}{4}\\right)$$<br>với $x \\ge 0$ là thời gian quay của guồng tính bằng phút ($y > 0$ khi gáo ở trên mặt nước, $y < 0$ khi gáo ở dưới mặt nước).<br><br><b>a)</b> Tính khoảng cách từ chiếc gáo $A$ đến mặt nước ở thời điểm $x = \\dfrac{5}{12}$ phút.<br><br><b>b)</b> Xác định tất cả các thời điểm $x$ (phút) trong $2$ phút đầu tiên ($0 \\le x \\le 2$) để chiếc gáo ở vị trí cao nhất so với mặt nước.",
+    "correctAnswer": "4.165; 0.5, 1.5",
+    "acceptableKeywords": [
+      "4.165",
+      "4,165",
+      "0.5",
+      "0,5",
+      "1.5",
+      "1,5",
+      "5/12",
+      "5sqrt(3)/4"
+    ],
+    "solution": "<b>a) Khoảng cách tại $x = \\dfrac{5}{12}$ phút (0,75 điểm):</b><br>$$y = 2 + 2,5\\sin 2\\pi\\left(\\dfrac{5}{12} - \\dfrac{1}{4}\\right) = 2 + 2,5\\sin\\left(\\dfrac{\\pi}{3}\\right) = 2 + \\dfrac{5\\sqrt{3}}{4} \\approx 4,165\\text{ m}$$<br>Do $y > 0$ nên khoảng cách là $h = |y| = 2 + \\dfrac{5\\sqrt{3}}{4} \\approx 4,165\\text{ m}$.<br><br><b>b) Thời điểm đạt vị trí cao nhất trong $2$ phút đầu (0,75 điểm):</b><br>- Vị trí cao nhất khi $\\sin 2\\pi\\left(x - \\dfrac{1}{4}\\right) = 1 \\Leftrightarrow 2\\pi\\left(x - \\dfrac{1}{4}\\right) = \\dfrac{\\pi}{2} + k2\\pi \\Leftrightarrow x = \\dfrac{1}{2} + k$ ($k \\in \\mathbb{Z}$).<br>- Vì $0 \\le x \\le 2 \\Rightarrow k \\in \\{0; 1\\}$.<br>- Vậy các thời điểm là $x = 0,5\\text{ phút}$ và $x = 1,5\\text{ phút}$."
+  }
+];
+
+    let userAnswers = {};
+    let isSubmitted = false;
+    let diem_so = 0;
+    let mang_cau_sai = [];
+    let timerSeconds = 45 * 60;
+    let timerInterval = null;
+
+    // Render câu hỏi ra giao diện
+    function renderQuiz() {
+      const p1Container = document.getElementById('part1Container');
+      const p2Container = document.getElementById('part2Container');
+
+      p1Container.innerHTML = '';
+      p2Container.innerHTML = '';
+
+      EXAM_QUESTIONS.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.id = 'card-q' + q.id;
+
+        if (q.part === 'I') {
+          let optsHtml = '<div class="options-grid">';
+          q.options.forEach(opt => {
+            optsHtml += `
+              <button type="button" class="opt-btn" id="opt-btn-${q.id}-${opt.id}" onclick="selectOption(${q.id}, '${opt.id}')">
+                <span class="opt-key">${opt.id}</span>
+                <span class="opt-text">${opt.text}</span>
+              </button>
+            `;
+          });
+          optsHtml += '</div>';
+
+          card.innerHTML = `
+            <div class="q-header">
+              <div class="q-badge-wrap">
+                <span class="q-badge">Câu ${q.id}</span>
+                <span class="q-points">(${q.points} điểm)</span>
+              </div>
+              <span class="q-skill">${q.skill}</span>
+            </div>
+            <div class="q-prompt">${q.prompt}</div>
+            ${optsHtml}
+            <div class="solution-box" id="sol-box-${q.id}">
+              <div class="solution-title" id="sol-title-${q.id}"></div>
+              <div style="margin-top: 4px;">${q.solution}</div>
+            </div>
+          `;
+          p1Container.appendChild(card);
+        } else {
+          // PHẦN II (Tự luận / Điền đáp số)
+          card.innerHTML = `
+            <div class="q-header">
+              <div class="q-badge-wrap">
+                <span class="q-badge accent">Câu ${q.id}</span>
+                <span class="q-points">(${q.points} điểm)</span>
+              </div>
+              <span class="q-skill">${q.skill}</span>
+            </div>
+            <div class="q-prompt">${q.prompt}</div>
+            <div class="short-ans-box">
+              <label class="short-ans-label" for="short-ans-${q.id}">Nhập đáp số hoặc tóm tắt bước giải của em:</label>
+              <textarea class="short-ans-textarea" id="short-ans-${q.id}" placeholder="Ghi vắn tắt kết quả của câu a, câu b..." oninput="recordShortAns(${q.id}, this.value)"></textarea>
+            </div>
+            <div class="solution-box" id="sol-box-${q.id}">
+              <div class="solution-title sol-green">📘 Hướng dẫn chấm & Lời giải chi tiết:</div>
+              <div style="margin-top: 4px;">${q.solution}</div>
+            </div>
+          `;
+          p2Container.appendChild(card);
+        }
+      });
+
+      renderMath();
+    }
+
+    // Xử lý chọn đáp án trắc nghiệm
+    function selectOption(qId, optId) {
+      if (isSubmitted) return;
+      userAnswers[qId] = optId;
+
+      const q = EXAM_QUESTIONS.find(item => item.id === qId);
+      if (q && q.options) {
+        q.options.forEach(opt => {
+          const btn = document.getElementById(`opt-btn-${qId}-${opt.id}`);
+          if (btn) {
+            if (opt.id === optId) {
+              btn.classList.add('selected');
+            } else {
+              btn.classList.remove('selected');
+            }
+          }
+        });
+      }
+      updateProgress();
+    }
+
+    // Xử lý điền tự luận
+    function recordShortAns(qId, val) {
+      if (isSubmitted) return;
+      userAnswers[qId] = val;
+      updateProgress();
+    }
+
+    // Cập nhật số câu đã làm
+    function updateProgress() {
+      let count = 0;
+      EXAM_QUESTIONS.forEach(q => {
+        if (userAnswers[q.id] && String(userAnswers[q.id]).trim().length > 0) {
+          count++;
+        }
+      });
+      document.getElementById('progressDisplay').textContent = `Đã làm: ${count}/16 câu`;
+    }
+
+    // Chuẩn hóa chuỗi so sánh
+    function normalizeStr(str) {
+      return (str || '')
+        .toLowerCase()
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.')
+        .replace(/\\dfrac/g, '')
+        .replace(/\\sqrt/g, 'sqrt')
+        .replace(/[{}$]/g, '');
+    }
+
+    // Chấm điểm bài thi
+    function chamDiem() {
+      let total = 0;
+      mang_cau_sai = [];
+
+      EXAM_QUESTIONS.forEach(q => {
+        const uAns = userAnswers[q.id];
+        let isCorrect = false;
+
+        if (q.type === 'CHOICE') {
+          const solBox = document.getElementById(`sol-box-${q.id}`);
+          const solTitle = document.getElementById(`sol-title-${q.id}`);
+
+          if (uAns === q.correctAnswer) {
+            isCorrect = true;
+            total += q.points;
+            if (solTitle) {
+              solTitle.className = 'solution-title sol-green';
+              solTitle.innerHTML = '✅ Trả lời chính xác (+0.5đ)';
+            }
+          } else {
+            mang_cau_sai.push(q.skill);
+            if (solBox) solBox.classList.add('is-wrong');
+            if (solTitle) {
+              solTitle.className = 'solution-title sol-red';
+              solTitle.innerHTML = `❌ Chưa chính xác (Đáp án đúng: ${q.correctAnswer})`;
+            }
+          }
+
+          // Cập nhật màu sắc trên nút lựa chọn
+          q.options.forEach(opt => {
+            const btn = document.getElementById(`opt-btn-${q.id}-${opt.id}`);
+            if (btn) {
+              btn.disabled = true;
+              if (opt.id === q.correctAnswer) {
+                btn.classList.add('correct');
+              } else if (opt.id === uAns && !isCorrect) {
+                btn.classList.add('wrong');
+              }
+            }
+          });
+
+          if (solBox) solBox.style.display = 'block';
+
+        } else if (q.type === 'SHORT_ANS') {
+          const txtArea = document.getElementById(`short-ans-${q.id}`);
+          if (txtArea) txtArea.disabled = true;
+
+          const solBox = document.getElementById(`sol-box-${q.id}`);
+          if (solBox) solBox.style.display = 'block';
+
+          if (uAns && uAns.trim().length > 0) {
+            const normUser = normalizeStr(uAns);
+            let matched = false;
+
+            if (q.acceptableKeywords && q.acceptableKeywords.length > 0) {
+              matched = q.acceptableKeywords.some(kw => normUser.includes(normalizeStr(kw)));
+            }
+
+            if (matched) {
+              isCorrect = true;
+              total += q.points;
+            } else {
+              // Điểm khuyến khích cho nỗ lực tự luận
+              total += 0.5;
+              mang_cau_sai.push(q.skill);
+            }
+          } else {
+            mang_cau_sai.push(q.skill);
+          }
+        }
+      });
+
+      diem_so = parseFloat(Math.min(10, Math.max(0, total)).toFixed(1));
+
+      // Hiển thị banner tổng kết
+      const tenHS = document.getElementById('input-ten').value.trim() || 'Ẩn danh';
+      const maHS = document.getElementById('input-ma-hs').value.trim() || 'Trống';
+      const lop = document.getElementById('input-lop').value.trim() || 'Trống';
+
+      document.getElementById('studentSummaryText').textContent = `Thí sinh: ${tenHS} (Mã: ${maHS}) • Lớp/Nhóm: ${lop}`;
+      document.getElementById('scoreValueText').textContent = diem_so.toFixed(1);
+
+      const rankEl = document.getElementById('scoreRankText');
+      if (diem_so >= 9.0) rankEl.textContent = '🏆 XUẤT SẮC - NẮM CHẮC CÔNG THỨC LƯỢNG GIÁC';
+      else if (diem_so >= 7.0) rankEl.textContent = '⚡ KHÁ GIỎI - HOÀN THÀNH TỐT BÀI KIỂM TRA';
+      else if (diem_so >= 5.0) rankEl.textContent = '👍 ĐẠT YÊU CẦU - CẦN CỦNG CỐ CÔNG THỨC BIẾN ĐỔI';
+      else rankEl.textContent = '⚠️ CẦN ÔN TẬP LẠI CÁC CÔNG THỨC LƯỢNG GIÁC';
+
+      const wrongBox = document.getElementById('wrongSkillsBox');
+      if (mang_cau_sai.length > 0) {
+        const uniqueSkills = [...new Set(mang_cau_sai)];
+        let skillsHtml = '<b>📌 Các chuyên đề / kỹ năng em cần chú ý rèn luyện thêm:</b><ul>';
+        uniqueSkills.forEach(sk => {
+          skillsHtml += `<li>${sk}</li>`;
+        });
+        skillsHtml += '</ul>';
+        wrongBox.innerHTML = skillsHtml;
+        wrongBox.style.display = 'block';
+      } else {
+        wrongBox.innerHTML = '🎉 <b>Tuyệt vời! Em đã trả lời chính xác tất cả các nội dung kiến thức.</b>';
+        wrongBox.style.background = '#F0FDF4';
+        wrongBox.style.borderColor = '#BBF7D0';
+        wrongBox.style.color = '#166534';
+        wrongBox.style.display = 'block';
+      }
+
+      const scoreBanner = document.getElementById('scoreBanner');
+      scoreBanner.style.display = 'block';
+
+      // Khóa thông tin học sinh
+      document.getElementById('input-ten').disabled = true;
+      document.getElementById('input-ma-hs').disabled = true;
+      document.getElementById('input-lop').disabled = true;
+
+      isSubmitted = true;
+      clearInterval(timerInterval);
+
+      // Render lại math trong các ô lời giải vừa mở
+      renderMath();
+    }
+
+    // Đếm ngược thời gian
+    function startTimer() {
+      const display = document.getElementById('timerDisplay');
+      timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          if (!isSubmitted) {
+            alert('Hết thời gian làm bài 45 phút! Hệ thống sẽ tự động thu bài.');
+            document.getElementById('btn-nop-bai').click();
+          }
+          return;
+        }
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        display.textContent = `⏱️ Thời gian: ${m}:${s}`;
+      }, 1000);
+    }
+
+    // Tích hợp KaTeX auto-render
+    function renderMath() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    // =========================================================================
+    // TÍCH HỢP N8N WEBHOOK (TUÂN THỦ CHÍNH XÁC RULE GEMINI.MD)
+    // =========================================================================
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+
+    document.getElementById('btn-nop-bai').addEventListener('click', async function() {
+        if (!isSubmitted) {
+            chamDiem();
+        }
+
+        const tenHocSinh = document.getElementById('input-ten') ? document.getElementById('input-ten').value : "Ẩn danh";
+        // LẤY THÊM MÃ HS VÀ LỚP
+        const maHocSinh = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value : "Trống";
+        const lopNhom = document.getElementById('input-lop') ? document.getElementById('input-lop').value : "Trống";
+        
+        const tenBaiThi = document.title || "Bài kiểm tra Toán"; 
+        
+        const payload = {
+            hoc_sinh: tenHocSinh,
+            ma_hs: maHocSinh,   // Dữ liệu mới cho n8n
+            lop: lopNhom,       // Dữ liệu mới cho n8n
+            bai_thi: tenBaiThi,
+            diem: diem_so, 
+            thoi_gian_nop: new Date().toLocaleString('vi-VN'),
+            ky_nang_sai: mang_cau_sai 
+        };
+
+        const btn = document.getElementById('btn-nop-bai');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "Đang xử lý...";
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                // Không cần đợi JSON trả về nữa, chỉ cần Webhook thành công
+                alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+            } else {
+                alert("Có lỗi đường truyền khi nộp bài. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    // Khởi chạy khi DOM sẵn sàng
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+      startTimer();
+      setTimeout(renderMath, 200);
+      setTimeout(renderMath, 600);
+    });
+  </script>
+</body>
+</html>
