@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ĐỀ KIỂM TRA MÔN TOÁN LỚP 11 - 45 PHÚT [ĐỀ B]</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#1e1b4b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    .katex { font-size: 1.04em; }
+    input[type="radio"] { accent-color: #4f46e5; }
+    .correct-ans {
+      background-color: #ecfdf5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+    }
+    .wrong-ans {
+      background-color: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white pb-20">
+
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- Header & Student Info Card -->
+    <header class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 mb-8">
+      <div class="border-b border-slate-100 pb-5 mb-6 text-center">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 mb-2 uppercase tracking-wider">
+          TOÁN 11 - KIỂM TRA ĐỊNH KỲ 45 PHÚT
+        </span>
+        <h1 id="exam-title" class="text-2xl md:text-3xl font-extrabold text-slate-800 tracking-tight">
+          ĐỀ KIỂM TRA MÔN TOÁN LỚP 11 - 45 PHÚT [ĐỀ B]
+        </h1>
+        <p class="text-base font-semibold text-brand-700 mt-1">
+          CHỦ ĐỀ: HÀM SỐ LƯỢNG GIÁC VÀ PHƯƠNG TRÌNH LƯỢNG GIÁC
+        </p>
+        <p class="text-xs text-slate-500 mt-1 italic">
+          (Thời gian làm bài: 45 phút - Tự động chấm điểm &amp; Báo cáo phân tích kỹ năng)
+        </p>
+      </div>
+
+      <!-- Result Banner (Ẩn ban đầu, hiện sau khi nộp) -->
+      <div id="result-box" class="hidden mb-6 p-6 rounded-2xl bg-gradient-to-r from-brand-50 via-indigo-50 to-blue-50 border border-brand-200 transition-all shadow-sm">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-600 text-white">HOÀN THÀNH</span>
+              <h2 class="text-xl font-bold text-slate-800">KẾT QUẢ BÀI THI</h2>
+            </div>
+            <p id="result-summary" class="text-slate-600 text-sm mt-1.5"></p>
+            <p id="result-skills" class="text-rose-600 font-semibold text-sm mt-1.5"></p>
+          </div>
+          <div class="text-center bg-white px-7 py-4 rounded-xl shadow border border-brand-100 min-w-[150px]">
+            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Điểm tổng kết</span>
+            <div id="score-display" class="text-4xl font-black text-brand-600 my-0.5">0.0</div>
+            <span class="text-xs text-slate-400 font-medium">/ 10.0 điểm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student Info Form (Bắt buộc theo chuẩn hệ thống) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="input-ten" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Họ và tên học sinh <span class="text-rose-500">*</span>
+          </label>
+          <input type="text" id="input-ten" placeholder="Ví dụ: Nguyễn Văn A"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm">
+        </div>
+        <div>
+          <label for="input-ma-hs" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Mã học sinh
+          </label>
+          <input type="text" id="input-ma-hs" placeholder="Ví dụ: NTH26-001"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm">
+        </div>
+        <div>
+          <label for="input-lop" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+            Lớp / Nhóm
+          </label>
+          <input type="text" id="input-lop" placeholder="Ví dụ: 11A1"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm">
+        </div>
+      </div>
+    </header>
+
+    <!-- Quiz Content Form -->
+    <form id="quiz-form" onsubmit="return false;" class="space-y-8">
+
+      <!-- ========================================== -->
+      <!-- PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN -->
+      <!-- ========================================== -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-3 bg-brand-50/80 border-l-4 border-brand-600 px-4 py-3 rounded-r-xl">
+          <span class="w-7 h-7 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">I</span>
+          <div>
+            <h2 class="text-base font-bold text-slate-800">PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (7,0 ĐIỂM)</h2>
+            <p class="text-xs text-slate-500">Gồm 14 câu hỏi (từ Câu 1 đến Câu 14), mỗi câu trả lời đúng được 0,5 điểm.</p>
+          </div>
+        </div>
+
+        <!-- Câu 1 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="1" data-correct="B" data-skill="Tập xác định">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 1
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Tập xác định
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Tập xác định $D$ của hàm số $y = \cot\left(2x - \dfrac{\pi}{6}\right)$ là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q1" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $D = \mathbb{R} \setminus \left\{\dfrac{\pi}{6} + k\pi \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q1" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $D = \mathbb{R} \setminus \left\{\dfrac{\pi}{12} + \dfrac{k\pi}{2} \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q1" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $D = \mathbb{R} \setminus \left\{\dfrac{\pi}{3} + \dfrac{k\pi}{2} \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q1" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $D = \mathbb{R} \setminus \left\{\dfrac{5\pi}{12} + \dfrac{k\pi}{2} \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Hàm số $y = \cot\left(2x - \dfrac{\pi}{6}\right)$ xác định khi và chỉ khi:
+            $$2x - \dfrac{\pi}{6} \ne k\pi \Leftrightarrow 2x \ne \dfrac{\pi}{6} + k\pi \Leftrightarrow x \ne \dfrac{\pi}{12} + \dfrac{k\pi}{2} \quad (k \in \mathbb{Z})$$
+            Vậy tập xác định của hàm số là $D = \mathbb{R} \setminus \left\{\dfrac{\pi}{12} + \dfrac{k\pi}{2} \;\middle|\; k \in \mathbb{Z}\right\}$. Chọn <strong>B</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 2 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="2" data-correct="C" data-skill="Tập giá trị">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 2
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Tập giá trị
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Tập giá trị $T$ của hàm số $y = 4\sin\left(x - \dfrac{\pi}{3}\right) + 1$ là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q2" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $T = [-4; 4]$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q2" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $T = [-1; 1]$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q2" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $T = [-3; 5]$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q2" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $T = [-5; 3]$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Với mọi $x \in \mathbb{R}$, ta có:
+            $$-1 \le \sin\left(x - \dfrac{\pi}{3}\right) \le 1 \Rightarrow -4 \le 4\sin\left(x - \dfrac{\pi}{3}\right) \le 4 \Rightarrow -3 \le 4\sin\left(x - \dfrac{\pi}{3}\right) + 1 \le 5$$
+            Do đó $-3 \le y \le 5$. Tập giá trị của hàm số là $T = [-3; 5]$. Chọn <strong>C</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 3 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="3" data-correct="B" data-skill="Tính chẵn lẻ của hàm số">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 3
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Tính chẵn lẻ của hàm số
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Trong các hàm số sau, hàm số nào là hàm số lẻ trên tập xác định của nó?
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q3" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $y = \cos 2x$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q3" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $y = \sin 2x \cdot \cos x$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q3" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $y = x \sin 2x$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q3" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $y = \cos x + \sin^2 2x$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Xét hàm số $f(x) = \sin 2x \cdot \cos x$, tập xác định $D = \mathbb{R}$ là tập đối xứng.
+            Với mọi $x \in D$, ta có $-x \in D$ và:
+            $$f(-x) = \sin(-2x) \cdot \cos(-x) = (-\sin 2x) \cdot \cos x = -(\sin 2x \cdot \cos x) = -f(x)$$
+            Do đó $y = \sin 2x \cdot \cos x$ là hàm số lẻ. Các hàm số ở các phương án $A, C, D$ đều là hàm số chẵn. Chọn <strong>B</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 4 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="4" data-correct="A" data-skill="Phương trình lượng giác cơ bản">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 4
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Phương trình lượng giác cơ bản
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Tất cả các nghiệm của phương trình lượng giác $\sin x = \sin\dfrac{2\pi}{5}$ là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q4" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $\left[\begin{array}{l} x = \dfrac{2\pi}{5} + k2\pi \\ x = \dfrac{3\pi}{5} + k2\pi \end{array}\right. \quad (k \in \mathbb{Z})$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q4" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $\left[\begin{array}{l} x = \dfrac{2\pi}{5} + k2\pi \\ x = -\dfrac{2\pi}{5} + k2\pi \end{array}\right. \quad (k \in \mathbb{Z})$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q4" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $x = \pm \dfrac{2\pi}{5} + k\pi \quad (k \in \mathbb{Z})$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q4" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $\left[\begin{array}{l} x = \dfrac{2\pi}{5} + k\pi \\ x = \dfrac{3\pi}{5} + k\pi \end{array}\right. \quad (k \in \mathbb{Z})$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Áp dụng công thức nghiệm cơ bản của phương trình sin:
+            $$\sin x = \sin\alpha \Leftrightarrow \left[\begin{array}{l} x = \alpha + k2\pi \\ x = \pi - \alpha + k2\pi \end{array}\right. \quad (k \in \mathbb{Z})$$
+            Với $\alpha = \dfrac{2\pi}{5}$, ta được $\left[\begin{array}{l} x = \dfrac{2\pi}{5} + k2\pi \\ x = \pi - \dfrac{2\pi}{5} + k2\pi = \dfrac{3\pi}{5} + k2\pi \end{array}\right. \; (k \in \mathbb{Z})$. Chọn <strong>A</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 5 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="5" data-correct="D" data-skill="Chu kỳ tuần hoàn">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 5
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Chu kỳ tuần hoàn
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Chu kỳ tuần hoàn $T$ của hàm số $y = \cos\left(2x + \dfrac{\pi}{3}\right) - 3\tan\left(3x - \dfrac{\pi}{4}\right)$ là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q5" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $T = \dfrac{2\pi}{3}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q5" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $T = \dfrac{\pi}{3}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q5" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $T = 2\pi$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q5" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $T = \pi$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Hàm số $y_1 = \cos\left(2x + \dfrac{\pi}{3}\right)$ tuần hoàn với chu kỳ $T_1 = \dfrac{2\pi}{2} = \pi$.<br>
+            Hàm số $y_2 = \tan\left(3x - \dfrac{\pi}{4}\right)$ tuần hoàn với chu kỳ $T_2 = \dfrac{\pi}{3}$.<br>
+            Chu kỳ $T$ của hàm số $y = y_1 - 3y_2$ là BCNN của $T_1$ và $T_2$:
+            $$T = \text{BCNN}\left(\pi, \dfrac{\pi}{3}\right) = \pi$$
+            Kiểm tra: $\dfrac{\pi}{T_1} = 1 \in \mathbb{Z}^+$ và $\dfrac{\pi}{T_2} = 3 \in \mathbb{Z}^+$. Do đó $T = \pi$. Chọn <strong>D</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 6 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="6" data-correct="A" data-skill="Sự biến thiên">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 6
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Sự biến thiên
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Mệnh đề nào sau đây đúng khi nói về sự biến thiên của hàm số $y = \cos x$?
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q6" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> Hàm số nghịch biến trên khoảng $(0; \pi)$ và đồng biến trên khoảng $(\pi; 2\pi)$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q6" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> Hàm số đồng biến trên khoảng $(0; \pi)$ và nghịch biến trên khoảng $(\pi; 2\pi)$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q6" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> Hàm số đồng biến trên toàn bộ khoảng $(0; 2\pi)$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q6" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> Hàm số nghịch biến trên toàn bộ khoảng $(0; 2\pi)$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Dựa vào đồ thị và tính chất của hàm số $y = \cos x$: trên khoảng $(0; \pi)$ góc $x$ tăng từ $0$ đến $\pi$ thì $\cos x$ giảm từ $1$ xuống $-1$ (nghịch biến); trên khoảng $(\pi; 2\pi)$ góc $x$ tăng từ $\pi$ đến $2\pi$ thì $\cos x$ tăng từ $-1$ lên $1$ (đồng biến). Chọn <strong>A</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 7 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="7" data-correct="C" data-skill="Số nghiệm của phương trình">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 7
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Số nghiệm của phương trình
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Số nghiệm của phương trình $\cos\left(x - \dfrac{\pi}{3}\right) = \dfrac{1}{2}$ trên đoạn $[0; 2\pi]$ là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q7" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $1$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q7" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $2$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q7" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $3$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q7" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $4$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Ta có $\cos\left(x - \dfrac{\pi}{3}\right) = \cos\dfrac{\pi}{3} \Leftrightarrow \left[\begin{array}{l} x - \dfrac{\pi}{3} = \dfrac{\pi}{3} + k2\pi \\ x - \dfrac{\pi}{3} = -\dfrac{\pi}{3} + k2\pi \end{array}\right. \Leftrightarrow \left[\begin{array}{l} x = \dfrac{2\pi}{3} + k2\pi \\ x = k2\pi \end{array}\right. \quad (k \in \mathbb{Z})$.<br>
+            Xét $x \in [0; 2\pi]$:
+            - Với $x = \dfrac{2\pi}{3} + k2\pi$: chọn $k = 0 \Rightarrow x = \dfrac{2\pi}{3}$.<br>
+            - Với $x = k2\pi$: chọn $k = 0 \Rightarrow x = 0$; chọn $k = 1 \Rightarrow x = 2\pi$.<br>
+            Vậy phương trình có đúng $3$ nghiệm trên đoạn $[0; 2\pi]$ là $x \in \left\{0; \dfrac{2\pi}{3}; 2\pi\right\}$. Chọn <strong>C</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 8 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="8" data-correct="C" data-skill="Phương trình bậc hai lượng giác">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 8
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Phương trình bậc hai lượng giác
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Tập nghiệm của phương trình $2\sin^2 x - 3\sin x + 1 = 0$ là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q8" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $S = \left\{\dfrac{\pi}{2} + k2\pi, \pm \dfrac{\pi}{6} + k2\pi \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q8" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $S = \left\{\dfrac{\pi}{2} + k2\pi \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q8" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $S = \left\{\dfrac{\pi}{2} + k2\pi, \dfrac{\pi}{6} + k2\pi, \dfrac{5\pi}{6} + k2\pi \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q8" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $S = \left\{k\pi, \dfrac{\pi}{3} + k2\pi \;\middle|\; k \in \mathbb{Z}\right\}$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Đặt $t = \sin x$ (điều kiện $-1 \le t \le 1$). Phương trình trở thành:
+            $$2t^2 - 3t + 1 = 0 \Leftrightarrow \left[\begin{array}{l} t = 1 \text{ (thỏa mãn)} \\ t = \dfrac{1}{2} \text{ (thỏa mãn)} \end{array}\right.$$
+            - Với $t = 1 \Leftrightarrow \sin x = 1 \Leftrightarrow x = \dfrac{\pi}{2} + k2\pi \quad (k \in \mathbb{Z})$.<br>
+            - Với $t = \dfrac{1}{2} \Leftrightarrow \sin x = \dfrac{1}{2} \Leftrightarrow \left[\begin{array}{l} x = \dfrac{\pi}{6} + k2\pi \\ x = \dfrac{5\pi}{6} + k2\pi \end{array}\right. \quad (k \in \mathbb{Z})$. Chọn <strong>C</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 9 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="9" data-correct="D" data-skill="Tổng nghiệm phương trình">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 9
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Tổng nghiệm phương trình
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Tổng các nghiệm của phương trình $\tan\left(2x - \dfrac{\pi}{4}\right) = 1$ thuộc khoảng $(0; \pi)$ bằng:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q9" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $\dfrac{\pi}{2}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q9" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $\dfrac{2\pi}{3}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q9" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $\dfrac{3\pi}{4}$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q9" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $\pi$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Phương trình $\Leftrightarrow 2x - \dfrac{\pi}{4} = \dfrac{\pi}{4} + k\pi \Leftrightarrow 2x = \dfrac{\pi}{2} + k\pi \Leftrightarrow x = \dfrac{\pi}{4} + \dfrac{k\pi}{2} \quad (k \in \mathbb{Z})$.<br>
+            Vì $x \in (0; \pi)$ nên $0 < \dfrac{\pi}{4} + \dfrac{k\pi}{2} < \pi \Leftrightarrow -\dfrac{1}{2} < k < \dfrac{3}{2}$. Do $k \in \mathbb{Z}$ nên $k \in \{0; 1\}$.<br>
+            - Với $k = 0 \Rightarrow x_1 = \dfrac{\pi}{4}$.<br>
+            - Với $k = 1 \Rightarrow x_2 = \dfrac{\pi}{4} + \dfrac{\pi}{2} = \dfrac{3\pi}{4}$.<br>
+            Tổng hai nghiệm: $x_1 + x_2 = \dfrac{\pi}{4} + \dfrac{3\pi}{4} = \pi$. Chọn <strong>D</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 10 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="10" data-correct="B" data-skill="Phương trình bậc nhất sin và cos">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 10
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Phương trình bậc nhất sin và cos
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Tìm tất cả các giá trị của tham số $m$ để phương trình $(m-2)\sin x + 3\cos x = m+1$ có nghiệm.
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q10" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $m \ge 2$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q10" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $m \le 2$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q10" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $m > 3$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q10" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $-2 \le m \le 2$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Phương trình có dạng $A\sin x + B\cos x = C$ với $A = m-2, B = 3, C = m+1$.<br>
+            Điều kiện để phương trình có nghiệm là $A^2 + B^2 \ge C^2$:
+            $$(m-2)^2 + 3^2 \ge (m+1)^2 \Leftrightarrow m^2 - 4m + 4 + 9 \ge m^2 + 2m + 1 \Leftrightarrow 6m \le 12 \Leftrightarrow m \le 2$$
+            Chọn <strong>B</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 11 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="11" data-correct="A" data-skill="Biểu diễn nghiệm trên đường tròn lượng giác">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 11
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Biểu diễn nghiệm trên đường tròn lượng giác
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Số điểm biểu diễn các nghiệm của phương trình $\dfrac{\cos 3x - \cos x}{\sqrt{1 - \sin x}} = 0$ trên đường tròn lượng giác là:
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q11" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $3$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q11" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $4$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q11" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $2$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q11" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $5$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Điều kiện xác định: $1 - \sin x > 0 \Leftrightarrow \sin x \ne 1 \Leftrightarrow x \ne \dfrac{\pi}{2} + k2\pi \quad (k \in \mathbb{Z})$.<br>
+            Phương trình $\Leftrightarrow \cos 3x - \cos x = 0 \Leftrightarrow -2\sin 2x \sin x = 0 \Leftrightarrow \sin 2x = 0 \Leftrightarrow 2x = k\pi \Leftrightarrow x = \dfrac{k\pi}{2} \quad (k \in \mathbb{Z})$.<br>
+            Biểu diễn các nghiệm $x = \dfrac{k\pi}{2}$ trên đường tròn lượng giác:
+            - $k = 0 \Rightarrow x = 0$ (thỏa mãn).<br>
+            - $k = 1 \Rightarrow x = \dfrac{\pi}{2}$ (loại do $\sin\dfrac{\pi}{2} = 1$).<br>
+            - $k = 2 \Rightarrow x = \pi$ (thỏa mãn).<br>
+            - $k = 3 \Rightarrow x = \dfrac{3\pi}{2}$ (thỏa mãn).<br>
+            Vậy có đúng $3$ điểm biểu diễn nghiệm thỏa mãn. Chọn <strong>A</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 12 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="12" data-correct="C" data-skill="Mô hình hóa thực tế">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 12
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Mô hình hóa thực tế
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Mực nước sông tại một trạm đo trong ngày ($0 \le t \le 24$) được mô hình hóa bởi hàm số $h(t) = 4\sin\left(\dfrac{\pi t}{6} - \dfrac{\pi}{6}\right) + 10$ (mét). Mực nước sông đạt từ $12\text{ m}$ trở lên trong khoảng thời gian nào trong ngày?
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q12" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $0 \le t \le 4$ và $12 \le t \le 16$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q12" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $4 \le t \le 8$ và $16 \le t \le 20$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q12" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $2 \le t \le 6$ và $14 \le t \le 18$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q12" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $3 \le t \le 7$ và $15 \le t \le 19$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Mực nước sông đạt từ $12\text{ m}$ trở lên $\Leftrightarrow h(t) \ge 12$:
+            $$4\sin\left(\dfrac{\pi t}{6} - \dfrac{\pi}{6}\right) + 10 \ge 12 \Leftrightarrow \sin\left(\dfrac{\pi t}{6} - \dfrac{\pi}{6}\right) \ge \dfrac{1}{2}$$
+            Vì $0 \le t \le 24$ nên góc $u = \dfrac{\pi t}{6} - \dfrac{\pi}{6} \in \left[-\dfrac{\pi}{6}; \dfrac{23\pi}{6}\right]$.
+            Bất phương trình $\sin u \ge \dfrac{1}{2}$ có tập nghiệm:
+            - Nhánh 1: $\dfrac{\pi}{6} \le \dfrac{\pi t}{6} - \dfrac{\pi}{6} \le \dfrac{5\pi}{6} \Leftrightarrow \dfrac{\pi}{3} \le \dfrac{\pi t}{6} \le \pi \Leftrightarrow 2 \le t \le 6$.<br>
+            - Nhánh 2: $\dfrac{13\pi}{6} \le \dfrac{\pi t}{6} - \dfrac{\pi}{6} \le \dfrac{17\pi}{6} \Leftrightarrow \dfrac{7\pi}{3} \le \dfrac{\pi t}{6} \le 3\pi \Leftrightarrow 14 \le t \le 18$. Chọn <strong>C</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 13 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="13" data-correct="B" data-skill="Giá trị lớn nhất thực tế">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 13
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Giá trị lớn nhất thực tế
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Nhiệt độ $T$ ($^\circ\text{C}$) của phòng thí nghiệm sinh học trong một ngày được mô phỏng bởi hàm số $T(t) = 20 + 6\cos\left(\dfrac{\pi t}{12} - \dfrac{\pi}{3}\right)$, trong đó $t$ là thời gian tính bằng giờ kể từ $0$ giờ đêm ($0 \le t \le 24$). Nhiệt độ đạt giá trị cao nhất bằng bao nhiêu và vào thời điểm nào?
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q13" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $20^\circ\text{C}$ lúc $4$ giờ sáng</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q13" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $26^\circ\text{C}$ lúc $4$ giờ sáng</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q13" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $26^\circ\text{C}$ lúc $16$ giờ chiều</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q13" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $24^\circ\text{C}$ lúc $12$ giờ trưa</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Vì $-1 \le \cos\left(\dfrac{\pi t}{12} - \dfrac{\pi}{3}\right) \le 1$ với mọi $t \in [0; 24]$ nên:
+            $$T(t) \le 20 + 6(1) = 26^\circ\text{C}$$
+            Nhiệt độ đạt giá trị cao nhất bằng $26^\circ\text{C}$ khi và chỉ khi:
+            $$\cos\left(\dfrac{\pi t}{12} - \dfrac{\pi}{3}\right) = 1 \Leftrightarrow \dfrac{\pi t}{12} - \dfrac{\pi}{3} = k2\pi \Leftrightarrow \dfrac{\pi t}{12} = \dfrac{\pi}{3} + k2\pi \Leftrightarrow t = 4 + 24k$$
+            Vì $0 \le t \le 24$ nên chọn $k = 0 \Rightarrow t = 4$ (giờ, tức $4$ giờ sáng). Chọn <strong>B</strong>.
+          </div>
+        </div>
+
+        <!-- Câu 14 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="choice" data-id="14" data-correct="A" data-skill="Biện luận số nghiệm">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 14
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Biện luận số nghiệm
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Cho phương trình $\cos 2x + (1-2m)\cos x - m - 1 = 0$. Có bao nhiêu giá trị nguyên của tham số $m \in [-10; 10]$ để phương trình có đúng $3$ nghiệm phân biệt thuộc đoạn $\left[-\dfrac{\pi}{2}; \pi\right]$?
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q14" value="A" class="w-4 h-4 text-brand-600">
+              <span><strong>A.</strong> $1$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q14" value="B" class="w-4 h-4 text-brand-600">
+              <span><strong>B.</strong> $2$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q14" value="C" class="w-4 h-4 text-brand-600">
+              <span><strong>C.</strong> $3$</span>
+            </label>
+            <label class="choice-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition text-sm">
+              <input type="radio" name="q14" value="D" class="w-4 h-4 text-brand-600">
+              <span><strong>D.</strong> $4$</span>
+            </label>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Biến đổi phương trình: $(2\cos^2 x - 1) + (1-2m)\cos x - m - 1 = 0 \Leftrightarrow 2\cos^2 x + (1-2m)\cos x - m - 2 = 0$.<br>
+            Phân tích thành nhân tử:
+            $$(2\cos x + 1)(\cos x - m) = 0 \Leftrightarrow \left[\begin{array}{l} \cos x = -\dfrac{1}{2} \quad (1) \\ \cos x = m \quad (2) \end{array}\right.$$
+            Xét trên đoạn $\left[-\dfrac{\pi}{2}; \pi\right]$:
+            - Phương trình (1) $\cos x = -\dfrac{1}{2}$ có đúng $1$ nghiệm là $x = \dfrac{2\pi}{3}$.<br>
+            - Để phương trình ban đầu có đúng $3$ nghiệm phân biệt thuộc $\left[-\dfrac{\pi}{2}; \pi\right]$, phương trình (2) $\cos x = m$ phải có đúng $2$ nghiệm phân biệt thuộc $\left[-\dfrac{\pi}{2}; \pi\right]$ và nghiệm đó khác $\dfrac{2\pi}{3}$ (tức $m \ne -\dfrac{1}{2}$).<br>
+            Khảo sát hàm số $y = \cos x$ trên $\left[-\dfrac{\pi}{2}; \pi\right]$: Đường thẳng $y = m$ cắt đồ thị $y = \cos x$ tại đúng $2$ điểm phân biệt khi và chỉ khi $0 \le m < 1$.<br>
+            So sánh điều kiện $m \ne -\dfrac{1}{2}$, ta được $m \in [0; 1)$. Giá trị nguyên duy nhất trong $[-10; 10]$ là $m = 0$. Vậy có đúng $1$ giá trị nguyên. Chọn <strong>A</strong>.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- PHẦN II. TỰ LUẬN / TRẢ LỜI NGẮN -->
+      <!-- ========================================== -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-3 bg-emerald-50/80 border-l-4 border-emerald-600 px-4 py-3 rounded-r-xl">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">II</span>
+          <div>
+            <h2 class="text-base font-bold text-slate-800">PHẦN II. TỰ LUẬN / TRẢ LỜI NGẮN (3,0 ĐIỂM)</h2>
+            <p class="text-xs text-slate-500">Gồm 2 câu hỏi (Câu 15 và Câu 16), mỗi câu 1,5 điểm. Học sinh điền đáp số vào ô trống.</p>
+          </div>
+        </div>
+
+        <!-- Câu 15 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="shortans" data-id="15" data-correct="pi/5" data-skill="Phương trình lượng giác biến đổi">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 15 (1,5 điểm)
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Phương trình lượng giác biến đổi
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Giải phương trình lượng giác sau:
+            $$\sqrt{3}\sin 2x - \cos 2x = 2\cos\left(3x - \dfrac{\pi}{3}\right)$$
+          </div>
+          <div class="space-y-2 max-w-xl">
+            <label class="block text-xs font-semibold text-slate-600">Nhập họ nghiệm của phương trình (ví dụ: pi/5 + k2pi/5; -pi/3 + k2pi):</label>
+            <div class="flex items-center gap-3">
+              <input type="text" id="shortans-15" placeholder="Điền họ nghiệm..."
+                     class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm">
+            </div>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            Chia hai vế của phương trình cho $2$:
+            $$\dfrac{\sqrt{3}}{2}\sin 2x - \dfrac{1}{2}\cos 2x = \cos\left(3x - \dfrac{\pi}{3}\right) \quad \textit{(0,25 điểm)}$$
+            Biến đổi vế trái theo công thức cộng sin:
+            $$\sin 2x \cos\dfrac{\pi}{6} - \cos 2x \sin\dfrac{\pi}{6} = \cos\left(3x - \dfrac{\pi}{3}\right) \Leftrightarrow \sin\left(2x - \dfrac{\pi}{6}\right) = \cos\left(3x - \dfrac{\pi}{3}\right) \quad \textit{(0,5 điểm)}$$
+            Sử dụng công thức phụ $\cos A = \sin\left(\dfrac{\pi}{2} - A\right)$:
+            $$\cos\left(3x - \dfrac{\pi}{3}\right) = \sin\left(\dfrac{\pi}{2} - \left(3x - \dfrac{\pi}{3}\right)\right) = \sin\left(\dfrac{5\pi}{6} - 3x\right)$$
+            Phương trình trở thành:
+            $$\sin\left(2x - \dfrac{\pi}{6}\right) = \sin\left(\dfrac{5\pi}{6} - 3x\right) \Leftrightarrow \left[\begin{array}{l} 2x - \dfrac{\pi}{6} = \dfrac{5\pi}{6} - 3x + k2\pi \\ 2x - \dfrac{\pi}{6} = \pi - \left(\dfrac{5\pi}{6} - 3x\right) + k2\pi \end{array}\right. \quad (k \in \mathbb{Z})$$
+            $$\Leftrightarrow \left[\begin{array}{l} 5x = \pi + k2\pi \\ -x = \dfrac{\pi}{3} + k2\pi \end{array}\right. \Leftrightarrow \left[\begin{array}{l} x = \dfrac{\pi}{5} + \dfrac{k2\pi}{5} \\ x = -\dfrac{\pi}{3} + k2\pi \end{array}\right. \quad (k \in \mathbb{Z}) \quad \textit{(0,75 điểm)}$$
+          </div>
+        </div>
+
+        <!-- Câu 16 -->
+        <div class="question-box bg-white rounded-2xl border border-slate-200 p-5 md:p-6 shadow-sm transition hover:shadow-md"
+             data-type="shortans" data-id="16" data-correct="3; 15.5; 4, 8, 16, 20" data-skill="Mô hình hóa vòng quay đu quay">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+              Câu 16 (1,5 điểm)
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-50 text-brand-700">
+              Kỹ năng: Mô hình hóa vòng quay đu quay
+            </span>
+          </div>
+          <div class="text-slate-800 text-sm md:text-base leading-relaxed mb-4">
+            Một chiếc cabin trên vòng quay đu quay có bán kính $R = 25\text{ m}$ quay đều với chu kỳ $12$ phút. Trục của vòng quay được đặt ở độ cao $28\text{ m}$ so với mặt đất. Độ cao $h$ (mét) của cabin so với mặt đất tại thời điểm $t$ (phút) kể từ khi vòng quay bắt đầu vận hành từ vị trí thấp nhất được tính theo công thức:
+            $$h(t) = 28 - 25\cos\left(\dfrac{\pi t}{6}\right)$$
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li><strong>a)</strong> Tính độ cao của cabin ở các thời điểm $t = 0$ phút và $t = 2$ phút. <em>(0,75 điểm)</em></li>
+              <li><strong>b)</strong> Trong $24$ phút đầu tiên ($0 \le t \le 24$), xác định tất cả các thời điểm $t$ (phút) để cabin ở độ cao $40,5\text{ m}$ so với mặt đất. <em>(0,75 điểm)</em></li>
+            </ul>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Đáp số ý a (mét tại t=0 và t=2):</label>
+              <input type="text" id="shortans-16a" placeholder="VD: 3 và 15.5"
+                     class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Đáp số ý b (các thời điểm t):</label>
+              <input type="text" id="shortans-16b" placeholder="VD: 4; 8; 16; 20"
+                     class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm">
+            </div>
+          </div>
+          <div class="loigiai hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-slate-800 text-sm">
+            <div class="font-bold text-amber-800 mb-1">💡 Lời giải:</div>
+            <strong>a)</strong> Ở thời điểm $t = 0$ phút:
+            $$h(0) = 28 - 25\cos 0 = 28 - 25(1) = 3 \text{ (m)} \quad \textit{(0,25 điểm)}$$
+            Ở thời điểm $t = 2$ phút:
+            $$h(2) = 28 - 25\cos\left(\dfrac{2\pi}{6}\right) = 28 - 25\cos\left(\dfrac{\pi}{3}\right) = 28 - 25(0{,}5) = 15{,}5 \text{ (m)} \quad \textit{(0,5 điểm)}$$<br>
+            <strong>b)</strong> Cabin đạt độ cao $40,5\text{ m} \Leftrightarrow h(t) = 40,5$:
+            $$28 - 25\cos\left(\dfrac{\pi t}{6}\right) = 40,5 \Leftrightarrow -25\cos\left(\dfrac{\pi t}{6}\right) = 12,5 \Leftrightarrow \cos\left(\dfrac{\pi t}{6}\right) = -\dfrac{1}{2} \quad \textit{(0,25 điểm)}$$
+            $$\Leftrightarrow \dfrac{\pi t}{6} = \pm \dfrac{2\pi}{3} + k2\pi \Leftrightarrow t = \pm 4 + 12k \quad (k \in \mathbb{Z})$$
+            Xét khoảng thời gian $0 \le t \le 24$:
+            - Nhánh $t = 4 + 12k$: với $k = 0 \Rightarrow t = 4$; với $k = 1 \Rightarrow t = 16$.<br>
+            - Nhánh $t = -4 + 12k$: với $k = 1 \Rightarrow t = 8$; với $k = 2 \Rightarrow t = 20$.<br>
+            Vậy trong $24$ phút đầu tiên, cabin đạt độ cao $40,5\text{ m}$ tại $4$ thời điểm: $t = 4$, $t = 8$, $t = 16$ và $t = 20$ (phút). <em>(0,5 điểm)</em>
+          </div>
+        </div>
+      </section>
+
+      <!-- Action Button -->
+      <div class="pt-6 pb-2 text-center">
+        <button type="button" id="btn-nop-bai"
+          class="inline-flex items-center justify-center gap-2.5 px-9 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-base shadow-lg shadow-brand-500/25 transition-all transform active:scale-95 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>NỘP BÀI THI</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Internal JavaScript Logic -->
+  <script>
+    // 1. Tự động Render KaTeX sau khi tải trang
+    function triggerKaTeX() {
+      if (typeof renderMathInElement === "function") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      } else {
+        setTimeout(triggerKaTeX, 100);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", triggerKaTeX);
+    window.addEventListener("load", triggerKaTeX);
+
+    // Cấu hình Webhook n8n Integra & Google Apps Script
+    const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+    const GAS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxL0a3d8PyAoH1NsmX5kwpSmE6trCADJnb4Sv2I0E49O5R6Y7ZdH7nqpEM5860_Ccfrjw/exec";
+
+    // 2. Xử lý Logic Chấm điểm & Gửi kết quả Webhook
+    document.getElementById('btn-nop-bai').addEventListener('click', async function () {
+      const ten_hs = document.getElementById('input-ten') ? document.getElementById('input-ten').value.trim() || "Ẩn danh" : "Ẩn danh";
+      const ma_hs = document.getElementById('input-ma-hs') ? document.getElementById('input-ma-hs').value.trim() || "Trống" : "Trống";
+      const ten_lop = document.getElementById('input-lop') ? document.getElementById('input-lop').value.trim() || "Trống" : "Trống";
+
+      let tong_diem = 0;
+      const mang_cau_sai = [];
+
+      // --- Chấm Phần I (Câu 1 đến Câu 14): Mỗi câu 0.5 điểm (Tổng 7.0 điểm) ---
+      const part1Questions = document.querySelectorAll('.question-box[data-type="choice"]');
+      part1Questions.forEach(q => {
+        const qId = q.getAttribute('data-id');
+        const correctAns = q.getAttribute('data-correct');
+        const skill = q.getAttribute('data-skill') || "Toán học";
+        const selected = q.querySelector(`input[name="q${qId}"]:checked`);
+
+        if (selected && selected.value === correctAns) {
+          tong_diem += 0.5;
+          selected.closest('label').classList.add('correct-ans');
+        } else {
+          mang_cau_sai.push(skill);
+          if (selected) {
+            selected.closest('label').classList.add('wrong-ans');
+          }
+          // Tô sáng phương án đúng
+          const correctInput = q.querySelector(`input[name="q${qId}"][value="${correctAns}"]`);
+          if (correctInput) {
+            correctInput.closest('label').classList.add('correct-ans');
+          }
+        }
+      });
+
+      // --- Chấm Phần II: Tự luận / Trả lời ngắn (Câu 15 & Câu 16, Tổng 3.0 điểm) ---
+
+      // Câu 15: 1.5 điểm
+      const q15 = document.querySelector('.question-box[data-id="15"]');
+      const skill15 = q15.getAttribute('data-skill') || "Phương trình lượng giác biến đổi";
+      const ans15Input = document.getElementById('shortans-15');
+      const val15 = (ans15Input ? ans15Input.value : "").trim().toLowerCase();
+
+      // Kiểm tra có chứa các thành phần nghiệm chính: pi/5 hoặc 36 độ, và -pi/3
+      const hasPi5 = val15.includes('pi/5') || val15.includes('π/5') || val15.includes('pi / 5');
+      const hasMinusPi3 = val15.includes('-pi/3') || val15.includes('-π/3') || val15.includes('-\\dfrac{\\pi}{3}');
+
+      if (hasPi5 || hasMinusPi3 || val15.length > 5) {
+        if (hasPi5 && hasMinusPi3) {
+          tong_diem += 1.5;
+          ans15Input.classList.add('border-emerald-500', 'bg-emerald-50');
+        } else {
+          tong_diem += 0.75;
+          ans15Input.classList.add('border-amber-500', 'bg-amber-50');
+          mang_cau_sai.push(skill15);
+        }
+      } else {
+        mang_cau_sai.push(skill15);
+        if (ans15Input) ans15Input.classList.add('border-rose-500', 'bg-rose-50');
+      }
+
+      // Câu 16: 1.5 điểm (Ý a: 0.75đ, Ý b: 0.75đ)
+      const q16 = document.querySelector('.question-box[data-id="16"]');
+      const skill16 = q16.getAttribute('data-skill') || "Mô hình hóa vòng quay đu quay";
+      const ans16aInput = document.getElementById('shortans-16a');
+      const ans16bInput = document.getElementById('shortans-16b');
+      const val16a = (ans16aInput ? ans16aInput.value : "").trim().replace(',', '.');
+      const val16b = (ans16bInput ? ans16bInput.value : "").trim();
+
+      let q16CorrectAll = true;
+
+      // Chấm 16a: chứa 3 và 15.5
+      if (val16a.includes('3') && (val16a.includes('15.5') || val16a.includes('15,5'))) {
+        tong_diem += 0.75;
+        ans16aInput.classList.add('border-emerald-500', 'bg-emerald-50');
+      } else {
+        q16CorrectAll = false;
+        if (ans16aInput) ans16aInput.classList.add('border-rose-500', 'bg-rose-50');
+      }
+
+      // Chấm 16b: chứa các số 4, 8, 16, 20
+      const has4 = /\b4\b/.test(val16b);
+      const has8 = /\b8\b/.test(val16b);
+      const has16 = /\b16\b/.test(val16b);
+      const has20 = /\b20\b/.test(val16b);
+
+      if (has4 && has8 && has16 && has20) {
+        tong_diem += 0.75;
+        ans16bInput.classList.add('border-emerald-500', 'bg-emerald-50');
+      } else {
+        q16CorrectAll = false;
+        if (ans16bInput) ans16bInput.classList.add('border-rose-500', 'bg-rose-50');
+      }
+
+      if (!q16CorrectAll) {
+        mang_cau_sai.push(skill16);
+      }
+
+      // Điểm số quy về thang 10, làm tròn 1 chữ số thập phân
+      const diem_so = Math.min(10, Math.round(tong_diem * 10) / 10);
+
+      // Lọc các kỹ năng bị sai, loại bỏ trùng lặp và nối thành chuỗi phân cách bởi dấu phẩy
+      const uniqueSkills = Array.from(new Set(mang_cau_sai));
+      const chuoi_ky_nang_sai = uniqueSkills.length > 0 ? uniqueSkills.join(", ") : "Không có (Làm đúng tất cả)";
+
+      // Khóa toàn bộ input & radio button chống chỉnh sửa sau khi nộp
+      document.querySelectorAll('#quiz-form input').forEach(input => {
+        input.disabled = true;
+      });
+
+      // Chuẩn bị khối Payload gửi đi bắt buộc khớp chính xác các key
+      const payload = {
+        "hoc_sinh": ten_hs,
+        "ma_hs": ma_hs,
+        "lop": ten_lop,
+        "bai_thi": document.title || "ĐỀ KIỂM TRA MÔN TOÁN LỚP 11 - 45 PHÚT [ĐỀ B]",
+        "diem": diem_so,
+        "thoi_gian_nop": new Date().toLocaleString('vi-VN'),
+        "ky_nang_sai": uniqueSkills
+      };
+
+      const btn = document.getElementById('btn-nop-bai');
+      btn.innerHTML = "Đang gửi kết quả...";
+      btn.disabled = true;
+
+      let webhookSuccess = false;
+
+      // 1. Gửi Webhook n8n máy chủ Integra
+      try {
+        const resN8n = await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (resN8n.ok) webhookSuccess = true;
+      } catch (err) {}
+
+      // 2. Gửi Webhook Google Apps Script
+      try {
+        await fetch(GAS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+        webhookSuccess = true;
+      } catch (error) {}
+
+      if (webhookSuccess) {
+        alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+      } else {
+        alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
+      }
+
+      btn.innerHTML = `ĐÃ NỘP BÀI - ĐIỂM: ${diem_so}/10`;
+      btn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
+      btn.classList.add('bg-slate-500', 'cursor-not-allowed');
+
+      // Mở toàn bộ khối lời giải chi tiết
+      document.querySelectorAll('.loigiai').forEach(lg => {
+        lg.classList.remove('hidden');
+      });
+
+      // Cập nhật banner kết quả
+      const resultBox = document.getElementById('result-box');
+      document.getElementById('score-display').innerText = diem_so.toFixed(1);
+      document.getElementById('result-summary').innerText = `Học sinh: ${ten_hs} - Lớp: ${ten_lop} (Mã HS: ${ma_hs})`;
+      document.getElementById('result-skills').innerText = uniqueSkills.length > 0
+        ? `⚠️ Chuyên đề / Kỹ năng cần củng cố: ${chuoi_ky_nang_sai}`
+        : `🎉 Chúc mừng em đã hoàn thành xuất sắc toàn bộ bài kiểm tra!`;
+      resultBox.classList.remove('hidden');
+
+      // Re-render KaTeX cho phần lời giải vừa hiển thị
+      triggerKaTeX();
+
+      // Cuộn mượt lên xem điểm số
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
