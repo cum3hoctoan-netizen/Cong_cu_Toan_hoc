@@ -801,8 +801,9 @@
 
   <!-- JAVASCRIPT XỬ LÝ CHẤM ĐIỂM & ĐỒNG BỘ N8N -->
   <script>
-    // URL Webhook n8n Chấm điểm Integra (chuẩn theo GEMINI.md)
+    // URL Webhook n8n Chấm điểm Integra & Google Apps Script
     const N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cham-diem-integra";
+    const GOOGLE_APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxL0a3d8PyAoH1NsmX5kwpSmE6trCADJnb4Sv2I0E49O5R6Y7ZdH7nqpEM5860_Ccfrjw/exec";
 
     document.addEventListener("DOMContentLoaded", function () {
       // Tự động render công thức toán KaTeX
@@ -916,20 +917,33 @@
         ky_nang_sai: uniqueSkills
       };
 
+      let webhookSuccess = false;
+
+      // 1. Gửi về n8n máy chủ Integra
       try {
-        const response = await fetch(N8N_WEBHOOK_URL, {
+        const responseN8n = await fetch(N8N_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
+        if (responseN8n.ok) webhookSuccess = true;
+      } catch (err) {}
 
-        if (response.ok) {
-          alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}/10\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
-        } else {
-          alert(`Đã hoàn thành chấm điểm: ${diem_so}/10.\n(Có lưu ý nhẹ về kết nối webhook máy chủ).`);
-        }
-      } catch (error) {
-        alert("Đã ghi nhận điểm: " + diem_so + "/10. (Không thể kết nối đến máy chủ Integra cục bộ, điểm vẫn được hiển thị trực tiếp).");
+      // 2. Gửi về Google Apps Script Webhook
+      try {
+        await fetch(GOOGLE_APP_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+        webhookSuccess = true;
+      } catch (err) {}
+
+      if (webhookSuccess) {
+        alert(`Nộp bài thành công!\nĐiểm của em: ${diem_so}\nKết quả chi tiết đã được gửi về Thầy Ngọc.`);
+      } else {
+        alert("Đã ghi nhận điểm: " + diem_so + ". (Không thể kết nối đến máy chủ Integra).");
       } finally {
         btn.innerHTML = `ĐÃ NỘP BÀI - ĐIỂM: ${diem_so}/10`;
         btn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
